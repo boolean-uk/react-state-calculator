@@ -28,10 +28,6 @@ You are a required to implement a simplified calculator app.
 - If simpler, just start with one or two functional buttons and only consider the add operation. When you have that working, make additional buttons functional.
 
 ## Extension
-- A new checkbox should be added to the application, "Decimal Only".
-- When this box is ticked, the answer should always be rounded to the nearest whole number.
-
-## Extension 2
 - Add a "store" button underneath the answer.
 - When this button is clicked, the current answer should be stored in a state variable.
 - Add a "recall" button to each of the number displays. When this button is clicked, the currently stored value should be shown on the corresponding number panel.
