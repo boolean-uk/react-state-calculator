@@ -1,70 +1,37 @@
-# Getting Started with Create React App
+# React State Simple Calculator
+In this exercise you build a simplified calculator application using React.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Learning Objectives
+- Build a component that uses a useState hook to keep component state.
+- Build a component with an onClick attribute that has a value of the function to invoke when the event is triggered
+- Model the data a react application needs and create state hooks accordingly.
 
-## Available Scripts
+## Set up
+* Fork and clone this repository
+* `npm install` to install dependencies
+* `npm start` to start the React development server
 
-In the project directory, you can run:
+## Requirements
+You are a required to implement a simplified calculator app.
+![Image](image.png)
 
-### `npm start`
+- When the presses a numbered button on either of the panels, the display above should be updated to include that number.
+  - Numbers should *appended*, so pressing `1` then `2` should result in `12` being displayed
+- When user presses the clear button, the display should be set back to `0`
+- When the user presses one of the operation buttons (`+`, `-`,`*`,`÷`) the operation display should be updated to show that operation.
+- Whenever the operation or either of the numbers display changes, the answer display should be updated to show the result of the calculation.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Tips
+- Start by modelling the state of the application
+ - What state will you need to keep track of?
+ - What user interactions will modify that state and how?
+- If simpler, just start with one or two functional buttons and only consider the add operation. When you have that working, make additional buttons functional.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Extension
+- A new checkbox should be added to the application, "Decimal Only".
+- When this box is ticked, the answer should always be rounded to the nearest whole number.
 
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Extension 2
+- Add a "store" button underneath the answer.
+- When this button is clicked, the current answer should be stored in a state variable.
+- Add a "recall" button to each of the number displays. When this button is clicked, the currently stored value should be shown on the corresponding number panel.
