@@ -15,7 +15,7 @@ In this exercise you build a simplified calculator application using React.
 You are a required to implement a simplified calculator app.
 ![Image](image.png)
 
-- When the presses a numbered button on either of the panels, the display above should be updated to include that number.
+- When the user presses a numbered button on either of the panels, the display above should be updated to include that number.
   - Numbers should *appended*, so pressing `1` then `2` should result in `12` being displayed
 - When user presses the clear button, the display should be set back to `0`
 - When the user presses one of the operation buttons (`+`, `-`,`*`,`÷`) the operation display should be updated to show that operation.
