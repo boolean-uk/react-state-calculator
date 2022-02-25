@@ -49,6 +49,9 @@ function App() {
         </div>
         <div className="panel answer">
           <p>0</p>
+          <div>
+            <button>=</button>
+          </div>
         </div>
     </div>
   )
