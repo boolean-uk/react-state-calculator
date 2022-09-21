@@ -28,6 +28,12 @@ html {
   min-width: 170px;
 }
 
+.actions {
+  display: grid;
+  grid-auto-rows: 40px;
+  gap: 4px;
+}
+
 .numbers {
   display: grid;
   grid-template-columns: repeat(3, 55px);
@@ -39,9 +45,11 @@ html {
 .answer {
   color:tomato;
   font-style: italic;
+  
 }
 
 .answer button {
   width: 100%;
   height: 40px;
+ 
 }
