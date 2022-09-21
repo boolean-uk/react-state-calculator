@@ -1,3 +1,7 @@
+import Answers from './Answers';
+import PanelOne from './PanelOne';
+import Operators from './Operators';
+import PanelTwo from './PanelTwo';
 /* eslint-disable default-case */
 import "./App.css"
 import {useState, React} from "react"
@@ -43,60 +47,10 @@ function App() {
 
   return (
     <div className="calculator">
-        <div className="panel">
-          <p>{numOne}</p>
-          <div className="numbers">
-            <button onClick={() => updatePanelOne(1)}>1</button>
-            <button onClick={() => updatePanelOne(2)}>2</button>
-            <button onClick={() => updatePanelOne(3)}>3</button>
-            <button onClick={() => updatePanelOne(4)}>4</button>
-            <button onClick={() => updatePanelOne(5)}>5</button>
-            <button onClick={() => updatePanelOne(6)}>6</button>
-            <button onClick={() => updatePanelOne(7)}>7</button>
-            <button onClick={() => updatePanelOne(8)}>8</button>
-            <button onClick={() => updatePanelOne(9)}>9</button>
-            <button onClick={() => updatePanelOne(0)}>0</button>
-            <button onClick={() => addDecimal(numOne)}>.</button>
-            <button onClick={() => setNumOne(0)}>Clear</button>
-            <button onClick={() => setNumOne(storeValue)}>Recall</button>
-          </div>
-        </div>
-        
-        <div className="panel">
-          <p>{operator}</p>
-          <div className="numbers">
-            <button onClick={() => setOperator('+')}>+</button>
-            <button onClick={() => setOperator('-')}>-</button>
-            <button onClick={() => setOperator('*')}>*</button>
-            <button onClick={() => setOperator('/')}>/</button>
-          </div>
-        </div>
-
-        <div className="panel">
-          <p>{numTwo}</p>
-          <div className="numbers">
-            <button onClick={() => updatePanelTwo(1)}>1</button>
-            <button onClick={() => updatePanelTwo(2)}>2</button>
-            <button onClick={() => updatePanelTwo(3)}>3</button>
-            <button onClick={() => updatePanelTwo(4)}>4</button>
-            <button onClick={() => updatePanelTwo(5)}>5</button>
-            <button onClick={() => updatePanelTwo(6)}>6</button>
-            <button onClick={() => updatePanelTwo(7)}>7</button>
-            <button onClick={() => updatePanelTwo(8)}>8</button>
-            <button onClick={() => updatePanelTwo(9)}>9</button>
-            <button onClick={() => updatePanelTwo(0)}>0</button>
-            <button onClick={() => addDecimal(numTwo)}>.</button>
-            <button onClick={() => setNumTwo(0)}>Clear</button>
-            <button onClick={() => setNumTwo(storeValue)}>Recall</button>
-          </div>
-        </div>
-        <div className="panel answer">
-          <p>{answer}</p>
-          <div className="actions">
-            <button onClick={() => setAnswer(roundToTwo((calculate(numOne, operator, numTwo))))}>=</button>
-            <button onClick={() => {setStoreValue(answer); setAnswer(0)}}>Store</button>
-          </div>
-        </div>
+        <PanelOne   numOne={numOne} updatePanelOne={updatePanelOne} addDecimal={addDecimal} setNumOne={setNumOne} storeValue={storeValue}  />
+        <Operators   operator={operator} setOperator={setOperator}  />
+        <PanelTwo   numTwo={numTwo} updatePanelTwo={updatePanelTwo} addDecimal={addDecimal} setNumTwo={setNumTwo} storeValue={storeValue}  />
+        <Answers   answer={answer} setAnswer={setAnswer} roundToTwo={roundToTwo} calculate={calculate} numOne={numOne} operator={operator} numTwo={numTwo} setStoreValue={setStoreValue}  />
     </div>
   )
 }
