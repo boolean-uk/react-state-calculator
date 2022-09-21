@@ -1,56 +1,64 @@
 import "./App.css"
+import {useState, React} from "react"
 
 function App() { 
+
+  const [numOne, setNumOne] = useState(0)
+  const [operator, setOperator] = useState('+')
+  const [numTwo, setNumTwo] = useState(0)
+  const [answer, setAnswer] = useState(0)
+
+  // const updatePanelOne = (input) => {}
 
   return (
     <div className="calculator">
         <div className="panel">
-          <p>0</p>
+          <p>{numOne}</p>
           <div className="numbers">
-            <button>1</button>
-            <button>2</button>
-            <button>3</button>
-            <button>4</button>
-            <button>5</button>
-            <button>6</button>
-            <button>7</button>
-            <button>8</button>
-            <button>9</button>
-            <button>0</button>
-            <button>Clear</button>
+            <button onClick={() => setNumOne(1)}>1</button>
+            <button onClick={() => setNumOne(2)}>2</button>
+            <button onClick={() => setNumOne(3)}>3</button>
+            <button onClick={() => setNumOne(4)}>4</button>
+            <button onClick={() => setNumOne(5)}>5</button>
+            <button onClick={() => setNumOne(6)}>6</button>
+            <button onClick={() => setNumOne(7)}>7</button>
+            <button onClick={() => setNumOne(8)}>8</button>
+            <button onClick={() => setNumOne(9)}>9</button>
+            <button onClick={() => setNumOne(0)}>0</button>
+            <button onClick={() => setNumOne(0)}>Clear</button>
           </div>
         </div>
         
         <div className="panel">
-          <p>+</p>
+          <p>{operator}</p>
           <div className="numbers">
-            <button>+</button>
-            <button>-</button>
-            <button>*</button>
-            <button>÷</button>
+            <button onClick={() => setOperator('+')}>+</button>
+            <button onClick={() => setOperator('-')}>-</button>
+            <button onClick={() => setOperator('*')}>*</button>
+            <button onClick={() => setOperator('÷')}>÷</button>
           </div>
         </div>
 
         <div className="panel">
-          <p>0</p>
+          <p>{numTwo}</p>
           <div className="numbers">
-            <button>1</button>
-            <button>2</button>
-            <button>3</button>
-            <button>4</button>
-            <button>5</button>
-            <button>6</button>
-            <button>7</button>
-            <button>8</button>
-            <button>9</button>
-            <button>0</button>
-            <button>Clear</button>
+            <button onClick={() => setNumTwo(1)}>1</button>
+            <button onClick={() => setNumTwo(2)}>2</button>
+            <button onClick={() => setNumTwo(3)}>3</button>
+            <button onClick={() => setNumTwo(4)}>4</button>
+            <button onClick={() => setNumTwo(5)}>5</button>
+            <button onClick={() => setNumTwo(6)}>6</button>
+            <button onClick={() => setNumTwo(7)}>7</button>
+            <button onClick={() => setNumTwo(8)}>8</button>
+            <button onClick={() => setNumTwo(9)}>9</button>
+            <button onClick={() => setNumTwo(0)}>0</button>
+            <button onClick={() => setNumTwo(0)}>Clear</button>
           </div>
         </div>
         <div className="panel answer">
-          <p>0</p>
+          <p>{answer}</p>
           <div>
-            <button>=</button>
+            <button onClick={() => setAnswer(eval(numOne + operator + numTwo))}>=</button>
           </div>
         </div>
     </div>
