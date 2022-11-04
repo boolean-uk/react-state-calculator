@@ -2,20 +2,27 @@ import { useState } from "react";
 import "./App.css";
 
 function App() {
-  const [number1, setNumber1] = useState(0);
+  const [number1, setNumber1] = useState("0");
   const [operator, setOperator] = useState("+");
   const [number2, setNumber2] = useState(0);
   const [result, calculateResult] = useState(0);
 
   const assignNumber1 = (event) => {
-    console.log(typeof event.target.innerText)
-    if (event.target.innerText !== "Clear" && event.target.innerText !== 0) {
-      console.log('hello')
-      setNumber1(number1 + event.target.innerText)
+    console.log(typeof event.target.innerText);
+    if (number1 === event.target.innerText && number1 === "0") {
+      return;
+    } else if (event.target.innerText !== "0" && number1 === "0") {
+      setNumber1(event.target.innerText);
+    } else if (
+      event.target.innerText !== "Clear" &&
+      event.target.innerText !== "0"
+    ) {
+      console.log("hello");
+      setNumber1("");
+      setNumber1(number1 + event.target.innerText);
     } else {
       setNumber1(0);
     }
-
   };
 
   const assignOperator = (event) => {
@@ -42,12 +49,21 @@ function App() {
     }
   };
   const assignNumber2 = (event) => {
-    if (event.target.innerText !== "Clear") {
-      setNumber2(parseInt(event.target.innerText));
+    console.log(typeof event.target.innerText);
+    if (number2 === event.target.innerText && number2 === "0") {
+      return;
+    } else if (event.target.innerText !== "0" && number2 === "0") {
+      setNumber2(event.target.innerText);
+    } else if (
+      event.target.innerText !== "Clear" &&
+      event.target.innerText !== "0"
+    ) {
+      console.log("hello");
+      setNumber2("");
+      setNumber2(number2 + event.target.innerText);
     } else {
       setNumber2(0);
     }
-    console.log(number2);
   };
 
   return (
