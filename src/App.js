@@ -8,35 +8,45 @@ function App() {
   const [result, calculateResult] = useState(0);
 
   const assignNumber1 = (event) => {
-    if (event.target.innerText != 'Clear') {
-      setNumber1(event.target.innerText)
+    if (event.target.innerText !== "Clear") {
+      setNumber1(parseInt(event.target.innerText));
     } else {
-      setNumber1(0)
+      setNumber1(0);
     }
-  }
+  };
 
   const assignOperator = (event) => {
-    
-    setOperator(event.target.innerText)
-    
-    
-    console.log(operator)
-  }
+    setOperator(event.target.innerText);
 
-  const assignNumber2 = (event) => {
-    if (event.target.innerText != 'Clear') {
-      setNumber2(event.target.innerText)
-    } else {
-      setNumber2(0)
-    }
-    console.log(number2)
-  }
-
+    console.log(operator);
+  };
   const assignResult = (event) => {
-    let result = calculateResult(number1 + operator + number2)
-    result = parseInt(result)
-    console.log(result)
-  }
+    switch (operator) {
+      case "+":
+        calculateResult(number1 + number2);
+        break;
+      case "-":
+        calculateResult(number1 - number2);
+        break;
+      case "*":
+        calculateResult(number1 * number2);
+        break;
+      case "÷":
+        calculateResult(number1 / number2);
+        break;
+      default:
+        console.log("No Value found");
+    }
+  };
+  const assignNumber2 = (event) => {
+    if (event.target.innerText !== "Clear") {
+      setNumber2(parseInt(event.target.innerText));
+    } else {
+      setNumber2(0);
+    }
+    console.log(number2);
+  };
+
   return (
     <div className="calculator">
       <div className="panel">
