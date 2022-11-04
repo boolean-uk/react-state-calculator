@@ -8,11 +8,14 @@ function App() {
   const [result, calculateResult] = useState(0);
 
   const assignNumber1 = (event) => {
-    if (event.target.innerText !== "Clear") {
-      setNumber1(parseInt(event.target.innerText));
+    console.log(typeof event.target.innerText)
+    if (event.target.innerText !== "Clear" && event.target.innerText !== 0) {
+      console.log('hello')
+      setNumber1(number1 + event.target.innerText)
     } else {
       setNumber1(0);
     }
+
   };
 
   const assignOperator = (event) => {
