@@ -9,9 +9,11 @@ function App() {
 
   const assignNumber1 = (event) => {
     console.log(typeof event.target.innerText);
+    console.log(typeof number1)
     if (number1 === event.target.innerText && number1 === "0") {
       return;
     } else if (event.target.innerText !== "0" && number1 === "0") {
+      console.log('yes')
       setNumber1(event.target.innerText);
     } else if (
       event.target.innerText !== "Clear" &&
@@ -21,7 +23,7 @@ function App() {
       setNumber1("");
       setNumber1(number1 + event.target.innerText);
     } else {
-      setNumber1(0);
+      setNumber1("0");
     }
   };
 
@@ -30,24 +32,7 @@ function App() {
 
     console.log(operator);
   };
-  const assignResult = (event) => {
-    switch (operator) {
-      case "+":
-        calculateResult(number1 + number2);
-        break;
-      case "-":
-        calculateResult(number1 - number2);
-        break;
-      case "*":
-        calculateResult(number1 * number2);
-        break;
-      case "÷":
-        calculateResult(number1 / number2);
-        break;
-      default:
-        console.log("No Value found");
-    }
-  };
+  
   const assignNumber2 = (event) => {
     console.log(typeof event.target.innerText);
     if (number2 === event.target.innerText && number2 === "0") {
@@ -62,9 +47,28 @@ function App() {
       setNumber2("");
       setNumber2(number2 + event.target.innerText);
     } else {
-      setNumber2(0);
+      setNumber2("0");
     }
   };
+
+  const assignResult = (event) => {
+      switch (operator) {
+        case "+":
+          calculateResult(parseInt(number1) + parseInt(number2));
+          break;
+        case "-":
+          calculateResult(parseInt(number1) - parseInt(number2));
+          break;
+        case "*":
+          calculateResult(parseInt(number1) * parseInt(number2));
+          break;
+        case "÷":
+          calculateResult(parseInt(number1) / parseInt(number2));
+          break;
+        default:
+          console.log("No Value found");
+      }
+    };
 
   return (
     <div className="calculator">
