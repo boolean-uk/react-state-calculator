@@ -73,18 +73,42 @@ function App() {
   const assignResult = (event) => {
     switch (operator) {
       case "+":
-        let resultLength = result.toString().length
-        if (result.includes('.') && resultLength > 10) {
-          calculateResult(parseFloat(number1) + parseFloat(number2));
-          result.toFixed(6)
+        let totalPlus = parseFloat(number1) + parseFloat(number2)
+        const stringLengthPlus = totalPlus.toString().length
+        console.log(stringLengthPlus)
+        let splitPlus = totalPlus.toString().split('')
+        console.log(splitPlus)
+        if (stringLengthPlus > 10) {
+          while (splitPlus.includes('.') === true && splitPlus[splitPlus.length-2] === '0') {
+            console.log('true')
+            splitPlus.pop()
+            console.log(splitPlus)
+          }
+          splitPlus.pop()
+          console.log(splitPlus)
+          calculateResult(splitPlus)
         } else {
-          calculateResult(parseFloat(number1) + parseFloat(number2));
+          calculateResult(parseFloat(number1) + parseFloat(number2))
         }
-        
-        
         break;
       case "-":
-        calculateResult(parseFloat(number1) - parseFloat(number2));
+        let totalMinus = parseFloat(number1) - parseFloat(number2)
+        const stringLengthMinus = totalMinus.toString().length
+        console.log(stringLengthMinus)
+        let splitMinus = totalMinus.toString().split('')
+        console.log(splitMinus)
+        if (stringLengthMinus > 10) {
+          while (splitMinus.includes('.') === true && splitMinus[splitMinus.length-2] === '0') {
+            console.log('true')
+            splitMinus.pop()
+            console.log(splitMinus)
+          }
+          splitMinus.pop()
+          console.log(splitMinus)
+          calculateResult(splitMinus)
+        } else {
+          calculateResult(parseFloat(number1) - parseFloat(number2))
+        }
         break;
       case "*":
         calculateResult(parseFloat(number1) * parseFloat(number2));
@@ -99,6 +123,7 @@ function App() {
         console.log("No Value found");
     }
     console.log(result)
+    
   };
 
   const assignStoreResult = (event) => {
