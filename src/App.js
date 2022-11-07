@@ -4,16 +4,19 @@ import "./App.css";
 function App() {
   const [number1, setNumber1] = useState("0");
   const [operator, setOperator] = useState("+");
-  const [number2, setNumber2] = useState(0);
+  const [number2, setNumber2] = useState("0");
   const [result, calculateResult] = useState(0);
+  const [storedResult, setstoreResult] = useState(0);
 
   const assignNumber1 = (event) => {
     console.log(typeof event.target.innerText);
-    console.log(typeof number1)
-    if (number1 === event.target.innerText && number1 === "0") {
+    console.log(typeof number1);
+    if (event.target.innerText === "Recall") {
+      setNumber1(storedResult);
+    } else if (number1 === event.target.innerText && number1 === "0") {
       return;
     } else if (event.target.innerText !== "0" && number1 === "0") {
-      console.log('yes')
+      console.log("yes");
       setNumber1(event.target.innerText);
     } else if (
       event.target.innerText !== "Clear" &&
@@ -32,10 +35,12 @@ function App() {
 
     console.log(operator);
   };
-  
+
   const assignNumber2 = (event) => {
     console.log(typeof event.target.innerText);
-    if (number2 === event.target.innerText && number2 === "0") {
+    if (event.target.innerText === "Recall") {
+      setNumber2(storedResult);
+    } else if (number2 === event.target.innerText && number2 === "0") {
       return;
     } else if (event.target.innerText !== "0" && number2 === "0") {
       setNumber2(event.target.innerText);
@@ -52,23 +57,31 @@ function App() {
   };
 
   const assignResult = (event) => {
-      switch (operator) {
-        case "+":
-          calculateResult(parseInt(number1) + parseInt(number2));
-          break;
-        case "-":
-          calculateResult(parseInt(number1) - parseInt(number2));
-          break;
-        case "*":
-          calculateResult(parseInt(number1) * parseInt(number2));
-          break;
-        case "÷":
-          calculateResult(parseInt(number1) / parseInt(number2));
-          break;
-        default:
-          console.log("No Value found");
-      }
-    };
+    switch (operator) {
+      case "+":
+        calculateResult(parseInt(number1) + parseInt(number2));
+        break;
+      case "-":
+        calculateResult(parseInt(number1) - parseInt(number2));
+        break;
+      case "*":
+        calculateResult(parseInt(number1) * parseInt(number2));
+        break;
+      case "÷":
+        calculateResult(parseInt(number1) / parseInt(number2));
+        break;
+      case "store":
+        setstoreResult();
+        break;
+      default:
+        console.log("No Value found");
+    }
+  };
+
+  const assignStoreResult = (event) => {
+    setstoreResult(result.toString());
+    console.log(storedResult);
+  };
 
   return (
     <div className="calculator">
@@ -86,6 +99,7 @@ function App() {
           <button>9</button>
           <button>0</button>
           <button>Clear</button>
+          <button>Recall</button>
         </div>
       </div>
 
@@ -113,12 +127,16 @@ function App() {
           <button>9</button>
           <button>0</button>
           <button>Clear</button>
+          <button>Recall</button>
         </div>
       </div>
       <div className="panel answer">
         <p>{result}</p>
         <div onClick={assignResult}>
           <button>=</button>
+        </div>
+        <div onClick={assignStoreResult}>
+          <button>Store</button>
         </div>
       </div>
     </div>
