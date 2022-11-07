@@ -92,8 +92,8 @@ function App() {
         }
         break;
       case "-":
-        calculateResult(parseFloat(number1) - parseFloat(number2))
-        result = Math.fround
+        let minusResult = parseFloat(number1) - parseFloat(number2)
+        calculateResult(Math.round(minusResult * 10) / 10)
         break;
       case "*":
         calculateResult(parseFloat(number1) * parseFloat(number2));
