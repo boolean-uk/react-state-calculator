@@ -92,23 +92,8 @@ function App() {
         }
         break;
       case "-":
-        let totalMinus = parseFloat(number1) - parseFloat(number2)
-        const stringLengthMinus = totalMinus.toString().length
-        console.log(stringLengthMinus)
-        let splitMinus = totalMinus.toString().split('')
-        console.log(splitMinus)
-        if (stringLengthMinus > 10) {
-          while (splitMinus.includes('.') === true && splitMinus[splitMinus.length-2] === '0') {
-            console.log('true')
-            splitMinus.pop()
-            console.log(splitMinus)
-          }
-          splitMinus.pop()
-          console.log(splitMinus)
-          calculateResult(splitMinus)
-        } else {
-          calculateResult(parseFloat(number1) - parseFloat(number2))
-        }
+        calculateResult(parseFloat(number1) - parseFloat(number2))
+        result = Math.fround
         break;
       case "*":
         calculateResult(parseFloat(number1) * parseFloat(number2));
