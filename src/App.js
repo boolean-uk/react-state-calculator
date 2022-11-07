@@ -9,25 +9,32 @@ function App() {
   const [storedResult, setstoreResult] = useState(0);
 
   const assignNumber1 = (event) => {
-    console.log(typeof event.target.innerText);
-    console.log(typeof number1);
     if (event.target.innerText === "Recall") {
       setNumber1(storedResult);
+    } else if (number1.includes('.') && event.target.innerText === '.') {
+      return
+    } else if (number1 === '0' && event.target.innerText === '.') {
+      setNumber1(number1 + event.target.innerText);
     } else if (number1 === event.target.innerText && number1 === "0") {
       return;
     } else if (event.target.innerText !== "0" && number1 === "0") {
-      console.log("yes");
       setNumber1(event.target.innerText);
+    } else if (event.target.innerText === 'Clear') {
+      setNumber1('0')
     } else if (
       event.target.innerText !== "Clear" &&
       event.target.innerText !== "0"
     ) {
-      console.log("hello");
       setNumber1("");
+      setNumber1(number1 + event.target.innerText);
+    } else if (event.target.innerText === '0' && number1 !== '0') {
       setNumber1(number1 + event.target.innerText);
     } else {
       setNumber1("0");
+      console.log('number is now 0')
     }
+    console.log(event.target.innerText);
+    console.log(typeof number1, number1);
   };
 
   const assignOperator = (event) => {
@@ -37,19 +44,26 @@ function App() {
   };
 
   const assignNumber2 = (event) => {
-    console.log(typeof event.target.innerText);
+    console.log(event.target.innerText);
     if (event.target.innerText === "Recall") {
       setNumber2(storedResult);
+    } else if (number2.includes('.') && event.target.innerText === '.') {
+      return
+    } else if (number2 === '0' && event.target.innerText === '.') {
+      setNumber2(number2 + event.target.innerText);
     } else if (number2 === event.target.innerText && number2 === "0") {
       return;
     } else if (event.target.innerText !== "0" && number2 === "0") {
       setNumber2(event.target.innerText);
+    } else if (event.target.innerText === 'Clear') {
+      setNumber2('0')
     } else if (
       event.target.innerText !== "Clear" &&
       event.target.innerText !== "0"
     ) {
-      console.log("hello");
       setNumber2("");
+      setNumber2(number2 + event.target.innerText);
+    } else if (event.target.innerText === '0' && number2 !== '0') {
       setNumber2(number2 + event.target.innerText);
     } else {
       setNumber2("0");
@@ -59,16 +73,24 @@ function App() {
   const assignResult = (event) => {
     switch (operator) {
       case "+":
-        calculateResult(parseInt(number1) + parseInt(number2));
+        let resultLength = result.toString().length
+        if (result.includes('.') && resultLength > 10) {
+          calculateResult(parseFloat(number1) + parseFloat(number2));
+          result.toFixed(6)
+        } else {
+          calculateResult(parseFloat(number1) + parseFloat(number2));
+        }
+        
+        
         break;
       case "-":
-        calculateResult(parseInt(number1) - parseInt(number2));
+        calculateResult(parseFloat(number1) - parseFloat(number2));
         break;
       case "*":
-        calculateResult(parseInt(number1) * parseInt(number2));
+        calculateResult(parseFloat(number1) * parseFloat(number2));
         break;
       case "÷":
-        calculateResult(parseInt(number1) / parseInt(number2));
+        calculateResult(parseFloat(number1) / parseFloat(number2));
         break;
       case "store":
         setstoreResult();
@@ -76,6 +98,7 @@ function App() {
       default:
         console.log("No Value found");
     }
+    console.log(result)
   };
 
   const assignStoreResult = (event) => {
@@ -87,47 +110,49 @@ function App() {
     <div className="calculator">
       <div className="panel">
         <p>{number1}</p>
-        <div className="numbers" onClick={assignNumber1}>
-          <button>1</button>
-          <button>2</button>
-          <button>3</button>
-          <button>4</button>
-          <button>5</button>
-          <button>6</button>
-          <button>7</button>
-          <button>8</button>
-          <button>9</button>
-          <button>0</button>
-          <button>Clear</button>
-          <button>Recall</button>
+        <div className="numbers">
+          <button onClick={assignNumber1}>1</button>
+          <button onClick={assignNumber1}>2</button>
+          <button onClick={assignNumber1}>3</button>
+          <button onClick={assignNumber1}>4</button>
+          <button onClick={assignNumber1}>5</button>
+          <button onClick={assignNumber1}>6</button>
+          <button onClick={assignNumber1}>7</button>
+          <button onClick={assignNumber1}>8</button>
+          <button onClick={assignNumber1}>9</button>
+          <button onClick={assignNumber1}>0</button>
+          <button onClick={assignNumber1}>Clear</button>
+          <button onClick={assignNumber1}>.</button>
+          <button onClick={assignNumber1}>Recall</button>
         </div>
       </div>
 
       <div className="panel">
         <p>{operator}</p>
-        <div className="numbers" onClick={assignOperator}>
-          <button>+</button>
-          <button>-</button>
-          <button>*</button>
-          <button>÷</button>
+        <div className="numbers">
+          <button onClick={assignOperator}>+</button>
+          <button onClick={assignOperator}>-</button>
+          <button onClick={assignOperator}>*</button>
+          <button onClick={assignOperator}>÷</button>
         </div>
       </div>
 
       <div className="panel">
         <p>{number2}</p>
-        <div className="numbers" onClick={assignNumber2}>
-          <button>1</button>
-          <button>2</button>
-          <button>3</button>
-          <button>4</button>
-          <button>5</button>
-          <button>6</button>
-          <button>7</button>
-          <button>8</button>
-          <button>9</button>
-          <button>0</button>
-          <button>Clear</button>
-          <button>Recall</button>
+        <div className="numbers">
+          <button onClick={assignNumber2}>1</button>
+          <button onClick={assignNumber2}>2</button>
+          <button onClick={assignNumber2}>3</button>
+          <button onClick={assignNumber2}>4</button>
+          <button onClick={assignNumber2}>5</button>
+          <button onClick={assignNumber2}>6</button>
+          <button onClick={assignNumber2}>7</button>
+          <button onClick={assignNumber2}>8</button>
+          <button onClick={assignNumber2}>9</button>
+          <button onClick={assignNumber2}>0</button>
+          <button onClick={assignNumber2}>Clear</button>
+          <button onClick={assignNumber2}>.</button>
+          <button onClick={assignNumber2}>Recall</button>
         </div>
       </div>
       <div className="panel answer">
