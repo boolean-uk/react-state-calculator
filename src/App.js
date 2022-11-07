@@ -93,13 +93,15 @@ function App() {
         break;
       case "-":
         let minusResult = parseFloat(number1) - parseFloat(number2)
-        calculateResult(Math.round(minusResult * 10) / 10)
+        calculateResult(Math.round(minusResult * 1000) / 1000)
         break;
       case "*":
-        calculateResult(parseFloat(number1) * parseFloat(number2));
+        let multiplyResult = parseFloat(number1) * parseFloat(number2)
+        calculateResult(Math.round(multiplyResult * 1000) / 1000)
         break;
       case "÷":
-        calculateResult(parseFloat(number1) / parseFloat(number2));
+        let divideResult = parseFloat(number1) / parseFloat(number2)
+        calculateResult(Math.round(divideResult * 1000) / 1000)
         break;
       case "store":
         setstoreResult();
