@@ -9,21 +9,25 @@ function App() {
   const [total, updateTotal] = useState(0)
 
   function handleNum1(event) {
+    const inputNumber = event.target.innerText
+    
     if (num1 === '0') {
-      updateNum1(event.target.innerText)
+      updateNum1(inputNumber)
       return
     }
     else {
-      updateNum1(num1 + event.target.innerText)
+      updateNum1(num1 + inputNumber)
       // console.log(num1)
     }
   }
   function handleNum2(event) {
+    const inputNumber = event.target.innerText
+    
     if(num2 === '0'){
-      updateNum2(event.target.innerText)
+      updateNum2(inputNumber)
     }
     else{
-      updateNum2(num2 + event.target.innerText)
+      updateNum2(num2 + inputNumber)
     }
   }
   function handleOperator(event) {
@@ -31,10 +35,10 @@ function App() {
     updateOperator(event.target.innerText)
   }
   function clearNum1() {
-    updateNum1(0)
+    updateNum1('0')
   }
   function clearNum2() {
-    updateNum2(0)
+    updateNum2('0')
   }
 
   function calculate() {
