@@ -1,56 +1,130 @@
+import { useState } from "react"
 import "./App.css"
 
 function App() { 
+  let [displayValue1, setDisplayValue1] = useState ('0');
+  let [ operation, setOperation] = useState('+');
+  let [displayValue2, setDisplayValue2] = useState('0')
+  let [result , setResult] = useState(0);
+
+
+const handleClick1 = (event) => {
+ if (event.target.innerText === '.') {
+  if(!displayValue1.includes('.')){
+    if(displayValue1 === '0'){
+      setDisplayValue1(displayValue1 = '0' + event.target.innerText)
+    } else {
+    setDisplayValue1(displayValue1 + event.target.innerText)
+    }
+  }
+  } else {
+    if (displayValue1 === '0') {
+      setDisplayValue1(displayValue1 = event.target.innerText)
+    } else {
+      setDisplayValue1(displayValue1 + event.target.innerText)
+    }
+  }
+}
+
+const resetDisplayValue1 = () => {
+  setDisplayValue1(displayValue1 = '0')
+}
+
+const handleOperation = (event) => {
+  setOperation(operation = event.target.innerText)
+}
+
+const handleClick2 = (event) => {
+  if (event.target.innerText === '.') {
+   if(!displayValue2.includes('.')){
+     if(displayValue2 === '0'){
+       setDisplayValue2(displayValue2 = '0' + event.target.innerText)
+     } else {
+     setDisplayValue2(displayValue2 + event.target.innerText)
+     }
+   }
+   } else {
+     if (displayValue2 === '0') {
+       setDisplayValue2(displayValue2 = event.target.innerText)
+     } else {
+       setDisplayValue2(displayValue2 + event.target.innerText)
+     }
+   }
+ }
+
+ const resetDisplayValue2 = () => {
+  setDisplayValue2(displayValue2 = '0')
+}
+
+const handleResult = () => {
+  setResult(result  = getResult(displayValue1, operation, displayValue2))
+  resetDisplayValue1()
+  resetDisplayValue2()
+}
+
+const getResult = (displayValue1, operation, displayValue2) => {
+  switch(operation){
+    case '+' : return Number(displayValue1) + Number(displayValue2)
+    case '-' : return Number(displayValue1) - Number(displayValue2)
+    case '*' : return Number(displayValue1) * Number(displayValue2)
+    case '/' : return Number(displayValue1) / Number(displayValue2)
+    default: console.log('select a operation')
+  }
+}
+
+
+
 
   return (
     <div className="calculator">
         <div className="panel">
-          <p>0</p>
+          <p>{displayValue1}</p>
           <div className="numbers">
-            <button>1</button>
-            <button>2</button>
-            <button>3</button>
-            <button>4</button>
-            <button>5</button>
-            <button>6</button>
-            <button>7</button>
-            <button>8</button>
-            <button>9</button>
-            <button>0</button>
-            <button>Clear</button>
+            <button onClick={handleClick1}>1</button>
+            <button onClick={handleClick1}>2</button>
+            <button onClick={handleClick1}>3</button>
+            <button onClick={handleClick1}>4</button>
+            <button onClick={handleClick1}>5</button>
+            <button onClick={handleClick1}>6</button>
+            <button onClick={handleClick1}>7</button>
+            <button onClick={handleClick1}>8</button>
+            <button onClick={handleClick1}>9</button>
+            <button onClick={handleClick1}>0</button>
+            <button onClick={resetDisplayValue1}>Clear</button>
           </div>
         </div>
         
         <div className="panel">
-          <p>+</p>
+          <p>{operation}</p>
           <div className="numbers">
-            <button>+</button>
-            <button>-</button>
-            <button>*</button>
-            <button>÷</button>
+            <button onClick={handleOperation}>+</button>
+            <button onClick={handleOperation}>-</button>
+            <button onClick={handleOperation}>*</button>
+            <button onClick={handleOperation}>÷</button>
           </div>
         </div>
 
         <div className="panel">
-          <p>0</p>
+          <p>{displayValue2}</p>
           <div className="numbers">
-            <button>1</button>
-            <button>2</button>
-            <button>3</button>
-            <button>4</button>
-            <button>5</button>
-            <button>6</button>
-            <button>7</button>
-            <button>8</button>
-            <button>9</button>
-            <button>0</button>
-            <button>Clear</button>
+            <button onClick={handleClick2}>1</button>
+            <button onClick={handleClick2}>2</button>
+            <button onClick={handleClick2}>3</button>
+            <button onClick={handleClick2}>4</button>
+            <button onClick={handleClick2}>5</button>
+            <button onClick={handleClick2}>6</button>
+            <button onClick={handleClick2}>7</button>
+            <button onClick={handleClick2}>8</button>
+            <button onClick={handleClick2}>9</button>
+            <button onClick={handleClick2}>0</button>
+            <button onClick={resetDisplayValue2}>Clear</button>
           </div>
         </div>
         <div className="panel answer">
-          <p>0</p>
+          
+          <p>{result}</p>
           <div>
-            <button>=</button>
+            <button onClick={handleResult}>=</button>
           </div>
         </div>
     </div>
