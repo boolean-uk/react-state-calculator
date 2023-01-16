@@ -29,6 +29,10 @@ function App() {
     {
       setSymbolPanel(symbol);
     }
+    else
+    {
+      setSymbolPanel("");
+    }
   }
 
   return (
@@ -60,9 +64,9 @@ function App() {
         <p>{symbolPanel}</p>
         <div className="numbers">
           <button onClick={handleSymbolPanel}>+</button>
-          <button handleSymbolPanel>-</button>
-          <button handleSymbolPanel>*</button>
-          <button handleSymbolPanel>÷</button>
+          <button onClick={handleSymbolPanel}>-</button>
+          <button onClick={handleSymbolPanel}>*</button>
+          <button onClick={handleSymbolPanel}>÷</button>
         </div>
       </div>
 
