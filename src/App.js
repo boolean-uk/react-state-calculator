@@ -1,56 +1,152 @@
 import "./App.css"
+import { useState } from 'react' 
 
 function App() { 
 
+    const [firstNum, setFirstNum] = useState('0')
+    const [opp, setOpp] = useState("+")
+    const [secondNum, setSecondNum] = useState('0')
+    const [result, setResult] = useState(0)
+    const [storedResult, setStoredResult] = useState('')
+
+    function firstNumberToUse(event) {
+        const value = event.target.innerText
+        if(firstNum === "0") {
+            setFirstNum(value)
+        } else {
+            setFirstNum(firstNum + value)
+        }
+    }
+
+    function secondNumberToUse(event) {
+        const value = event.target.innerText
+        if(secondNum === "0") {
+            setSecondNum(value)
+        } else {
+            setSecondNum(secondNum + value)
+        }
+    }
   return (
     <div className="calculator">
         <div className="panel">
-          <p>0</p>
-          <div className="numbers">
-            <button>1</button>
-            <button>2</button>
-            <button>3</button>
-            <button>4</button>
-            <button>5</button>
-            <button>6</button>
-            <button>7</button>
-            <button>8</button>
-            <button>9</button>
-            <button>0</button>
-            <button>Clear</button>
-          </div>
+            <p>{firstNum}</p>
+            <div className="numbers">
+                <button 
+                onClick={(firstNumberToUse)}>1</button>
+                <button
+                onClick={(firstNumberToUse)}>2</button>
+                <button
+                onClick={(firstNumberToUse)}>3</button>
+                <button
+                onClick={(firstNumberToUse)}>4</button>
+                <button
+                onClick={(firstNumberToUse)}>5</button>
+                <button
+                onClick={(firstNumberToUse)}>6</button>
+                <button
+                onClick={(firstNumberToUse)}>7</button>
+                <button
+                onClick={(firstNumberToUse)}>8</button>
+                <button
+                onClick={(firstNumberToUse)}>9</button>
+                <button
+                onClick={(firstNumberToUse)}>0</button>
+                <button
+                onClick={() => {
+                    setFirstNum("0")
+                }}>Clear</button>
+                <button onClick={() => {
+                    if(!firstNum.includes(".")) {
+                        setFirstNum(firstNum + ".")
+                    }
+                }}>.</button>
+                <button onClick={() => {
+                    setFirstNum(storedResult)
+                }}>Recall</button>
+
+            </div>
         </div>
         
         <div className="panel">
-          <p>+</p>
+          <p>{opp}</p>
           <div className="numbers">
-            <button>+</button>
-            <button>-</button>
-            <button>*</button>
-            <button>÷</button>
+            <button
+            onClick={() => {
+                setOpp("+")
+            }}>+</button>
+            <button
+            onClick={() => {
+                setOpp("-")
+            }}>-</button>
+            <button
+            onClick={() => {
+                setOpp("*")
+            }}>*</button>
+            <button
+            onClick={() => {
+                setOpp("÷")
+            }}>÷</button>
           </div>
         </div>
 
         <div className="panel">
-          <p>0</p>
+          <p>{secondNum}</p>
           <div className="numbers">
-            <button>1</button>
-            <button>2</button>
-            <button>3</button>
-            <button>4</button>
-            <button>5</button>
-            <button>6</button>
-            <button>7</button>
-            <button>8</button>
-            <button>9</button>
-            <button>0</button>
-            <button>Clear</button>
+          <button 
+                onClick={(secondNumberToUse)}>1</button>
+                <button
+                onClick={(secondNumberToUse)}>2</button>
+                <button
+                onClick={(secondNumberToUse)}>3</button>
+                <button
+                onClick={(secondNumberToUse)}>4</button>
+                <button
+                onClick={(secondNumberToUse)}>5</button>
+                <button
+                onClick={(secondNumberToUse)}>6</button>
+                <button
+                onClick={(secondNumberToUse)}>7</button>
+                <button
+                onClick={(secondNumberToUse)}>8</button>
+                <button
+                onClick={(secondNumberToUse)}>9</button>
+                <button
+                onClick={(secondNumberToUse)}>0</button>
+                <button
+                onClick={() => {
+                    setSecondNum("0")
+                }}>Clear</button>
+                <button onClick={() => {
+                    if(!secondNum.includes(".")) {
+                        setSecondNum(secondNum + ".")
+                    }
+                }}>.</button>
+                <button onClick={() => {
+                    setSecondNum(storedResult)
+                }}>Recall</button>
           </div>
         </div>
         <div className="panel answer">
-          <p>0</p>
+          <p>{result}</p>
           <div>
-            <button>=</button>
+            <button
+            onClick={() => {
+                const firstValue = parseFloat(firstNum)
+                const secondValue = parseFloat(secondNum)
+                if (opp === "+") {
+                    setResult(firstValue + secondValue)
+                } else if (opp === "-") {
+                    setResult(firstValue - secondValue)
+                } else if (opp === "*") {
+                    setResult(firstValue * secondValue)
+                } else if (opp === "÷") {
+                    setResult(firstValue / secondValue)
+                }
+            }}>=</button>
+            <button
+            onClick={() => {
+                setStoredResult(result)
+            }}>Store</button>
           </div>
         </div>
     </div>
