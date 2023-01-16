@@ -19,20 +19,21 @@ function App() {
         setResult(num1 - num2);
         break;
       case "÷":
-        if(num2 == 0)
-        { setResult("infinity");}
-        else
-        { setResult(num1 / num2);}
+        if (num2 == 0) {
+          setResult("infinity");
+        } else {
+          setResult(num1 / num2);
+        }
         break;
       case "*":
         setResult(num1 * num2);
         break;
-    
+
       default:
         setResult("Unknown Error");
         break;
     }
-  }
+  };
 
   function numberToUse(event) {
     if (number == 0) {
@@ -50,20 +51,14 @@ function App() {
     }
   }
 
-  function handleSymbolPanel(event)
-  {
+  function handleSymbolPanel(event) {
     const symbol = event.target.innerText;
-    if(symbol === '+' || symbol === '-' || symbol === '÷' || symbol === '*')
-    {
+    if (symbol === "+" || symbol === "-" || symbol === "÷" || symbol === "*") {
       setSymbolPanel(symbol);
-    }
-    else
-    {
+    } else {
       setSymbolPanel("");
     }
   }
-
-
 
   return (
     <div className="calculator">
@@ -125,7 +120,7 @@ function App() {
       <div className="panel answer">
         <p>{result}</p>
         <div>
-          <button onclick={computeOperation}>=</button>
+          <button onClick={computeOperation}>=</button>
         </div>
       </div>
     </div>
