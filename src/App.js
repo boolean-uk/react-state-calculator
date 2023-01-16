@@ -4,8 +4,35 @@ import { useState } from "react";
 function App() {
   const [number, setNumber] = useState(0);
   const [numberRightSide, setNumPanelTwo] = useState(0);
-  const [symbolPanel, setSymbolPanel] = useState(0);
-  setSymbolPanel("");
+  const [symbolPanel, setSymbolPanel] = useState(null);
+  const [result, setResult] = useState(0);
+
+  const computeOperation = () => {
+    const num1 = parseInt(number);
+    const num2 = parseInt(numberRightSide);
+
+    switch (symbolPanel) {
+      case "+":
+        setResult(num1 + num2);
+        break;
+      case "-":
+        setResult(num1 - num2);
+        break;
+      case "÷":
+        if(num2 == 0)
+        { setResult("infinity");}
+        else
+        { setResult(num1 / num2);}
+        break;
+      case "*":
+        setResult(num1 * num2);
+        break;
+    
+      default:
+        setResult("Unknown Error");
+        break;
+    }
+  }
 
   function numberToUse(event) {
     if (number == 0) {
@@ -35,6 +62,8 @@ function App() {
       setSymbolPanel("");
     }
   }
+
+
 
   return (
     <div className="calculator">
@@ -94,9 +123,9 @@ function App() {
         </div>
       </div>
       <div className="panel answer">
-        <p>0</p>
+        <p>{result}</p>
         <div>
-          <button>=</button>
+          <button onclick={computeOperation}>=</button>
         </div>
       </div>
     </div>
