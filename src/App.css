@@ -36,6 +36,11 @@ html {
   justify-content: center;
 }
 
+button {
+  color: black;
+}
+
+
 .answer {
   color:tomato;
   font-style: italic;
