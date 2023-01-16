@@ -25,7 +25,7 @@ function App() {
   function handleSymbolPanel(event)
   {
     const symbol = event.target.innerText;
-    if(symbol === '+' || symbol === '-' || symbol === '/' || symbol === '*' || symbol === '%')
+    if(symbol === '+' || symbol === '-' || symbol === '÷' || symbol === '*')
     {
       setSymbolPanel(symbol);
     }
