@@ -3,11 +3,21 @@ import { useState } from "react";
 
 function App() {
   const [number, setNumber] = useState(0);
+  const [numberRightSide, setNumPanelTwo] = useState(0);
+
   function numberToUse(event) {
     if (number == 0) {
       setNumber(event.target.innerText);
     } else {
       setNumber(number + event.target.innerText);
+    }
+  }
+
+  function numPanelTwo(event) {
+    if (numberRightSide == 0) {
+      setNumPanelTwo(event.target.innerText);
+    } else {
+      setNumPanelTwo(numberRightSide + event.target.innerText);
     }
   }
 
@@ -47,19 +57,25 @@ function App() {
       </div>
 
       <div className="panel">
-        <p>0</p>
+        <p>{numberRightSide}</p>
         <div className="numbers">
-          <button>1</button>
-          <button>2</button>
-          <button>3</button>
-          <button>4</button>
-          <button>5</button>
-          <button>6</button>
-          <button>7</button>
-          <button>8</button>
-          <button>9</button>
-          <button>0</button>
-          <button>Clear</button>
+          <button onClick={numPanelTwo}>1</button>
+          <button onClick={numPanelTwo}>2</button>
+          <button onClick={numPanelTwo}>3</button>
+          <button onClick={numPanelTwo}>4</button>
+          <button onClick={numPanelTwo}>5</button>
+          <button onClick={numPanelTwo}>6</button>
+          <button onClick={numPanelTwo}>7</button>
+          <button onClick={numPanelTwo}>8</button>
+          <button onClick={numPanelTwo}>9</button>
+          <button onClick={numPanelTwo}>0</button>
+          <button
+            onClick={() => {
+              setNumPanelTwo(0);
+            }}
+          >
+            Clear
+          </button>
         </div>
       </div>
       <div className="panel answer">
