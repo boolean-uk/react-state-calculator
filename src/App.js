@@ -296,27 +296,26 @@ function App() {
               const firstInt = parseInt(firstNum);
               const secondInt = parseInt(secondNum);
               if (operator === "+") {
-                setResult(firstInt + secondInt)
-              };          
-              else if (operator === "-") {
-                setResult(firstInt - secondInt)
-            };
-      
-             else if (operator === "*") {
-            setResult(firstInt * secondInt)
-          };
-             else if (operator === "÷") {
-            setResult(firstInt / secondInt)
-          }
-          
-         }}
+                setResult(firstInt + secondInt);
+              }
+              if (operator === "-") {
+                setResult(firstInt - secondInt);
+              }
+
+              if (operator === "*") {
+                setResult(firstInt * secondInt);
+              }
+              if (operator === "÷") {
+                setResult(firstInt / secondInt);
+              }
+            }}
           >
             =
           </button>
         </div>
       </div>
     </div>
-  )
+  );
 }
 
 export default App;
