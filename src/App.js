@@ -7,7 +7,7 @@ function App() {
   const [num2, updateNum2] = useState('0')
   const [operator, updateOperator] = useState('+')
   const [total, updateTotal] = useState(0)
-
+  const [storedValue, updateStore] = useState(0)
   function handleNum1(event) {
     const inputNumber = event.target.innerText
     
@@ -20,6 +20,7 @@ function App() {
       // console.log(num1)
     }
   }
+
   function handleNum2(event) {
     const inputNumber = event.target.innerText
     
@@ -30,10 +31,12 @@ function App() {
       updateNum2(num2 + inputNumber)
     }
   }
+
   function handleOperator(event) {
 
     updateOperator(event.target.innerText)
   }
+
   function clearNum1() {
     updateNum1('0')
   }
@@ -69,6 +72,17 @@ function App() {
     }
   }
 
+  function handleStore (){
+    updateStore(total)
+    console.log(storedValue)
+  }
+  function handleRecall1 (){
+    updateNum1(storedValue.toString())
+  }
+  function handleRecall2(){
+    updateNum2(storedValue.toString())
+  }
+
   return (
     <div className="calculator">
       <div className="panel">
@@ -85,6 +99,7 @@ function App() {
           <button onClick={handleNum1}>9</button>
           <button onClick={handleNum1}>0</button>
           <button onClick={clearNum1}>Clear</button>
+          <button onClick={handleRecall1}>Recall</button>
         </div>
       </div>
 
@@ -112,10 +127,12 @@ function App() {
           <button onClick={handleNum2}>9</button>
           <button onClick={handleNum2}>0</button>
           <button onClick={clearNum2}>Clear</button>
+          <button onClick={handleRecall2}>Recall</button>
         </div>
       </div>
       <div className="panel answer">
         <p>{total}</p>
+        <button onClick={handleStore}>Store</button>
         <div>
           <button onClick={calculate}>=</button>
         </div>
