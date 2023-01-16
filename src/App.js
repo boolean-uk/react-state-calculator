@@ -5,6 +5,7 @@ function App() {
   const [number, setNumber] = useState(0);
   const [numberRightSide, setNumPanelTwo] = useState(0);
   const [symbolPanel, setSymbolPanel] = useState(0);
+  setSymbolPanel("");
 
   function numberToUse(event) {
     if (number == 0) {
