@@ -4,6 +4,7 @@ import { useState } from "react";
 function App() {
   const [number, setNumber] = useState(0);
   const [numberRightSide, setNumPanelTwo] = useState(0);
+  const [symbolPanel, setSymbolPanel] = useState(0);
 
   function numberToUse(event) {
     if (number == 0) {
@@ -18,6 +19,15 @@ function App() {
       setNumPanelTwo(event.target.innerText);
     } else {
       setNumPanelTwo(numberRightSide + event.target.innerText);
+    }
+  }
+
+  function handleSymbolPanel(event)
+  {
+    const symbol = event.target.innerText;
+    if(symbol === '+' || symbol === '-' || symbol === '/' || symbol === '*' || symbol === '%')
+    {
+      setSymbolPanel(symbol);
     }
   }
 
@@ -47,12 +57,12 @@ function App() {
       </div>
 
       <div className="panel">
-        <p>+</p>
+        <p>{symbolPanel}</p>
         <div className="numbers">
-          <button>+</button>
-          <button>-</button>
-          <button>*</button>
-          <button>÷</button>
+          <button onClick={handleSymbolPanel}>+</button>
+          <button handleSymbolPanel>-</button>
+          <button handleSymbolPanel>*</button>
+          <button handleSymbolPanel>÷</button>
         </div>
       </div>
 
