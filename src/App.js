@@ -2,12 +2,17 @@ import "./App.css";
 import { useState } from "react";
 
 function App() {
-  const [number, setNumber] = useState(0);
+  // STATE VARIABLES FOR RENDERING
+  const [number, setNumPanelOne] = useState(0);
   const [numberRightSide, setNumPanelTwo] = useState(0);
+
+  // STATE VARIABLES FOR CALCULATION
   const [symbolPanel, setSymbolPanel] = useState(null);
   const [result, setResult] = useState(0);
+  const [storedAnswer, setStoredAnswer] = useState(0);
 
   const computeOperation = () => {
+    // CALCULATION
     const num1 = parseInt(number);
     const num2 = parseInt(numberRightSide);
 
@@ -35,11 +40,12 @@ function App() {
     }
   };
 
+  // RENDERING
   function numberToUse(event) {
     if (number == 0) {
-      setNumber(event.target.innerText);
+      setNumPanelOne(event.target.innerText);
     } else {
-      setNumber(number + event.target.innerText);
+      setNumPanelOne(number + event.target.innerText);
     }
   }
 
@@ -77,10 +83,17 @@ function App() {
           <button onClick={numberToUse}>0</button>
           <button
             onClick={() => {
-              setNumber(0);
+              setNumPanelOne(0);
             }}
           >
             Clear
+          </button>
+          <button
+            onClick={(event) => {
+              setNumPanelOne(storedAnswer);
+            }}
+          >
+            Recall
           </button>
         </div>
       </div>
@@ -115,12 +128,26 @@ function App() {
           >
             Clear
           </button>
+          <button
+            onClick={() => {
+              setNumPanelTwo(storedAnswer);
+            }}
+          >
+            Recall
+          </button>
         </div>
       </div>
       <div className="panel answer">
         <p>{result}</p>
         <div>
           <button onClick={computeOperation}>=</button>
+          <button
+            onClick={() => {
+              setStoredAnswer(result);
+            }}
+          >
+            Store
+          </button>
         </div>
       </div>
     </div>
