@@ -51,6 +51,10 @@ function App() {
     }
   }
 
+  function onlyFirstClick() {
+    ;
+  }
+
   return (
     <div className="calculator">
       <div className="panel">
@@ -68,6 +72,7 @@ function App() {
           <button onClick={handleNumOne}>0</button>
           <button onClick={() => setNumOne(0)}>Clear</button>
           <button onClick={() => setNumOne(store)}>Recall</button>
+          <button onClick={handleNumOne}>.</button>
 
         </div>
       </div>
@@ -97,6 +102,12 @@ function App() {
           <button onClick={handleNumTwo}>0</button>
           <button onClick={() => setNumTwo(0)}>Clear</button>
           <button onClick={() => setNumTwo(store)}>Recall</button>
+          <button onClick={() => {if(clicked === true) {
+            
+          }
+            handleNumTwo} }>.</button>
+
+
         </div>
       </div>
       <div className="panel answer">
