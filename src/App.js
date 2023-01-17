@@ -51,8 +51,10 @@ function App() {
     }
   }
 
-  function onlyFirstClick() {
-    ;
+  
+  function handleClick() {
+    if( button should be disabled) return
+    // logic if button is enabled
   }
 
   return (
@@ -72,7 +74,7 @@ function App() {
           <button onClick={handleNumOne}>0</button>
           <button onClick={() => setNumOne(0)}>Clear</button>
           <button onClick={() => setNumOne(store)}>Recall</button>
-          <button onClick={handleNumOne}>.</button>
+          <button onClick={() => handleClick()}>Clickable</button>
 
         </div>
       </div>
@@ -102,10 +104,7 @@ function App() {
           <button onClick={handleNumTwo}>0</button>
           <button onClick={() => setNumTwo(0)}>Clear</button>
           <button onClick={() => setNumTwo(store)}>Recall</button>
-          <button onClick={() => {if(clicked === true) {
-            
-          }
-            handleNumTwo} }>.</button>
+          
 
 
         </div>
