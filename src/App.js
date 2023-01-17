@@ -7,6 +7,7 @@ function App() {
   const [operator, setOperator] = useState("+")
   const [numTwo, setNumTwo] = useState(0)
   const [answer, setAnswer] = useState(0)
+  const [store, setStore] = useState(0)
 
   const handleNumOne = (click) => {
     const inputNumber = click.target.innerText
@@ -17,13 +18,13 @@ function App() {
       return
     } else {
       setNumOne(numOne + inputNumber)
-return
+      return
     }
   }
 
   const handleNumTwo = (click) => {
     const inputNumber = click.target.innerText
-    JSON.parse(inputNumber)
+
     if (numTwo === 0) {
       setNumTwo(inputNumber)
     } else {
@@ -66,6 +67,8 @@ return
           <button onClick={handleNumOne}>9</button>
           <button onClick={handleNumOne}>0</button>
           <button onClick={() => setNumOne(0)}>Clear</button>
+          <button onClick={() => setNumOne(store)}>Recall</button>
+
         </div>
       </div>
 
@@ -93,12 +96,17 @@ return
           <button onClick={handleNumTwo}>9</button>
           <button onClick={handleNumTwo}>0</button>
           <button onClick={() => setNumTwo(0)}>Clear</button>
+          <button onClick={() => setNumTwo(store)}>Recall</button>
         </div>
       </div>
       <div className="panel answer">
         <p>{answer}</p>
         <div>
           <button onClick={() => calculate()}>=</button>
+        </div>
+        <div>
+          <p>{store}</p>
+          <button onClick={() => setStore(answer)}>Store</button>
         </div>
       </div>
     </div>
