@@ -8,6 +8,7 @@ function App() {
   const [operator, updateOperator] = useState('+')
   const [total, updateTotal] = useState(0)
   const [storedValue, updateStore] = useState(0)
+  
   function handleNum1(event) {
     const inputNumber = event.target.innerText
     
@@ -30,6 +31,16 @@ function App() {
     else{
       updateNum2(num2 + inputNumber)
     }
+  }
+  function handlePoint2 (){
+    if(!num2.includes(".")) {
+      updateNum2(num2 + ".")
+  }
+  }
+  function handlePoint1 (){
+    if(!num1.includes(".")) {
+      updateNum1(num1 + ".")
+  }
   }
 
   function handleOperator(event) {
@@ -100,6 +111,7 @@ function App() {
           <button onClick={handleNum1}>0</button>
           <button onClick={clearNum1}>Clear</button>
           <button onClick={handleRecall1}>Recall</button>
+          <button onClick={handlePoint1}>.</button>
         </div>
       </div>
 
@@ -128,6 +140,7 @@ function App() {
           <button onClick={handleNum2}>0</button>
           <button onClick={clearNum2}>Clear</button>
           <button onClick={handleRecall2}>Recall</button>
+          <button onClick={handlePoint2}>.</button>
         </div>
       </div>
       <div className="panel answer">
