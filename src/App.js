@@ -8,41 +8,45 @@ function App() {
   const [numTwo, setNumTwo] = useState(0)
   const [answer, setAnswer] = useState(0)
 
- const handleNumOne = (click) => {
-  const inputNumber = click.target.innerText
+  const handleNumOne = (click) => {
+    const inputNumber = click.target.innerText
 
-  if (numOne === 0) {
-    setNumOne(inputNumber)
-  } else {
-    setNumOne(numOne + inputNumber)
+    if (numOne === 0) {
+      setNumOne(inputNumber)
+      console.log(setNumOne)
+      return
+    } else {
+      setNumOne(numOne + inputNumber)
+return
+    }
   }
- }
 
- const handleNumTwo = (click) => {
-  const inputNumber = click.target.innerText
-
-  if (numTwo === 0) {
-    setNumTwo(inputNumber)
-  } else {
-    setNumTwo(numTwo + inputNumber)
+  const handleNumTwo = (click) => {
+    const inputNumber = click.target.innerText
+    JSON.parse(inputNumber)
+    if (numTwo === 0) {
+      setNumTwo(inputNumber)
+    } else {
+      setNumTwo(numTwo + inputNumber)
+    }
   }
- }
 
   //calculation
   function calculate() {
-    JSON.parse(numOne)
-    JSON.parse(numTwo)
+    let numOneNum = Number(numOne)
+    let numTwoNum = Number(numTwo)
 
     if (operator === "+") {
-      setAnswer( numOne + numTwo)
+      setAnswer(numOneNum + numTwoNum)
+      console.log(setAnswer)
     }
     else if (operator === "-") {
-      setAnswer(numOne - numTwo)
+      setAnswer(numOneNum - numTwoNum)
     } else if (operator === "*") {
-      setAnswer(numOne * numTwo)
+      setAnswer(numOneNum * numTwoNum)
     }
     else if (operator === "÷") {
-      setAnswer(numOne / numTwo)
+      setAnswer(numOneNum / numTwoNum)
     }
   }
 
