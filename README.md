@@ -24,8 +24,7 @@ You are a required to implement a simplified calculator app.
 - Start by modelling the state of the application
  - What state will you need to keep track of?
  - What user interactions will modify that state and how?
-- Start with one or two functional buttons and only consider the add operation. When you have that working, make additional buttons functional.
-
+- Start with one or two functional buttons and only consider the add operation. When st
 ## Extension 1
 - Update your solution so the number panels act like a real calculator when inputting numbers
   - Numbers should *appended*, so pressing `1` then `2` should result in `12` being displayed
