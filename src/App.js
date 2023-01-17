@@ -1,30 +1,31 @@
 import { useState } from "react"
 import "./App.css"
-
+////////
 function App() { 
   let [displayValue1, setDisplayValue1] = useState ('0');
   let [ operation, setOperation] = useState('+');
   let [displayValue2, setDisplayValue2] = useState('0')
   let [result , setResult] = useState(0);
+  let [stored, setStored] = useState(undefined);
 
 
 const handleClick1 = (event) => {
- if (event.target.innerText === '.') {
-  if(!displayValue1.includes('.')){
-    if(displayValue1 === '0'){
-      setDisplayValue1(displayValue1 = '0' + event.target.innerText)
-    } else {
-    setDisplayValue1(displayValue1 + event.target.innerText)
-    }
-  }
-  } else {
-    if (displayValue1 === '0') {
-      setDisplayValue1(displayValue1 = event.target.innerText)
-    } else {
-      setDisplayValue1(displayValue1 + event.target.innerText)
-    }
-  }
-}
+  if (event.target.innerText === '.') {
+   if(!displayValue1.includes('.')){
+     if(displayValue1 === '0'){
+       setDisplayValue1(displayValue1 = '0' + event.target.innerText)
+     } else {
+     setDisplayValue1(displayValue1 + event.target.innerText)
+     }
+   }
+   } else { 
+     if (displayValue1 === '0') {
+       setDisplayValue1(displayValue1 = event.target.innerText)
+     } else {
+       setDisplayValue1(displayValue1 + event.target.innerText)
+     }
+   }
+ }
 
 const resetDisplayValue1 = () => {
   setDisplayValue1(displayValue1 = '0')
@@ -43,7 +44,7 @@ const handleClick2 = (event) => {
      setDisplayValue2(displayValue2 + event.target.innerText)
      }
    }
-   } else {
+   } else { 
      if (displayValue2 === '0') {
        setDisplayValue2(displayValue2 = event.target.innerText)
      } else {
@@ -72,7 +73,9 @@ const getResult = (displayValue1, operation, displayValue2) => {
   }
 }
 
-
+const handleStore =() => {
+setStored(stored = result)
+}
 
 
   return (
@@ -91,6 +94,8 @@ const getResult = (displayValue1, operation, displayValue2) => {
             <button onClick={handleClick1}>9</button>
             <button onClick={handleClick1}>0</button>
             <button onClick={resetDisplayValue1}>Clear</button>
+            <button onClick={handleClick1}>.</button>
+            <button onClick={handleStore}>{stored}</button>
           </div>
         </div>
         
@@ -118,6 +123,9 @@ const getResult = (displayValue1, operation, displayValue2) => {
             <button onClick={handleClick2}>9</button>
             <button onClick={handleClick2}>0</button>
             <button onClick={resetDisplayValue2}>Clear</button>
+            <button onClick={handleClick2}>.</button>
+            <button onClick={handleStore}>{stored}</button>
+            
           </div>
         </div>
         <div className="panel answer">
@@ -125,6 +133,9 @@ const getResult = (displayValue1, operation, displayValue2) => {
           <p>{result}</p>
           <div>
             <button onClick={handleResult}>=</button>
+            <button onClick={handleStore}>Store</button>
+            
+            
           </div>
         </div>
     </div>
