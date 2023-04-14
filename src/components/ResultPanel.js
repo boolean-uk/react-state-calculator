@@ -1,5 +1,3 @@
-import React from 'react'
-
 const ResultPanel = ({ result, setResult, calc, leftNumber, rightNumber }) => {
 
     const calculateResult = () => {

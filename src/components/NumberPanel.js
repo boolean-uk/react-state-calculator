@@ -1,9 +1,4 @@
-import '../styles/NumbersPanel.css'
-
 const NumberPanel = ({ number, setNumber }) => {
-
-
-
     return (
         <div className="panel">
             <p>{number}</p>
