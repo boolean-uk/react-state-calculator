@@ -1,4 +1,4 @@
-const ResultPanel = ({ result, setResult, calc, leftNumber, rightNumber }) => {
+const ResultPanel = ({ result, setResult, calc, leftNumber, rightNumber, setStoredAnswer }) => {
 
     const calculateResult = () => {
         switch (calc) {
@@ -22,6 +22,7 @@ const ResultPanel = ({ result, setResult, calc, leftNumber, rightNumber }) => {
             <p>{result}</p>
             <div>
                 <button onClick={() => calculateResult()}>=</button>
+                <button onClick={() => setStoredAnswer(result)}>Store</button>
             </div>
         </div>
     )

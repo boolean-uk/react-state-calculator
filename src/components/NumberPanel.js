@@ -1,4 +1,4 @@
-const NumberPanel = ({ number, setNumber }) => {
+const NumberPanel = ({ number, setNumber, storedAnswer }) => {
     return (
         <div className="panel">
             <p>{number}</p>
@@ -14,6 +14,7 @@ const NumberPanel = ({ number, setNumber }) => {
                 <NumberButton value={9} />
                 <NumberButton value={0} />
                 <button onClick={() => setNumber(0)}>Clear</button>
+                <button onClick={() => setNumber(storedAnswer)}>Recall</button>
             </div>
         </div>
     )

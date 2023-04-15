@@ -13,15 +13,17 @@ function App() {
   const [result, setResult] = useState(0);
 
 
+  const [storedAnswer, setStoredAnswer] = useState(result);
+
   return (
     <div className="calculator">
 
-      <NumberPanel number={leftNumber} setNumber={setLeftNumber} />
+      <NumberPanel number={leftNumber} setNumber={setLeftNumber} storedAnswer={storedAnswer} />
 
       <CalculationPanel calc={calc} setCalc={setCalc} />
-      <NumberPanel number={rightNumber} setNumber={setRightNumber} />
+      <NumberPanel number={rightNumber} setNumber={setRightNumber} storedAnswer={storedAnswer} />
 
-      <ResultPanel result={result} setResult={setResult} calc={calc} leftNumber={leftNumber} rightNumber={rightNumber} />
+      <ResultPanel result={result} setResult={setResult} calc={calc} leftNumber={leftNumber} rightNumber={rightNumber} setStoredAnswer={setStoredAnswer} />
 
     </div>
   )
