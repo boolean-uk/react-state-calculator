@@ -14,6 +14,8 @@ const ResultPanel = ({ result, setResult, calc, leftNumber, rightNumber, setStor
             case '÷':
                 rightNumber !== 0 ? setResult(leftNumber / rightNumber) : setResult('Cannot divide with 0')
                 break
+            default:
+                break
         }
     }
 

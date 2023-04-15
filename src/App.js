@@ -8,6 +8,7 @@ function App() {
 
   const [leftNumber, setLeftNumber] = useState(0);
   const [rightNumber, setRightNumber] = useState(0);
+
   const [calc, setCalc] = useState('+');
 
   const [result, setResult] = useState(0);
@@ -18,10 +19,10 @@ function App() {
   return (
     <div className="calculator">
 
-      <NumberPanel number={leftNumber} setNumber={setLeftNumber} storedAnswer={storedAnswer} />
+      <NumberPanel setNumber={setLeftNumber} storedAnswer={storedAnswer} />
 
       <CalculationPanel calc={calc} setCalc={setCalc} />
-      <NumberPanel number={rightNumber} setNumber={setRightNumber} storedAnswer={storedAnswer} />
+      <NumberPanel setNumber={setRightNumber} storedAnswer={storedAnswer} />
 
       <ResultPanel result={result} setResult={setResult} calc={calc} leftNumber={leftNumber} rightNumber={rightNumber} setStoredAnswer={setStoredAnswer} />
 
