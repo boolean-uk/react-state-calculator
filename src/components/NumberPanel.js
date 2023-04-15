@@ -20,7 +20,14 @@ const NumberPanel = ({ number, setNumber }) => {
 
     function NumberButton({ value }) {
         return (
-            <button onClick={() => setNumber(value)}>{value}</button>
+            <button onClick={() => {
+                const prevNum = number.toString()
+                const nextNum = value.toString()
+                if (number === 0) setNumber(value)
+                else {
+                    setNumber(Number(prevNum + nextNum))
+                }
+            }}>{value}</button>
         );
     }
 }
