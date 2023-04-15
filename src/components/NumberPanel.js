@@ -4,6 +4,7 @@ const NumberPanel = ({ setNumber, storedAnswer }) => {
 
     const numStr = useRef('0')
 
+    //state variable that is responsible for showing the correct number on the panel. ex if 1. is pressed it will show 1.0
     const [num, setNum] = useState('0');
 
     const generateNumber = (value) => {
