@@ -3,12 +3,13 @@ import React from "react";
 function Numpad({ number, setNumber, storedValue }) {
   const handleClick = (e) => {
     const input = e.target.innerText;
-    if (input.length < 6 ){
+    if (input.length < 7 ){
 
     if (input === "Clear") {
       setNumber("0");
     } else if (input === "Recall") {
       setNumber(storedValue);
+      
     } else {
       if (number === "0") {
         if (input === ".") {
