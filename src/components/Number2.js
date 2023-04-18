@@ -4,7 +4,15 @@ import { useState } from "react"
 function Number2 ({num2, setNum2}) {
 
   function handleClick(event) {
-    setNum2(event.target.innerHTML)
+    const paragraph = document.querySelector('.p2')
+
+    if(paragraph.innerText === '0'){
+      
+      setNum2(event.target.innerHTML)
+    }else{
+      setNum2(paragraph.innerHTML + event.target.innerHTML)
+
+    }
   }
   function clear(){
     setNum2(0)
@@ -17,7 +25,7 @@ function Number2 ({num2, setNum2}) {
 
     return (
         <div className="panel">
-          <p>{num2}</p>
+          <p className="p2">{num2}</p>
           <div className="numbers">
             <button onClick={handleClick}>1</button>
             <button onClick={handleClick}>2</button>

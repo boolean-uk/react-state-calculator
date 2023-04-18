@@ -1,8 +1,16 @@
 import { useState } from "react"
 
 function Number1 ({num1, setNum1}) {
+
   function handleClick(event) {
-    setNum1(event.target.innerHTML)
+    const paragraph = document.querySelector('.p1')
+    if(paragraph.innerText === '0'){
+      
+      setNum1(event.target.innerHTML)
+    }else{
+      setNum1(paragraph.innerHTML + event.target.innerHTML)
+
+    }
   }
 
   function clear(){
@@ -11,7 +19,7 @@ function Number1 ({num1, setNum1}) {
 
     return (
         <div className="panel">
-          <p>{num1}</p>
+          <p className="p1">{num1}</p>
           <div className="numbers">
             <button onClick={handleClick}>1</button>
             <button onClick={handleClick}>2</button>
