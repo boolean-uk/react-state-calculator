@@ -1,58 +1,39 @@
+import { useState } from "react"
 import "./App.css"
+import { NumberPanel } from "./components/NumberPanel"
+import { OperatorPanel } from "./components/OperatorPanel"
+import { ResultPanel } from "./components/ResultPanel"
 
-function App() { 
+
+function App() {
+
+  const [value1, setValue1] = useState(0)
+  const [operator, setOperator] = useState('+')
+  const [value2, setValue2] = useState(0)
+  const [result, setResult] = useState()
+
+  const calculateResult = () => {
+    if (operator === '+') {
+      setResult(value1 + value2)
+    } else if (operator === '-') {
+      setResult(value1 - value2)
+    } else if (operator === '*') {
+      setResult(value1 * value2)
+    } else if (operator === '/') {
+      setResult(value1 / value2)
+    }
+  }
 
   return (
-    <div className="calculator">
-        <div className="panel">
-          <p>0</p>
-          <div className="numbers">
-            <button>1</button>
-            <button>2</button>
-            <button>3</button>
-            <button>4</button>
-            <button>5</button>
-            <button>6</button>
-            <button>7</button>
-            <button>8</button>
-            <button>9</button>
-            <button>0</button>
-            <button>Clear</button>
-          </div>
-        </div>
-        
-        <div className="panel">
-          <p>+</p>
-          <div className="numbers">
-            <button>+</button>
-            <button>-</button>
-            <button>*</button>
-            <button>÷</button>
-          </div>
-        </div>
+    <div className='calculator'>
+      <NumberPanel value={value1} setValue={setValue1}/>
 
-        <div className="panel">
-          <p>0</p>
-          <div className="numbers">
-            <button>1</button>
-            <button>2</button>
-            <button>3</button>
-            <button>4</button>
-            <button>5</button>
-            <button>6</button>
-            <button>7</button>
-            <button>8</button>
-            <button>9</button>
-            <button>0</button>
-            <button>Clear</button>
-          </div>
-        </div>
-        <div className="panel answer">
-          <p>0</p>
-          <div>
-            <button>=</button>
-          </div>
-        </div>
+      <OperatorPanel operator={operator} setOperator={setOperator} />
+
+      <NumberPanel value={value2} setValue={setValue2} />
+
+      <ResultPanel result={result} calculateResult={calculateResult}/>
+
     </div>
   )
 }
