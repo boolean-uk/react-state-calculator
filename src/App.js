@@ -4,7 +4,7 @@ import { useState } from 'react'
 import Button from './Button'
 
 function App() {
-  const NUMBER_OF_DIGITS = 1
+  const NUMBER_OF_DIGITS = 9
 
   // it is used with the map functions to create the buttons
   const buttonNames = ['1', '2', '3','4', '5', '6', '7', '8', '9','0']
@@ -39,6 +39,17 @@ function App() {
     }
   }
 
+  // this function adds a dot to the originalValue (firstNumber or secondNumber),
+  // to make it represent decimal numbers
+  function addDot(originalValue, updateOriginal) {
+    // check if there is already a dot
+    // if it already exists then ignore the button press
+    if (!originalValue.includes('.'))
+      // use the above function to add the dot, like we append all other elements
+      // using the appropriate function for each variable
+      updateNumbers(originalValue, '.', updateOriginal)
+  }
+
   return (
     <div className="calculator">
         <div className="panel">
@@ -59,7 +70,7 @@ function App() {
                   fun={(value) => { updateNumbers(firstNumber, value, setFirstNumber) }} />
               )
             }
-            <Button value={'.'} fun={(value) => { updateNumbers(firstNumber, value, setFirstNumber) }} />
+            <Button value={'.'} fun={(_) => { addDot(firstNumber, setFirstNumber) }} />
             <Button value={'Clear'} fun={(_) => setFirstNumber('0') } />
             <Button value={'Recall'} fun={(_) => { setFirstNumber(store) }} />
           </div>
@@ -90,7 +101,7 @@ function App() {
               we pass as a parameter a function that takes an argument,
               but it doesn't use it
             */}
-            <Button value={'.'} fun={(value) => { updateNumbers(secondNumber, value, setSecondNumber) }} />
+            <Button value={'.'} fun={(_) => { addDot(secondNumber, setSecondNumber) }} />
             <Button value={'Clear'} fun={(_) => setSecondNumber('0') } />
             <Button value={'Recall'} fun={(_) => { setSecondNumber(store) }} />
           </div>
