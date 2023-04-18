@@ -1,14 +1,30 @@
 import "./App.css"
+import {useState} from 'react'
+
 
 function App() { 
+const [number1, setNumber1] = useState(0) 
+const [number2, setNumber2] = useState(0)
 
+const [addcount , setAddCount ] = useState(0)
+
+const add = () => {
+
+  setAddCount()
+}
+
+
+const clickNumber1 = (event) => {
+  
+
+}
   return (
     <div className="calculator">
         <div className="panel">
           <p>0</p>
           <div className="numbers">
-            <button>1</button>
-            <button>2</button>
+            <button onClick={clickNumber1} id='1'>1</button>
+            <button onClick={clickNumber1} id='2'>2</button>
             <button>3</button>
             <button>4</button>
             <button>5</button>
