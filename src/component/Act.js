@@ -1,8 +1,10 @@
 import React from "react";
 
 function Act({ act, setAct }) {
-  const handleClick = (e) => {
-    setAct(e.target.innerText);
+  const handleClick = (e) => { 
+    if (e.target.innerText.length === 1) {
+      setAct(e.target.innerText);
+    }
   };
   return (
     <div className="panel">
