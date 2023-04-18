@@ -1,8 +1,8 @@
 import React from "react";
 
 function Act({ act, setAct }) {
-  const handleClick = (e) => {
-    if (e.target.tagName === "BUTTON") {
+  const handleClick = (e) => { 
+    if (e.target.innerText.length === 1) {
       setAct(e.target.innerText);
     }
   };
