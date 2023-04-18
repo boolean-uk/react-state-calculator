@@ -3,14 +3,20 @@ import { useState } from "react";
 import "./App.css";
 
 function App() {
-  const [numberOne, setNumberOne] = useState(0);
+  const [numberOne, setNumberOne] = useState('0');
   const [symbol, setSymbol] = useState("+");
-  const [numberTwo, setNumberTwo] = useState(0);
-  const [result, setNumberResult] = useState(0);
+  const [numberTwo, setNumberTwo] = useState('0');
+  const [result, setNumberResult] = useState('0');
 
   const handleInputOne = (event) => {
     const numberButton = event.target.innerText;
-    setNumberOne(numberButton);
+    if (numberOne === '0' && numberButton === '0') {
+      setNumberOne(numberButton);
+    } else if (numberOne === '0') {
+      setNumberOne(numberButton)
+    } else {
+      setNumberOne(numberOne + numberButton)
+    }
   };
 
   const handleInputSymbol = (event) => {
@@ -20,15 +26,21 @@ function App() {
 
   const handleInputTwo = (event) => {
     const numberButton = event.target.innerText;
-    setNumberTwo(numberButton);
+    if (numberTwo === '0' && numberButton === '0') {
+      setNumberTwo(numberButton);
+    } else if (numberTwo === '0') {
+      setNumberTwo(numberButton)
+    } else {
+      setNumberTwo(numberTwo + numberButton)
+    }
   };
 
   const clearOne = () => {
-    setNumberOne(0);
+    setNumberOne('0');
   };
 
   const clearTwo = () => {
-    setNumberTwo(0);
+    setNumberTwo('0');
   };
 
   const handleInputResult = (event) => {
