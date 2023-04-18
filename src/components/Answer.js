@@ -1,4 +1,4 @@
-function Answer ({num1,num2,operator,setNum1,setNum2,setOperator,answer,setAnswer}) {
+function Answer ({num1,num2,operator,setNum1,setNum2,setOperator,answer,setAnswer,storedAnswer,setStoredAnswer}) {
 
   function resultHandle(){
 
@@ -19,11 +19,17 @@ function Answer ({num1,num2,operator,setNum1,setNum2,setOperator,answer,setAnswe
 
   }
 
+  function storeAnswer () {
+    setStoredAnswer(answer)
+  }
+
     return (
         <div className="panel answer">
           <p>{answer}</p>
           <div>
             <button onClick={resultHandle}>=</button>
+            <button onClick={storeAnswer}>Store</button>
+            <p className="p3">{storedAnswer}</p>
           </div>
         </div>
     )

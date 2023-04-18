@@ -1,6 +1,6 @@
 import { useState } from "react"
 
-function Number1 ({num1, setNum1}) {
+function Number1 ({num1, setNum1, storedAnswer}) {
 
   function handleClick(event) {
     const paragraph = document.querySelector('.p1')
@@ -15,6 +15,10 @@ function Number1 ({num1, setNum1}) {
 
   function clear(){
     setNum1(0)
+  }
+
+  function answerRecall () {
+    setNum1(storedAnswer)
   }
 
     return (
@@ -32,6 +36,7 @@ function Number1 ({num1, setNum1}) {
             <button onClick={handleClick}>9</button>
             <button onClick={handleClick}>0</button>
             <button onClick={clear}>Clear</button>
+            <button onClick={answerRecall}>Recall</button>
           </div>
         </div>
     )

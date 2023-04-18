@@ -11,19 +11,20 @@ function App() {
   const [num2, setNum2] = useState(0)
   const [operator, setOperator] = useState('+')
   const [answer, setAnswer] = useState(0)
+  const [storedAnswer, setStoredAnswer] = useState()
 
 
 
   return (
     <div className="calculator">
         
-        <Number1 num1={num1} setNum1={setNum1}/>
+        <Number1 num1={num1} setNum1={setNum1} storedAnswer={storedAnswer}/>
         
         <Operator operator={operator} setOperator={setOperator}/>
 
-        <Number2 num2={num2} setNum2={setNum2}/>
+        <Number2 num2={num2} setNum2={setNum2} storedAnswer={storedAnswer}/>
 
-        <Answer num1={num1} setNum1={setNum1} num2={num2} setNum2={setNum2} operator={operator} setOperator={setOperator} answer={answer} setAnswer={setAnswer}/>
+        <Answer num1={num1} setNum1={setNum1} num2={num2} setNum2={setNum2} operator={operator} setOperator={setOperator} answer={answer} setAnswer={setAnswer} storedAnswer={storedAnswer} setStoredAnswer={setStoredAnswer}/>
         
     </div>
   )

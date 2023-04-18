@@ -1,7 +1,7 @@
 import { useState } from "react"
 
 
-function Number2 ({num2, setNum2}) {
+function Number2 ({num2, setNum2, storedAnswer}) {
 
   function handleClick(event) {
     const paragraph = document.querySelector('.p2')
@@ -16,6 +16,10 @@ function Number2 ({num2, setNum2}) {
   }
   function clear(){
     setNum2(0)
+  }
+
+  function answerRecall () {
+    setNum2(storedAnswer)
   }
 
   // const button = document.querySelectorAll("button")
@@ -38,6 +42,7 @@ function Number2 ({num2, setNum2}) {
             <button onClick={handleClick}>9</button>
             <button onClick={handleClick}>0</button>
             <button onClick={clear}>Clear</button>
+            <button onClick={answerRecall}>Recall</button>
           </div>
         </div>
     )
