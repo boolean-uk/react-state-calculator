@@ -45,3 +45,12 @@ html {
   width: 100%;
   height: 40px;
 }
+
+#recall-btn {
+  margin-top: -5px;
+  height: 40px;
+}
+
+#store-btn {
+  margin-top: 5px
+}
