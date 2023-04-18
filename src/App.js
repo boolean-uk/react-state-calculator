@@ -7,6 +7,7 @@ const [num1, setNum1] = useState(0)
 const [num2, setNum2] = useState(0)
 const [symbol, setSymbol] = useState('+')
 const [result, setResult] = useState(0) // TODO: remove
+const [storedNumber, setStoredNumber] = useState(0)
 
 const handlerNum1 = (event) => {
   const value = event.target.innerText
@@ -55,6 +56,18 @@ const calculate = () => {
   setResult(result)
 }
 
+const store = () => {
+  setStoredNumber(result)
+}
+
+const recallNum1 = () => {
+  setNum1(storedNumber)
+}
+
+const recallNum2 = () => {
+  setNum2(storedNumber)
+}
+
 
   return (
     <div className="calculator">
@@ -72,6 +85,7 @@ const calculate = () => {
             <button onClick={handlerNum1}>9</button>
             <button onClick={handlerNum1}>0</button>
             <button onClick={handlerClearNum1}>Clear</button>
+            <button onClick={recallNum1}>Recall</button>
           </div>
         </div>
         
@@ -99,12 +113,14 @@ const calculate = () => {
             <button onClick={handlerNum2}>9</button>
             <button onClick={handlerNum2}>0</button>
             <button onClick={handlerClearNum2}>Clear</button>
+            <button onClick={recallNum2}>Recall</button>
           </div>
         </div>
         <div className="panel answer">
           <p>{result}</p>
           <div>
             <button onClick={calculate}>=</button>
+            <button onClick={store}>Store</button>
           </div>
         </div>
     </div>
