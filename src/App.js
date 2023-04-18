@@ -13,7 +13,12 @@ const [result, setResult] = useState(0)
 
 
 const clickNumber1 = (num)=>{
-  setNum1(num)
+  let number = ""
+  if (num1){
+    number += num1
+  } 
+  number += num
+  setNum1(parseInt(number))
 }
 // // What's the parameter?
 // // the value ofHTML
@@ -23,7 +28,12 @@ const clickOperator = (op)=>{
 }
 // clickNumber2(num)
 const clickNumber2 = (num)=>{
-  setNum2(num)
+  let number = ""
+  if (num2){
+    number += num2
+  }
+  number += num
+  setNum2(parseInt(number))
 }
 // clickEquals(=)
 const clickResult = ()=>{
