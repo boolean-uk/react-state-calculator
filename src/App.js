@@ -4,19 +4,17 @@ import {useState} from 'react'
 
 function App() { 
 const [number1, setNumber1] = useState(0) 
-const [number2, setNumber2] = useState(0)
+//const [number2, setNumber2] = useState(0)
 
-const [addcount , setAddCount ] = useState(0)
+//const [addcount , setAddCount ] = useState(0)
 
-const add = () => {
-
-  setAddCount()
-}
 
 
 const clickNumber1 = (event) => {
-  
-
+  event.preventDefault()
+  console.log(event)
+const number11 = event.target[1]._reactProps$7fx6lcrc3dj.id
+console.log(number11)
 }
   return (
     <div className="calculator">
