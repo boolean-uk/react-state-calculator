@@ -3,19 +3,20 @@ import { useState } from "react";
 import "./App.css";
 
 function App() {
-  const [numberOne, setNumberOne] = useState('0');
+  const [numberOne, setNumberOne] = useState("0");
   const [symbol, setSymbol] = useState("+");
-  const [numberTwo, setNumberTwo] = useState('0');
-  const [result, setNumberResult] = useState('0');
+  const [numberTwo, setNumberTwo] = useState("0");
+  const [result, setNumberResult] = useState("0");
+  const [storeResult, setStoreResult] = useState("");
 
   const handleInputOne = (event) => {
     const numberButton = event.target.innerText;
-    if (numberOne === '0' && numberButton === '0') {
+    if (numberOne === "0" && numberButton === "0") {
       setNumberOne(numberButton);
-    } else if (numberOne === '0') {
-      setNumberOne(numberButton)
+    } else if (numberOne === "0") {
+      setNumberOne(numberButton);
     } else {
-      setNumberOne(numberOne + numberButton)
+      setNumberOne(numberOne + numberButton);
     }
   };
 
@@ -26,21 +27,21 @@ function App() {
 
   const handleInputTwo = (event) => {
     const numberButton = event.target.innerText;
-    if (numberTwo === '0' && numberButton === '0') {
+    if (numberTwo === "0" && numberButton === "0") {
       setNumberTwo(numberButton);
-    } else if (numberTwo === '0') {
-      setNumberTwo(numberButton)
+    } else if (numberTwo === "0") {
+      setNumberTwo(numberButton);
     } else {
-      setNumberTwo(numberTwo + numberButton)
+      setNumberTwo(numberTwo + numberButton);
     }
   };
 
   const clearOne = () => {
-    setNumberOne('0');
+    setNumberOne("0");
   };
 
   const clearTwo = () => {
-    setNumberTwo('0');
+    setNumberTwo("0");
   };
 
   const handleInputResult = (event) => {
@@ -62,6 +63,19 @@ function App() {
     }
   };
 
+  const handleStoreResult = () => {
+    setStoreResult(result);
+    console.log(storeResult);
+  };
+
+  const handleRecallOne = () => {
+    setNumberOne(result);
+  };
+
+  const handleRecallTwo = () => {
+    setNumberTwo(result);
+  };
+
   return (
     <div className="calculator">
       <div className="panel">
@@ -78,6 +92,7 @@ function App() {
           <button onClick={handleInputOne}>9</button>
           <button onClick={handleInputOne}>0</button>
           <button onClick={clearOne}>Clear</button>
+          <button onClick={handleRecallOne}>Recall</button>
         </div>
       </div>
 
@@ -105,12 +120,14 @@ function App() {
           <button onClick={handleInputTwo}>9</button>
           <button onClick={handleInputTwo}>0</button>
           <button onClick={clearTwo}>Clear</button>
+          <button onClick={handleRecallTwo}>Recall</button>
         </div>
       </div>
       <div className="panel answer">
         <p>{result}</p>
         <div>
           <button onClick={handleInputResult}>=</button>
+          <button onClick={handleStoreResult}>Store</button>
         </div>
       </div>
     </div>
