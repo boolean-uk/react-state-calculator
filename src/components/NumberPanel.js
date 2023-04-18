@@ -2,10 +2,15 @@ export const NumberPanel = ({value, setValue, savedNumber}) => {
 
   const getValue = (e) => {
     const input = e.target.innerText
-    if (value === 0) {
-      setValue(parseInt(input))
-    } else {
-      setValue(parseInt(value + input))
+    if (value === '0' && input === '0') {
+      setValue('0')
+    } else if (value === '0'){
+      setValue(input)
+    } else if (value.includes('.') && input === '.') {
+      setValue(value)
+    }
+    else {
+      setValue(value + input)
     }
   }
 
@@ -23,7 +28,8 @@ export const NumberPanel = ({value, setValue, savedNumber}) => {
         <button onClick={getValue}>8</button>
         <button onClick={getValue}>9</button>
         <button onClick={getValue}>0</button>
-        <button onClick={() => setValue(0)}>Clear</button>
+        <button onClick={getValue}>.</button>
+        <button onClick={() => setValue('0')}>Clear</button>
         <button onClick={() => setValue(savedNumber)}>Recall</button>
       </div>
     </div>

@@ -2,24 +2,34 @@ export const ResultPanel = (
   { result,
     setResult,
     value1,
+    setValue1,
+    setValue2,
     value2,
     operator,
     setSavedNumber}) => {
 
   const calculateResult = () => {
     if (operator === '+') {
-      setResult(value1 + value2)
+      setResult(parseFloat(value1) + parseFloat(value2))
     } else if (operator === '-') {
-      setResult(value1 - value2)
+      setResult(parseFloat(value1) - parseFloat(value2))
     } else if (operator === '*') {
-      setResult(value1 * value2)
+      setResult(parseFloat(value1) * parseFloat(value2))
     } else if (operator === '/') {
-      setResult(value1 / value2)
+      setResult(parseFloat(value1) / parseFloat(value2))
     }
+    console.log(typeof result)
+    console.log(result)
   }
 
   const storeResult = () => {
     setSavedNumber(result)
+  }
+
+  const clearAll = () => {
+    setResult('0')
+    setValue1('0')
+    setValue2('0')
   }
 
   return(
@@ -28,6 +38,7 @@ export const ResultPanel = (
       <div>
         <button onClick={calculateResult}>=</button>
         <button onClick={storeResult}>Store Result</button>
+        <button onClick={clearAll}>Clear all</button>
       </div>
     </div>
   )
