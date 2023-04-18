@@ -9,8 +9,9 @@ function App() {
   // to display sympols (+, *) make them 'strings'
   // if its not a number or a boolean make it a string! 
   const [operator, setFirstO] = useState('+')
-  const [secondNumber, setFirstNumber] = useState(0)
+  const [secondNumber, setSecondNumber] = useState(0)
   const [result, setResult] = useState(0)
+
 
   return (
     <div className="calculator">
@@ -52,17 +53,20 @@ function App() {
         <div className="panel">
           <p>{secondNumber}</p>
           <div className="numbers">
-            <Button value={1} fun={setFirstNumber} />
-            <Button value={2} fun={setFirstNumber} />
-            <Button value={3} fun={setFirstNumber} />
-            <Button value={4} fun={setFirstNumber} />
-            <Button value={5} fun={setFirstNumber} />
-            <Button value={6} fun={setFirstNumber} />
-            <Button value={7} fun={setFirstNumber} />
-            <Button value={8} fun={setFirstNumber} />
-            <Button value={9} fun={setFirstNumber} />
-            <Button value={0} fun={setFirstNumber} />
-            <button>Clear</button>
+            <Button value={1} fun={setSecondNumber} />
+            <Button value={2} fun={setSecondNumber} />
+            <Button value={3} fun={setSecondNumber} />
+            <Button value={4} fun={setSecondNumber} />
+            <Button value={5} fun={setSecondNumber} />
+            <Button value={6} fun={setSecondNumber} />
+            <Button value={7} fun={setSecondNumber} />
+            <Button value={8} fun={setSecondNumber} />
+            <Button value={9} fun={setSecondNumber} />
+            <Button value={0} fun={setSecondNumber} />
+            {/* we have to make a buttun with the clear function*/}
+            <Button value={'Clear'} fun={setSecondNumber(0)} />
+              {/* function clear = 0 value of secondNumber*/}
+              {/*  clear turns the value of the secondNumber to zero */}
           </div>
         </div>
         <div className="panel answer">
@@ -79,8 +83,8 @@ function App() {
               else if (operator === '÷')
                 answer = firstNumber / secondNumber
               
-              // call the setResult function and pass the answer
-              // as a parameter to change the value of the result
+              {/*call the setResult function and pass the answer*/}
+              {/* as a parameter to change the value of the result*/}
               setResult(answer)
             }} />
           </div>
