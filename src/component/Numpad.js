@@ -3,28 +3,27 @@ import React from "react";
 function Numpad({ number, setNumber, storedValue }) {
   const handleClick = (e) => {
     const input = e.target.innerText;
-    if (input.length < 6 ){
-
-    if (input === "Clear") {
-      setNumber("0");
-    } else if (input === "Recall") {
-      setNumber(storedValue);
-    } else {
-      if (number === "0") {
-        if (input === ".") {
-          setNumber("0.");
-        } else {
-          setNumber(input);
-        }
+    if (e.target.tagName === "BUTTON") {
+      if (input === "Clear") {
+        setNumber("0");
+      } else if (input === "Recall") {
+        setNumber(storedValue);
       } else {
-        if (number.includes(".") && input === ".") {
-          setNumber(number);
+        if (number === "0") {
+          if (input === ".") {
+            setNumber("0.");
+          } else {
+            setNumber(input);
+          }
         } else {
-          setNumber(number + input);
+          if (number.includes(".") && input === ".") {
+            setNumber(number);
+          } else {
+            setNumber(number + input);
+          }
         }
       }
     }
-  }
   };
   return (
     <div className="panel">
