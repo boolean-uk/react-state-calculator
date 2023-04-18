@@ -5,15 +5,17 @@ import Button from './Button'
 import Operators from './Operators'
 
 function App() { 
-  const [firstP, setFirstP] = useState(0)
+  const [firstNumber, setFirstP] = useState(0)
   // to display sympols (+, *) make them 'strings'
   // if its not a number or a boolean make it a string! 
-  const [firstO, setFirstO] = useState('+')
+  const [operator, setFirstO] = useState('+')
+  const [secondNumber, setFirstNumber] = useState(0)
+  const [result, setResult] = useState(0)
 
   return (
     <div className="calculator">
         <div className="panel">
-          <p>{firstP}</p>
+          <p>{firstNumber}</p>
           <div className="numbers">
             {/*
               Button component needs 
@@ -38,7 +40,7 @@ function App() {
         </div>
         
         <div className="panel">
-          <p>{firstO}</p>
+          <p>{operator}</p>
           <div className="numbers">
             <Operators value={'+'} fun={setFirstO} />
             <Operators value={'-'} fun={setFirstO} />
@@ -48,25 +50,39 @@ function App() {
         </div>
 
         <div className="panel">
-          <p>0</p>
+          <p>{secondNumber}</p>
           <div className="numbers">
-            <button>1</button>
-            <button>2</button>
-            <button>3</button>
-            <button>4</button>
-            <button>5</button>
-            <button>6</button>
-            <button>7</button>
-            <button>8</button>
-            <button>9</button>
-            <button>0</button>
+            <Button value={1} fun={setFirstNumber} />
+            <Button value={2} fun={setFirstNumber} />
+            <Button value={3} fun={setFirstNumber} />
+            <Button value={4} fun={setFirstNumber} />
+            <Button value={5} fun={setFirstNumber} />
+            <Button value={6} fun={setFirstNumber} />
+            <Button value={7} fun={setFirstNumber} />
+            <Button value={8} fun={setFirstNumber} />
+            <Button value={9} fun={setFirstNumber} />
+            <Button value={0} fun={setFirstNumber} />
             <button>Clear</button>
           </div>
         </div>
         <div className="panel answer">
-          <p>0</p>
+          <p>{result}</p>
           <div>
-            <button>=</button>
+            <Button value={'='} fun={function() {
+              let answer = 0
+              if (operator === '+')
+                answer = firstNumber + secondNumber
+              else if (operator === '-')
+                answer = firstNumber - secondNumber
+              else if (operator === '*')
+                answer = firstNumber * secondNumber
+              else if (operator === '÷')
+                answer = firstNumber / secondNumber
+              
+              // call the setResult function and pass the answer
+              // as a parameter to change the value of the result
+              setResult(answer)
+            }} />
           </div>
         </div>
     </div>

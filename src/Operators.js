@@ -2,7 +2,6 @@
 export default function Operators ({ value, fun }) { // event is normally used as a parameter 
     // 
     const setOperatorValue = () => { fun(value) }
-
    
     return (
         <button onClick={setOperatorValue}>{value}</button>
