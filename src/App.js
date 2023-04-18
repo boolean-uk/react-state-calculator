@@ -43,8 +43,15 @@ function App() {
       //js will add 'infinity' when trying to divide by 0
       setResult (Number(number1) / Number(number2))
     }
-    console.log(event);
+    
   };
+  const clickStore = (event) => {
+    if(event.target.className ==='store2'){
+      setNumber2(result)
+    } else {
+      setNumber1(result)
+    }
+  }
   return (
     <div className="calculator">
         <div className="panel">
@@ -94,6 +101,12 @@ function App() {
           <p>{result}</p>
           <div>
             <button onClick = {clickResult}>=</button>
+          </div>
+          <div>
+              <button onClick = {clickStore}>Store as the first number!</button>
+          </div>
+          <div>
+              <button onClick = {clickStore} className = 'store2'>Store as the second number!</button>
           </div>
         </div>
     </div>
