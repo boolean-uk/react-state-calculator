@@ -8,13 +8,24 @@ function App() {
   const [number2, setNumber2] = useState(0);
   const [operator, setOperator] = useState("+");
   const [result,setResult] = useState(0);
+
+  //extra store state
+  const [store,setStore] = useState(0);
   const numbers = [1,2,3,4,5,6,7,8,9,0]
   //we will also need some onClick functions
   const clickNumber = (event) => {
     if(event.target.className ==='num1'){
-      setNumber1(event.target.innerText)
+      if(number1 === 0){
+        setNumber1(event.target.innerText)
+      } else {
+        setNumber1(number1 + event.target.innerText)
+      }
     } else if (event.target.className ==='num2'){
-      setNumber2(event.target.innerText)
+      if(number2 === 0){
+        setNumber2(event.target.innerText)
+      } else {
+        setNumber2(number2 + event.target.innerText)
+      }
     }
   }
  
@@ -45,11 +56,14 @@ function App() {
     }
     
   };
-  const clickStore = (event) => {
-    if(event.target.className ==='store2'){
-      setNumber2(result)
+  const clickStore = () => {
+    setStore(result)
+  }
+  const clickRestore = (event) => {
+    if(event.target.className ==='num1'){
+      setNumber1(store)
     } else {
-      setNumber1(result)
+      setNumber2(store)
     }
   }
   return (
@@ -68,6 +82,7 @@ function App() {
             <button onClick = {clickNumber} className = "num1">9</button>
             <button onClick = {clickNumber} className = "num1">0</button>
             <button onClick = {clickClear} className = "num1">Clear</button>
+            <button onClick = {clickRestore} className = "num1">Restore</button>
           </div>
         </div>
         
@@ -103,10 +118,7 @@ function App() {
             <button onClick = {clickResult}>=</button>
           </div>
           <div>
-              <button onClick = {clickStore}>Store as the first number!</button>
-          </div>
-          <div>
-              <button onClick = {clickStore} className = 'store2'>Store as the second number!</button>
+              <button onClick = {clickStore}>Store the result!</button>
           </div>
         </div>
     </div>
