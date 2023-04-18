@@ -1,11 +1,11 @@
 export const NumberPanel = ({value, setValue}) => {
-
+  
   const getValue = (e) => {
     const input = e.target.innerText
     if (value === 0) {
-      setValue(input)
+      setValue(parseInt(input))
     } else {
-      setValue(value + input)
+      setValue(parseInt(value + input))
     }
   }
 
@@ -13,16 +13,16 @@ export const NumberPanel = ({value, setValue}) => {
     <div className="panel">
       <p>{value}</p>
       <div className="numbers">
-        <button onClick={(e) => getValue(e)}>1</button>
-        <button onClick={(e) => getValue(e)}>2</button>
-        <button onClick={(e) => getValue(e)}>3</button>
-        <button onClick={(e) => getValue(e)}>4</button>
-        <button onClick={(e) => getValue(e)}>5</button>
-        <button onClick={(e) => getValue(e)}>6</button>
-        <button onClick={(e) => getValue(e)}>7</button>
-        <button onClick={(e) => getValue(e)}>8</button>
-        <button onClick={(e) => getValue(e)}>9</button>
-        <button onClick={(e) => getValue(e)}>0</button>
+        <button onClick={getValue}>1</button>
+        <button onClick={getValue}>2</button>
+        <button onClick={getValue}>3</button>
+        <button onClick={getValue}>4</button>
+        <button onClick={getValue}>5</button>
+        <button onClick={getValue}>6</button>
+        <button onClick={getValue}>7</button>
+        <button onClick={getValue}>8</button>
+        <button onClick={getValue}>9</button>
+        <button onClick={getValue}>0</button>
         <button onClick={() => setValue(0)}>Clear</button>
       </div>
     </div>
