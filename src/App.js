@@ -11,14 +11,17 @@ function App() {
 
   const handleInputOne = (event) => {
     const numberButton = event.target.innerText;
-    if (numberOne === "0" && numberButton === "0") {
-      setNumberOne(numberButton);
-    } else if (numberOne === "0") {
-      setNumberOne(numberButton);
+    const regex = /[.]/g
+    if (numberButton === '.') {
+      if (!regex.test(numberOne)) {
+        setNumberOne(numberOne + numberButton)
+      }
+    } else if (numberOne === '0') {
+      setNumberOne(numberButton)
     } else {
-      setNumberOne(numberOne + numberButton);
+      setNumberOne(numberOne + numberButton)
     }
-  };
+  }
 
   const handleInputSymbol = (event) => {
     const symbolButton = event.target.innerText;
@@ -27,12 +30,15 @@ function App() {
 
   const handleInputTwo = (event) => {
     const numberButton = event.target.innerText;
-    if (numberTwo === "0" && numberButton === "0") {
-      setNumberTwo(numberButton);
-    } else if (numberTwo === "0") {
-      setNumberTwo(numberButton);
+    const regex = /[.]/g
+    if (numberButton === '.') {
+      if (!regex.test(numberTwo)) {
+        setNumberTwo(numberTwo + numberButton)
+      }
+    } else if (numberTwo === '0') {
+      setNumberTwo(numberButton)
     } else {
-      setNumberTwo(numberTwo + numberButton);
+      setNumberTwo(numberTwo + numberButton)
     }
   };
 
@@ -91,6 +97,7 @@ function App() {
           <button onClick={handleInputOne}>8</button>
           <button onClick={handleInputOne}>9</button>
           <button onClick={handleInputOne}>0</button>
+          <button onClick={handleInputOne}>.</button>
           <button onClick={clearOne}>Clear</button>
           <button onClick={handleRecallOne}>Recall</button>
         </div>
@@ -119,6 +126,7 @@ function App() {
           <button onClick={handleInputTwo}>8</button>
           <button onClick={handleInputTwo}>9</button>
           <button onClick={handleInputTwo}>0</button>
+          <button onClick={handleInputTwo}>.</button>
           <button onClick={clearTwo}>Clear</button>
           <button onClick={handleRecallTwo}>Recall</button>
         </div>
@@ -133,5 +141,6 @@ function App() {
     </div>
   );
 }
+
 
 export default App;
