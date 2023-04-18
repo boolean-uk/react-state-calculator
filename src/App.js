@@ -2,46 +2,22 @@ import "./App.css"
 
 import { useState } from 'react'
 import Button from './Button'
-import Operators from './Operators'
 
 function App() { 
   const [firstNumber, setFirstNumber] = useState('0')
   // to display sympols (+, *) make them 'strings'
   // if its not a number or a boolean make it a string! 
   const [operator, setOperator] = useState('+')
-  const [secondNumber, setSecondNumber] = useState(0)
-  const [result, setResult] = useState(0)
+  const [secondNumber, setSecondNumber] = useState('0')
+  const [result, setResult] = useState('0')
+  const [store, setStore] = useState('0')
+
+  // it is used with the map functions to create the buttons
+  const buttonNames = ['1', '2', '3','4', '5', '6', '7', '8', '9','0']
 
   // We use string instead of numbers, because we
   // can concatenate strings
   // e.g. '1' + '2' = '12'
-  function fun(value) {
-    if (firstNumber.length <= 8) {
-      // if number is 0, overwrite it
-      // with the value
-      if (firstNumber === '0')
-        setFirstNumber(value)
-      // if the number is not equal to 0
-      // concatenate with the value
-      else
-        setFirstNumber(firstNumber + value)
-    }
-  }
-
-  function fun2(value) {
-    if (secondNumber.length <= 8) {
-      // if number is 0, overwrite it
-      // with the value
-      if (secondNumber === '0') {
-        setSecondNumber(value)
-      }
-      // if the number is not equal to 0
-      // concatenate with the value
-      else {
-        setSecondNumber(secondNumber + value)
-      }
-    }
-  }
 
   return (
     <div className="calculator">
@@ -56,17 +32,21 @@ function App() {
                   Button component and assign it to the onClick function
                   So, when the button is clicked, the firstP function is called
             */}
-            <Button value={'1'} fun={fun} />
-            <Button value={'2'} fun={fun} />
-            <Button value={'3'} fun={fun} />
-            <Button value={'4'} fun={fun} />
-            <Button value={'5'} fun={fun} />
-            <Button value={'6'} fun={fun} />
-            <Button value={'7'} fun={fun} />
-            <Button value={'8'} fun={fun} />
-            <Button value={'9'} fun={fun} />
-            <Button value={'0'} fun={fun} />
-            {/*Clear change the value to the string '0'*/}
+            {
+              // use the map function, which works as a for loop to create the buttons
+              buttonNames.map(n => <Button key={'1' + n} value={n} fun={(value) => {
+                if (firstNumber.length <= 8) {
+                  // if number is 0, overwrite it
+                  // with the value
+                  if (firstNumber === '0')
+                    setFirstNumber(value)
+                  // if the number is not equal to 0
+                  // concatenate with the value
+                  else
+                    setFirstNumber(firstNumber + value)
+                }
+              }} />)
+            }
             <Button value={'Clear'} fun={(_) => setFirstNumber('0') } />
           </div>
         </div>
@@ -74,26 +54,30 @@ function App() {
         <div className="panel">
           <p>{operator}</p>
           <div className="numbers">
-            <Operators value={'+'} fun={setOperator} />
-            <Operators value={'-'} fun={setOperator} />
-            <Operators value={'*'} fun={setOperator} />
-            <Operators value={'÷'} fun={setOperator} />
+            <Button value={'+'} fun={setOperator} />
+            <Button value={'-'} fun={setOperator} />
+            <Button value={'*'} fun={setOperator} />
+            <Button value={'÷'} fun={setOperator} />
           </div>
         </div>
 
         <div className="panel">
           <p>{secondNumber}</p>
           <div className="numbers">
-          <Button value={'1'} fun={fun2} />
-            <Button value={'2'} fun={fun2} />
-            <Button value={'3'} fun={fun2} />
-            <Button value={'4'} fun={fun2} />
-            <Button value={'5'} fun={fun2} />
-            <Button value={'6'} fun={fun2} />
-            <Button value={'7'} fun={fun2} />
-            <Button value={'8'} fun={fun2} />
-            <Button value={'9'} fun={fun2} />
-            <Button value={'0'} fun={fun2} />
+            {
+              buttonNames.map(n => <Button key={'2' + n} value={n} fun={(value) => {
+                if (secondNumber.length <= 8) {
+                  // if number is 0, overwrite it
+                  // with the value
+                  if (secondNumber === '0')
+                    setSecondNumber(value)
+                  // if the number is not equal to 0
+                  // concatenate with the value
+                  else 
+                    setSecondNumber(secondNumber + value)
+                }
+              }} />)
+            }
             {/*Clear change the value to the string '0' 
               we have to make a buttun with the clear function
               function clear = 0 value of secondNumber
@@ -128,7 +112,13 @@ function App() {
                 call the setResult function and pass the answer
                 as a parameter to change the value of the result
               */}
-              setResult(answer)
+              setResult(String(answer))
+            }} />
+            <Button value={'Store'} fun={() => {
+              setStore(result)
+            }} />
+            <Button value={'Recall'} fun={() => {
+              console.log(store)
             }} />
           </div>
         </div>
