@@ -1,11 +1,14 @@
 import "./App.css"
 
 import { useState } from 'react'
-
 import Button from './Button'
+import Operators from './Operators'
 
 function App() { 
   const [firstP, setFirstP] = useState(0)
+  // to display sympols (+, *) make them 'strings'
+  // if its not a number or a boolean make it a string! 
+  const [firstO, setFirstO] = useState('+')
 
   return (
     <div className="calculator">
@@ -35,12 +38,12 @@ function App() {
         </div>
         
         <div className="panel">
-          <p>+</p>
+          <p>{firstO}</p>
           <div className="numbers">
-            <button>+</button>
-            <button>-</button>
-            <button>*</button>
-            <button>÷</button>
+            <Operators value={'+'} fun={setFirstO} />
+            <Operators value={'-'} fun={setFirstO} />
+            <Operators value={'*'} fun={setFirstO} />
+            <Operators value={'÷'} fun={setFirstO} />
           </div>
         </div>
 
