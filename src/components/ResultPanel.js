@@ -18,8 +18,6 @@ export const ResultPanel = (
     } else if (operator === '/') {
       setResult(parseFloat(value1) / parseFloat(value2))
     }
-    console.log(typeof result)
-    console.log(result)
   }
 
   const storeResult = () => {

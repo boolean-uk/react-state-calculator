@@ -4,7 +4,6 @@ import { NumberPanel } from "./components/NumberPanel"
 import { OperatorPanel } from "./components/OperatorPanel"
 import { ResultPanel } from "./components/ResultPanel"
 
-
 function App() {
 
   const [value1, setValue1] = useState('0')
@@ -13,15 +12,12 @@ function App() {
   const [result, setResult] = useState(0)
   const [savedNumber, setSavedNumber] = useState(0)
 
-
   return (
     <div className='calculator'>
+
       <NumberPanel value={value1} setValue={setValue1} savedNumber={savedNumber}/>
-
       <OperatorPanel operator={operator} setOperator={setOperator} />
-
       <NumberPanel value={value2} setValue={setValue2} savedNumber={savedNumber}/>
-
       <ResultPanel
         result={result}
         setResult={setResult}
@@ -30,7 +26,8 @@ function App() {
         setValue2={setValue2}
         value2={value2}
         operator={operator}
-        setSavedNumber={setSavedNumber}/>
+        setSavedNumber={setSavedNumber}
+      />
 
     </div>
   )

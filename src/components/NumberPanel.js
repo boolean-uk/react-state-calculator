@@ -8,8 +8,7 @@ export const NumberPanel = ({value, setValue, savedNumber}) => {
       setValue(input)
     } else if (value.includes('.') && input === '.') {
       setValue(value)
-    }
-    else {
+    } else {
       setValue(value + input)
     }
   }
