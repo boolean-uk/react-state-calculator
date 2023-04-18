@@ -11,7 +11,7 @@ const [storedNumber, setStoredNumber] = useState(0)
 
 const handlerNum1 = (event) => {
   const value = event.target.innerText
-  if (num1 == 0) {
+  if (num1.toString() === '0') {
     setNum1(value)
   } else {
     setNum1(num1 + value)
@@ -20,7 +20,7 @@ const handlerNum1 = (event) => {
 
 const handlerNum2 = (event) => {
   const value = event.target.innerText
-  if (num2 == 0){
+  if (num2.toString() === '0') {
     setNum2(value)
   } else {
     setNum2(num2 + value)
@@ -41,8 +41,8 @@ const handlerSymbol = (event) => {
 }
 
 const calculate = () => {
-  const int1 = parseInt(num1)
-  const int2 = parseInt(num2)
+  const int1 = parseFloat(num1)
+  const int2 = parseFloat(num2)
   let result = 0
   if (symbol === '+') {
     result = int1 + int2
@@ -68,6 +68,19 @@ const recallNum2 = () => {
   setNum2(storedNumber)
 }
 
+const handlerDecimalSeparator1 = () => {
+  if (!num1.toString().includes('.')) {
+    setNum1(num1 + '.')
+  }
+}
+
+const handlerDecimalSeparator2 = () => {
+  if (!num2.toString().includes('.')) {
+    setNum2(num2 + '.')
+  }
+}
+
+
 
   return (
     <div className="calculator">
@@ -86,6 +99,7 @@ const recallNum2 = () => {
             <button onClick={handlerNum1}>0</button>
             <button onClick={handlerClearNum1}>Clear</button>
             <button onClick={recallNum1}>Recall</button>
+            <button onClick={handlerDecimalSeparator1}>.</button>
           </div>
         </div>
         
@@ -114,6 +128,7 @@ const recallNum2 = () => {
             <button onClick={handlerNum2}>0</button>
             <button onClick={handlerClearNum2}>Clear</button>
             <button onClick={recallNum2}>Recall</button>
+            <button onClick={handlerDecimalSeparator2}>.</button>
           </div>
         </div>
         <div className="panel answer">
