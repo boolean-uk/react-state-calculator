@@ -1,8 +1,7 @@
 import { useState } from "react"
 
-function Operator () {
+function Operator ({operator, setOperator}) {
 
-  const [operator, setOperator] = useState(0)
   function handleClick(event) {
     setOperator(event.target.innerHTML)
   }

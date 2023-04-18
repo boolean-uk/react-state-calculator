@@ -1,10 +1,29 @@
-function Answer () {
+function Answer ({num1,num2,operator,setNum1,setNum2,setOperator,answer,setAnswer}) {
+
+  function resultHandle(){
+
+    if(operator === '+'){
+
+      setAnswer(parseInt(num1) + parseInt(num2))
+    }else if(operator === '-'){
+      setAnswer(parseInt(num1) - parseInt(num2))
+
+    }else if(operator === '*'){
+      setAnswer(parseInt(num1) * parseInt(num2))
+
+    }
+    else {
+      setAnswer(parseInt(num1) / parseInt(num2))
+
+    }
+
+  }
 
     return (
         <div className="panel answer">
-          <p>0</p>
+          <p>{answer}</p>
           <div>
-            <button>=</button>
+            <button onClick={resultHandle}>=</button>
           </div>
         </div>
     )

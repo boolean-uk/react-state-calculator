@@ -1,11 +1,13 @@
 import { useState } from "react"
 
 
-function Number2 () {
+function Number2 ({num2, setNum2}) {
 
-  const [num2, setNum2] = useState(0)
   function handleClick(event) {
     setNum2(event.target.innerHTML)
+  }
+  function clear(){
+    setNum2(0)
   }
 
   // const button = document.querySelectorAll("button")
@@ -27,7 +29,7 @@ function Number2 () {
             <button onClick={handleClick}>8</button>
             <button onClick={handleClick}>9</button>
             <button onClick={handleClick}>0</button>
-            <button>Clear</button>
+            <button onClick={clear}>Clear</button>
           </div>
         </div>
     )

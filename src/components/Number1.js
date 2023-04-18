@@ -1,9 +1,12 @@
 import { useState } from "react"
 
-function Number1 () {
-  const [num1, setNum1] = useState(0)
+function Number1 ({num1, setNum1}) {
   function handleClick(event) {
     setNum1(event.target.innerHTML)
+  }
+
+  function clear(){
+    setNum1(0)
   }
 
     return (
@@ -20,7 +23,7 @@ function Number1 () {
             <button onClick={handleClick}>8</button>
             <button onClick={handleClick}>9</button>
             <button onClick={handleClick}>0</button>
-            <button>Clear</button>
+            <button onClick={clear}>Clear</button>
           </div>
         </div>
     )
