@@ -10,29 +10,25 @@ function App() {
   const [value1, setValue1] = useState(0)
   const [operator, setOperator] = useState('+')
   const [value2, setValue2] = useState(0)
-  const [result, setResult] = useState()
+  const [result, setResult] = useState(0)
+  const [savedNumber, setSavedNumber] = useState(0)
 
-  const calculateResult = () => {
-    if (operator === '+') {
-      setResult(value1 + value2)
-    } else if (operator === '-') {
-      setResult(value1 - value2)
-    } else if (operator === '*') {
-      setResult(value1 * value2)
-    } else if (operator === '/') {
-      setResult(value1 / value2)
-    }
-  }
 
   return (
     <div className='calculator'>
-      <NumberPanel value={value1} setValue={setValue1}/>
+      <NumberPanel value={value1} setValue={setValue1} savedNumber={savedNumber}/>
 
       <OperatorPanel operator={operator} setOperator={setOperator} />
 
-      <NumberPanel value={value2} setValue={setValue2} />
+      <NumberPanel value={value2} setValue={setValue2} savedNumber={savedNumber}/>
 
-      <ResultPanel result={result} calculateResult={calculateResult}/>
+      <ResultPanel
+        result={result}
+        setResult={setResult}
+        value1={value1}
+        value2={value2}
+        operator={operator}
+        setSavedNumber={setSavedNumber}/>
 
     </div>
   )

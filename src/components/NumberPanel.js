@@ -1,5 +1,5 @@
-export const NumberPanel = ({value, setValue}) => {
-  
+export const NumberPanel = ({value, setValue, savedNumber}) => {
+
   const getValue = (e) => {
     const input = e.target.innerText
     if (value === 0) {
@@ -24,6 +24,7 @@ export const NumberPanel = ({value, setValue}) => {
         <button onClick={getValue}>9</button>
         <button onClick={getValue}>0</button>
         <button onClick={() => setValue(0)}>Clear</button>
+        <button onClick={() => setValue(savedNumber)}>Recall</button>
       </div>
     </div>
   )
