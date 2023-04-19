@@ -75,6 +75,21 @@ function App() {
       setNumber2(store)
     }
   }
+  const clickDot = (event) =>{
+    if(event.target.className === 'num1'){
+      if(number1.toString().includes('.')){
+        return
+      } else {
+        setNumber1(number1+'.')
+      }
+    } else {
+      if(number2.toString().includes('.')){
+        return
+      } else {
+        setNumber2(number2+'.')
+      }
+    }
+  }
   return (
     <div className="calculator">
         <div className="panel">
@@ -90,6 +105,7 @@ function App() {
             <button onClick = {clickNumber} className = "num1">8</button>
             <button onClick = {clickNumber} className = "num1">9</button>
             <button onClick = {clickNumber} className = "num1">0</button>
+            <button onClick = {clickDot} className = "num1">.</button>
             <button onClick = {clickClear} className = "num1">Clear</button>
             <button onClick = {clickRestore} className = "num1">Restore</button>
           </div>
@@ -118,6 +134,7 @@ function App() {
             <button onClick = {clickNumber} className = "num2">8</button>
             <button onClick = {clickNumber} className = "num2">9</button>
             <button onClick = {clickNumber} className = "num2">0</button>
+            <button onClick = {clickDot} className = "num2">.</button>
             <button onClick = {clickClear}>Clear</button>
             <button onClick = {clickRestore} className = "num2">Restore</button>
           </div>
