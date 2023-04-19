@@ -1,6 +1,6 @@
 import React from "react"
 
-function Answer ({num1, num2, operator, answer, setAnswer}) {
+function Answer ({num1, num2, operator, answer, setAnswer, stored, setStored}) {
 
   const num1x = parseInt(num1)
   const num2x = parseInt(num2)
@@ -27,11 +27,19 @@ function Answer ({num1, num2, operator, answer, setAnswer}) {
         console.log("Not good")
     }
   }
+
+  const handleStore = (event) => {
+    setStored(answer)
+  }
+
+
+  
     return (        
         <div className="panel answer">
         <p>{answer}</p>
         <div>
           <button onClick={handleClick}>=</button>
+          <button onClick={handleStore}>Store</button>
         </div>
         </div>)
 }

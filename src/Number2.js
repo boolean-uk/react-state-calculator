@@ -1,6 +1,6 @@
 import React from "react"
 
-function Number2 ({num2, setNum2}) {
+function Number2 ({num2, setNum2, stored}) {
 
   const handleClick = (event) => {
     if (event.target.innerText === "Clear") {
@@ -12,7 +12,12 @@ function Number2 ({num2, setNum2}) {
     } else {
       setNum2(num2 + event.target.innerText)
     }
+  }
 
+  const handleRecall = (event) => {
+    if (typeof stored !== 'undefined'){
+      setNum2(stored)
+    }
   }
     return ( 
         <div className="panel">
@@ -30,6 +35,7 @@ function Number2 ({num2, setNum2}) {
             <button>0</button>
             <button>Clear</button>
           </div>
+          <button onClick={handleRecall}>Recall</button>
         </div>)
 }
 
