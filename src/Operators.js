@@ -1,8 +1,13 @@
-function Operators () {
-    return ( 
+function Operators ({operator, setOperator}) {
+    
+  const handleClick = (event) => {
+    setOperator(event.target.innerText)
+  }
+  
+  return ( 
         <div className="panel">
-          <p>+</p>
-          <div className="numbers">
+          <p>{operator}</p>
+          <div onClick={handleClick} className="numbers">
             <button>+</button>
             <button>-</button>
             <button>*</button>

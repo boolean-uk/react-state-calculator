@@ -1,9 +1,37 @@
-function Answer () {
+import React from "react"
+
+function Answer ({num1, num2, operator, answer, setAnswer}) {
+
+  const num1x = parseInt(num1)
+  const num2x = parseInt(num2)
+
+  const handleClick = (event) => {
+    switch (operator) {
+      case "+":
+        setAnswer(num1x+num2x)
+        break;
+      case "-":
+        setAnswer(num1x-num2x);
+        break;
+      case "*":
+        setAnswer(num1x*num2x);
+        break;
+      case "÷":
+        if(num2x==0){
+          setAnswer("second number can't be 0")
+        }else{
+          setAnswer(num1x/num2x);
+        }
+        break;
+      default:
+        console.log("RIP")
+    }
+  }
     return (        
         <div className="panel answer">
-        <p>0</p>
+        <p>{answer}</p>
         <div>
-          <button>=</button>
+          <button onClick={handleClick}>=</button>
         </div>
         </div>)
 }

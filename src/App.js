@@ -6,19 +6,7 @@ import Operators from "./Operators"
 import Number2 from "./Number2.js"
 import Answer from "./Answer.js"
 
-
-// clickNumber(number)
-// // parameter is the value of the HTML element that was clicked
-
-
-
-// clickOperator(Operator)
-
-// clickNumber2(number)
-
 // clickEquals()
-
-// clickClear()
 
 function App() {
 
@@ -37,9 +25,9 @@ function App() {
   return (
     <div className="calculator">
       <Number1 num1 ={num1} setNum1={setNum1}/>
-      <Operators />
-      <Number2 num1 ={num2} setNum2={setNum2}/>
-      <Answer />
+      <Operators operator={operator} setOperator={setOperator}/>
+      <Number2 num2 ={num2} setNum2={setNum2}/>
+      <Answer num1={num1} num2={num2} operator={operator} answer={answer} setAnswer={setAnswer} />
     </div>
   )
 }
