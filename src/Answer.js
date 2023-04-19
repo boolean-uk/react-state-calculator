@@ -18,13 +18,13 @@ function Answer ({num1, num2, operator, answer, setAnswer}) {
         break;
       case "÷":
         if(num2x==0){
-          setAnswer("second number can't be 0")
+          setAnswer("can't divide by 0")
         }else{
           setAnswer(num1x/num2x);
         }
         break;
       default:
-        console.log("RIP")
+        console.log("Not good")
     }
   }
     return (        

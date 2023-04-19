@@ -5,8 +5,12 @@ function Number1 ({num1, setNum1}) {
   const handleClick = (event) => {
     if (event.target.innerText === "Clear") {
       setNum1('0')
-    }else {
+    }else if (event.target.innerText === "0" && num1==="0") {
+      setNum1('0')
+    } else if (num1==='0') {
       setNum1(event.target.innerText)
+    } else {
+      setNum1(num1 + event.target.innerText)
     }
 
   }

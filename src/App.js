@@ -15,13 +15,6 @@ function App() {
   const [num2, setNum2] = useState('0')
   const [answer, setAnswer] = useState('0')
 
-  const handleClick = (event) => {
-
-    const num1 = parseInt(num1)
-    const num2 = parseInt(num2)
-
-  }
-
   return (
     <div className="calculator">
       <Number1 num1 ={num1} setNum1={setNum1}/>
