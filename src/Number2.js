@@ -7,6 +7,14 @@ function Number2 ({num2, setNum2, stored}) {
       setNum2('0')
     }else if (event.target.innerText === "0" && num2==="0") {
       setNum2('0')
+    }else if (event.target.innerText === ".") {
+      if (num2==="0") {
+        setNum2('0' + '.')
+      } else if (num2.includes('.')) {
+        setNum2(num2)
+      } else {
+        setNum2(num2 + '.')
+      }
     } else if (num2==='0') {
       setNum2(event.target.innerText)
     } else {
@@ -33,6 +41,7 @@ function Number2 ({num2, setNum2, stored}) {
             <button>8</button>
             <button>9</button>
             <button>0</button>
+            <button>.</button>
             <button>Clear</button>
           </div>
           <button onClick={handleRecall}>Recall</button>

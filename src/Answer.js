@@ -2,8 +2,8 @@ import React from "react"
 
 function Answer ({num1, num2, operator, answer, setAnswer, stored, setStored}) {
 
-  const num1x = parseInt(num1)
-  const num2x = parseInt(num2)
+  const num1x = parseFloat(num1)
+  const num2x = parseFloat(num2)
 
   const handleClick = (event) => {
     switch (operator) {

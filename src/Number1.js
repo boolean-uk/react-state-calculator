@@ -7,9 +7,17 @@ function Number1 ({num1, setNum1, stored}) {
       setNum1('0')
     }else if (event.target.innerText === "0" && num1==="0") {
       setNum1('0')
-    } else if (num1==='0') {
+    }else if (event.target.innerText === ".") {
+      if (num1==="0") {
+        setNum1('0' + '.')
+      } else if (num1.includes('.')) {
+        setNum1(num1)
+      } else {
+        setNum1(num1 + '.')
+      }
+    }else if (num1==='0') {
       setNum1(event.target.innerText)
-    } else {
+    }else {
       setNum1(num1 + event.target.innerText)
     }
   }
