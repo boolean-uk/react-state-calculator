@@ -27,6 +27,8 @@ const initialCountClear = 0;
 // 4th block 0
 
 // on click events will be modifying each state individually
+// we still need to work on double digits
+
 
 function App() {
   const [count1, setCount1] = useState(0);
