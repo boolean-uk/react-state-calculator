@@ -2,45 +2,24 @@ import { useState } from 'react'
 
 function FirstNumber (props) {
 
-  // const whichPad = props.whichPad
-  // console.log(whichPad)
+  // const [firstNum, setFirstNum] = useState(`0`)
 
-  const [firstNum, setFirstNum] = useState(`0`)
-  
   function handleClear() {
-    setFirstNum('0')
+    props.setFirstNum('0')
   }
 
   function FirstNumberDisplay(event) {
     const value = event.target.innerText
-      if (firstNum === `0`) {
-        setFirstNum(value)
+      if (props.firstNum === `0`) {
+        props.setFirstNum(value)
       } else {
-        setFirstNum(firstNum + value)
+        props.setFirstNum(props.firstNum + value)
       }
   }
-
-  // function FirstNumberDisplay(event) {
-  //   const value = event.target.innerText
-  //   if (whichPad === `first`) {
-  //     if (firstNum === `0`) {
-  //       setFirstNum(value)
-  //     } else {
-  //       setFirstNum(firstNum + value)
-  //     }
-  //   } 
-  //   if (whichPad === `second`) {
-  //     if (secondNum === `0`) {
-  //       setSecondNum(value)
-  //     } else {
-  //       setSecondNum(secondNum + value)
-  //     }
-  //   }
-  // }
   
     return (
         <div className="panel">
-         <p>{firstNum}</p>
+         <p>{props.firstNum}</p>
          <div className="numbers">
            <button
            onClick={(FirstNumberDisplay)}>1</button>

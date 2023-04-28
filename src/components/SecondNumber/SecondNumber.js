@@ -1,26 +1,25 @@
 import { useState } from 'react' 
 
-function SecondNumber() {
+function SecondNumber(props) {
 
-  const [secondNum, setSecondNum] = useState(`0`)
 
   function handleClear() {
-    setSecondNum('0')
+    props.setSecondNum('0')
   }
 
   function SecondNumberDisplay(event) {
     const value = event.target.innerText
-      if (secondNum === `0`) {
-        setSecondNum(value)
+      if (props.secondNum === `0`) {
+        props.setSecondNum(value)
       } else {
-        setSecondNum(secondNum + value)
+        props.setSecondNum(props.secondNum + value)
       }
   }
 
   return (
 
 <div className="panel">
-         <p>{secondNum}</p>
+         <p>{props.secondNum}</p>
          <div className="numbers">
            <button
            onClick={(SecondNumberDisplay)}>1</button>
