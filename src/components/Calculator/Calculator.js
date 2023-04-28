@@ -7,13 +7,15 @@ function Calculator () {
     return (
        <div className="calculator">
        
-            <FirstNumber whichPad={`first`}/>
+            {/* <FirstNumber whichPad={`first`}/> */}
+
+            <FirstNumber />
 
             <OperationButton />
 
-            <FirstNumber whichPad={`second`}/>
+            {/* <FirstNumber whichPad={`second`}/> */}
 
-            {/* <SecondNumber /> */}
+            <SecondNumber />
 
             <EqualsNumber />
 

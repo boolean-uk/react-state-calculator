@@ -2,25 +2,34 @@ import { useState } from 'react'
 
 function FirstNumber (props) {
 
-  const whichPad = props.whichPad
-  console.log(whichPad)
+  // const whichPad = props.whichPad
+  // console.log(whichPad)
 
   const [firstNum, setFirstNum] = useState(`0`)
-  const [secondNum, setSecondNum] = useState(`0`)
   
   function handleClear() {
     setFirstNum('0')
   }
 
+  function FirstNumberDisplay(event) {
+    const value = event.target.innerText
+      if (firstNum === `0`) {
+        setFirstNum(value)
+      } else {
+        setFirstNum(firstNum + value)
+      }
+  }
+
   // function FirstNumberDisplay(event) {
-  //   const value = event.target.value
+  //   const value = event.target.innerText
   //   if (whichPad === `first`) {
   //     if (firstNum === `0`) {
-  //           setFirstNum(value)
-  //         } else {
-  //           setFirstNum(firstNum + value)
-  //         }
-  //   } else if (whichPad === `second`) {
+  //       setFirstNum(value)
+  //     } else {
+  //       setFirstNum(firstNum + value)
+  //     }
+  //   } 
+  //   if (whichPad === `second`) {
   //     if (secondNum === `0`) {
   //       setSecondNum(value)
   //     } else {
@@ -28,33 +37,10 @@ function FirstNumber (props) {
   //     }
   //   }
   // }
-
-  function FirstNumberDisplay(event) {
-    const value = event.target.innerText
-    if (whichPad === `first`) {
-      if (firstNum === `0`) {
-        setFirstNum(value)
-      } else {
-        setFirstNum(firstNum + value)
-      }
-    } 
-    if (whichPad === `second`) {
-      if (secondNum === `0`) {
-        setSecondNum(value)
-      } else {
-        setSecondNum(secondNum + value)
-      }
-    }
-
-  }
-
+  
     return (
         <div className="panel">
-         <p>{firstNum}
-         {console.log(`whichPad:`, whichPad)}
-         {console.log(`firstNum:`, firstNum)}
-         {console.log(`secondNum:`, secondNum)}
-         </p>
+         <p>{firstNum}</p>
          <div className="numbers">
            <button
            onClick={(FirstNumberDisplay)}>1</button>

@@ -1,23 +1,52 @@
+import { useState } from 'react' 
+
 function SecondNumber() {
+
+  const [secondNum, setSecondNum] = useState(`0`)
+
+  function handleClear() {
+    setSecondNum('0')
+  }
+
+  function SecondNumberDisplay(event) {
+    const value = event.target.innerText
+      if (secondNum === `0`) {
+        setSecondNum(value)
+      } else {
+        setSecondNum(secondNum + value)
+      }
+  }
 
   return (
 
-    <div className="panel">
-      <p>0</p>
-      <div className="numbers">
-        <button>1</button>
-        <button>2</button>
-        <button>3</button>
-        <button>4</button>
-        <button>5</button>
-        <button>6</button>
-        <button>7</button>
-        <button>8</button>
-        <button>9</button>
-        <button>0</button>
-        <button>Clear</button>
-      </div>
-    </div>
+<div className="panel">
+         <p>{secondNum}</p>
+         <div className="numbers">
+           <button
+           onClick={(SecondNumberDisplay)}>1</button>
+           <button
+           onClick={(SecondNumberDisplay)}>2</button>
+           <button
+           onClick={(SecondNumberDisplay)}>3</button>
+           <button
+           onClick={(SecondNumberDisplay)}>4</button>
+           <button
+           onClick={(SecondNumberDisplay)}>5</button>
+           <button
+           onClick={(SecondNumberDisplay)}>6</button>
+           <button
+           onClick={(SecondNumberDisplay)}>7</button>
+           <button
+           onClick={(SecondNumberDisplay)}>8</button>
+           <button
+           onClick={(SecondNumberDisplay)}>9</button>
+           <button
+           onClick={(SecondNumberDisplay)}>0</button>
+           <button
+           onClick={handleClear}
+           >Clear</button>
+         </div>
+       </div>
 
   )
 
