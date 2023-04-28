@@ -1,13 +1,22 @@
+import { useState } from "react"
 import "./App.css"
 
-function App() { 
+function App(props) { 
+
+    const number = props.number
+  const [numbers, setNumbers] = useState(number)
+
+  const handleClick = () => {
+    const newNumber = numbers.map()
+    setNumbers(newNumber)
+  }
 
   return (
     <div className="calculator">
         <div className="panel">
-          <p>0</p>
+          <p>{number}</p>
           <div className="numbers">
-            <button>1</button>
+            <button onClick={handleClick}>1</button>
             <button>2</button>
             <button>3</button>
             <button>4</button>
