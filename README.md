@@ -12,7 +12,7 @@ In this exercise you build a simplified calculator application using React.
 * `npm start` to start the React development server
 
 ## Requirements
-You are a required to implement a simplified calculator app.
+You are required to implement a simplified calculator app.
 ![Image](image.png)
 
 - When the user presses a numbered button on either of the panels, the display above should be updated to show that number.
