@@ -23,7 +23,7 @@ function App() {
   const [operator, setOperator] = useState("+");
   const [result, setResult] = useState(0);
   const [save, setSave] = useState(0)
-  let myResults = 0;
+
 
   const handleResult = () => {
     let newResult = 0;
@@ -107,6 +107,7 @@ function App() {
         <button onClick={() => { setCount2(parseInt(count2 + '7',10).toString())}}>7</button>
         <button onClick={() => { setCount2(parseInt(count2 + '8',10).toString())}}>8</button>
         <button onClick={() => { setCount2(parseInt(count2 + '9',10).toString())}}>9</button>
+        <button onClick={() => { setCount2(parseInt(count2 + '0',10).toString())}}>0</button>
           <button onClick={() => { setCount2('0' )}}>Clear</button>
         </div>
       </div>
