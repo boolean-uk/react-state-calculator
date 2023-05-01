@@ -1,15 +1,41 @@
 function EqualsButton (props) {
 
-function Equals(event) {
+const firstNum = Number(props.firstNum)
+const operator = String(props.whichOp)
+const secondNum = Number(props.secondNum)
+
+function Equals() {
   console.log('equals clicked')
-  // const equalSign = event.target.innerText
-  props.setEquals('true')
+  console.log('first', firstNum)
+  console.log('operator', operator)
+  console.log('second', secondNum)
+
+  if (operator === '+') {
+    props.setEquals(firstNum + secondNum)
+  }
+
+  else if (operator === '-') {
+    props.setEquals(firstNum - secondNum)
+  }
+
+  else if (operator === '*') {
+    props.setEquals(firstNum * secondNum)
+  }
+
+  else if (operator === '÷') {
+    props.setEquals(firstNum / secondNum)
+  }
+
+  else {
+    console.log('error')
+  }
+
 }
 
     return (
 
       <div className="panel answer">
-        <p>0</p>
+        <p>{props.equals}</p>
         <div>
            <button onClick={Equals}>=</button>
         </div>

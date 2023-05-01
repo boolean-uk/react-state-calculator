@@ -4,24 +4,15 @@ import { OperationButton } from "../OperationButton"
 import { EqualsButton } from "../EqualsButton"
 import { useState } from "react"
 
-
 function Calculator () {
 
-const [firstNumState, setFirstNum] = useState(0)
+    const [firstNumState, setFirstNum] = useState(0)
 
-const [whichOp, setWhichOp] = useState(null)
+    const [whichOp, setWhichOp] = useState(null)
 
-const [secondNumState, setSecondNum] = useState(0)
+    const [secondNumState, setSecondNum] = useState(0)
 
-const [equals, setEquals] = useState(null)
-
-
-    console.log('firstNum returned', firstNumState)
-    console.log('operator returned', whichOp)
-    console.log('secondNum returned', secondNumState)
-    console.log('equals returned', equals)
-
-
+    const [equals, setEquals] = useState(0)
 
     return (
 
@@ -33,9 +24,16 @@ const [equals, setEquals] = useState(null)
 
             <NumberPad NumState={secondNumState} setValue={setSecondNum}/>
 
-            <EqualsButton equals={equals} setEquals={setEquals}/>
+            <EqualsButton
+                equals={equals}
+                setEquals={setEquals}
+                firstNum={firstNumState}
+                whichOp={whichOp}
+                secondNum={secondNumState}
+            />
 
         </div>
     )
 }
+
 export default Calculator
