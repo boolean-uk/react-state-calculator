@@ -9,19 +9,6 @@ import { useState } from "react";
 
 // initial states
 // 1st block 0
-
-const initialCountOne = 1;
-const initialCountTwo = 2;
-const initialCountThree = 3;
-const initialCountFour = 4;
-const initialCountFive = 5;
-const initialCountSix = 6;
-const initialCountSeven = 7;
-const initialCountEight = 8;
-const initialCountNine = 9;
-const initialCountZero = 0;
-const initialCountClear = 0;
-
 // 2nd block +
 // 3rd block 0
 // 4th block 0
@@ -39,22 +26,25 @@ function App() {
   const handleResult = () => {
     let newResult = 0;
     if (operator === "+") {
-      newResult = count1 + count2;
+      newResult = parseInt(count1) + parseInt(count2);
       setResult(newResult);
     }
     if (operator === "-") {
-      newResult = count1 - count2;
+      newResult = parseInt(count1) - parseInt(count2);
       setResult(newResult);
     }
     if (operator === "*") {
-      newResult = count1 * count2;
+      newResult = parseInt(count1) * parseInt(count2);
       setResult(newResult);
     }
     if (operator === "÷") {
-      newResult = count1 / count2;
+      newResult = parseInt(count1) / parseInt(count2);
       setResult(newResult);
     }
   };
+
+
+
 
   return (
     <div className="calculator">
@@ -64,17 +54,17 @@ function App() {
       <div className="panel">
         <p placeholder="0">{count1}</p>
         <div className="numbers">
-          <button onClick={() => setCount1(initialCountOne)}>1</button>
-          <button onClick={() => setCount1(initialCountTwo)}>2</button>
-          <button onClick={() => setCount1(initialCountThree)}>3</button>
-          <button onClick={() => setCount1(initialCountFour)}>4</button>
-          <button onClick={() => setCount1(initialCountFive)}>5</button>
-          <button onClick={() => setCount1(initialCountSix)}>6</button>
-          <button onClick={() => setCount1(initialCountSeven)}>7</button>
-          <button onClick={() => setCount1(initialCountEight)}>8</button>
-          <button onClick={() => setCount1(initialCountNine)}>9</button>
-          <button onClick={() => setCount1(initialCountZero)}>0</button>
-          <button onClick={() => setCount1(initialCountClear)}>Clear</button>
+          <button onClick={() => { setCount1(parseInt(count1 + '1',10).toString())}}>1</button>
+          <button onClick={() => { setCount1(parseInt(count1 + '2',10).toString())}}>2</button>
+          <button onClick={() => { setCount1(parseInt(count1 + '3',10).toString())}}>3</button>
+          <button onClick={() => { setCount1(parseInt(count1 + '4',10).toString())}}>4</button>
+          <button onClick={() => { setCount1(parseInt(count1 + '5',10).toString())}}>5</button>
+          <button onClick={() => { setCount1(parseInt(count1 + '6',10).toString())}}>6</button>
+          <button onClick={() => { setCount1(parseInt(count1 + '7',10).toString())}}>7</button>
+          <button onClick={() => { setCount1(parseInt(count1 + '8',10).toString())}}>8</button>
+          <button onClick={() => { setCount1(parseInt(count1 + '9',10).toString())}}>9</button>
+          <button onClick={() => { setCount1(parseInt(count1 + '0',10).toString())}}>0</button>
+          <button onClick={() => { setCount1('0' )}}>Clear</button>
         </div>
       </div>
 
@@ -91,17 +81,16 @@ function App() {
       <div className="panel">
         <p>{count2}</p>
         <div className="numbers">
-          <button onClick={() => setCount2(initialCountOne)}>1</button>
-          <button onClick={() => setCount2(initialCountTwo)}>2</button>
-          <button onClick={() => setCount2(initialCountThree)}>3</button>
-          <button onClick={() => setCount2(initialCountFour)}>4</button>
-          <button onClick={() => setCount2(initialCountFive)}>5</button>
-          <button onClick={() => setCount2(initialCountSix)}>6</button>
-          <button onClick={() => setCount2(initialCountSeven)}>7</button>
-          <button onClick={() => setCount2(initialCountEight)}>8</button>
-          <button onClick={() => setCount2(initialCountNine)}>9</button>
-          <button onClick={() => setCount2(initialCountZero)}>0</button>
-          <button onClick={() => setCount2(initialCountClear)}>Clear</button>
+        <button onClick={() => { setCount2(parseInt(count2 + '1',10).toString())}}>1</button>
+        <button onClick={() => { setCount2(parseInt(count2 + '2',10).toString())}}>2</button>
+        <button onClick={() => { setCount2(parseInt(count2 + '3',10).toString())}}>3</button>
+        <button onClick={() => { setCount2(parseInt(count2 + '4',10).toString())}}>4</button>
+        <button onClick={() => { setCount2(parseInt(count2 + '5',10).toString())}}>5</button>
+        <button onClick={() => { setCount2(parseInt(count2 + '6',10).toString())}}>6</button>
+        <button onClick={() => { setCount2(parseInt(count2 + '7',10).toString())}}>7</button>
+        <button onClick={() => { setCount2(parseInt(count2 + '8',10).toString())}}>8</button>
+        <button onClick={() => { setCount2(parseInt(count2 + '9',10).toString())}}>9</button>
+          <button onClick={() => { setCount2('0' )}}>Clear</button>
         </div>
       </div>
       <div className="panel answer">
