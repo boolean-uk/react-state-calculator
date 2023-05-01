@@ -1,23 +1,39 @@
-import { EqualsNumber } from "../EqualsNumber"
-import { FirstNumber } from "../FirstNumber"
-import {OperationButton } from "../OperationButton"
-import { SecondNumber } from "../SecondNumber"
+
+import { NumberPad } from "../NumberPad"
+import { OperationButton } from "../OperationButton"
+import { EqualsButton } from "../EqualsButton"
+import { useState } from "react"
+
 
 function Calculator () {
+
+const [firstNumState, setFirstNum] = useState(0)
+
+const [whichOp, setWhichOp] = useState(null)
+
+const [secondNumState, setSecondNum] = useState(0)
+
+const [equals, setEquals] = useState(null)
+
+
+    console.log('firstNum returned', firstNumState)
+    console.log('operator returned', whichOp)
+    console.log('secondNum returned', secondNumState)
+    console.log('equals returned', equals)
+
+
+
     return (
+
        <div className="calculator">
        
-            {/* <FirstNumber whichPad={`first`}/> */}
+            <NumberPad NumState={firstNumState} setValue={setFirstNum}/>
 
-            <FirstNumber />
+            <OperationButton whichOp={whichOp} setWhichOp={setWhichOp}/>
 
-            <OperationButton />
+            <NumberPad NumState={secondNumState} setValue={setSecondNum}/>
 
-            {/* <FirstNumber whichPad={`second`}/> */}
-
-            <SecondNumber />
-
-            <EqualsNumber />
+            <EqualsButton equals={equals} setEquals={setEquals}/>
 
         </div>
     )
