@@ -22,6 +22,8 @@ function App() {
   const [count2, setCount2] = useState(0);
   const [operator, setOperator] = useState("+");
   const [result, setResult] = useState(0);
+  const [save, setSave] = useState(0)
+  let myResults = 0;
 
   const handleResult = () => {
     let newResult = 0;
@@ -41,18 +43,33 @@ function App() {
       newResult = parseInt(count1) / parseInt(count2);
       setResult(newResult);
     }
+
   };
 
+  
 
+  function saveResult () {
+      myResults = result
+      console.log(myResults);
+    }
+
+    function displaySaved () {
+      console.log(myResults);
+      setCount1((myResults))
+    }
+    function displaySavedTwo () {
+      console.log(myResults);
+      setCount2((myResults))
+    }
 
 
   return (
     <div className="calculator">
-      {console.log(`count here`, count1)}
-      {console.log(`operator here`, operator)}
+
 
       <div className="panel">
         <p placeholder="0">{count1}</p>
+        <button onClick={displaySaved} >&#9829;</button>
         <div className="numbers">
           <button onClick={() => { setCount1(parseInt(count1 + '1',10).toString())}}>1</button>
           <button onClick={() => { setCount1(parseInt(count1 + '2',10).toString())}}>2</button>
@@ -70,6 +87,7 @@ function App() {
 
       <div className="panel">
         <p>{operator}</p>
+        
         <div className="numbers">
           <button onClick={() => setOperator("+")}>+</button>
           <button onClick={() => setOperator("-")}>-</button>
@@ -80,6 +98,7 @@ function App() {
 
       <div className="panel">
         <p>{count2}</p>
+        <button onClick={displaySavedTwo}>&#9829;</button>
         <div className="numbers">
         <button onClick={() => { setCount2(parseInt(count2 + '1',10).toString())}}>1</button>
         <button onClick={() => { setCount2(parseInt(count2 + '2',10).toString())}}>2</button>
@@ -95,8 +114,10 @@ function App() {
       </div>
       <div className="panel answer">
         <p>{result}</p>
+
         <div>
           <button onClick={handleResult}>=</button>
+          <button onClick={saveResult}>&#9829;</button>
         </div>
       </div>
     </div>
