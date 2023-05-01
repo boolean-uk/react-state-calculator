@@ -1,9 +1,3 @@
-.panel {
-    display: grid;
-    grid-template-rows: 50px 1fr;
-    gap:10px;
-}
-
 .panel p {
     border-bottom: 2px solid tomato;
     font-size:2rem;

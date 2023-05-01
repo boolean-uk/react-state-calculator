@@ -1,46 +1,27 @@
 import "./App.css"
-import { Firstpanel } from "./Calculator"
+import { Panel } from "./Calculator"
+import { MiddlePanel } from "./Calculator"
+import { Answer } from "./Calculator"
 
-const keyStroke = '0'
+const keyStrokePanel = '0'
+const middleKeyStrokePanel = '+'
+const keyStrokeAnswer = '0'
 function App() { 
 
   return (
     <div className="calculator">
         
-        <Firstpanel buttonValues = {keyStroke}/>
+        <Panel buttonValues = {keyStrokePanel}/>
         
-        <div className="panel">
-          <p>+</p>
-          <div className="numbers">
-            <button>+</button>
-            <button>-</button>
-            <button>*</button>
-            <button>÷</button>
-          </div>
-        </div>
+        
+        <MiddlePanel buttonValues = {middleKeyStrokePanel}/>
 
-        <div className="panel">
-          <p>0</p>
-          <div className="numbers">
-            <button>1</button>
-            <button>2</button>
-            <button>3</button>
-            <button>4</button>
-            <button>5</button>
-            <button>6</button>
-            <button>7</button>
-            <button>8</button>
-            <button>9</button>
-            <button>0</button>
-            <button>Clear</button>
-          </div>
-        </div>
-        <div className="panel answer">
-          <p>0</p>
-          <div>
-            <button>=</button>
-          </div>
-        </div>
+        
+        <Panel buttonValues = {keyStrokePanel} />
+
+      
+
+        <Answer buttonValues = {keyStrokeAnswer}/>
     </div>
   )
 }

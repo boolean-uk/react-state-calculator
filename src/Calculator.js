@@ -1,7 +1,8 @@
 import {useState} from 'react'
-import './Firstpanel.css'
+import './Panel.css'
+import './Answer.css'
 
-function Firstpanel(props){
+function Panel(props){
 
   const values = props.buttonValues
 
@@ -23,16 +24,15 @@ function Firstpanel(props){
     const key = buttonCount.filter(button => button.innerText == num)
 
     numberArr.push(key[0].innerText)
-    const newNumber = numberArr.join('')
+    let newNumber = numberArr[numberArr.length-1]
     
-    console.log(newNumber)
     
+    
+
     enterNumber(newNumber)
     
     
   }
-
-
 
   return(
         <div className="panel">
@@ -54,10 +54,79 @@ function Firstpanel(props){
   )
 }
 
-function middlePanel(props){
+function MiddlePanel(props){
+  const values = props.buttonValues
+
+  const [operator, enterOperator] = useState(values)
+
+  const operatorArr = []
+  const clickEvent = (ops) => {
+    const buttons = document.querySelectorAll('button')
+
+    const buttonCount = []
+    buttons.forEach(button => {
+      buttonCount.push(button)
+    })
+
+    const key = buttonCount.filter(button => button.innerText == ops)
+    
+
+    operatorArr.push(key[0].innerText)
+
+    let newOperator = operatorArr[operatorArr.length - 1]
+
+    enterOperator(newOperator)
+    
+  }
+
+
+  return(
+    <div className="panel">
+      <p>{operator}</p>
+      <div className="numbers">
+          <button onClick = {() => clickEvent('+')}>+</button>
+          <button onClick = {() => clickEvent('-')}>-</button>
+          <button onClick = {() => clickEvent('*')}>*</button>
+          <button onClick = {() => clickEvent('÷')}>÷</button>
+      </div>
+    </div>
+  )
 
 }
 
+function Answer(props){
+  
+  const value = props.buttonValues
+
+  const [result, calculateResult] = useState(value)
+
+  const clickEvent = () => {
+    const pTags = document.querySelectorAll('p')
+    
+    if (pTags[1].innerText === '÷'){
+      const expression = (pTags[0].innerText + '/' + pTags[2].innerText)
+      const answer = eval(expression)
+      calculateResult(answer)
+    } else {
+      const expression = (pTags[0].innerText + pTags[1].innerText + pTags[2].innerText)
+      const answer = eval(expression)
+      calculateResult(answer)
+    }
+    
+  }
+
+  return(
+    <div className="panel answer">
+      <p>{result}</p>
+      <div>
+        <button onClick = {() => clickEvent()}>=</button>
+      </div>
+    </div>
+  )
+}
+
 export {
-    Firstpanel
+    Panel,
+    MiddlePanel, 
+    Answer
 }
