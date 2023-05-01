@@ -49,17 +49,15 @@ function App() {
   
 
   function saveResult () {
-      myResults = result
-      console.log(myResults);
+      console.log(result);
+      setSave(result)
     }
 
     function displaySaved () {
-      console.log(myResults);
-      setCount1((myResults))
+      setCount1((result))
     }
     function displaySavedTwo () {
-      console.log(myResults);
-      setCount2((myResults))
+      setCount2((result))
     }
 
 
