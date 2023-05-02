@@ -1,7 +1,6 @@
 import { Result } from "../Result"
-import { FirstNumber } from "../FirstNumber"
-import {OperationButton } from "../OperationButton"
-import { SecondNumber } from "../SecondNumber"
+import { OperationButton } from "../OperationButton"
+import { NumberPad } from "../NumberPad"
 import { useState } from 'react' 
 
 function Calculator () {
@@ -11,17 +10,14 @@ function Calculator () {
   const [operator, setOperator] = useState(`+`)
   const [result, setResult] = useState(`0`)
 
-  console.log(`first:`, firstNum)
-  console.log(`second:`, secondNum)
-  console.log(`operator:`, operator)
     return (
        <div className="calculator">
        
-            <FirstNumber setFirstNum={setFirstNum} firstNum={firstNum}/>
-
+            <NumberPad setNum={setFirstNum} Num={firstNum}/>
+            
             <OperationButton setOperator={setOperator} operator={operator}/>
 
-            <SecondNumber setSecondNum={setSecondNum} secondNum={secondNum}/>
+            <NumberPad setNum={setSecondNum} Num={secondNum}/>
 
             <Result firstNum={firstNum} secondNum={secondNum} operator={operator} result={result} setResult={setResult} />
 
