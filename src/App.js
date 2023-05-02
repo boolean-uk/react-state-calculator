@@ -1,29 +1,27 @@
 import "./App.css"
-import Panel from "./components/Panel"
 import { useState } from 'react'
-
-const numButtonValues = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0', 'Clear']
-const opButtonValues = ['+', '-', '*', '÷']
-const equalButtonValue = ['=']
-
-const initialState = {
-  num1: '0',
-  op: '+',
-  num2: '0',
-  answer: '0'
-}
+import NumberPanel from './components/NumberPanel'
+import OperatorPanel from './components/OperatorPanel'
+import AnswerPanel from "./components/AnswerPanel"
 
 function App() { 
-  const [state, setState] = useState(initialState)
-
+  const [num1, setNum1] = useState('0')
+  const [op, setOp] = useState('+')
+  const [num2, setNum2] = useState('0')
+  const [answer, setAnswer] = useState('0')
+  const answerArray = [num1, op, num2]
+  
   return (
     <div className="calculator">  
-      <Panel buttonValues={numButtonValues} currNum={state.num1} setState={setState} state ={state}></Panel>     
-      <Panel buttonValues={opButtonValues} currNum={state.op} setState={setState} state ={state}></Panel>
-      <Panel buttonValues={numButtonValues} currNum={state.num2} setState={setState} state ={state}></Panel>
-      <Panel buttonValues={equalButtonValue} currNum={state.answer} setState={setState} state ={state}></Panel>
+      <NumberPanel state={num1} setState={setNum1}></NumberPanel>
+      <OperatorPanel state={op} setState={setOp}></OperatorPanel>
+      <NumberPanel state={num2} setState={setNum2}></NumberPanel>
+      <AnswerPanel state={answer} setState={setAnswer} answerArray={answerArray}></AnswerPanel>
+      
+
     </div>
   )
 }
+
 
 export default App
