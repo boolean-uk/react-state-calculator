@@ -1,8 +1,9 @@
 import "./App.css";
 import { useState } from "react";
-import { FirstDigit } from './components/FirstDigit'
+import { NumPad } from './components/NumPad'
 import { Operator } from "./components/Operator";
 import { Result } from "./components/Result";
+
 
 // we will need 4 different states for the calculator to work
 // first: updates first number OUTPUT a
@@ -68,11 +69,12 @@ function App() {
 
   return (
     <div className="calculator">
-      <FirstDigit count1={count1} setCount1={setCount1} displaySaved ={displaySaved}/>
+      <NumPad count={count1} setCount={setCount1} displaySaved ={displaySaved}/>
 
       <Operator operator={operator} setOperator={setOperator}/>
 
-
+      <NumPad count={count2} setCount={setCount2} displaySaved ={displaySavedTwo}/>
+{/* 
       <div className="panel">
         <p>{count2}</p>
         <button onClick={displaySavedTwo}>Recall</button>
@@ -89,7 +91,7 @@ function App() {
         <button onClick={() => { setCount2(parseInt(count2 + '0',10).toString())}}>0</button>
           <button onClick={() => { setCount2('0' )}}>Clear</button>
         </div>
-      </div>
+      </div> */}
 
       <Result result={result} handleResult={handleResult} saveResult={saveResult}/>
 {/* 
