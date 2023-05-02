@@ -4,7 +4,6 @@ import {OperationButton } from "../OperationButton"
 import { SecondNumber } from "../SecondNumber"
 import { useState } from 'react' 
 
-
 function Calculator () {
 
   const [firstNum, setFirstNum] = useState(`0`)
