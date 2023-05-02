@@ -1,5 +1,8 @@
 import "./App.css";
 import { useState } from "react";
+import { FirstDigit } from './components/FirstDigit'
+import { Operator } from "./components/Operator";
+import { Result } from "./components/Result";
 
 // we will need 4 different states for the calculator to work
 // first: updates first number OUTPUT a
@@ -23,6 +26,8 @@ function App() {
   const [operator, setOperator] = useState("+");
   const [result, setResult] = useState(0);
   const [save, setSave] = useState(0)
+
+  // <FirstDigit />
 
 
   const handleResult = () => {
@@ -63,37 +68,10 @@ function App() {
 
   return (
     <div className="calculator">
+      <FirstDigit count1={count1} setCount1={setCount1} displaySaved ={displaySaved}/>
 
+      <Operator operator={operator} setOperator={setOperator}/>
 
-      <div className="panel">
-        <p placeholder="0">{count1}</p>
-        <button onClick={displaySaved} >Recall</button>
-        <div className="numbers">
-          <button onClick={() => { setCount1(parseInt(count1 + '1',10).toString())}}>1</button>
-          <button onClick={() => { setCount1(parseInt(count1 + '2',10).toString())}}>2</button>
-          <button onClick={() => { setCount1(parseInt(count1 + '3',10).toString())}}>3</button>
-          <button onClick={() => { setCount1(parseInt(count1 + '4',10).toString())}}>4</button>
-          <button onClick={() => { setCount1(parseInt(count1 + '5',10).toString())}}>5</button>
-          <button onClick={() => { setCount1(parseInt(count1 + '6',10).toString())}}>6</button>
-          <button onClick={() => { setCount1(parseInt(count1 + '7',10).toString())}}>7</button>
-          <button onClick={() => { setCount1(parseInt(count1 + '8',10).toString())}}>8</button>
-          <button onClick={() => { setCount1(parseInt(count1 + '9',10).toString())}}>9</button>
-          <button onClick={() => { setCount1(parseInt(count1 + '0',10).toString())}}>0</button>
-          <button onClick={() => { setCount1('0' )}}>Clear</button>
-          <button onClick={() => { setCount1(parseInt(count1 + '.',10).toString())}}>.</button>
-        </div>
-      </div>
-
-      <div className="panel">
-        <p>{operator}</p>
-        
-        <div className="numbers">
-          <button onClick={() => setOperator("+")}>+</button>
-          <button onClick={() => setOperator("-")}>-</button>
-          <button onClick={() => setOperator("*")}>*</button>
-          <button onClick={() => setOperator("÷")}>÷</button>
-        </div>
-      </div>
 
       <div className="panel">
         <p>{count2}</p>
@@ -112,6 +90,9 @@ function App() {
           <button onClick={() => { setCount2('0' )}}>Clear</button>
         </div>
       </div>
+
+      <Result result={result} handleResult={handleResult} saveResult={saveResult}/>
+{/* 
       <div className="panel answer">
         <p>{result}</p>
 
@@ -119,7 +100,8 @@ function App() {
           <button onClick={handleResult}>=</button>
           <button onClick={saveResult}>&#9829;</button>
         </div>
-      </div>
+      </div> */}
+
     </div>
   );
 }
