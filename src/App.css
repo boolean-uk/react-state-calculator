@@ -16,26 +16,6 @@ html {
   gap:10px;
 }
 
-.panel {
-  display: grid;
-  grid-template-rows: 50px 1fr;
-  gap:10px;
-}
-
-.panel p {
-  border-bottom: 2px solid tomato;
-  font-size:2rem;
-  min-width: 170px;
-}
-
-.numbers {
-  display: grid;
-  grid-template-columns: repeat(3, 55px);
-  grid-auto-rows: 40px;
-  gap:4px;
-  justify-content: center;
-}
-
 .answer {
   color:tomato;
   font-style: italic;
