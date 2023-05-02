@@ -33,20 +33,23 @@ function App() {
 
   const handleResult = () => {
     let newResult = 0;
+    let newCount1 = parseFloat(count1)
+    let newCount2 = parseFloat(count2)
     if (operator === "+") {
-      newResult = parseInt(count1) + parseInt(count2);
-      setResult(newResult);
+      newResult = (newCount1) + (newCount2);
+      console.log(newResult);
+      setResult((newResult));
     }
     if (operator === "-") {
-      newResult = parseInt(count1) - parseInt(count2);
+      newResult = (newCount1) - (newCount2);
       setResult(newResult);
     }
     if (operator === "*") {
-      newResult = parseInt(count1) * parseInt(count2);
+      newResult = (newCount1) * (newCount2);
       setResult(newResult);
     }
     if (operator === "÷") {
-      newResult = parseInt(count1) / parseInt(count2);
+      newResult = (newCount1) / (newCount2);
       setResult(newResult);
     }
 
@@ -77,15 +80,7 @@ function App() {
 
 
       <Result result={result} handleResult={handleResult} saveResult={saveResult}/>
-{/* 
-      <div className="panel answer">
-        <p>{result}</p>
 
-        <div>
-          <button onClick={handleResult}>=</button>
-          <button onClick={saveResult}>&#9829;</button>
-        </div>
-      </div> */}
 
     </div>
   );

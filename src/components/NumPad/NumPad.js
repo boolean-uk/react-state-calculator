@@ -1,24 +1,47 @@
 import { useState } from "react";
 
 function NumPad (props) {
+
+    function numDisplay (event) {
+        const value = event.target.innerText
+        if (props.count === 0) {
+            props.setCount(value)
+          } else {
+            props.setCount(props.count + value)
+          }
+          
+      }
+
+      function clearDisplay () {
+        props.setCount(0)
+      }
+
+      function decimals() {
+        if (!props.count.includes('.')) {
+          props.setCount(props.count + '.')
+        }        
+      }
+    
     
     return (
         <div className="panel">
-        <p placeholder="0">{props.count}</p>
+        <p>{props.count}</p>
         <button onClick={props.displaySaved} >Recall</button>
         <div className="numbers">
-          <button onClick={() => { props.setCount(parseInt(props.count + '1',10).toString())}}>1</button>
-          <button onClick={() => { props.setCount(parseInt(props.count + '2',10).toString())}}>2</button>
-          <button onClick={() => { props.setCount(parseInt(props.count + '3',10).toString())}}>3</button>
-          <button onClick={() => { props.setCount(parseInt(props.count + '4',10).toString())}}>4</button>
-          <button onClick={() => { props.setCount(parseInt(props.count + '5',10).toString())}}>5</button>
-          <button onClick={() => { props.setCount(parseInt(props.count + '6',10).toString())}}>6</button>
-          <button onClick={() => { props.setCount(parseInt(props.count + '7',10).toString())}}>7</button>
-          <button onClick={() => { props.setCount(parseInt(props.count + '8',10).toString())}}>8</button>
-          <button onClick={() => { props.setCount(parseInt(props.count + '9',10).toString())}}>9</button>
-          <button onClick={() => { props.setCount(parseInt(props.count + '0',10).toString())}}>0</button>
-          <button onClick={() => { props.setCount('0' )}}>Clear</button>
-          <button onClick={() => { props.setCount(parseInt(props.count + '.',10).toString())}}>.</button>
+          <button onClick={numDisplay}>1</button>
+          <button onClick={numDisplay}>2</button>
+          <button onClick={numDisplay}>3</button>
+          <button onClick={numDisplay}>4</button>
+          <button onClick={numDisplay}>5</button>
+          <button onClick={numDisplay}>6</button>
+          <button onClick={numDisplay}>7</button>
+          <button onClick={numDisplay}>8</button>
+          <button onClick={numDisplay}>9</button>
+          <button onClick={numDisplay}>0</button>
+          <button onClick={clearDisplay}>Clear</button>
+          <button onClick={decimals}>.</button>
+
+  
         </div>
       </div>
     )
