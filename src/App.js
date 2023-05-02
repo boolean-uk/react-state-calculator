@@ -17,11 +17,8 @@ function App() {
       <OperatorPanel state={op} setState={setOp}></OperatorPanel>
       <NumberPanel state={num2} setState={setNum2}></NumberPanel>
       <AnswerPanel state={answer} setState={setAnswer} answerArray={answerArray}></AnswerPanel>
-      
-
     </div>
   )
 }
-
 
 export default App

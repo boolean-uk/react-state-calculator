@@ -23,6 +23,7 @@ function AnswerPanel(props) {
         props.setState (Number(num1) / Number(num2))
         break
       default:
+        Error.log('Invalid Operator')
         break
     }
   }
@@ -30,8 +31,5 @@ function AnswerPanel(props) {
     <Panel numButtonValues={equalButtonValue} state={props.state} onClickFunction={handleOnClick}></Panel>
   )
 }
-
-
-
 
 export default AnswerPanel
