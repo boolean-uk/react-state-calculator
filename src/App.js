@@ -67,7 +67,7 @@ function App() {
 
       <div className="panel">
         <p placeholder="0">{count1}</p>
-        <button onClick={displaySaved} >&#9829;</button>
+        <button onClick={displaySaved} >Recall</button>
         <div className="numbers">
           <button onClick={() => { setCount1(parseInt(count1 + '1',10).toString())}}>1</button>
           <button onClick={() => { setCount1(parseInt(count1 + '2',10).toString())}}>2</button>
@@ -80,6 +80,7 @@ function App() {
           <button onClick={() => { setCount1(parseInt(count1 + '9',10).toString())}}>9</button>
           <button onClick={() => { setCount1(parseInt(count1 + '0',10).toString())}}>0</button>
           <button onClick={() => { setCount1('0' )}}>Clear</button>
+          <button onClick={() => { setCount1(parseInt(count1 + '.',10).toString())}}>.</button>
         </div>
       </div>
 
@@ -96,7 +97,7 @@ function App() {
 
       <div className="panel">
         <p>{count2}</p>
-        <button onClick={displaySavedTwo}>&#9829;</button>
+        <button onClick={displaySavedTwo}>Recall</button>
         <div className="numbers">
         <button onClick={() => { setCount2(parseInt(count2 + '1',10).toString())}}>1</button>
         <button onClick={() => { setCount2(parseInt(count2 + '2',10).toString())}}>2</button>
