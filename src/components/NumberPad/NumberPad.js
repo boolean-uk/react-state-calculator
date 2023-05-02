@@ -13,6 +13,11 @@ function NumberPad (props) {
             props.setNum(props.Num + value)
           }
       }
+
+      function recallSavedValue() {
+        // console.log(props.saveResult)
+        props.setNum(props.saveResult)
+      }
       
         return (
             <div className="panel">
@@ -41,6 +46,9 @@ function NumberPad (props) {
                <button
                onClick={handleClear}
                >Clear</button>
+               <button
+               onClick={(recallSavedValue)}
+               >Recall</button>
              </div>
            </div>
         )

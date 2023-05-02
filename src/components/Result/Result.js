@@ -17,6 +17,10 @@ function Result (props) {
       }
     }
 
+    function storeResult() {
+      props.setSaveResult(props.result)
+    }
+
     return (
 
         <div className="panel answer">
@@ -25,6 +29,9 @@ function Result (props) {
            <button
            onClick={updateResult}
            >=</button>
+           <button
+           onClick={storeResult}
+           >Store Result</button>
          </div>
        </div>
 
