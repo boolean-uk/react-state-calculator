@@ -74,24 +74,7 @@ function App() {
       <Operator operator={operator} setOperator={setOperator}/>
 
       <NumPad count={count2} setCount={setCount2} displaySaved ={displaySavedTwo}/>
-{/* 
-      <div className="panel">
-        <p>{count2}</p>
-        <button onClick={displaySavedTwo}>Recall</button>
-        <div className="numbers">
-        <button onClick={() => { setCount2(parseInt(count2 + '1',10).toString())}}>1</button>
-        <button onClick={() => { setCount2(parseInt(count2 + '2',10).toString())}}>2</button>
-        <button onClick={() => { setCount2(parseInt(count2 + '3',10).toString())}}>3</button>
-        <button onClick={() => { setCount2(parseInt(count2 + '4',10).toString())}}>4</button>
-        <button onClick={() => { setCount2(parseInt(count2 + '5',10).toString())}}>5</button>
-        <button onClick={() => { setCount2(parseInt(count2 + '6',10).toString())}}>6</button>
-        <button onClick={() => { setCount2(parseInt(count2 + '7',10).toString())}}>7</button>
-        <button onClick={() => { setCount2(parseInt(count2 + '8',10).toString())}}>8</button>
-        <button onClick={() => { setCount2(parseInt(count2 + '9',10).toString())}}>9</button>
-        <button onClick={() => { setCount2(parseInt(count2 + '0',10).toString())}}>0</button>
-          <button onClick={() => { setCount2('0' )}}>Clear</button>
-        </div>
-      </div> */}
+
 
       <Result result={result} handleResult={handleResult} saveResult={saveResult}/>
 {/* 
