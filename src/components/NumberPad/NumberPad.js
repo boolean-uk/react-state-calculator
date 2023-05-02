@@ -15,8 +15,13 @@ function NumberPad (props) {
       }
 
       function recallSavedValue() {
-        // console.log(props.saveResult)
         props.setNum(props.saveResult)
+      }
+
+      function decimalPoint() {
+        if (!props.Num.includes('.')) {
+          props.setNum(props.Num + '.')
+        }        
       }
       
         return (
@@ -46,6 +51,7 @@ function NumberPad (props) {
                <button
                onClick={handleClear}
                >Clear</button>
+               <button onClick={decimalPoint}>.</button>
                <button
                onClick={(recallSavedValue)}
                >Recall</button>
