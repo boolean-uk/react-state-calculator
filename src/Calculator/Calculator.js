@@ -1,46 +1,68 @@
 import { useState } from "react";
 
 function Calculator() {
-
   const [numbers, setNumbers] = useState("");
 
-//! Panel 1
+  //! Panel 1
   const handleClickOne = (nums) => {
     setNumbers(numbers + nums);
+    console.log(numbers);
   };
 
   const handleClearOne = () => {
     setNumbers("");
+  };
+
+  if (numbers[0] === ".") {
+    setNumbers("0" + numbers);
+  }
+  if ((numbers.match(/\./g) || []).length === 2) {
+    setNumbers(numbers.slice(0, -1));
   }
 
-//! Panel 2
- const [numbersTwo, setNumbersTwo] = useState("");
-  
- const handleClickTwo = (numsTwo) => {
+  //! Panel 2
+  const [numbersTwo, setNumbersTwo] = useState("");
+
+  const handleClickTwo = (numsTwo) => {
     setNumbersTwo(numbersTwo + numsTwo);
   };
 
   const handleClearTwo = () => {
     setNumbersTwo("");
-  }
+  };
 
+  if (numbersTwo[0] === ".") {
+    setNumbersTwo("0" + numbersTwo);
+  }
   //! Operations
   const [operation, setOperation] = useState("+");
-  
- const handleOperatorClick = (opt) => {
+
+  const handleOperatorClick = (opt) => {
     setOperation(opt);
   };
 
+  if ((numbersTwo.match(/\./g) || []).length === 2) {
+    setNumbersTwo(numbersTwo.slice(0, -1));
+  }
   //! Equals
   const [equation, setEquation] = useState("0");
   const handleEqualResult = () => {
-    let result = 0
+    let result = 0;
     if (operation === "+") {
-      result = (numbers + numbersTwo)
+      result = Number(numbers) + Number(numbersTwo);
+    }
+    if (operation === "-") {
+      result = Number(numbers) - Number(numbersTwo);
+    }
+    if (operation === "*") {
+      result = Number(numbers) * Number(numbersTwo);
+    }
+    if (operation === "/") {
+      result = Number(numbers) / Number(numbersTwo);
     }
     setEquation(result);
-  }
-  
+  };
+
   return (
     <div className="calculator">
       <div className="panel">
@@ -56,6 +78,7 @@ function Calculator() {
           <button onClick={() => handleClickOne("8")}>8</button>
           <button onClick={() => handleClickOne("9")}>9</button>
           <button onClick={() => handleClickOne("0")}>0</button>
+          <button onClick={() => handleClickOne(".")}>.</button>
           <button onClick={() => handleClearOne()}>Clear</button>
         </div>
       </div>
@@ -83,6 +106,7 @@ function Calculator() {
           <button onClick={() => handleClickTwo("8")}>8</button>
           <button onClick={() => handleClickTwo("9")}>9</button>
           <button onClick={() => handleClickTwo("0")}>0</button>
+          <button onClick={() => handleClickTwo(".")}>.</button>
           <button onClick={() => handleClearTwo("0")}>Clear</button>
         </div>
       </div>
