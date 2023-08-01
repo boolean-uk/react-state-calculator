@@ -126,7 +126,6 @@ function App() {
           <button onClick={() => handleNumberButtonClick2("9")}>9</button>
           <button onClick={() => handleNumberButtonClick2("0")}>0</button>
           <button onClick={handleClearButtonClick}>Clear</button>
-          <button onClick={handleStoreButtonClick}>Store</button>
         </div>
       </div>
 
