@@ -51,8 +51,8 @@ function App() {
     case "*":
       outcome = parseInt(start_val) * parseInt(second_val);
       break;
-    case "%":
-      outcome = parseInt(start_val) % parseInt(second_val);
+    case "÷":
+      outcome = parseInt(start_val) / parseInt(second_val);
       break;
   }
   console.log("Outcome:",outcome)
