@@ -21,7 +21,7 @@ You are required to implement a simplified calculator app.
 - When the user presses the equals button the answer display should be updated to show the result of the calculation.
 
 ## Tips
-- Start by modelling the state of the application
+- Start by modelling the state of the applicationd
  - What state will you need to keep track of?
  - What user interactions will modify that state and how?
 - Start with one or two functional buttons and only consider the add operation. When you have that working, make additional buttons functional.
