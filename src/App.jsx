@@ -4,24 +4,31 @@ import "./App.css";
 function App() {
   const [inputNum1, setInputNum1] = useState("0");
   const [operator, setOperator] = useState("+");
-  const [inputNum2, setInputNum2] = useState(0);
-  const [outputNum, setOutputNum] = useState(0);
+  const [inputNum2, setInputNum2] = useState("0");
+  const [outputNum, setOutputNum] = useState("0");
 
   function num1Click(event) {
     const value = event.target.innerText;
 
-    switch (value) {
-      case "Clear":
-        setInputNum1("0");
-        break;
-      default:
-        setInputNum1(inputNum1 + value);
+    if (value === "Clear") {
+      setInputNum1("0")
+    } else if (inputNum1 === "0") {
+      setInputNum1(value);
+    } else {
+      setInputNum1(inputNum1 + value);
     }
   }
 
   function num2Click(event) {
     const value = event.target.innerText;
-    setInputNum2(value);
+
+    if (value === "Clear") {
+      setInputNum2("0")
+    } else if (inputNum2 === "0") {
+      setInputNum2(value);
+    } else {
+      setInputNum2(inputNum2 + value);
+    }
   }
 
   function operatorClick(event) {
@@ -90,7 +97,7 @@ function App() {
           <button onClick={num2Click}>8</button>
           <button onClick={num2Click}>9</button>
           <button onClick={num2Click}>0</button>
-          <button>Clear</button>
+          <button onClick={num2Click}>Clear</button>
         </div>
       </div>
       <div className="panel answer">
