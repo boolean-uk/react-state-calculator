@@ -57,7 +57,7 @@ function App() {
       case "*":
           result = num1 * num2;
           break;
-      case "÷":  // Note: This represents division (not a regular slash character).
+      case "÷":  
           if (num2 !== 0) {
               result = num1 / num2;
               break;
