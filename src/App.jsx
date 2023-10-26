@@ -2,12 +2,8 @@ import { useState } from "react"
 import "./App.css"
 
 
-//TODO: const displaySelectedNumber
 
 
-// extensions
-//TODO: const appendNumbers
-//TODO: If the user presses a number while '0' is displayed, the number should replace '0' on the display. Subsequent numbers, including 0, are appended on to the display as usual
 //TODO: store
 //TODO: decimals
 
@@ -18,6 +14,7 @@ const [result, setResult] = useState(0)
 const [numberLeft, setNumberLeft] = useState(0)
 const [numberRight, setNumberRight] = useState(0)
 const [operator, setOperator] = useState('')
+const [storedResult, setStoredResult] = useState(0)
 
 
 const handleDisplayOnClickLeft = () => {
@@ -70,6 +67,12 @@ const calculate = () => {
 
 }
 
+const store = () => setStoredResult(result)
+const recallNumToLeft  = () => setNumberLeft(storedResult)
+const recallNumToRight  = () => setNumberRight(storedResult)
+
+
+
   return (
     <div className="calculator">
       <div className="panel">
@@ -86,6 +89,7 @@ const calculate = () => {
           <button onClick={handleDisplayOnClickLeft}>9</button>
           <button onClick={handleDisplayOnClickLeft}>0</button>
           <button onClick={() => {setNumberLeft(0)}}>Clear</button>
+          <button onClick={recallNumToLeft}>Recall</button>
         </div>
       </div>
 
@@ -113,12 +117,14 @@ const calculate = () => {
           <button onClick={handleDisplayOnClickRight}>9</button>
           <button onClick={handleDisplayOnClickRight}>0</button>
           <button onClick={() => {setNumberRight(0)}}>Clear</button>
+          <button onClick={recallNumToRight}>Recall</button>
         </div>
       </div>
       <div className="panel answer">
         <p>{result}</p>
         <div>
           <button onClick={calculate}>=</button>
+          <button onClick={store}>Store</button>
         </div>
       </div>
     </div>
