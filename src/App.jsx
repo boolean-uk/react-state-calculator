@@ -7,6 +7,8 @@ function App() {
   const [numTwo, setNumTwo] = useState(0)
   const [operator, setOperator] = useState('')
   const [answer, setAnswer] = useState('')
+  const [store, setStore] = useState('')
+  const [recall, setRecall] = useState('')
 
   function handleNumClick1(e) {
     if (numOne === 0) {
@@ -49,6 +51,23 @@ function App() {
     }
   }
 
+  function storeAnswer() {
+    setStore(answer)
+    setNumOne(0)
+    setNumTwo(0)
+    setOperator('')
+    setAnswer('')
+  }
+  console.log(store)
+
+  function recallAnswer() {
+    setRecall(store)
+    setNumOne(store)
+    setNumTwo(0)
+    setOperator('')
+    setAnswer('')
+  }
+
   return (
     <div className="calculator">
       <div className="panel">
@@ -65,6 +84,7 @@ function App() {
           <button onClick={handleNumClick1}value='9'>9</button>
           <button onClick={handleNumClick1}value='0'>0</button>
           <button onClick={handleClearClick}>Clear</button>
+          <button onClick={recallAnswer}>Recall</button>
         </div>
       </div>
 
@@ -92,12 +112,14 @@ function App() {
           <button onClick={handleNumClick2}value='9'>9</button>
           <button onClick={handleNumClick2}value='0'>0</button>
           <button onClick={handleClearClick}>Clear</button>
+          <button onClick={recallAnswer}>Recall</button>
         </div>
       </div>
       <div className="panel answer">
         <p>{answer}</p>
         <div>
           <button onClick={handleEqualsClick}>=</button>
+          <button onClick={storeAnswer}>Store</button>
         </div>
       </div>
     </div>
