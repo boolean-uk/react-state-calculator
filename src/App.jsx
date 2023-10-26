@@ -5,7 +5,7 @@ import "./App.css"
 function App() {
 const [firstNum, setFirstNum] = useState('0')
 const [operation, setOperation] = useState('+')
-// const [secondNum, setSecondNum] = useState(0)
+const [secondNum, setSecondNum] = useState('0')
 // const [result, setResult] = useState(0)
 
 function firstNumFull(e) {
@@ -17,48 +17,57 @@ function firstNumFull(e) {
   }
 }
 
+function secondNumFull(e) {
+  if (secondNum === '0') {
+    setSecondNum(e.target.innerText)
+  }
+  else {
+    setSecondNum(secondNum + e.target.innerText)
+  }
+}
+
   return (
     <div className="calculator">
       <div className="panel">
         <p>{firstNum}</p>
-        <div className="numbers" onClick={e => firstNumFull(e)}>
-          <button>1</button>
-          <button>2</button>
-          <button>3</button>
-          <button>4</button>
-          <button>5</button>
-          <button>6</button>
-          <button>7</button>
-          <button>8</button>
-          <button>9</button>
-          <button>0</button>
+        <div className="numbers">
+          <button onClick={e => firstNumFull(e)}>1</button>
+          <button onClick={e => firstNumFull(e)}>2</button>
+          <button onClick={e => firstNumFull(e)}>3</button>
+          <button onClick={e => firstNumFull(e)}>4</button>
+          <button onClick={e => firstNumFull(e)}>5</button>
+          <button onClick={e => firstNumFull(e)}>6</button>
+          <button onClick={e => firstNumFull(e)}>7</button>
+          <button onClick={e => firstNumFull(e)}>8</button>
+          <button onClick={e => firstNumFull(e)}>9</button>
+          <button onClick={e => firstNumFull(e)}>0</button>
           <button>Clear</button>
         </div>
       </div>
 
       <div className="panel">
         <p>{operation}</p>
-        <div className="numbers" onClick={e => setOperation(e.target.innerText)}>
-          <button>+</button>
-          <button>-</button>
-          <button>*</button>
-          <button>÷</button>
+        <div className="numbers">
+          <button onClick={e => setOperation(e.target.innerText)}>+</button>
+          <button onClick={e => setOperation(e.target.innerText)}>-</button>
+          <button onClick={e => setOperation(e.target.innerText)}>*</button>
+          <button onClick={e => setOperation(e.target.innerText)}>÷</button>
         </div>
       </div>
 
       <div className="panel">
-        <p>0</p>
+        <p>{secondNum}</p>
         <div className="numbers">
-          <button>1</button>
-          <button>2</button>
-          <button>3</button>
-          <button>4</button>
-          <button>5</button>
-          <button>6</button>
-          <button>7</button>
-          <button>8</button>
-          <button>9</button>
-          <button>0</button>
+          <button onClick={e => secondNumFull(e)}>1</button>
+          <button onClick={e => secondNumFull(e)}>2</button>
+          <button onClick={e => secondNumFull(e)}>3</button>
+          <button onClick={e => secondNumFull(e)}>4</button>
+          <button onClick={e => secondNumFull(e)}>5</button>
+          <button onClick={e => secondNumFull(e)}>6</button>
+          <button onClick={e => secondNumFull(e)}>7</button>
+          <button onClick={e => secondNumFull(e)}>8</button>
+          <button onClick={e => secondNumFull(e)}>9</button>
+          <button onClick={e => secondNumFull(e)}>0</button>
           <button>Clear</button>
         </div>
       </div>
