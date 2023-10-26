@@ -2,37 +2,18 @@ import { useState } from "react"
 import "./App.css"
 
 
-
-
-//TODO: store
-//TODO: decimals
-
-
 function App() {
 
+// state-related consts:
 const [result, setResult] = useState(0)
-const [numberLeft, setNumberLeft] = useState(0)
-const [numberRight, setNumberRight] = useState(0)
+const [numberLeft, setNumberLeft] = useState('0')
+const [numberRight, setNumberRight] = useState('0')
 const [operator, setOperator] = useState('')
 const [storedResult, setStoredResult] = useState(0)
 
+//event-related consts:
 
-const handleDisplayOnClickLeft = () => {
-  if(numberLeft === 0 || numberLeft === '0') {
-    setNumberLeft(event.target.innerText)  
-   } else {
-    setNumberLeft(numberLeft + event.target.innerText)
-  }
-} 
-
-const handleDisplayOnClickRight = () => {
-  if(numberRight === 0 || numberRight === '0') {
-    setNumberRight(event.target.innerText)  
-   } else {
-    setNumberRight(numberRight + event.target.innerText)
-  }
-} 
-
+//core: render the selected numbers or operators:
 const displayAdd = () => { 
   setOperator('+')
 }
@@ -46,10 +27,11 @@ const displayDivide = () => {
   setOperator('/')
 }
 
-const add = () => {setResult(parseInt(numberLeft) + parseInt(numberRight))}
-const subtract = () => {setResult(parseInt(numberLeft) - parseInt(numberRight))}
-const multiply = () => {setResult(parseInt(numberLeft) * parseInt(numberRight))}
-const divide = () => {setResult(parseInt(numberLeft) / parseInt(numberRight))}
+// core: do the calculation and render the result
+const add = () => {setResult(Number(numberLeft) + Number(numberRight))}
+const subtract = () => {setResult(Number(numberLeft) - Number(numberRight))}
+const multiply = () => {setResult(Number(numberLeft) * Number(numberRight))}
+const divide = () => {setResult(Number(numberLeft) / Number(numberRight))}
 
 const calculate = () => {
   if (operator === "+") {
@@ -67,12 +49,45 @@ const calculate = () => {
 
 }
 
+//extension 1: append numbers
+const handleDisplayOnClickLeft = () => {
+  if(numberLeft === 0 || numberLeft === '0') {
+    setNumberLeft(event.target.innerText)  
+   } else {
+    setNumberLeft(numberLeft + event.target.innerText)
+  }
+} 
+
+const handleDisplayOnClickRight = () => {
+  if(numberRight === 0 || numberRight === '0') {
+    setNumberRight(event.target.innerText)  
+   } else {
+    setNumberRight(numberRight + event.target.innerText)
+  }
+} 
+
+// extension 2: store and recall results
 const store = () => setStoredResult(result)
 const recallNumToLeft  = () => setNumberLeft(storedResult)
 const recallNumToRight  = () => setNumberRight(storedResult)
 
+// extension 3: adding and using decimal separators
 
+const addDecimalSeparatorLeft = () => {
+  if (numberLeft.includes('.')){
+    return
+  }
+    setNumberLeft(numberLeft + '.')
+} 
 
+const addDecimalSeparatorRight = () => {
+  if (numberRight.includes('.')){
+    return
+  }
+    setNumberRight(numberRight + '.')
+} 
+
+//html: core and extension
   return (
     <div className="calculator">
       <div className="panel">
@@ -88,7 +103,8 @@ const recallNumToRight  = () => setNumberRight(storedResult)
           <button onClick={handleDisplayOnClickLeft}>8</button>
           <button onClick={handleDisplayOnClickLeft}>9</button>
           <button onClick={handleDisplayOnClickLeft}>0</button>
-          <button onClick={() => {setNumberLeft(0)}}>Clear</button>
+          <button onClick={addDecimalSeparatorLeft}>.</button>
+          <button onClick={() => {setNumberLeft('0')}}>Clear</button>
           <button onClick={recallNumToLeft}>Recall</button>
         </div>
       </div>
@@ -116,7 +132,8 @@ const recallNumToRight  = () => setNumberRight(storedResult)
           <button onClick={handleDisplayOnClickRight}>8</button>
           <button onClick={handleDisplayOnClickRight}>9</button>
           <button onClick={handleDisplayOnClickRight}>0</button>
-          <button onClick={() => {setNumberRight(0)}}>Clear</button>
+          <button onClick={addDecimalSeparatorRight}>.</button>
+          <button onClick={() => {setNumberRight('0')}}>Clear</button>
           <button onClick={recallNumToRight}>Recall</button>
         </div>
       </div>
