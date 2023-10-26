@@ -2,11 +2,6 @@ import { useState } from "react"
 import "./App.css"
 
 
-//TODO: add if() to have result = 0 if clear is pressed
-//TODO: const add
-//TODO: const subtract
-//TODO: const multiply
-//TODO: const divide
 //TODO: const displaySelectedNumber
 
 
@@ -28,6 +23,7 @@ const [numberRight, setNumberRight] = useState(0)
 const handleDisplayOnClickRight = () => setNumberRight(event.target.innerText) 
 
 const [operator, setOperator] = useState('')
+
 
 const displayAdd = () => { 
   setOperator('+')
@@ -78,7 +74,7 @@ const calculate = () => {
           <button onClick={handleDisplayOnClickLeft}>8</button>
           <button onClick={handleDisplayOnClickLeft}>9</button>
           <button onClick={handleDisplayOnClickLeft}>0</button>
-          <button onClick={handleDisplayOnClickLeft}>Clear</button>
+          <button onClick={() => {setNumberLeft(0)}}>Clear</button>
         </div>
       </div>
 
@@ -105,7 +101,7 @@ const calculate = () => {
           <button onClick={handleDisplayOnClickRight}>8</button>
           <button onClick={handleDisplayOnClickRight}>9</button>
           <button onClick={handleDisplayOnClickRight}>0</button>
-          <button>Clear</button>
+          <button onClick={() => {setNumberRight(0)}}>Clear</button>
         </div>
       </div>
       <div className="panel answer">
