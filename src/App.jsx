@@ -58,13 +58,13 @@ function App() {
           result = num1 * num2;
           break;
       case "÷":  
-          if (num2 !== 0) {
+          if (num2 !== "0") {
+            console.log("I'm dividing by", num2)
               result = num1 / num2;
               break;
           } else {
-              alert("Division by zero is not allowed")
-              result = false;
-              break;
+              alert("Division by 0 is not allowed, go to math jail.\nDo not pass 'Start'. Do not collect $200.")
+              return
           }
       default:
           return "Invalid operator";
