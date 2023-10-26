@@ -29,7 +29,7 @@ function App() {
 
   const handleOperation = (operator) => setOperation(operator)
 
-  const calc = () => "lol"
+  const calc = () => calcResult(parseInt(num1) operator parseInt(num2))
 
   const handleEquals = () => {
       setNum2(displayValue);
@@ -45,7 +45,7 @@ function App() {
       <div className="panel">
         <p>{num1}</p>
         <div className="numbers">
-          {["1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "Clear"].map((value) => (
+          {["1", "2", "3", "4", "5", "6", "7", "8", "9", "0", ".", "Clear"].map((value) => (
             <button key={value} onClick={() => constructNum1(value)}>
               {value}
             </button>
@@ -67,20 +67,18 @@ function App() {
       <div className="panel">
         <p>{num2}</p>
         <div className="numbers">
-          {["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"].map((value) => (
+          {["1", "2", "3", "4", "5", "6", "7", "8", "9", "0", ".",  "Clear"].map((value) => (
             <button key={value} onClick={() => constructNum2(value)}>
               {value}
             </button>
           ))}
-          <button key={"Clear"} onClick={() => clearNum2()}>Clear
-          </button>
         </div>
       </div>
 
       <div className="panel answer">
-        <p>{displayValue}</p>
+        <p>{result}</p>
         <div>
-          <button onClick={handleEquals}>=</button>
+          <button onClick={() => calc()}>=</button>
         </div>
       </div>
     </div>
