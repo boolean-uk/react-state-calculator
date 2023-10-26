@@ -55,7 +55,9 @@ function App() {
               <button onClick={handleNumber}>8</button>
               <button onClick={handleNumber}>9</button>
               <button onClick={handleNumber}>0</button>
+              <button onClick={handleNumber}>.</button>
               <button onClick={() => setNumber('0')}>Clear</button>
+              <button>Recall</button>
             </div>
           </div>
 
@@ -82,13 +84,16 @@ function App() {
               <button value={'8'} onClick={handleNumberTwo}>8</button>
               <button value={'9'} onClick={handleNumberTwo}>9</button>
               <button value={'0'} onClick={handleNumberTwo}>0</button>
+              <button value={'0'} onClick={handleNumberTwo}>.</button>
               <button onClick={() => setNumberTwo('0')}>Clear</button>
+              <button>Recall</button>
             </div>
           </div>
           <div className="panel answer">
             <p>{total}</p>
             <div>
               <button onClick={handleTotal}>=</button>
+              <button>Store</button>
             </div>
           </div>
         </div>
