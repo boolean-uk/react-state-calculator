@@ -9,6 +9,7 @@ function App() {
   const [answer, setAnswer] = useState('')
   const [store, setStore] = useState('')
   const [recall, setRecall] = useState('')
+  const [decimal, setDecimal] = useState('')
 
   function handleNumClick1(e) {
     if (numOne === 0) {
@@ -61,11 +62,22 @@ function App() {
   console.log(store)
 
   function recallAnswer() {
+    recall === '' ? setNumOne(store) : setNumOne(recall)
     setRecall(store)
     setNumOne(store)
     setNumTwo(0)
     setOperator('')
     setAnswer('')
+  }
+
+  function handleDecimalClick() {
+    if (numOne === 0) {
+      setNumOne('0.')
+    } else if (numOne.includes('.')) {
+      setNumOne(numOne)
+    } else {
+      setNumOne(numOne + '.')
+    }
   }
 
   return (
@@ -85,6 +97,7 @@ function App() {
           <button onClick={handleNumClick1}value='0'>0</button>
           <button onClick={handleClearClick}>Clear</button>
           <button onClick={recallAnswer}>Recall</button>
+          <button onClick={handleDecimalClick}>.</button>
         </div>
       </div>
 
@@ -113,6 +126,7 @@ function App() {
           <button onClick={handleNumClick2}value='0'>0</button>
           <button onClick={handleClearClick}>Clear</button>
           <button onClick={recallAnswer}>Recall</button>
+          <button onClick={handleDecimalClick}>.</button>
         </div>
       </div>
       <div className="panel answer">
