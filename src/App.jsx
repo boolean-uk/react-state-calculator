@@ -1,47 +1,51 @@
-import { useState } from "react"
-import "./App.css"
-//Saving the inputs
-//get input
-//calculate stuff
-//Input number 1 
-//Operators
-//Inputer number 2
-//Output number
-//Use states
+import { useState } from "react";
+import "./App.css";
+
 function App() {
-  const [inputNum1, setInputNum1] = useState(0)
-  const [operator, setOperator] = useState("+")
-  const [inputNum2, setInputNum2] = useState(0)
-  const [outputNum, setOutputNum] = useState(0)
+  const [inputNum1, setInputNum1] = useState("0");
+  const [operator, setOperator] = useState("+");
+  const [inputNum2, setInputNum2] = useState(0);
+  const [outputNum, setOutputNum] = useState(0);
 
   function num1Click(event) {
-    setInputNum1(event.target.innerText)
+    const value = event.target.innerText;
+
+    switch (value) {
+      case "Clear":
+        setInputNum1("0");
+        break;
+      default:
+        setInputNum1(inputNum1 + value);
+    }
   }
-  function num2Click(event){
-    setInputNum2(event.target.innerText)
+
+  function num2Click(event) {
+    const value = event.target.innerText;
+    setInputNum2(value);
   }
+
   function operatorClick(event) {
-    setOperator(event.target.innerText)
+    setOperator(event.target.innerText);
   }
-  function calculate(){
-    switch(operator){
+
+  function calculate() {
+    switch (operator) {
       case "+":
-        setOutputNum(Number(inputNum1)+ Number(inputNum2))
+        setOutputNum(Number(inputNum1) + Number(inputNum2));
         break;
       case "-":
-        setOutputNum(Number(inputNum1)- Number(inputNum2))
+        setOutputNum(Number(inputNum1) - Number(inputNum2));
         break;
       case "*":
-        setOutputNum(Number(inputNum1)* Number(inputNum2))
+        setOutputNum(Number(inputNum1) * Number(inputNum2));
         break;
       case "÷":
-        setOutputNum(Number(inputNum1)/Number(inputNum2))
+        setOutputNum(Number(inputNum1) / Number(inputNum2));
         break;
       default:
         setOutputNum(0);
         break;
-   }
-
+    }
   }
 
   return (
@@ -59,7 +63,7 @@ function App() {
           <button onClick={num1Click}>8</button>
           <button onClick={num1Click}>9</button>
           <button onClick={num1Click}>0</button>
-          <button>Clear</button>
+          <button onClick={num1Click}>Clear</button>
         </div>
       </div>
 
@@ -72,7 +76,6 @@ function App() {
           <button onClick={operatorClick}>÷</button>
         </div>
       </div>
-
 
       <div className="panel">
         <p>{inputNum2}</p>
@@ -97,7 +100,7 @@ function App() {
         </div>
       </div>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
