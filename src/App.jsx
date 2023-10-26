@@ -6,7 +6,7 @@ function App() {
   const [operator, setOperator] = useState("+");
   const [inputNum2, setInputNum2] = useState("0");
   const [outputNum, setOutputNum] = useState("0");
-
+  const [storedNum, setStoredNum] = useState("0")
   function num1Click(event) {
     const value = event.target.innerText;
 
@@ -53,7 +53,19 @@ function App() {
         setOutputNum(0);
         break;
     }
+
   }
+  function recallNum1(){
+    if (storedNum !== 0){
+      setInputNum1(storedNum.toString());
+    }
+  }
+  function recallNum2(){
+    if (storedNum !== 0){
+      setInputNum2(storedNum.toString());
+    }
+  }
+
 
   return (
     <div className="calculator">
@@ -71,6 +83,9 @@ function App() {
           <button onClick={num1Click}>9</button>
           <button onClick={num1Click}>0</button>
           <button onClick={num1Click}>Clear</button>
+        </div>
+        <div>
+          <button onClick={recallNum1}>Recall</button>
         </div>
       </div>
 
@@ -99,11 +114,18 @@ function App() {
           <button onClick={num2Click}>0</button>
           <button onClick={num2Click}>Clear</button>
         </div>
+        <div>
+          <button onClick={recallNum2}>Recall</button>
+        </div>
       </div>
       <div className="panel answer">
         <p>{outputNum}</p>
         <div>
           <button onClick={calculate}>=</button>
+        </div>
+        <div>
+          <button onClick={() => setStoredNum(outputNum)} >Store</button>
+    
         </div>
       </div>
     </div>
