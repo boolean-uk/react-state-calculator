@@ -42,14 +42,26 @@ const displayDivide = () => {
   setOperator('/')
 }
 
-// const add = () => {setResult(parseInt(numberLeft) + parseInt(numberRight))}
-// const subtract = () => {setResult(parseInt(numberLeft) - parseInt(numberRight))}
-// const multiply = () => {setResult(parseInt(numberLeft) * parseInt(numberRight))}
-// const divide = () => {setResult(parseInt(numberLeft) / parseInt(numberRight))}
+const add = () => {setResult(parseInt(numberLeft) + parseInt(numberRight))}
+const subtract = () => {setResult(parseInt(numberLeft) - parseInt(numberRight))}
+const multiply = () => {setResult(parseInt(numberLeft) * parseInt(numberRight))}
+const divide = () => {setResult(parseInt(numberLeft) / parseInt(numberRight))}
 
-// const calculate = () => {
-//   if
-// }
+const calculate = () => {
+  if (operator === "+") {
+    add()
+  }
+  if (operator === "-") {
+    subtract()
+  }
+  if (operator === "*") {
+    multiply()
+  }
+  if (operator === "/") {
+    divide()
+  }
+
+}
 
   return (
     <div className="calculator">
@@ -99,7 +111,7 @@ const displayDivide = () => {
       <div className="panel answer">
         <p>{result}</p>
         <div>
-          <button>=</button>
+          <button onClick={calculate}>=</button>
         </div>
       </div>
     </div>
