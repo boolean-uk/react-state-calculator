@@ -107,15 +107,19 @@ function App() {
             </button>
           ))}
           <button onClick={handleClearClick}>Clear</button>
+          <button onClick={handleClearClick}>Recall</button>
         </div>
       </div>
       <div className="panel answer">
         <p>0</p>
         <div>
           <button onClick={handleEqualsClick}>=</button>
+          <button onClick={handleClearClick}>Store</button>
         </div>
       </div>
+
     </div>
+    
   )
 }
 
