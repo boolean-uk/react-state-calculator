@@ -3,26 +3,25 @@ import { useState } from "react"
 
 function App() {
 
-  const [numOne, setNumOne] = useState(0)
-  const [numTwo, setNumTwo] = useState(0)
+  const [numOne, setNumOne] = useState('0')
+  const [numTwo, setNumTwo] = useState('0')
   const [operator, setOperator] = useState('')
   const [answer, setAnswer] = useState('')
   const [store, setStore] = useState('')
   const [recall, setRecall] = useState('')
-  const [decimal, setDecimal] = useState('')
 
   function handleNumClick1(e) {
-    if (numOne === 0) {
+    if (numOne === '0') {
       setNumOne(e.target.value)
-    } else if (!numOne.includes(0)) {
+    } else if (!numOne.includes('0')) {
     setNumOne(numOne + e.target.value)
     }
   }
   
   function handleNumClick2(e) {
-    if (numTwo === 0) {
+    if (numTwo === '0') {
       setNumTwo(e.target.value)
-    } else if (!numTwo.includes(0)) {
+    } else if (!numTwo.includes('0')) {
     setNumTwo(numTwo + e.target.value)
     }
   }
@@ -32,8 +31,8 @@ function App() {
   }
 
   function handleClearClick() {
-    setNumOne(0)
-    setNumTwo(0)
+    setNumOne('0')
+    setNumTwo('0')
     setOperator('')
     setAnswer('')
   }
@@ -54,29 +53,36 @@ function App() {
 
   function storeAnswer() {
     setStore(answer)
-    setNumOne(0)
-    setNumTwo(0)
+    setNumOne('0')
+    setNumTwo('0')
     setOperator('')
     setAnswer('')
   }
-  console.log(store)
 
   function recallAnswer() {
     recall === '' ? setNumOne(store) : setNumOne(recall)
     setRecall(store)
     setNumOne(store)
-    setNumTwo(0)
+    setNumTwo('0')
     setOperator('')
     setAnswer('')
   }
 
-  function handleDecimalClick() {
-    if (numOne === 0) {
-      setNumOne('0.')
-    } else if (numOne.includes('.')) {
+  function handleDecimalClick1() {
+    let decimal = '.'
+    if (!numOne.includes(decimal)) {
+      setNumOne(numOne + decimal)
+    } else if (numOne.includes(decimal)) {
       setNumOne(numOne)
-    } else {
-      setNumOne(numOne + '.')
+    }
+  }
+
+  function handleDecimalClick2() {
+    let decimal = '.'
+    if (!numTwo.includes(decimal)) {
+      setNumTwo(numTwo + decimal)
+    } else if (numTwo.includes(decimal)) {
+      setNumTwo(numTwo)
     }
   }
 
@@ -97,7 +103,7 @@ function App() {
           <button onClick={handleNumClick1}value='0'>0</button>
           <button onClick={handleClearClick}>Clear</button>
           <button onClick={recallAnswer}>Recall</button>
-          <button onClick={handleDecimalClick}>.</button>
+          <button onClick={handleDecimalClick1}>.</button>
         </div>
       </div>
 
@@ -126,7 +132,7 @@ function App() {
           <button onClick={handleNumClick2}value='0'>0</button>
           <button onClick={handleClearClick}>Clear</button>
           <button onClick={recallAnswer}>Recall</button>
-          <button onClick={handleDecimalClick}>.</button>
+          <button onClick={handleDecimalClick2}>.</button>
         </div>
       </div>
       <div className="panel answer">
