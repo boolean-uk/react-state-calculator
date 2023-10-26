@@ -1,5 +1,12 @@
 import "./App.css"
-
+//Saving the inputs
+//get input
+//calculate stuff
+//Input number 1 
+//Operators
+//Inputer number 2
+//Output number
+//Use states
 function App() {
 
   return (
