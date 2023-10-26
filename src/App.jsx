@@ -1,9 +1,6 @@
 import "./App.css"
 import { useState } from "react"
 
-
-let clear = true
-
 function App() {
 
   const [number, setNumber] = useState('0')
@@ -12,92 +9,90 @@ function App() {
   const [total, setTotal] = useState('0')
 
   const handleNumber = (event) => {
-    if (clear === true) {
-      setNumber(event.target.value)
-      clear = false
-    } else if (clear === false) {
-      setNumber(number + event.target.value)
+    if (number === '0') {
+      setNumber(event.target.innerText)
+    } else {
+      setNumber(number + event.target.innerText)
     }
-    console.log(clear)
   }
 
-  const handleOperator = (event) => setOperator(event.target.value)
+  const handleOperator = (event) => setOperator(event.target.innerText)
 
   const handleNumberTwo = (event) => {
-    if (clear === true) {
-      setNumberTwo(event.target.value)
-      clear = false
-    } else if (clear === false) {
-      setNumberTwo(numberTwo + event.target.value)
+    if (numberTwo === '0') {
+      setNumberTwo(event.target.innerText)
+    } else {
+      setNumberTwo(numberTwo + event.target.innerText)
     }
   }
 
-  const numberClear = () => {
-    setNumber('0')
-    clear = true
+  const handleTotal = () => {
+    let firstNumber = parseInt(number)
+    let secondNumber = parseInt(numberTwo)
+    if (operator === "+") {
+      setTotal(firstNumber + secondNumber)
+    } else if (operator === "-") {
+      setTotal(firstNumber - secondNumber)
+    } else if (operator === "*") {
+      setTotal(firstNumber * secondNumber)
+    }else if (operator === "/") {
+      setTotal(firstNumber / secondNumber)
+    }
   }
 
-  const numberClearTwo = () => {
-    setNumberTwo('0')
-    clear = true
-  }
+      return (
+        <div className="calculator">
+          <div className="panel">
+            <p>{number}</p>
+            <div className="numbers">
+              <button onClick={handleNumber}>1</button>
+              <button onClick={handleNumber}>2</button>
+              <button onClick={handleNumber}>3</button>
+              <button onClick={handleNumber}>4</button>
+              <button onClick={handleNumber}>5</button>
+              <button onClick={handleNumber}>6</button>
+              <button onClick={handleNumber}>7</button>
+              <button onClick={handleNumber}>8</button>
+              <button onClick={handleNumber}>9</button>
+              <button onClick={handleNumber}>0</button>
+              <button onClick={() => setNumber('0')}>Clear</button>
+            </div>
+          </div>
 
-  const handleTotal = () => setTotal()
-  
+          <div className="panel">
+            <p>{operator}</p>
+            <div className="numbers">
+              <button onClick={handleOperator}>+</button>
+              <button onClick={handleOperator}>-</button>
+              <button onClick={handleOperator}>*</button>
+              <button onClick={handleOperator}>÷</button>
+            </div>
+          </div>
 
-  return (
-    <div className="calculator">
-      <div className="panel">
-        <p>{number}</p>
-        <div className="numbers">
-          <button value={'1'} onClick={handleNumber}>1</button>
-          <button value={'2'} onClick={handleNumber}>2</button>
-          <button value={'3'} onClick={handleNumber}>3</button>
-          <button value={'4'} onClick={handleNumber}>4</button>
-          <button value={'5'} onClick={handleNumber}>5</button>
-          <button value={'6'} onClick={handleNumber}>6</button>
-          <button value={'7'} onClick={handleNumber}>7</button>
-          <button value={'8'} onClick={handleNumber}>8</button>
-          <button value={'9'} onClick={handleNumber}>9</button>
-          <button value={'0'} onClick={handleNumber}>0</button>
-          <button onClick={numberClear}>Clear</button>
+          <div className="panel">
+            <p>{numberTwo}</p>
+            <div className="numbers">
+              <button value={'1'} onClick={handleNumberTwo}>1</button>
+              <button value={'2'} onClick={handleNumberTwo}>2</button>
+              <button value={'3'} onClick={handleNumberTwo}>3</button>
+              <button value={'4'} onClick={handleNumberTwo}>4</button>
+              <button value={'5'} onClick={handleNumberTwo}>5</button>
+              <button value={'6'} onClick={handleNumberTwo}>6</button>
+              <button value={'7'} onClick={handleNumberTwo}>7</button>
+              <button value={'8'} onClick={handleNumberTwo}>8</button>
+              <button value={'9'} onClick={handleNumberTwo}>9</button>
+              <button value={'0'} onClick={handleNumberTwo}>0</button>
+              <button onClick={() => setNumberTwo('0')}>Clear</button>
+            </div>
+          </div>
+          <div className="panel answer">
+            <p>{total}</p>
+            <div>
+              <button onClick={handleTotal}>=</button>
+            </div>
+          </div>
         </div>
-      </div>
+      )
+    }
 
-      <div className="panel">
-        <p>{operator}</p>
-        <div className="numbers">
-          <button value={'+'} onClick={handleOperator}>+</button>
-          <button value={'-'} onClick={handleOperator}>-</button>
-          <button value={'*'} onClick={handleOperator}>*</button>
-          <button value={'/'} onClick={handleOperator}>÷</button>
-        </div>
-      </div>
-
-      <div className="panel">
-        <p>{numberTwo}</p>
-        <div className="numbers">
-          <button value={'1'} onClick={handleNumberTwo}>1</button>
-          <button value={'2'} onClick={handleNumberTwo}>2</button>
-          <button value={'3'} onClick={handleNumberTwo}>3</button>
-          <button value={'4'} onClick={handleNumberTwo}>4</button>
-          <button value={'5'} onClick={handleNumberTwo}>5</button>
-          <button value={'6'} onClick={handleNumberTwo}>6</button>
-          <button value={'7'} onClick={handleNumberTwo}>7</button>
-          <button value={'8'} onClick={handleNumberTwo}>8</button>
-          <button value={'9'} onClick={handleNumberTwo}>9</button>
-          <button value={'0'} onClick={handleNumberTwo}>0</button>
-          <button onClick={numberClearTwo}>Clear</button>
-        </div>
-      </div>
-      <div className="panel answer">
-        <p>{total}</p>
-        <div>
-          <button onClick={handleTotal}>=</button>
-        </div>
-      </div>
-    </div>
-  )
-}
-
-export default App
+    export default App
