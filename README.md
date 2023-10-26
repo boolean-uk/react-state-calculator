@@ -4,12 +4,12 @@ In this exercise you build a simplified calculator application using React.
 ## Learning Objectives
 - Build a component that uses a useState hook to keep component state.
 - Build a component with an onClick attribute that has a value of the function to invoke when the event is triggered
-- Model the data a react application needs and create state hooks accordingly.
+- Model the data a React application needs and create state hooks accordingly.
 
 ## Set up
 * Fork and clone this repository
-* `npm install` to install dependencies
-* `npm start` to start the React development server
+* `npm ci` to install dependencies
+* `npm run dev` to start the React development server
 
 ## Requirements
 You are required to implement a simplified calculator app.
