@@ -8,6 +8,7 @@ const [operation, setOperation] = useState('+')
 const [secondNum, setSecondNum] = useState('0')
 // const [result, setResult] = useState(0)
 
+// FIRST PANEL
 function firstNumFull(e) {
   if (firstNum === '0') {
     setFirstNum(e.target.innerText)
@@ -17,6 +18,7 @@ function firstNumFull(e) {
   }
 }
 
+// SECOND PANEL
 function secondNumFull(e) {
   if (secondNum === '0') {
     setSecondNum(e.target.innerText)
@@ -41,7 +43,7 @@ function secondNumFull(e) {
           <button onClick={e => firstNumFull(e)}>8</button>
           <button onClick={e => firstNumFull(e)}>9</button>
           <button onClick={e => firstNumFull(e)}>0</button>
-          <button>Clear</button>
+          <button onClick={() => setFirstNum('0')}>Clear</button>
         </div>
       </div>
 
@@ -68,7 +70,7 @@ function secondNumFull(e) {
           <button onClick={e => secondNumFull(e)}>8</button>
           <button onClick={e => secondNumFull(e)}>9</button>
           <button onClick={e => secondNumFull(e)}>0</button>
-          <button>Clear</button>
+          <button onClick={() => setSecondNum('0')}>Clear</button>
         </div>
       </div>
       <div className="panel answer">
