@@ -6,15 +6,18 @@ function App() {
   const [operator, setOperator] = useState("+");
   const [inputNum2, setInputNum2] = useState("0");
   const [outputNum, setOutputNum] = useState("0");
-  const [storedNum, setStoredNum] = useState("0")
+  const [storedNum, setStoredNum] = useState("0");
+
   function num1Click(event) {
     const value = event.target.innerText;
 
     if (value === "Clear") {
-      setInputNum1("0")
+      setInputNum1("0");
+    } else if (value === "." && !inputNum1.includes(".")) {
+      setInputNum1(inputNum1 + value);
     } else if (inputNum1 === "0") {
       setInputNum1(value);
-    } else {
+    } else if (value !== ".") {
       setInputNum1(inputNum1 + value);
     }
   }
@@ -23,10 +26,12 @@ function App() {
     const value = event.target.innerText;
 
     if (value === "Clear") {
-      setInputNum2("0")
+      setInputNum2("0");
+    } else if (value === "." && !inputNum2.includes(".")) {
+      setInputNum2(inputNum2 + value);
     } else if (inputNum2 === "0") {
       setInputNum2(value);
-    } else {
+    } else if (value !== ".") {
       setInputNum2(inputNum2 + value);
     }
   }
@@ -53,19 +58,19 @@ function App() {
         setOutputNum(0);
         break;
     }
-
   }
-  function recallNum1(){
-    if (storedNum !== 0){
+
+  function recallNum1() {
+    if (storedNum !== 0) {
       setInputNum1(storedNum.toString());
     }
   }
-  function recallNum2(){
-    if (storedNum !== 0){
+  
+  function recallNum2() {
+    if (storedNum !== 0) {
       setInputNum2(storedNum.toString());
     }
   }
-
 
   return (
     <div className="calculator">
@@ -83,6 +88,7 @@ function App() {
           <button onClick={num1Click}>9</button>
           <button onClick={num1Click}>0</button>
           <button onClick={num1Click}>Clear</button>
+          <button onClick={num1Click}>.</button>
         </div>
         <div>
           <button onClick={recallNum1}>Recall</button>
@@ -113,6 +119,7 @@ function App() {
           <button onClick={num2Click}>9</button>
           <button onClick={num2Click}>0</button>
           <button onClick={num2Click}>Clear</button>
+          <button onClick={num2Click}>.</button>
         </div>
         <div>
           <button onClick={recallNum2}>Recall</button>
@@ -124,8 +131,7 @@ function App() {
           <button onClick={calculate}>=</button>
         </div>
         <div>
-          <button onClick={() => setStoredNum(outputNum)} >Store</button>
-    
+          <button onClick={() => setStoredNum(outputNum)}>Store</button>
         </div>
       </div>
     </div>
