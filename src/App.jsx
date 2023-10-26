@@ -6,7 +6,7 @@ function App() {
 const [firstNum, setFirstNum] = useState('0')
 const [operation, setOperation] = useState('+')
 const [secondNum, setSecondNum] = useState('0')
-// const [result, setResult] = useState(0)
+const [result, setResult] = useState('0')
 
 // FIRST PANEL
 function firstNumFull(e) {
@@ -25,6 +25,22 @@ function secondNumFull(e) {
   }
   else {
     setSecondNum(secondNum + e.target.innerText)
+  }
+}
+
+// RESULT PANEL
+function displayResult() {
+  if (operation === '+') {
+    setResult(parseInt(firstNum) + parseInt(secondNum))
+  }
+  else if ( operation === '-') {
+    setResult(parseInt(firstNum) - parseInt(secondNum))
+  }
+  else if ( operation === '*') {
+    setResult(parseInt(firstNum) * parseInt(secondNum))
+  }
+  else if ( operation === '÷') {
+    setResult(parseInt(firstNum) / parseInt(secondNum))
   }
 }
 
@@ -74,9 +90,9 @@ function secondNumFull(e) {
         </div>
       </div>
       <div className="panel answer">
-        <p>0</p>
+        <p>{result}</p>
         <div>
-          <button>=</button>
+          <button onClick={() => displayResult()}>=</button>
         </div>
       </div>
     </div>
