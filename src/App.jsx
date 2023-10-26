@@ -27,17 +27,20 @@ function App() {
   }
 
   const handleTotal = () => {
-    let firstNumber = parseInt(number)
-    let secondNumber = parseInt(numberTwo)
+    let firstNumber = parseFloat(number)
+    let secondNumber = parseFloat(numberTwo)
+    let sum = 0
     if (operator === "+") {
-      setTotal(firstNumber + secondNumber)
+      console.log(firstNumber)
+      sum = firstNumber + secondNumber
     } else if (operator === "-") {
-      setTotal(firstNumber - secondNumber)
+      sum = firstNumber - secondNumber
     } else if (operator === "*") {
-      setTotal(firstNumber * secondNumber)
+      sum = firstNumber * secondNumber
     }else if (operator === "/") {
-      setTotal(firstNumber / secondNumber)
+      sum = firstNumber / secondNumber
     }
+    setTotal(sum.toFixed(4))
   }
 
       return (
