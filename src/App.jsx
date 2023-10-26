@@ -72,15 +72,6 @@ function App() {
     calcResult(result.toFixed(3))
   }
 
-  const handleEquals = () => {
-      setNum2(displayValue);
-      const result = eval(`${num1} ${operation} ${num2}`);
-      setDisplayValue(result.toString());
-      setNum1(result.toString());
-      setNum2("0");
-      setOperation(null);
-  };
-
   return (
     <div className="calculator">
       <div className="panel">
