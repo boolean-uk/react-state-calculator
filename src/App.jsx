@@ -32,16 +32,16 @@ function secondNumFull(e) {
 // RESULT PANEL
 function displayResult() {
   if (operation === '+') {
-    setResult(parseInt(firstNum) + parseInt(secondNum))
+    setResult(parseFloat(firstNum) + parseFloat(secondNum))
   }
   else if ( operation === '-') {
-    setResult(parseInt(firstNum) - parseInt(secondNum))
+    setResult(parseFloat(firstNum) - parseFloat(secondNum))
   }
   else if ( operation === '*') {
-    setResult(parseInt(firstNum) * parseInt(secondNum))
+    setResult(parseFloat(firstNum) * parseFloat(secondNum))
   }
   else if ( operation === '÷') {
-    setResult(parseInt(firstNum) / parseInt(secondNum))
+    setResult(parseFloat(firstNum) / parseFloat(secondNum))
   }
 }
 
@@ -56,6 +56,19 @@ function recallFirstNum() {
 
 function recallSecondNum() {
   setSecondNum(store)
+}
+
+// EXTENSION 3
+function addDecimalFirstNum(e) {
+  if (!firstNum.includes('.')) {
+    setFirstNum(firstNum + e.target.innerText)
+  }
+}
+
+function addDecimalSecondNum(e) {
+  if (!secondNum.includes('.')) {
+    setSecondNum(secondNum + e.target.innerText)
+  }
 }
 
   return (
@@ -74,6 +87,7 @@ function recallSecondNum() {
           <button onClick={e => firstNumFull(e)}>9</button>
           <button onClick={e => firstNumFull(e)}>0</button>
           <button onClick={() => setFirstNum('0')}>Clear</button>
+          <button onClick={e => addDecimalFirstNum(e)}>.</button>
           <button onClick={() => recallFirstNum()}>Recall</button>
         </div>
       </div>
@@ -102,6 +116,7 @@ function recallSecondNum() {
           <button onClick={e => secondNumFull(e)}>9</button>
           <button onClick={e => secondNumFull(e)}>0</button>
           <button onClick={() => setSecondNum('0')}>Clear</button>
+          <button onClick={e => addDecimalSecondNum(e)}>.</button>
           <button onClick={() => recallSecondNum()}>Recall</button>
         </div>
       </div>
