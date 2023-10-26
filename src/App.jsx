@@ -4,7 +4,7 @@ import "./App.css"
 
 function App() {
 const [firstNum, setFirstNum] = useState('0')
-// const [operation, setOperation] = useState('')
+const [operation, setOperation] = useState('+')
 // const [secondNum, setSecondNum] = useState(0)
 // const [result, setResult] = useState(0)
 
@@ -37,8 +37,8 @@ function firstNumFull(e) {
       </div>
 
       <div className="panel">
-        <p>+</p>
-        <div className="numbers">
+        <p>{operation}</p>
+        <div className="numbers" onClick={e => setOperation(e.target.innerText)}>
           <button>+</button>
           <button>-</button>
           <button>*</button>
