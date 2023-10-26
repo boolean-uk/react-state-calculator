@@ -37,10 +37,10 @@ function App() {
       sum = firstNumber - secondNumber
     } else if (operator === "*") {
       sum = firstNumber * secondNumber
-    }else if (operator === "/") {
+    }else if (operator === "÷") {
       sum = firstNumber / secondNumber
     }
-    setTotal(sum.toFixed(4))
+    setTotal(sum)//.toFixed(4)//
   }
 
       return (
