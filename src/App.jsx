@@ -7,6 +7,8 @@ const [operation, setOperation] = useState('+')
 const [secondNum, setSecondNum] = useState('0')
 const [result, setResult] = useState('0')
 
+const [store, setStore] = useState('')
+
 // FIRST PANEL
 function firstNumFull(e) {
   if (firstNum === '0') {
@@ -43,6 +45,19 @@ function displayResult() {
   }
 }
 
+// EXTENSION 2
+function saveStoreNum() {
+  setStore(result)
+}
+
+function recallFirstNum() {
+  setFirstNum(store)
+}
+
+function recallSecondNum() {
+  setSecondNum(store)
+}
+
   return (
     <div className="calculator">
       <div className="panel">
@@ -59,6 +74,7 @@ function displayResult() {
           <button onClick={e => firstNumFull(e)}>9</button>
           <button onClick={e => firstNumFull(e)}>0</button>
           <button onClick={() => setFirstNum('0')}>Clear</button>
+          <button onClick={() => recallFirstNum()}>Recall</button>
         </div>
       </div>
 
@@ -86,12 +102,14 @@ function displayResult() {
           <button onClick={e => secondNumFull(e)}>9</button>
           <button onClick={e => secondNumFull(e)}>0</button>
           <button onClick={() => setSecondNum('0')}>Clear</button>
+          <button onClick={() => recallSecondNum()}>Recall</button>
         </div>
       </div>
       <div className="panel answer">
         <p>{result}</p>
         <div>
           <button onClick={() => displayResult()}>=</button>
+          <button onClick={() => saveStoreNum()}>Store</button>
         </div>
       </div>
     </div>
