@@ -15,15 +15,26 @@ import "./App.css"
 function App() {
 
 const [result, setResult] = useState(0)
-
 const [numberLeft, setNumberLeft] = useState(0)
-const handleDisplayOnClickLeft = () => setNumberLeft(event.target.innerText) 
-
 const [numberRight, setNumberRight] = useState(0)
-const handleDisplayOnClickRight = () => setNumberRight(event.target.innerText) 
-
 const [operator, setOperator] = useState('')
 
+
+const handleDisplayOnClickLeft = () => {
+  if(numberLeft === 0 || numberLeft === '0') {
+    setNumberLeft(event.target.innerText)  
+   } else {
+    setNumberLeft(numberLeft + event.target.innerText)
+  }
+} 
+
+const handleDisplayOnClickRight = () => {
+  if(numberRight === 0 || numberRight === '0') {
+    setNumberRight(event.target.innerText)  
+   } else {
+    setNumberRight(numberRight + event.target.innerText)
+  }
+} 
 
 const displayAdd = () => { 
   setOperator('+')
