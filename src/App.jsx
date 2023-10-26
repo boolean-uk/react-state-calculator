@@ -22,10 +22,12 @@ function App() {
       setNumberTwo(numberTwo + event.target.innerText)
     }
 
-
+    //the different operators available 
     const [operator, setOperator] = useState('')
+    //the sum getting added up 
     const [equals, setEquals] = useState(0)
 
+    // the final result, linked with the sum getting added^
     function finalResult() {
       if (operator === '+') {
         setEquals(parseInt(numberOne) + parseInt(numberTwo))
