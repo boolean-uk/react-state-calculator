@@ -13,6 +13,12 @@ function App() {
       return
     }
 
+    if (value === ".") {
+      console.log(num1)
+      if (num1.includes(".") === false) setNum1(num1 + value)
+      return
+    }
+
     if (num1 === "0") {
       setNum1(value);
     } else {
@@ -40,28 +46,30 @@ function App() {
   const handleOperation = (operator) => setOperation(operator)
 
   const calc = () => {
+    let result
     switch (operator) {
       case "+":
-        calcResult(num1 + num2);
+        result = num1 + num2;
         break;
       case "-":
-        calcResult(num1 - num2);
+        result = num1 - num2;
         break;
       case "*":
-          calcResult(num1 * num2);
+          result = num1 * num2;
           break;
       case "÷":  // Note: This represents division (not a regular slash character).
           if (num2 !== 0) {
-              calcResult(num1 / num2);
+              result = num1 / num2;
               break;
           } else {
               alert("Division by zero is not allowed")
-              calcResult(false);
+              result = false;
               break;
           }
       default:
           return "Invalid operator";
     }
+    calcResult(result.toFixed(3))
   }
 
   const handleEquals = () => {
