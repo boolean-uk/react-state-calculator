@@ -3,17 +3,25 @@ import { useState } from "react"
 
 function App() {
 
-  const [numOne, setNumOne] = useState('')
-  const [numTwo, setNumTwo] = useState('')
+  const [numOne, setNumOne] = useState(0)
+  const [numTwo, setNumTwo] = useState(0)
   const [operator, setOperator] = useState('')
   const [answer, setAnswer] = useState('')
 
   function handleNumClick1(e) {
+    if (numOne === 0) {
+      setNumOne(e.target.value)
+    } else if (!numOne.includes(0)) {
     setNumOne(numOne + e.target.value)
+    }
   }
   
   function handleNumClick2(e) {
+    if (numTwo === 0) {
+      setNumTwo(e.target.value)
+    } else if (!numTwo.includes(0)) {
     setNumTwo(numTwo + e.target.value)
+    }
   }
 
   function handleOperatorClick(e) {
@@ -21,8 +29,8 @@ function App() {
   }
 
   function handleClearClick() {
-    setNumOne('')
-    setNumTwo('')
+    setNumOne(0)
+    setNumTwo(0)
     setOperator('')
     setAnswer('')
   }
