@@ -8,6 +8,11 @@ function App() {
   const [result, calcResult] = useState("0");
 
   const constructNum1 = (value) => {
+    if (value === "Clear") {
+      clearNum1()
+      return
+    }
+
     if (num1 === "0") {
       setNum1(value);
     } else {
@@ -16,6 +21,11 @@ function App() {
   };
 
   const constructNum2 = (value) => {
+    if (value === "Clear") {
+      clearNum2()
+      return
+    }
+
     if (num2 === "0") {
       setNum2(value);
     } else {
@@ -29,7 +39,30 @@ function App() {
 
   const handleOperation = (operator) => setOperation(operator)
 
-  const calc = () => calcResult(parseInt(num1) operator parseInt(num2))
+  const calc = () => {
+    switch (operator) {
+      case "+":
+        calcResult(num1 + num2);
+        break;
+      case "-":
+        calcResult(num1 - num2);
+        break;
+      case "*":
+          calcResult(num1 * num2);
+          break;
+      case "÷":  // Note: This represents division (not a regular slash character).
+          if (num2 !== 0) {
+              calcResult(num1 / num2);
+              break;
+          } else {
+              alert("Division by zero is not allowed")
+              calcResult(false);
+              break;
+          }
+      default:
+          return "Invalid operator";
+    }
+  }
 
   const handleEquals = () => {
       setNum2(displayValue);
