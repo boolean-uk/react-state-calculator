@@ -4,6 +4,7 @@ const Number = ({ number, setNumber }) => {
         (value, index) => index + 1
     );
     rangeOfNumbers.push(0);
+    rangeOfNumbers.push(".");
 
     return (
         <div className="panel">
@@ -14,9 +15,14 @@ const Number = ({ number, setNumber }) => {
                         key={item}
                         onClick={() =>
                             setNumber(
-                                number.toString().startsWith(0)
+                                item === "." && number.toString().includes(".")
+                                    ? number
+                                    : item === "." &&
+                                      number.toString().startsWith(0)
+                                    ? 0
+                                    : number.toString().startsWith(0)
                                     ? item
-                                    : parseInt(number.toString() + item)
+                                    : number.toString() + item
                             )
                         }
                     >

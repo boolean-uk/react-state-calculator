@@ -1,6 +1,4 @@
 const Saved = ({ state, setNumber1, setNumber2, setOperation, setResult }) => {
-    console.log(state);
-
     return (
         <>
             <h2>Saved Results</h2>
