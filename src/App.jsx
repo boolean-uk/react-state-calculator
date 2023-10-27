@@ -7,21 +7,28 @@ function App() {
   //first number keypad 
   const [numberOne, setNumberOne] = useState('')
   // remove button for when clearing number
-  const remove = () => setNumberOne('')
+  const remove = () => setNumberOne('0')
   //refers to the buttons with the number values
   const keyPadOne = (event) => {
-    setNumberOne(numberOne + event.target.innerText)
+    if (numberOne === '0') {
+      setNumberOne(event.target.innerText)
+    } else {
+      setNumberOne(numberOne + event.target.innerText)
+    }
   }
 
     //second number keypad
     const [numberTwo, setNumberTwo] = useState('')
     //remove button for when clearing number 
-    const remove2 = () => setNumberTwo('')
+    const remove2 = () => setNumberTwo('0')
     //to display the number on keypad 3
     const keyPad2 = (event) => {
+      if (numberTwo === '0') {
+      setNumberTwo(event.target.innerText)
+    } else { 
       setNumberTwo(numberTwo + event.target.innerText)
     }
-
+  }
 
     const [operator, setOperator] = useState('')
     const [equals, setEquals] = useState(0)
@@ -95,5 +102,4 @@ function App() {
       </div>
     )
   }
-
 export default App
