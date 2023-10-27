@@ -15,7 +15,7 @@ function App() {
         setNum1(ans)
         break;
       case "Clear":
-        clearNum1()
+        setNum1("0")
         break;
       case ".":
         if (num1.includes(".") === false) setNum1(num1 + value)
@@ -30,8 +30,6 @@ function App() {
 
   };
 
-  const clearNum1 = () => setNum1("0");
-
   // i feel like this duplicating is unnecessary, but don't know if it's advisable to e.g. make it one function but with two input parameters to distinguish which calculator is affected?
   // would love feedback on this!
 
@@ -42,7 +40,7 @@ function App() {
         setNum2(ans)
         break;
       case "Clear":
-        clearNum2()
+        setNum2("0")
         break;
       case ".":
         if (num2.includes(".") === false) setNum2(num2 + value)
@@ -56,8 +54,6 @@ function App() {
     }
 
   };
-
-  const clearNum2 = () => setNum2("0");
 
   const handleOperation = (operator) => setOperation(operator)
 
