@@ -9,22 +9,25 @@ function App() {
   const [ans, storeAnswer] = useState(0)
 
   const constructNum1 = (value) => {
-    if (value === "Clear") {
-      clearNum1()
-      return
+    
+    switch (value) {
+      case "Ans":
+        setNum1(ans)
+        break;
+      case "Clear":
+        clearNum1()
+        break;
+      case ".":
+        if (num1.includes(".") === false) setNum1(num1 + value)
+        break;
+      default:
+        if (num1 === "0") {
+          setNum1(value);
+        } else {
+          setNum1(num1 + value);
+        }
     }
 
-    if (value === ".") {
-      console.log(num1)
-      if (num1.includes(".") === false) setNum1(num1 + value)
-      return
-    }
-
-    if (num1 === "0") {
-      setNum1(value);
-    } else {
-      setNum1(num1 + value);
-    }
   };
 
   const clearNum1 = () => setNum1("0");
@@ -33,16 +36,25 @@ function App() {
   // would love feedback on this!
 
   const constructNum2 = (value) => {
-    if (value === "Clear") {
-      clearNum2()
-      return
+
+    switch (value) {
+      case "Ans":
+        setNum1(ans)
+        break;
+      case "Clear":
+        clearNum2()
+        break;
+      case ".":
+        if (num2.includes(".") === false) setNum2(num2 + value)
+        break;
+      default:
+        if (num2 === "0") {
+          setNum2(value);
+        } else {
+          setNum2(num2 + value);
+        }
     }
 
-    if (num2 === "0") {
-      setNum2(value);
-    } else {
-      setNum2(num2 + value);
-    }
   };
 
   const clearNum2 = () => setNum2("0");
@@ -77,7 +89,7 @@ function App() {
       default:
           return "Invalid operator";
     }
-    console.log(isWholeNumber(result), result % 1)
+    
     calcResult(formatResult(result))
   }
 

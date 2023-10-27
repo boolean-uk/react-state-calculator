@@ -33,13 +33,13 @@ You are required to implement a simplified calculator app.
   - If the user presses '0' while '0' is displayed, the display should remain at '0'. It should not be possible to define a number with leading zeros. 🟢
 
 ## Extension 2
-- Add a "store" button underneath the answer.
+- Add a "store" button underneath the answer.  🟢
 - When this button is clicked, the current answer should be stored in a state variable.
 - Add a "recall" button to each of the number displays. When this button is clicked, the currently stored value should be shown on the corresponding number panel.
 
 ## Extension 3
-- Add a "." button to the numbers panel of each section
-- When the user presses this button, a decimal separator should be added to the number
+- Add a "." button to the numbers panel of each section 🟢
+- When the user presses this button, a decimal separator should be added to the number 🟢
 - Only a single separator can be added to each number
-- If no digit appears after the separator, the calculator should consider the number as having no separator (i.e. "1." should be treated as "1").
-- Unlike whole numbers, leading zeros should be allowed after the separator. For example, "00001" is not valid, but "0.00001" is and "1.00001" is.
+- If no digit appears after the separator, the calculator should consider the number as having no separator (i.e. "1." should be treated as "1"). 🟢
+- Unlike whole numbers, leading zeros should be allowed after the separator. For example, "00001" is not valid, but "0.00001" is and "1.00001" is.  🟢
