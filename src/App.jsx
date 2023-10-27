@@ -2,25 +2,16 @@ import { useState } from 'react';
 import "./App.css"
 
 
+
+
 function App() {
 
   //first number keypad 
   const [numberOne, setNumberOne] = useState(0)
-  // remove button for when clearing number
-  const remove = () => setNumberOne('')
-  //refers to the buttons with the number values
-  const keyPadOne = (event) => {
-    setNumberOne(numberOne + event.target.innerText)
-  }
 
     //second number keypad
-    const [numberTwo, setNumberTwo] = useState(0)
-    //remove button for when clearing number 
-    const remove2 = () => setNumberTwo('')
-    //to display the number on keypad 3
-    const keyPad2 = (event) => {
-      setNumberTwo(numberTwo + event.target.innerText)
-    }
+  const [numberTwo, setNumberTwo] = useState(0)
+   
 
     //the different operators available 
     const [operator, setOperator] = useState('')
@@ -48,17 +39,17 @@ function App() {
         <div className="panel">
           <p className='first_value'>{numberOne}</p>
           <div className="numbers">
-            <button onClick={keyPadOne}>1</button>
-            <button onClick={keyPadOne}>2</button>
-            <button onClick={keyPadOne}>3</button>
-            <button onClick={keyPadOne}>4</button>
-            <button onClick={keyPadOne}>5</button>
-            <button onClick={keyPadOne}>6</button>
-            <button onClick={keyPadOne}>7</button>
-            <button onClick={keyPadOne}>8</button>
-            <button onClick={keyPadOne}>9</button>
-            <button onClick={keyPadOne}>0</button>
-            <button onClick={remove}>Clear</button>
+            <button onClick={() => setNumberOne(1)}>1</button>
+            <button onClick={() => setNumberOne(2)}>2</button>
+            <button onClick={() => setNumberOne(3)}>3</button>
+            <button onClick={() => setNumberOne(4)}>4</button>
+            <button onClick={() => setNumberOne(5)}>5</button>
+            <button onClick={() => setNumberOne(6)}>6</button>
+            <button onClick={() => setNumberOne(7)}>7</button>
+            <button onClick={() => setNumberOne(8)}>8</button>
+            <button onClick={() => setNumberOne(9)}>9</button>
+            <button onClick={() => setNumberOne(0)}>0</button>
+            <button onClick={() => setNumberOne(0)}>Clear</button>
           </div>
         </div>
 
@@ -75,17 +66,17 @@ function App() {
         <div className="panel">
           <p className='second-name'>{numberTwo}</p>
           <div className="numbers">
-            <button onClick={keyPad2}>1</button>
-            <button onClick={keyPad2}>2</button>
-            <button onClick={keyPad2}>3</button>
-            <button onClick={keyPad2}>4</button>
-            <button onClick={keyPad2}>5</button>
-            <button onClick={keyPad2}>6</button>
-            <button onClick={keyPad2}>7</button>
-            <button onClick={keyPad2}>8</button>
-            <button onClick={keyPad2}>9</button>
-            <button onClick={keyPad2}>0</button>
-            <button onClick={remove2}>Clear</button>
+            <button onClick={() => setNumberTwo(1)}>1</button>
+            <button onClick={() => setNumberTwo(2)}>2</button>
+            <button onClick={() => setNumberTwo(3)}>3</button>
+            <button onClick={() => setNumberTwo(4)}>4</button>
+            <button onClick={() => setNumberTwo(5)}>5</button>
+            <button onClick={() => setNumberTwo(6)}>6</button>
+            <button onClick={() => setNumberTwo(7)}>7</button>
+            <button onClick={() => setNumberTwo(8)}>8</button>
+            <button onClick={() => setNumberTwo(9)}>9</button>
+            <button onClick={() => setNumberTwo(0)}>0</button>
+            <button onClick={() => setNumberTwo(0)}>Clear</button>
           </div>
         </div>
         <div className="panel answer">
