@@ -5,7 +5,8 @@ function App() {
   const [num1, setNum1] = useState("0");
   const [num2, setNum2] = useState("0");
   const [operator, setOperation] = useState("");
-  const [result, calcResult] = useState("0");
+  const [result, calcResult] = useState(0);
+  const [ans, storeAnswer] = useState(0)
 
   const constructNum1 = (value) => {
     if (value === "Clear") {
@@ -26,6 +27,11 @@ function App() {
     }
   };
 
+  const clearNum1 = () => setNum1("0");
+
+  // i feel like this duplicating is unnecessary, but don't know if it's advisable to e.g. make it one function but with two input parameters to distinguish which calculator is affected?
+  // would love feedback on this!
+
   const constructNum2 = (value) => {
     if (value === "Clear") {
       clearNum2()
@@ -39,37 +45,40 @@ function App() {
     }
   };
 
-  const clearNum1 = () => setNum1("0");
-
   const clearNum2 = () => setNum2("0");
 
   const handleOperation = (operator) => setOperation(operator)
+
+  const isWholeNumber = (num) => num % 1 === 0
+
+  const formatResult = (num) => isWholeNumber(num) ? parseInt(num) : num
 
   const calc = () => {
     let result
     switch (operator) {
       case "+":
-        result = num1 + num2;
+        result = parseFloat(num1) + parseFloat(num2);
         break;
       case "-":
-        result = num1 - num2;
+        result = parseFloat(num1) - parseFloat(num2);
         break;
       case "*":
-          result = num1 * num2;
-          break;
+        result = parseFloat(num1) * parseFloat(num2);
+        break;
       case "÷":  
-          if (num2 !== "0") {
-            console.log("I'm dividing by", num2)
-              result = num1 / num2;
-              break;
-          } else {
-              alert("Division by 0 is not allowed, go to math jail.\nDo not pass 'Start'. Do not collect $200.")
-              return
-          }
+        if (num2 !== "0") {
+          console.log("I'm dividing by", num2)
+            result = parseFloat(num1) / parseFloat(num2);
+            break;
+        } else {
+            alert("Division by 0 is not allowed, go to math jail.\nDo not pass 'Start'. Do not collect $200.")
+            return
+        }
       default:
           return "Invalid operator";
     }
-    calcResult(result.toFixed(3))
+    console.log(isWholeNumber(result), result % 1)
+    calcResult(formatResult(result))
   }
 
   return (
@@ -77,7 +86,7 @@ function App() {
       <div className="panel">
         <p>{num1}</p>
         <div className="numbers">
-          {["1", "2", "3", "4", "5", "6", "7", "8", "9", "0", ".", "Clear"].map((value) => (
+          {["1", "2", "3", "4", "5", "6", "7", "8", "9", "0", ".", "Ans", "Clear"].map((value) => (
             <button key={value} onClick={() => constructNum1(value)}>
               {value}
             </button>
@@ -99,7 +108,7 @@ function App() {
       <div className="panel">
         <p>{num2}</p>
         <div className="numbers">
-          {["1", "2", "3", "4", "5", "6", "7", "8", "9", "0", ".",  "Clear"].map((value) => (
+          {["1", "2", "3", "4", "5", "6", "7", "8", "9", "0", ".", "Ans", "Clear"].map((value) => (
             <button key={value} onClick={() => constructNum2(value)}>
               {value}
             </button>
@@ -111,6 +120,7 @@ function App() {
         <p>{result}</p>
         <div>
           <button onClick={() => calc()}>=</button>
+          <button onClick={() => calc()}>Store Answer</button>
         </div>
       </div>
     </div>

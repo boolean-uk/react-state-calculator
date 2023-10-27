@@ -15,10 +15,10 @@ In this exercise you build a simplified calculator application using React.
 You are required to implement a simplified calculator app.
 ![Image](image.png)
 
-- When the user presses a numbered button on either of the panels, the display above should be updated to show that number.
-- When user presses the clear button, the display should be set back to `0`
-- When the user presses one of the operation buttons (`+`, `-`,`*`,`÷`) the operation display should be updated to show that operation.
-- When the user presses the equals button the answer display should be updated to show the result of the calculation.
+- When the user presses a numbered button on either of the panels, the display above should be updated to show that number. 🟢
+- When user presses the clear button, the display should be set back to `0` 🟢
+- When the user presses one of the operation buttons (`+`, `-`,`*`,`÷`) the operation display should be updated to show that operation. 🟢
+- When the user presses the equals button the answer display should be updated to show the result of the calculation. 🟢
 
 ## Tips
 - Start by modelling the state of the application
@@ -28,9 +28,9 @@ You are required to implement a simplified calculator app.
 
 ## Extension 1
 - Update your solution so the number panels act like a real calculator when inputting numbers
-  - Numbers should *appended*, so pressing `1` then `2` should result in `12` being displayed
-  - If the user presses a number while '0' is displayed, the number should *replace* '0' on the display. Subsequent numbers, including 0, are appended on to the display as usual.
-  - If the user presses '0' while '0' is displayed, the display should remain at '0'. It should not be possible to define a number with leading zeros.
+  - Numbers should *appended*, so pressing `1` then `2` should result in `12` being displayed 🟢
+  - If the user presses a number while '0' is displayed, the number should *replace* '0' on the display. Subsequent numbers, including 0, are appended on to the display as usual. 🟢
+  - If the user presses '0' while '0' is displayed, the display should remain at '0'. It should not be possible to define a number with leading zeros. 🟢
 
 ## Extension 2
 - Add a "store" button underneath the answer.
