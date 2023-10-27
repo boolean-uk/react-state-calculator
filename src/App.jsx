@@ -5,8 +5,10 @@ import "./App.css";
 import Number from "./components/Number";
 import Operation from "./components/Operation";
 import Result from "./components/Result";
+import Saved from "./components/Saved";
 
 function App() {
+    const [state, setState] = useState([]);
     const [number1, setNumber1] = useState(0);
     const [number2, setNumber2] = useState(0);
     const [operation, setOperation] = useState("+");
@@ -25,6 +27,16 @@ function App() {
                 setResult={setResult}
                 numbers={{ number1, number2 }}
                 operation={operation}
+                state={state}
+                setState={setState}
+            />
+
+            <Saved
+                state={state}
+                setNumber1={setNumber1}
+                setNumber2={setNumber2}
+                setOperation={setOperation}
+                setResult={setResult}
             />
         </div>
     );
