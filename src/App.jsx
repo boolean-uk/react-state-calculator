@@ -39,7 +39,7 @@ function App() {
 
     switch (value) {
       case "Ans":
-        setNum1(ans)
+        setNum2(ans)
         break;
       case "Clear":
         clearNum2()
@@ -89,7 +89,7 @@ function App() {
       default:
           return "Invalid operator";
     }
-    
+
     calcResult(formatResult(result))
   }
 
@@ -132,7 +132,7 @@ function App() {
         <p>{result}</p>
         <div>
           <button onClick={() => calc()}>=</button>
-          <button onClick={() => calc()}>Store Answer</button>
+          <button onClick={() => storeAnswer(result)}>Store Answer</button>
         </div>
       </div>
     </div>

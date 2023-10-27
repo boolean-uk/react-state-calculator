@@ -34,8 +34,8 @@ You are required to implement a simplified calculator app.
 
 ## Extension 2
 - Add a "store" button underneath the answer.  🟢
-- When this button is clicked, the current answer should be stored in a state variable.
-- Add a "recall" button to each of the number displays. When this button is clicked, the currently stored value should be shown on the corresponding number panel.
+- When this button is clicked, the current answer should be stored in a state variable. 🟢
+- Add a "recall" button to each of the number displays. When this button is clicked, the currently stored value should be shown on the corresponding number panel. 🟢
 
 ## Extension 3
 - Add a "." button to the numbers panel of each section 🟢
