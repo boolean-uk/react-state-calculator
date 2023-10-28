@@ -6,71 +6,92 @@
 
 // 4. When the user presses the equals button the answer display should be updated to show the result of the calculation.
 
-import { useState } from "react"
-import "./App.css"
+import { useState } from "react";
+import "./App.css";
 
 function App() {
-
   // State
-  const [firstNumber, setFirstNumber] = useState('0')
-  const [operation, setOperation] = useState('+')
-  const [secondNumber, setSecondNumber] = useState('0')
+  const [firstNumber, setFirstNumber] = useState("0");
+  const [secondNumber, setSecondNumber] = useState("0");
+  const [operation, setOperation] = useState("+");
+  const [answer, setAnswer] = useState("0");
 
-  
+  const displayNumber = (value) => {
+    // if it's the first time("0") then replace the zero else add the number to the previous
+    setFirstNumber(firstNumber === "0" ? value : firstNumber + value);
+  };
+
+  const displayNumberTwo = (value) => {
+    setSecondNumber(secondNumber === "0" ? value : secondNumber + value);
+  };
+
+  const calculate = () => {
+    const stringToNumberFirst = Number(firstNumber);
+    const stringToNumberSecond = Number(secondNumber);
+    if (operation === "+") {
+      setAnswer(stringToNumberFirst + stringToNumberSecond);
+    } else if (operation === "-") {
+      setAnswer(stringToNumberFirst - stringToNumberSecond);
+    } else if (operation === "*") {
+      setAnswer(stringToNumberFirst * stringToNumberSecond);
+    } else {
+      setAnswer(stringToNumberFirst / stringToNumberSecond);
+    }
+  };
 
   return (
     <div className="calculator">
       <div className="panel">
         <p>{firstNumber}</p>
         <div className="numbers">
-          <button value="1" onClick={(e) => setFirstNumber(firstNumber + e.target.value)}>1</button>
-          <button value="2" onClick={(e) => setFirstNumber(firstNumber + e.target.value)}>2</button>
-           <button value="3" onClick={(e) => setFirstNumber(firstNumber + e.target.value)}>3</button>
-           <button value="4" onClick={(e) => setFirstNumber(firstNumber + e.target.value)}>4</button>
-           <button value="5" onClick={(e) => setFirstNumber(firstNumber + e.target.value)}>5</button>
-           <button value="6" onClick={(e) => setFirstNumber(firstNumber + e.target.value)}>6</button>
-           <button value="7" onClick={(e) => setFirstNumber(firstNumber + e.target.value)}>7</button>
-           <button value="8" onClick={(e) => setFirstNumber(firstNumber + e.target.value)}>8</button>
-          <button value="9" onClick={(e) => setFirstNumber(firstNumber + e.target.value)}>9</button>
-           <button value="0" onClick={(e) => setFirstNumber(firstNumber + e.target.value)}>0</button>
-          <button value='' onClick={(e)=> setClear(clear + e.target.value)}>Clear</button>
+          <button onClick={(e) => displayNumber("1")}>1</button>
+          <button onClick={(e) => displayNumber("2")}>2</button>
+          <button onClick={(e) => displayNumber("3")}>3</button>
+          <button onClick={(e) => displayNumber("4")}>4</button>
+          <button onClick={(e) => displayNumber("5")}>5</button>
+          <button onClick={(e) => displayNumber("6")}>6</button>
+          <button onClick={(e) => displayNumber("7")}>7</button>
+          <button onClick={(e) => displayNumber("8")}>8</button>
+          <button onClick={(e) => displayNumber("9")}>9</button>
+          <button onClick={(e) => displayNumber("0")}>0</button>
+          <button onClick={() => setFirstNumber("0")}>Clear</button>
         </div>
       </div>
 
       <div className="panel">
-        <p>+</p>
+        <p>{operation}</p>
         <div className="numbers">
-           <button value="+" onClick={(e)=> setFirstNumber(Number(firstNumber) + Number (secondNumber))}>+</button>
-          <button>-</button>
-          <button>*</button>
-          <button>÷</button>
+          <button onClick={() => setOperation("+")}>+</button>
+          <button onClick={() => setOperation("-")}>-</button>
+          <button onClick={() => setOperation("*")}>*</button>
+          <button onClick={() => setOperation("÷")}>÷</button>
         </div>
       </div>
 
       <div className="panel">
         <p>{secondNumber}</p>
         <div className="numbers">
-          <button value='1' onClick={(e)=> setSecondNumber(secondNumber + e.target.value)}>1</button>
-        <button value='2' onClick={(e)=> setSecondNumber(secondNumber + e.target.value)}>2</button>
-          <button value='3' onClick={(e)=> setSecondNumber(secondNumber + e.target.value)}>3</button>
-          <button value='4' onClick={(e)=> setSecondNumber(secondNumber + e.target.value)}>4</button>
-         <button value='5' onClick={(e)=> setSecondNumber(secondNumber + e.target.value)}>5</button>
-          <button value='6' onClick={(e)=> setSecondNumber(secondNumber + e.target.value)}>6</button>
-          <button value='7' onClick={(e)=> setSecondNumber(secondNumber + e.target.value)}>7</button>
-          <button value='8' onClick={(e)=> setSecondNumber(secondNumber + e.target.value)}>8</button>
-          <button value='9' onClick={(e)=> setSecondNumber(secondNumber + e.target.value)}>9</button>
+          <button onClick={(e) => displayNumberTwo("1")}>1</button>
+          <button onClick={(e) => displayNumberTwo("2")}>2</button>
+          <button onClick={(e) => displayNumberTwo("3")}>3</button>
+          <button onClick={(e) => displayNumberTwo("4")}>4</button>
+          <button onClick={(e) => displayNumberTwo("5")}>5</button>
+          <button onClick={(e) => displayNumberTwo("6")}>6</button>
+          <button onClick={(e) => displayNumberTwo("7")}>7</button>
+          <button onClick={(e) => displayNumberTwo("8")}>8</button>
+          <button onClick={(e) => displayNumberTwo("9")}>9</button>
           <button>0</button>
-          <button>Clear</button>
+          <button onClick={() => setSecondNumber("0")}>Clear</button>
         </div>
       </div>
       <div className="panel answer">
-        <p>0</p>
+        <p>{answer}</p>
         <div>
-          <button>=</button>
+          <button onClick={calculate}>=</button>
         </div>
       </div>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
