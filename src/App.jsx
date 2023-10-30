@@ -1,7 +1,11 @@
+import { useState } from "react"
 import "./App.css"
 
-function App() {
 
+
+function App() {
+  const [display, setDisplay] = useState("0");
+  
   return (
     <div className="calculator">
       <div className="panel">
