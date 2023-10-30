@@ -5,7 +5,11 @@ import "./App.css"
 
 function App() {
   const [display, setDisplay] = useState("0");
-  
+  const [operation, setOperation] = useState("");
+  const [firstOperand, setFirstOperand] = useState("");
+  const [secondOperand, setsecondOperand] = useState("");
+  const [answer, setAnswer] = useState("0");
+
   return (
     <div className="calculator">
       <div className="panel">
