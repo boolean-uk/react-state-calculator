@@ -1,87 +1,73 @@
-import { useState } from "react";
 import "./App.css";
+import { useState } from "react";
+
+const Operations = {
+  "+": (numOne, numTwo) => numOne + numTwo,
+  "-": (numOne, numTwo) => numOne - numTwo,
+  "*": (numOne, numTwo) => numOne * numTwo,
+  "/": (numOne, numTwo) => numOne / numTwo,
+};
 
 function App() {
-  const [display, setDisplay] = useState("0");
-  const [operation, setOperation] = useState("");
-  const [firstOperand, setFirstOperand] = useState("");
-  const [secondOperand, setSecondOperand] = useState("");
-  const [answer, setAnswer] = useState("0");
+  const [numOne, setNumOne] = useState("0");
+  const [numTwo, setNumTwo] = useState("0");
+  const [operation, setOperation] = useState("+");
 
-  const handleNumberClick = (number) => {
-    if (operation === "") {
-      setFirstOperand((prev) => prev + number);
-      setDisplay((prev) => (prev === "0" ? number : prev + number));
+  const handleButtonClick = (value, digit) => {
+    if (value === "numOne") {
+      setNumOne((prev) => appendDigit(prev, digit));
     } else {
-      setSecondOperand((prev) => prev + number);
-      setDisplay((prev) => prev === "0" ? number : prev + number);
+      setNumTwo((prev) => appendDigit(prev, digit));
     }
+  };
+
+  const appendDigit = (existing, digit) => {
+    if (existing === "0") {
+      if (digit === "0") {
+        return existing;
+      }
+      return digit;
+    }
+    return existing + digit;
   };
 
   const handleOperationClick = (op) => {
     setOperation(op);
-    setDisplay(op);
   };
 
-  const handleClearClick = () => {
-    setDisplay("0");
-    setFirstOperand("");
-    setSecondOperand("");
-    setOperation("");
-    setAnswer("0");
-  };
-
-  const handleEqualsClick = () => {
-    const num1 = parseFloat(firstOperand);
-    const num2 = parseFloat(secondOperand);
-    let result;
-
-    if (operation === "÷" && num2 === 0) {
-      result = "Error";
+  const handleClearClick = (value) => {
+    if (value === "numOne") {
+      setNumOne("0");
     } else {
-      switch (operation) {
-        case "+":
-          result = num1 + num2;
-          break;
-        case "-":
-          result = num1 - num2;
-          break;
-        case "*":
-          result = num1 * num2;
-          break;
-        case "÷":
-          result = num1 / num2;
-          break;
-        default:
-          result = num1;
-      }
+      setNumTwo("0");
     }
-
-    setAnswer(result.toString());
-    setDisplay(result.toString());
-    setFirstOperand("");
-    setSecondOperand("");
-    setOperation("");
   };
+
+  const calculate = () => {
+    const op = Operations[operation];
+    return op(Number(numOne), Number(numTwo));
+  };
+
+  const answer = calculate();
 
   return (
     <div className="calculator">
       <div className="panel">
-        <p>{display}</p>
+        <p>{numOne}</p>
         <div className="numbers">
           {[1, 2, 3, 4, 5, 6, 7, 8, 9, 0].map((number) => (
-            <button key={number} onClick={() => handleNumberClick(number)}>
+            <button key={number} onClick={() => handleButtonClick("numOne", String(number))}>
               {number}
             </button>
           ))}
-          <button onClick={handleClearClick}>Clear</button>
+          <button onClick={() => handleClearClick("numOne")}>Clear</button>
         </div>
       </div>
 
       <div className="panel">
         <p>{operation}</p>
         <div className="numbers">
-          {["+", "-", "*", "÷"].map((op) => (
+          {["+", "-", "*", "/"].map((op) => (
             <button key={op} onClick={() => handleOperationClick(op)}>
               {op}
             </button>
@@ -90,21 +76,19 @@ function App() {
       </div>
 
       <div className="panel">
-        <p>{answer}</p>
+        <p>{numTwo}</p>
         <div className="numbers">
           {[1, 2, 3, 4, 5, 6, 7, 8, 9, 0].map((number) => (
-            <button key={number} onClick={() => handleNumberClick(number)}>
+            <button key={number} onClick={() => handleButtonClick("numTwo", String(number))}>
               {number}
             </button>
           ))}
-          <button onClick={handleClearClick}>Clear</button>
+          <button onClick={() => handleClearClick("numTwo")}>Clear</button>
         </div>
       </div>
+
       <div className="panel answer">
         <p>{answer}</p>
-        <div>
-          <button onClick={handleEqualsClick}>=</button>
-        </div>
       </div>
     </div>
   );
