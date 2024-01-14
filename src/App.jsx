@@ -56,7 +56,10 @@ function App() {
         <p>{numOne}</p>
         <div className="numbers">
           {[1, 2, 3, 4, 5, 6, 7, 8, 9, 0].map((number) => (
-            <button key={number} onClick={() => handleButtonClick("numOne", String(number))}>
+            <button
+              key={number}
+              onClick={() => handleButtonClick("numOne", String(number))}
+            >
               {number}
             </button>
           ))}
@@ -79,7 +82,10 @@ function App() {
         <p>{numTwo}</p>
         <div className="numbers">
           {[1, 2, 3, 4, 5, 6, 7, 8, 9, 0].map((number) => (
-            <button key={number} onClick={() => handleButtonClick("numTwo", String(number))}>
+            <button
+              key={number}
+              onClick={() => handleButtonClick("numTwo", String(number))}
+            >
               {number}
             </button>
           ))}
