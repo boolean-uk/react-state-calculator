@@ -1,56 +1,141 @@
+import { useState } from "react"
 import "./App.css"
 
 function App() {
 
+  const [firstNumber, setFirstNumber] = useState(0)
+  const [operation, setOperation] = useState('+')
+  const [secondNumber, setSecondNumber] = useState(0)
+  const [answerNumber, setAnswer] = useState(0)
+  
+  const [storedFirstNumber, setStoredFirstNumber] = useState(0)
+  const [storedOperation, setStoredOperation] = useState('+')
+  const [storedSecondNumber, setStoredSecondNumber] = useState(0)
+  const [storedAnswer, setStoredAnswer] = useState(0)
+
+  const changeFirstNumber = (number) =>
+  {
+    if (number === null) setFirstNumber(0)
+    else if (firstNumber === 0) setFirstNumber(number)
+    else if (number === '.' && firstNumber.toString().includes('.'))
+    {
+      let tmp = firstNumber.toString()
+      tmp = tmp.replace(".", "")
+      setFirstNumber(tmp + number.toString())
+    }
+    else setFirstNumber(firstNumber.toString() + number.toString())
+  }
+
+  const changeOperation = (op) =>
+  {
+    setOperation(op)
+  }
+
+  const changeSecondNumber = (number) =>
+  {
+    if (number === null) setSecondNumber(0)
+    else if (secondNumber === 0) setSecondNumber(number)
+    else if (number === '.' && secondNumber.toString().includes('.'))
+    {
+      let tmp = secondNumber.toString()
+      tmp = tmp.replace(".", "")
+      setSecondNumber(tmp + number.toString())
+    }
+    else setSecondNumber(secondNumber.toString() + number.toString())
+  }
+
+  const calculate = () =>
+  {
+    if (operation === '+') setAnswer(parseFloat(firstNumber) + parseFloat(secondNumber))
+    if (operation === '-') setAnswer(parseFloat(firstNumber) - parseFloat(secondNumber))
+    if (operation === '*') setAnswer(parseFloat(firstNumber) * parseFloat(secondNumber))
+    if (operation === '÷') setAnswer(parseFloat(firstNumber) / parseFloat(secondNumber))
+  }
+
+  const setStoredNumbers = (number1, operating, number2, answer) =>
+  {
+    setStoredFirstNumber(number1)
+    setStoredOperation(operating)
+    setStoredSecondNumber(number2)
+    setStoredAnswer(answer)
+  }
+
+  const recallFirstNumber = () =>
+  {
+    setFirstNumber(storedFirstNumber)
+  }
+
+  const recallOperation = () =>
+  {
+    setOperation(storedOperation)
+  }
+
+  const recallSecondNumber = () =>
+  {
+    setSecondNumber(storedSecondNumber)
+  }
+
+  const recallAnswer = () =>
+  {
+    setAnswer(storedAnswer)
+  }
+
   return (
     <div className="calculator">
       <div className="panel">
-        <p>0</p>
+        <p>{firstNumber}</p>
         <div className="numbers">
-          <button>1</button>
-          <button>2</button>
-          <button>3</button>
-          <button>4</button>
-          <button>5</button>
-          <button>6</button>
-          <button>7</button>
-          <button>8</button>
-          <button>9</button>
-          <button>0</button>
-          <button>Clear</button>
+          <button onClick={() => changeFirstNumber(1)}>1</button>
+          <button onClick={() => changeFirstNumber(2)}>2</button>
+          <button onClick={() => changeFirstNumber(3)}>3</button>
+          <button onClick={() => changeFirstNumber(4)}>4</button>
+          <button onClick={() => changeFirstNumber(5)}>5</button>
+          <button onClick={() => changeFirstNumber(6)}>6</button>
+          <button onClick={() => changeFirstNumber(7)}>7</button>
+          <button onClick={() => changeFirstNumber(8)}>8</button>
+          <button onClick={() => changeFirstNumber(9)}>9</button>
+          <button onClick={() => changeFirstNumber(0)}>0</button>
+          <button onClick={() => changeFirstNumber(null)}>Clear</button>
+          <button onClick={recallFirstNumber}>Recall</button>
+          <button onClick={() => changeFirstNumber('.')}>.</button>
         </div>
       </div>
 
       <div className="panel">
-        <p>+</p>
+        <p>{operation}</p>
         <div className="numbers">
-          <button>+</button>
-          <button>-</button>
-          <button>*</button>
-          <button>÷</button>
+          <button onClick={() => changeOperation('+')}>+</button>
+          <button onClick={() => changeOperation('-')}>-</button>
+          <button onClick={() => changeOperation('*')}>*</button>
+          <button onClick={() => changeOperation('÷')}>÷</button>
+          <button onClick={recallOperation}>Recall</button>
         </div>
       </div>
 
       <div className="panel">
-        <p>0</p>
+        <p>{secondNumber}</p>
         <div className="numbers">
-          <button>1</button>
-          <button>2</button>
-          <button>3</button>
-          <button>4</button>
-          <button>5</button>
-          <button>6</button>
-          <button>7</button>
-          <button>8</button>
-          <button>9</button>
-          <button>0</button>
-          <button>Clear</button>
+          <button onClick={() => changeSecondNumber(1)}>1</button>
+          <button onClick={() => changeSecondNumber(2)}>2</button>
+          <button onClick={() => changeSecondNumber(3)}>3</button>
+          <button onClick={() => changeSecondNumber(4)}>4</button>
+          <button onClick={() => changeSecondNumber(5)}>5</button>
+          <button onClick={() => changeSecondNumber(6)}>6</button>
+          <button onClick={() => changeSecondNumber(7)}>7</button>
+          <button onClick={() => changeSecondNumber(8)}>8</button>
+          <button onClick={() => changeSecondNumber(9)}>9</button>
+          <button onClick={() => changeSecondNumber(0)}>0</button>
+          <button onClick={() => changeSecondNumber(null)}>Clear</button>
+          <button onClick={recallSecondNumber}>Recall</button>
+          <button onClick={() => changeSecondNumber('.')}>.</button>
         </div>
       </div>
       <div className="panel answer">
-        <p>0</p>
+        <p>{answerNumber}</p>
         <div>
-          <button>=</button>
+          <button onClick={calculate}>=</button>
+          <button onClick={() => setStoredNumbers(firstNumber, operation, secondNumber, answerNumber)}>Store</button>
+          <button onClick={recallAnswer}>Recall</button>
         </div>
       </div>
     </div>
