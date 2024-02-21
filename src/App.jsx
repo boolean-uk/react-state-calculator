@@ -1,60 +1,119 @@
-import "./App.css"
+import "./App.css";
+import { useState } from "react";
 
-function App() {
+export default function App() {
+  const [displayFirstValue, setDisplayFirstValue] = useState("0");
+  const [displaySecondValue, setDisplaySecondValue] = useState("0");
+  const [operation, setOperation] = useState("");
+  const [result, setResult] = useState("0");
+
+  const handleFirstScreenClick = (number) => {
+    if (displayFirstValue === "0") {
+      setDisplayFirstValue(number.toString());
+    } else {
+      setDisplayFirstValue(displayFirstValue + number);
+    }
+  };
+
+  const handleSecondScreenClick = (number) => {
+    if (displaySecondValue === "0") {
+      setDisplaySecondValue(number.toString());
+    } else {
+      setDisplaySecondValue(displaySecondValue + number);
+    }
+  };
+
+  const handleOperationClick = (op) => {
+    if (operation === "") {
+      setOperation(op);
+      result(displayFirstValue);
+    } else {
+      setOperation("");
+      setOperation(op);
+    }
+  };
+
+  const handleEqualsClick = () => {
+    if (operation !== "") {
+      const operand1 = parseFloat(displayFirstValue);
+      const operand2 = parseFloat(displaySecondValue);
+      switch (operation) {
+        case "+":
+          setResult(operand1 + operand2);
+          break;
+        case "-":
+          setResult(operand1 - operand2);
+          break;
+        case "*":
+          setResult(operand1 * operand2);
+          break;
+        case "/":
+          setResult(operand1 / operand2);
+          break;
+        default:
+          break;
+      }
+      setOperation("");
+    }
+  };
+
+  const handleFirstScreenClearClick = () => {
+    setDisplayFirstValue("0");
+    result("0");
+    setOperation("");
+  };
+
+  const handleSecondScreenClearClick = () => {
+    setDisplaySecondValue("0");
+    result("0");
+    setOperation("");
+  };
 
   return (
     <div className="calculator">
       <div className="panel">
-        <p>0</p>
+        <p>{displayFirstValue}</p>
         <div className="numbers">
-          <button>1</button>
-          <button>2</button>
-          <button>3</button>
-          <button>4</button>
-          <button>5</button>
-          <button>6</button>
-          <button>7</button>
-          <button>8</button>
-          <button>9</button>
-          <button>0</button>
-          <button>Clear</button>
+          {[1, 2, 3, 4, 5, 6, 7, 8, 9, 0].map((number) => (
+            <button key={number} onClick={() => handleFirstScreenClick(number)}>
+              {number}
+            </button>
+          ))}
+          <button onClick={handleFirstScreenClearClick}>Clear</button>
         </div>
       </div>
 
       <div className="panel">
-        <p>+</p>
+        <p>{operation}</p>
         <div className="numbers">
-          <button>+</button>
-          <button>-</button>
-          <button>*</button>
-          <button>÷</button>
+          {["+", "-", "*", "/"].map((op) => (
+            <button key={op} onClick={() => handleOperationClick(op)}>
+              {op}
+            </button>
+          ))}
         </div>
       </div>
 
       <div className="panel">
-        <p>0</p>
+        <p>{displaySecondValue}</p>
         <div className="numbers">
-          <button>1</button>
-          <button>2</button>
-          <button>3</button>
-          <button>4</button>
-          <button>5</button>
-          <button>6</button>
-          <button>7</button>
-          <button>8</button>
-          <button>9</button>
-          <button>0</button>
-          <button>Clear</button>
+          {[1, 2, 3, 4, 5, 6, 7, 8, 9, 0].map((number) => (
+            <button
+              key={number}
+              onClick={() => handleSecondScreenClick(number)}
+            >
+              {number}
+            </button>
+          ))}
+          <button onClick={handleSecondScreenClearClick}>Clear</button>
         </div>
       </div>
       <div className="panel answer">
-        <p>0</p>
+        <p>{result}</p>
         <div>
-          <button>=</button>
+          <button onClick={handleEqualsClick}>=</button>
         </div>
       </div>
     </div>
-  )
+  );
 }
-
-export default App
