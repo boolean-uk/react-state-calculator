@@ -1,58 +1,22 @@
+import { useState } from "react"
 import "./App.css"
+import Numbers from "./Numbers"
+import Operator from "./Operator"
+import Answer from "./Anwser"
 
 function App() {
+  const [firstnumber, newfirstNumber] = useState(5)
+  const [operator, newOperator] = useState((a, b) => console.log('Hallo'))
+  const [secondnumber, newsecondNumber] = useState(0)
 
   return (
     <div className="calculator">
-      <div className="panel">
-        <p>0</p>
-        <div className="numbers">
-          <button>1</button>
-          <button>2</button>
-          <button>3</button>
-          <button>4</button>
-          <button>5</button>
-          <button>6</button>
-          <button>7</button>
-          <button>8</button>
-          <button>9</button>
-          <button>0</button>
-          <button>Clear</button>
-        </div>
-      </div>
+      <Numbers state={[firstnumber, newfirstNumber]}/>
+      <Operator state={[operator, newOperator]}/>
 
-      <div className="panel">
-        <p>+</p>
-        <div className="numbers">
-          <button>+</button>
-          <button>-</button>
-          <button>*</button>
-          <button>÷</button>
-        </div>
-      </div>
+      <Numbers state={[secondnumber, newsecondNumber]}/>
+      <Answer firstNumber={firstnumber} secondNumber={secondnumber} Operator={operator}/>
 
-      <div className="panel">
-        <p>0</p>
-        <div className="numbers">
-          <button>1</button>
-          <button>2</button>
-          <button>3</button>
-          <button>4</button>
-          <button>5</button>
-          <button>6</button>
-          <button>7</button>
-          <button>8</button>
-          <button>9</button>
-          <button>0</button>
-          <button>Clear</button>
-        </div>
-      </div>
-      <div className="panel answer">
-        <p>0</p>
-        <div>
-          <button>=</button>
-        </div>
-      </div>
     </div>
   )
 }
