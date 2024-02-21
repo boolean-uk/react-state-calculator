@@ -8,19 +8,25 @@ export default function App() {
   const [result, setResult] = useState("0");
   const [storedValue, setStoredValue] = useState(null);
 
-  const handleFirstScreenClick = (number) => {
-    if (displayFirstValue === "0") {
-      setDisplayFirstValue(number.toString());
-    } else {
-      setDisplayFirstValue(displayFirstValue + number.toString());
-    }
+  const handleFirstScreenClick = (input) => {
+    handleInput(input, displayFirstValue, setDisplayFirstValue);
   };
 
-  const handleSecondScreenClick = (number) => {
-    if (displaySecondValue === "0") {
-      setDisplaySecondValue(number.toString());
+  const handleSecondScreenClick = (input) => {
+    handleInput(input, displaySecondValue, setDisplaySecondValue);
+  };
+
+  const handleInput = (input, currentValue, setCurrentValue) => {
+    if (input === ".") {
+      if (!currentValue.includes(".")) {
+        setCurrentValue(currentValue + ".");
+      }
     } else {
-      setDisplaySecondValue(displaySecondValue + number.toString());
+      if (currentValue === "0") {
+        setCurrentValue(input.toString());
+      } else {
+        setCurrentValue(currentValue + input.toString());
+      }
     }
   };
 
@@ -53,30 +59,32 @@ export default function App() {
         default:
           break;
       }
+      setOperation("");
     }
   };
 
   const handleFirstScreenClearClick = () => {
     setDisplayFirstValue("0");
     setResult("0");
+    setOperation("");
   };
 
   const handleSecondScreenClearClick = () => {
     setDisplaySecondValue("0");
     setResult("0");
+    setOperation("");
   };
 
   const handleStoreClick = () => {
+    setResult(result);
     setStoredValue(result);
   };
 
   const handleRecallClick = (panel) => {
     if (panel === "first") {
-      setDisplayFirstValue(storedValue);
-      setResult("0");
+      setDisplayFirstValue(storedValue || "0");
     } else if (panel === "second") {
-      setDisplaySecondValue(storedValue);
-      setResult("0");
+      setDisplaySecondValue(storedValue || "0");
     }
   };
 
@@ -85,7 +93,7 @@ export default function App() {
       <div className="panel">
         <p>{displayFirstValue}</p>
         <div className="numbers">
-          {[1, 2, 3, 4, 5, 6, 7, 8, 9, 0].map((number) => (
+          {[1, 2, 3, 4, 5, 6, 7, 8, 9, 0, "."].map((number) => (
             <button key={number} onClick={() => handleFirstScreenClick(number)}>
               {number}
             </button>
@@ -109,7 +117,7 @@ export default function App() {
       <div className="panel">
         <p>{displaySecondValue}</p>
         <div className="numbers">
-          {[1, 2, 3, 4, 5, 6, 7, 8, 9, 0].map((number) => (
+          {[1, 2, 3, 4, 5, 6, 7, 8, 9, 0, "."].map((number) => (
             <button
               key={number}
               onClick={() => handleSecondScreenClick(number)}
