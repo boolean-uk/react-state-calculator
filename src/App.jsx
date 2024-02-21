@@ -10,7 +10,9 @@ function App() {
 
   const changeFirstNumber = (number) =>
   {
-    setFirstNumber(number)
+    if (number === null) setFirstNumber(0)
+    else if (firstNumber === 0) setFirstNumber(number)
+    else setFirstNumber(firstNumber.toString() + number.toString())
   }
 
   const changeOperation = (op) =>
@@ -20,15 +22,17 @@ function App() {
 
   const changeSecondNumber = (number) =>
   {
-    setSecondNumber(number)
+    if (number === null) setSecondNumber(0)
+    else if (secondNumber === 0) setSecondNumber(number)
+    else setSecondNumber(secondNumber.toString() + number.toString())
   }
 
   const calculate = () =>
   {
-    if (operation === '+') setAnswer(firstNumber + secondNumber)
-    if (operation === '-') setAnswer(firstNumber - secondNumber)
-    if (operation === '*') setAnswer(firstNumber * secondNumber)
-    if (operation === '÷') setAnswer(firstNumber / secondNumber)
+    if (operation === '+') setAnswer(parseInt(firstNumber) + parseInt(secondNumber))
+    if (operation === '-') setAnswer(parseInt(firstNumber) - parseInt(secondNumber))
+    if (operation === '*') setAnswer(parseInt(firstNumber) * parseInt(secondNumber))
+    if (operation === '÷') setAnswer(parseInt(firstNumber) / parseInt(secondNumber))
   }
 
   return (
@@ -46,7 +50,7 @@ function App() {
           <button onClick={() => changeFirstNumber(8)}>8</button>
           <button onClick={() => changeFirstNumber(9)}>9</button>
           <button onClick={() => changeFirstNumber(0)}>0</button>
-          <button onClick={() => changeFirstNumber(0)}>Clear</button>
+          <button onClick={() => changeFirstNumber(null)}>Clear</button>
         </div>
       </div>
 
@@ -73,7 +77,7 @@ function App() {
           <button onClick={() => changeSecondNumber(8)}>8</button>
           <button onClick={() => changeSecondNumber(9)}>9</button>
           <button onClick={() => changeSecondNumber(0)}>0</button>
-          <button onClick={() => changeSecondNumber(0)}>Clear</button>
+          <button onClick={() => changeSecondNumber(null)}>Clear</button>
         </div>
       </div>
       <div className="panel answer">
