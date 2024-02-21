@@ -6,8 +6,12 @@ function App() {
 	const [secondNumber, setSecondNumber] = useState(0);
 	const [operator, setOperator] = useState("+");
 	const [total, setTotal] = useState(0);
+	// const [storedNumber, setStoredNumber] = useState(0);
 
 	const calculate = (firstNumber, secondNumber, operator) => {
+		firstNumber = parseInt(firstNumber);
+		secondNumber = parseInt(secondNumber);
+
 		switch (operator) {
 			case "+":
 				return firstNumber + secondNumber;
@@ -22,6 +26,15 @@ function App() {
 		}
 	};
 
+	const updatePanelNumber = (currentNumber, newNumber) => {
+		if (currentNumber === 0 && newNumber === 0) {
+			return currentNumber;
+		}
+		const returnNumber = currentNumber * 10 + newNumber;
+
+		return returnNumber;
+	};
+
 	return (
 		<div className="calculator">
 			<div className="panel">
@@ -29,70 +42,70 @@ function App() {
 				<div className="numbers">
 					<button
 						onClick={() => {
-							setFirstNumber(1);
+							setFirstNumber(updatePanelNumber(firstNumber, 1));
 						}}
 					>
 						1
 					</button>
 					<button
 						onClick={() => {
-							setFirstNumber(2);
+							setFirstNumber(updatePanelNumber(firstNumber, 2));
 						}}
 					>
 						2
 					</button>
 					<button
 						onClick={() => {
-							setFirstNumber(3);
+							setFirstNumber(updatePanelNumber(firstNumber, 3));
 						}}
 					>
 						3
 					</button>
 					<button
 						onClick={() => {
-							setFirstNumber(4);
+							setFirstNumber(updatePanelNumber(firstNumber, 4));
 						}}
 					>
 						4
 					</button>
 					<button
 						onClick={() => {
-							setFirstNumber(5);
+							setFirstNumber(updatePanelNumber(firstNumber, 5));
 						}}
 					>
 						5
 					</button>
 					<button
 						onClick={() => {
-							setFirstNumber(6);
+							setFirstNumber(updatePanelNumber(firstNumber, 6));
 						}}
 					>
 						6
 					</button>
 					<button
 						onClick={() => {
-							setFirstNumber(7);
+							setFirstNumber(updatePanelNumber(firstNumber, 7));
 						}}
 					>
 						7
 					</button>
 					<button
 						onClick={() => {
-							setFirstNumber(8);
+							setFirstNumber(updatePanelNumber(firstNumber, 8));
 						}}
 					>
 						8
 					</button>
 					<button
 						onClick={() => {
-							setFirstNumber(9);
+							setFirstNumber(updatePanelNumber(firstNumber, 9));
 						}}
 					>
 						9
 					</button>
 					<button
 						onClick={() => {
-							setFirstNumber(0);
+							setFirstNumber(updatePanelNumber(firstNumber, 0));
 						}}
 					>
 						0
@@ -116,70 +129,70 @@ function App() {
 				<div className="numbers">
 					<button
 						onClick={() => {
-							setSecondNumber(1);
+							setSecondNumber(updatePanelNumber(secondNumber, 1));
 						}}
 					>
 						1
 					</button>
 					<button
 						onClick={() => {
-							setSecondNumber(2);
+							setSecondNumber(updatePanelNumber(secondNumber, 2));
 						}}
 					>
 						2
 					</button>
 					<button
 						onClick={() => {
-							setSecondNumber(3);
+							setSecondNumber(updatePanelNumber(secondNumber, 3));
 						}}
 					>
 						3
 					</button>
 					<button
 						onClick={() => {
-							setSecondNumber(4);
+							setSecondNumber(updatePanelNumber(secondNumber, 4));
 						}}
 					>
 						4
 					</button>
 					<button
 						onClick={() => {
-							setSecondNumber(5);
+							setSecondNumber(updatePanelNumber(secondNumber, 5));
 						}}
 					>
 						5
 					</button>
 					<button
 						onClick={() => {
-							setSecondNumber(6);
+							setSecondNumber(updatePanelNumber(secondNumber, 6));
 						}}
 					>
 						6
 					</button>
 					<button
 						onClick={() => {
-							setSecondNumber(7);
+							setSecondNumber(updatePanelNumber(secondNumber, 7));
 						}}
 					>
 						7
 					</button>
 					<button
 						onClick={() => {
-							setSecondNumber(8);
+							setSecondNumber(updatePanelNumber(secondNumber, 8));
 						}}
 					>
 						8
 					</button>
 					<button
 						onClick={() => {
-							setSecondNumber(9);
+							setSecondNumber(updatePanelNumber(secondNumber, 9));
 						}}
 					>
 						9
 					</button>
 					<button
 						onClick={() => {
-							setSecondNumber(0);
+							setSecondNumber(updatePanelNumber(secondNumber, 0));
 						}}
 					>
 						0
@@ -197,6 +210,7 @@ function App() {
 					>
 						=
 					</button>
+					{/* <button onClick={() => setStoredNumber(total)}>Store</button> */}
 				</div>
 			</div>
 		</div>
