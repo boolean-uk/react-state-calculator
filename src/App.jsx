@@ -31,8 +31,7 @@ function App() {
     // Description: Sets number to provided number on click of number button
     // Input: event
     console.log(`New operation: ${event.currentTarget.value}`);
-    // Get number on button
-    // updateNumber to number on button
+    // updateOperaton to value on button
     updateOperation(event.currentTarget.value);
   };
   const SetSecondNumber = (event) => {
