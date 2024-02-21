@@ -6,7 +6,7 @@ function App() {
 	const [secondNumber, setSecondNumber] = useState(0);
 	const [operator, setOperator] = useState("+");
 	const [total, setTotal] = useState(0);
-	// const [storedNumber, setStoredNumber] = useState(0);
+	const [storedNumber, setStoredNumber] = useState(0);
 
 	const calculate = (firstNumber, secondNumber, operator) => {
 		firstNumber = parseInt(firstNumber);
@@ -111,6 +111,13 @@ function App() {
 						0
 					</button>
 					<button onClick={() => setFirstNumber(0)}>Clear</button>
+					<button
+						onClick={() => {
+							setFirstNumber(storedNumber);
+						}}
+					>
+						Recall
+					</button>
 				</div>
 			</div>
 
@@ -198,6 +205,13 @@ function App() {
 						0
 					</button>
 					<button onClick={() => setSecondNumber(0)}>Clear</button>
+					<button
+						onClick={() => {
+							setSecondNumber(storedNumber);
+						}}
+					>
+						Recall
+					</button>
 				</div>
 			</div>
 			<div className="panel answer">
@@ -210,7 +224,16 @@ function App() {
 					>
 						=
 					</button>
-					{/* <button onClick={() => setStoredNumber(total)}>Store</button> */}
+					<button onClick={() => setStoredNumber(total)}>
+						Stored ({storedNumber})
+					</button>
+					<button
+						onClick={() => {
+							setTotal(storedNumber);
+						}}
+					>
+						Recall
+					</button>
 				</div>
 			</div>
 		</div>
