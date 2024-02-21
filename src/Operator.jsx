@@ -14,7 +14,7 @@ function Operator({state})
         <div className="panel">
         <p>{show}</p>
         <div className="numbers">
-        <button onClick={() => changeOperator((a,b) => a + b, '+')}>+</button>
+        <button onClick={() => changeOperator((a,b) => Number(a) + Number(b), '+')}>+</button>
         <button onClick={() => changeOperator((a,b) => a - b, '-')}>-</button>
         <button onClick={() => changeOperator((a,b) => a * b, '*')}>*</button>
         <button onClick={() => changeOperator((a,b) => a / b, '÷')}>÷</button>

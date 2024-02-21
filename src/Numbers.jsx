@@ -1,5 +1,5 @@
 import { useState } from "react"
-function Numbers({state})
+function Numbers({state, ans})
 {
     const [currentState, newState] = state
     const changeState = (number) => {
@@ -18,7 +18,9 @@ function Numbers({state})
     for (let i = 1; i< 10; i++){
         buttonArray.push(<button onClick={() => changeState(i)}>{i}</button>)
     }
-    
+    const recall = () => {
+        newState(ans)
+    }
 
     return (
         <div className="panel">
@@ -27,6 +29,7 @@ function Numbers({state})
             {buttonArray}
             <button onClick={() => changeState(0)}>0</button>
             <button onClick={() => clear()}>Clear</button>
+            <button onClick={() => recall()}> Recall</button>
         </div>
       </div>
     )
