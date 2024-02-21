@@ -1,60 +1,92 @@
+import { useState } from "react"
 import "./App.css"
 
 function App() {
+  const [numberLeft, setNumberLeft] = useState(0);
+  const [numberRight, setNumberRight] = useState(0);
+  const [result, setResult] = useState(0);
+
+  const handleNumberClickLeft = (e) => {
+    const clickedNumber = parseInt(e.target.innerText);
+    setNumberLeft((prevNumber) => prevNumber * 10 + clickedNumber);
+  };
+
+  const handleNumberClickRight = (e) => {
+    const clickedNumber = parseInt(e.target.innerText);
+    setNumberRight((prevNumber) => prevNumber * 10 + clickedNumber);
+  };
+
+  const handleClick = (e) => {
+    const operator = e.target.innerText;
+    if (operator === "=") {
+      setResult(numberLeft + numberRight);
+    } else if (operator === "Clear") {
+      setNumberLeft(0);
+      setNumberRight(0);
+      setResult(0);
+    } else if (operator === "+") {
+      setResult(numberLeft + numberRight);
+      setNumberLeft(0);
+      setNumberRight(0);
+    } else if (operator === "-") {
+      setResult(numberLeft - numberRight);
+      setNumberLeft(0);
+      setNumberRight(0);
+    } else if (operator === "*") {
+      setResult(numberLeft * numberRight);
+      setNumberLeft(0);
+      setNumberRight(0);
+    } else {
+      setResult(numberLeft + numberRight);
+      setNumberLeft(0);
+      setNumberRight(0);
+    }
+  };
 
   return (
     <div className="calculator">
       <div className="panel">
-        <p>0</p>
+        <p>{numberLeft}</p>
         <div className="numbers">
-          <button>1</button>
-          <button>2</button>
-          <button>3</button>
-          <button>4</button>
-          <button>5</button>
-          <button>6</button>
-          <button>7</button>
-          <button>8</button>
-          <button>9</button>
-          <button>0</button>
-          <button>Clear</button>
+          {Array.from(Array(10).keys()).map((num) => (
+            <button key={num} onClick={handleNumberClickLeft}>
+              {num}
+            </button>
+          ))}
+          <button onClick={handleClick}>Clear</button>
         </div>
       </div>
 
       <div className="panel">
         <p>+</p>
         <div className="numbers">
-          <button>+</button>
-          <button>-</button>
-          <button>*</button>
-          <button>÷</button>
+          <button onClick={handleClick}>+</button>
+          <button onClick={handleClick}>-</button>
+          <button onClick={handleClick}>*</button>
+          <button onClick={handleClick}>÷</button>
         </div>
       </div>
 
       <div className="panel">
-        <p>0</p>
+        <p>{numberRight}</p>
         <div className="numbers">
-          <button>1</button>
-          <button>2</button>
-          <button>3</button>
-          <button>4</button>
-          <button>5</button>
-          <button>6</button>
-          <button>7</button>
-          <button>8</button>
-          <button>9</button>
-          <button>0</button>
-          <button>Clear</button>
+          {Array.from(Array(10).keys()).map((num) => (
+            <button key={num} onClick={handleNumberClickRight}>
+              {num}
+            </button>
+          ))}
+          <button onClick={handleClick}>Clear</button>
         </div>
       </div>
       <div className="panel answer">
-        <p>0</p>
+        <p>{result}</p>
         <div>
-          <button>=</button>
+          <button onClick={handleClick}>=</button>
+          <button onClick={handleClick}>Store</button>
         </div>
       </div>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
