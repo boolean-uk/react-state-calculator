@@ -7,6 +7,7 @@ function App() {
   const [FirstNumber, setFirstNumber] = useState(0);
   const [SecondNumber, setSecondNumber] = useState(0);
   const [Result, setResult] = useState(0);
+  const [StoredValue, setStoredValue] = useState(0);
 
   function calculate(num1, num2, operator) {
     num1 = parseFloat(num1); // Convert string to number
@@ -121,6 +122,7 @@ function App() {
             0
           </button>
           <button onClick={() => setFirstNumber(0)}>Clear</button>
+          <button onClick={() => setFirstNumber(StoredValue)}>Recall</button>
         </div>
       </div>
 
@@ -228,6 +230,7 @@ function App() {
             0
           </button>
           <button onClick={() => setSecondNumber(0)}>Clear</button>
+          <button onClick={() => setSecondNumber(StoredValue)}>Recall</button>
         </div>
       </div>
       <div className="panel answer">
@@ -242,6 +245,7 @@ function App() {
           >
             =
           </button>
+          <button onClick={() => setStoredValue(Result)}>Store</button>
         </div>
       </div>
     </div>
