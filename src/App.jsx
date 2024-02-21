@@ -6,12 +6,13 @@ export default function App() {
   const [displaySecondValue, setDisplaySecondValue] = useState("0");
   const [operation, setOperation] = useState("");
   const [result, setResult] = useState("0");
+  const [storedValue, setStoredValue] = useState(null);
 
   const handleFirstScreenClick = (number) => {
     if (displayFirstValue === "0") {
       setDisplayFirstValue(number.toString());
     } else {
-      setDisplayFirstValue(displayFirstValue + number);
+      setDisplayFirstValue(displayFirstValue + number.toString());
     }
   };
 
@@ -19,14 +20,13 @@ export default function App() {
     if (displaySecondValue === "0") {
       setDisplaySecondValue(number.toString());
     } else {
-      setDisplaySecondValue(displaySecondValue + number);
+      setDisplaySecondValue(displaySecondValue + number.toString());
     }
   };
 
   const handleOperationClick = (op) => {
     if (operation === "") {
       setOperation(op);
-      result(displayFirstValue);
     } else {
       setOperation("");
       setOperation(op);
@@ -53,20 +53,31 @@ export default function App() {
         default:
           break;
       }
-      setOperation("");
     }
   };
 
   const handleFirstScreenClearClick = () => {
     setDisplayFirstValue("0");
-    result("0");
-    setOperation("");
+    setResult("0");
   };
 
   const handleSecondScreenClearClick = () => {
     setDisplaySecondValue("0");
-    result("0");
-    setOperation("");
+    setResult("0");
+  };
+
+  const handleStoreClick = () => {
+    setStoredValue(result);
+  };
+
+  const handleRecallClick = (panel) => {
+    if (panel === "first") {
+      setDisplayFirstValue(storedValue);
+      setResult("0");
+    } else if (panel === "second") {
+      setDisplaySecondValue(storedValue);
+      setResult("0");
+    }
   };
 
   return (
@@ -80,6 +91,7 @@ export default function App() {
             </button>
           ))}
           <button onClick={handleFirstScreenClearClick}>Clear</button>
+          <button onClick={() => handleRecallClick("first")}>Recall</button>
         </div>
       </div>
 
@@ -106,12 +118,14 @@ export default function App() {
             </button>
           ))}
           <button onClick={handleSecondScreenClearClick}>Clear</button>
+          <button onClick={() => handleRecallClick("second")}>Recall</button>
         </div>
       </div>
       <div className="panel answer">
         <p>{result}</p>
         <div>
           <button onClick={handleEqualsClick}>=</button>
+          <button onClick={handleStoreClick}>Store</button>
         </div>
       </div>
     </div>
