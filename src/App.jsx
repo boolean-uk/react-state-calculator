@@ -29,16 +29,97 @@ function App() {
       <div className="panel">
         <p>{`${FirstNumber}`}</p>
         <div className="numbers">
-          <button onClick={() => setFirstNumber(1)}>1</button>
-          <button onClick={() => setFirstNumber(2)}>2</button>
-          <button onClick={() => setFirstNumber(3)}>3</button>
-          <button onClick={() => setFirstNumber(4)}>4</button>
-          <button onClick={() => setFirstNumber(5)}>5</button>
-          <button onClick={() => setFirstNumber(6)}>6</button>
-          <button onClick={() => setFirstNumber(7)}>7</button>
-          <button onClick={() => setFirstNumber(8)}>8</button>
-          <button onClick={() => setFirstNumber(9)}>9</button>
-          <button onClick={() => setFirstNumber(0)}>0</button>
+          <button
+            onClick={() =>
+              setFirstNumber(
+                FirstNumber === 0 ? 1 : parseInt(`${FirstNumber}1`, 10)
+              )
+            }
+          >
+            1
+          </button>
+
+          <button
+            onClick={() =>
+              setFirstNumber(
+                FirstNumber === 0 ? 2 : parseInt(`${FirstNumber}2`, 10)
+              )
+            }
+          >
+            2
+          </button>
+          <button
+            onClick={() =>
+              setFirstNumber(
+                FirstNumber === 0 ? 3 : parseInt(`${FirstNumber}3`, 10)
+              )
+            }
+          >
+            3
+          </button>
+          <button
+            onClick={() =>
+              setFirstNumber(
+                FirstNumber === 0 ? 4 : parseInt(`${FirstNumber}4`, 10)
+              )
+            }
+          >
+            4
+          </button>
+          <button
+            onClick={() =>
+              setFirstNumber(
+                FirstNumber === 0 ? 5 : parseInt(`${FirstNumber}5`, 10)
+              )
+            }
+          >
+            5
+          </button>
+          <button
+            onClick={() =>
+              setFirstNumber(
+                FirstNumber === 0 ? 6 : parseInt(`${FirstNumber}6`, 10)
+              )
+            }
+          >
+            6
+          </button>
+          <button
+            onClick={() =>
+              setFirstNumber(
+                FirstNumber === 0 ? 7 : parseInt(`${FirstNumber}7`, 10)
+              )
+            }
+          >
+            7
+          </button>
+          <button
+            onClick={() =>
+              setFirstNumber(
+                FirstNumber === 0 ? 8 : parseInt(`${FirstNumber}8`, 10)
+              )
+            }
+          >
+            8
+          </button>
+          <button
+            onClick={() =>
+              setFirstNumber(
+                FirstNumber === 0 ? 9 : parseInt(`${FirstNumber}9`, 10)
+              )
+            }
+          >
+            9
+          </button>
+          <button
+            onClick={() =>
+              setFirstNumber(
+                FirstNumber === 0 ? 0 : parseInt(`${FirstNumber}0`, 10)
+              )
+            }
+          >
+            0
+          </button>
           <button onClick={() => setFirstNumber(0)}>Clear</button>
         </div>
       </div>
@@ -56,16 +137,96 @@ function App() {
       <div className="panel">
         <p>{`${SecondNumber}`}</p>
         <div className="numbers">
-          <button onClick={() => setSecondNumber(1)}>1</button>
-          <button onClick={() => setSecondNumber(2)}>2</button>
-          <button onClick={() => setSecondNumber(3)}>3</button>
-          <button onClick={() => setSecondNumber(4)}>4</button>
-          <button onClick={() => setSecondNumber(5)}>5</button>
-          <button onClick={() => setSecondNumber(6)}>6</button>
-          <button onClick={() => setSecondNumber(7)}>7</button>
-          <button onClick={() => setSecondNumber(8)}>8</button>
-          <button onClick={() => setSecondNumber(9)}>9</button>
-          <button onClick={() => setSecondNumber(0)}>0</button>
+          <button
+            onClick={() =>
+              setSecondNumber(
+                SecondNumber === 0 ? 1 : parseInt(`${SecondNumber}1`, 10)
+              )
+            }
+          >
+            1
+          </button>
+          <button
+            onClick={() =>
+              setSecondNumber(
+                SecondNumber === 0 ? 2 : parseInt(`${SecondNumber}2`, 10)
+              )
+            }
+          >
+            2
+          </button>
+          <button
+            onClick={() =>
+              setSecondNumber(
+                SecondNumber === 0 ? 3 : parseInt(`${SecondNumber}3`, 10)
+              )
+            }
+          >
+            3
+          </button>
+          <button
+            onClick={() =>
+              setSecondNumber(
+                SecondNumber === 0 ? 4 : parseInt(`${SecondNumber}4`, 10)
+              )
+            }
+          >
+            4
+          </button>
+          <button
+            onClick={() =>
+              setSecondNumber(
+                SecondNumber === 0 ? 5 : parseInt(`${SecondNumber}5`, 10)
+              )
+            }
+          >
+            5
+          </button>
+          <button
+            onClick={() =>
+              setSecondNumber(
+                SecondNumber === 0 ? 6 : parseInt(`${SecondNumber}6`, 10)
+              )
+            }
+          >
+            6
+          </button>
+          <button
+            onClick={() =>
+              setSecondNumber(
+                SecondNumber === 0 ? 7 : parseInt(`${SecondNumber}7`, 10)
+              )
+            }
+          >
+            7
+          </button>
+          <button
+            onClick={() =>
+              setSecondNumber(
+                SecondNumber === 0 ? 8 : parseInt(`${SecondNumber}8`, 10)
+              )
+            }
+          >
+            8
+          </button>
+          <button
+            onClick={() =>
+              setSecondNumber(
+                SecondNumber === 0 ? 9 : parseInt(`${SecondNumber}9`, 10)
+              )
+            }
+          >
+            9
+          </button>
+          <button
+            onClick={() =>
+              setSecondNumber(
+                SecondNumber === 0 ? 0 : parseInt(`${SecondNumber}0`, 10)
+              )
+            }
+          >
+            0
+          </button>
           <button onClick={() => setSecondNumber(0)}>Clear</button>
         </div>
       </div>
