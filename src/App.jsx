@@ -33,7 +33,7 @@ function App() {
           <button
             onClick={() =>
               setFirstNumber(
-                FirstNumber === 0 ? 1 : parseInt(`${FirstNumber}1`, 10)
+                FirstNumber === 0 ? 1 : parseFloat(`${FirstNumber}1`)
               )
             }
           >
@@ -43,7 +43,7 @@ function App() {
           <button
             onClick={() =>
               setFirstNumber(
-                FirstNumber === 0 ? 2 : parseInt(`${FirstNumber}2`, 10)
+                FirstNumber === 0 ? 2 : parseFloat(`${FirstNumber}2`)
               )
             }
           >
@@ -52,7 +52,7 @@ function App() {
           <button
             onClick={() =>
               setFirstNumber(
-                FirstNumber === 0 ? 3 : parseInt(`${FirstNumber}3`, 10)
+                FirstNumber === 0 ? 3 : parseFloat(`${FirstNumber}3`)
               )
             }
           >
@@ -61,7 +61,7 @@ function App() {
           <button
             onClick={() =>
               setFirstNumber(
-                FirstNumber === 0 ? 4 : parseInt(`${FirstNumber}4`, 10)
+                FirstNumber === 0 ? 4 : parseFloat(`${FirstNumber}4`)
               )
             }
           >
@@ -70,7 +70,7 @@ function App() {
           <button
             onClick={() =>
               setFirstNumber(
-                FirstNumber === 0 ? 5 : parseInt(`${FirstNumber}5`, 10)
+                FirstNumber === 0 ? 5 : parseFloat(`${FirstNumber}5`)
               )
             }
           >
@@ -79,7 +79,7 @@ function App() {
           <button
             onClick={() =>
               setFirstNumber(
-                FirstNumber === 0 ? 6 : parseInt(`${FirstNumber}6`, 10)
+                FirstNumber === 0 ? 6 : parseFloat(`${FirstNumber}6`)
               )
             }
           >
@@ -88,7 +88,7 @@ function App() {
           <button
             onClick={() =>
               setFirstNumber(
-                FirstNumber === 0 ? 7 : parseInt(`${FirstNumber}7`, 10)
+                FirstNumber === 0 ? 7 : parseFloat(`${FirstNumber}7`)
               )
             }
           >
@@ -97,7 +97,7 @@ function App() {
           <button
             onClick={() =>
               setFirstNumber(
-                FirstNumber === 0 ? 8 : parseInt(`${FirstNumber}8`, 10)
+                FirstNumber === 0 ? 8 : parseFloat(`${FirstNumber}8`)
               )
             }
           >
@@ -106,7 +106,7 @@ function App() {
           <button
             onClick={() =>
               setFirstNumber(
-                FirstNumber === 0 ? 9 : parseInt(`${FirstNumber}9`, 10)
+                FirstNumber === 0 ? 9 : parseFloat(`${FirstNumber}9`)
               )
             }
           >
@@ -115,11 +115,24 @@ function App() {
           <button
             onClick={() =>
               setFirstNumber(
-                FirstNumber === 0 ? 0 : parseInt(`${FirstNumber}0`, 10)
+                FirstNumber.toString().includes(".")
+                  ? `${FirstNumber}0`
+                  : parseFloat(`${FirstNumber}0`)
               )
             }
           >
             0
+          </button>
+          <button
+            onClick={() =>
+              setFirstNumber(
+                FirstNumber.toString().includes(".")
+                  ? FirstNumber
+                  : `${FirstNumber}.`
+              )
+            }
+          >
+            .
           </button>
           <button onClick={() => setFirstNumber(0)}>Clear</button>
           <button onClick={() => setFirstNumber(StoredValue)}>Recall</button>
@@ -142,7 +155,7 @@ function App() {
           <button
             onClick={() =>
               setSecondNumber(
-                SecondNumber === 0 ? 1 : parseInt(`${SecondNumber}1`, 10)
+                SecondNumber === 0 ? 1 : parseFloat(`${SecondNumber}1`)
               )
             }
           >
@@ -151,7 +164,7 @@ function App() {
           <button
             onClick={() =>
               setSecondNumber(
-                SecondNumber === 0 ? 2 : parseInt(`${SecondNumber}2`, 10)
+                SecondNumber === 0 ? 2 : parseFloat(`${SecondNumber}2`)
               )
             }
           >
@@ -160,7 +173,7 @@ function App() {
           <button
             onClick={() =>
               setSecondNumber(
-                SecondNumber === 0 ? 3 : parseInt(`${SecondNumber}3`, 10)
+                SecondNumber === 0 ? 3 : parseFloat(`${SecondNumber}3`)
               )
             }
           >
@@ -169,7 +182,7 @@ function App() {
           <button
             onClick={() =>
               setSecondNumber(
-                SecondNumber === 0 ? 4 : parseInt(`${SecondNumber}4`, 10)
+                SecondNumber === 0 ? 4 : parseFloat(`${SecondNumber}4`)
               )
             }
           >
@@ -178,7 +191,7 @@ function App() {
           <button
             onClick={() =>
               setSecondNumber(
-                SecondNumber === 0 ? 5 : parseInt(`${SecondNumber}5`, 10)
+                SecondNumber === 0 ? 5 : parseFloat(`${SecondNumber}5`)
               )
             }
           >
@@ -187,7 +200,7 @@ function App() {
           <button
             onClick={() =>
               setSecondNumber(
-                SecondNumber === 0 ? 6 : parseInt(`${SecondNumber}6`, 10)
+                SecondNumber === 0 ? 6 : parseFloat(`${SecondNumber}6`)
               )
             }
           >
@@ -196,7 +209,7 @@ function App() {
           <button
             onClick={() =>
               setSecondNumber(
-                SecondNumber === 0 ? 7 : parseInt(`${SecondNumber}7`, 10)
+                SecondNumber === 0 ? 7 : parseFloat(`${SecondNumber}7`)
               )
             }
           >
@@ -205,7 +218,7 @@ function App() {
           <button
             onClick={() =>
               setSecondNumber(
-                SecondNumber === 0 ? 8 : parseInt(`${SecondNumber}8`, 10)
+                SecondNumber === 0 ? 8 : parseFloat(`${SecondNumber}8`)
               )
             }
           >
@@ -214,7 +227,7 @@ function App() {
           <button
             onClick={() =>
               setSecondNumber(
-                SecondNumber === 0 ? 9 : parseInt(`${SecondNumber}9`, 10)
+                SecondNumber === 0 ? 9 : parseFloat(`${SecondNumber}9`)
               )
             }
           >
@@ -223,11 +236,24 @@ function App() {
           <button
             onClick={() =>
               setSecondNumber(
-                SecondNumber === 0 ? 0 : parseInt(`${SecondNumber}0`, 10)
+                SecondNumber.toString().includes(".")
+                  ? `${SecondNumber}0`
+                  : parseFloat(`${SecondNumber}0`)
               )
             }
           >
             0
+          </button>
+          <button
+            onClick={() =>
+              setSecondNumber(
+                SecondNumber.toString().includes(".")
+                  ? SecondNumber
+                  : `${SecondNumber}.`
+              )
+            }
+          >
+            .
           </button>
           <button onClick={() => setSecondNumber(0)}>Clear</button>
           <button onClick={() => setSecondNumber(StoredValue)}>Recall</button>
