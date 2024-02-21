@@ -24,8 +24,15 @@ function App() {
     // Description: Sets number to provided number on click of number button
     // Input: event
     console.log(`New firstNumber: ${event.currentTarget.value}`);
-    // updateNumber to value on button
-    updateFirstNumber(event.currentTarget.value);
+    // Check if firstNumber is 0, if 0, set to button value, otherwise add onto
+    // Turn firstNumber into string for easier comparison
+    const nr = firstNumber.toString();
+    if (nr === "0") {
+      updateFirstNumber(event.currentTarget.value);
+    } else {
+      // updateNumber to value on button (add onto)
+      updateFirstNumber(firstNumber + event.currentTarget.value);
+    }
   };
   const SetOperation = (event) => {
     // Description: Sets number to provided number on click of number button
@@ -38,8 +45,15 @@ function App() {
     // Description: Sets number to provided number on click of number button
     // Input: event
     console.log(`New secondNumber: ${event.currentTarget.value}`);
-    // updateNumber to value on button
-    updateSecondNumber(event.currentTarget.value);
+    // Check if secondNumber is 0, if 0, set to button value, otherwise add onto
+    // Turn secondNumber into string for easier comparison
+    const nr = secondNumber.toString();
+    if (nr === "0") {
+      updateSecondNumber(event.currentTarget.value);
+    } else {
+      // updateNumber to value on button (add onto)
+      updateSecondNumber(secondNumber + event.currentTarget.value);
+    }
   };
 
   const Answer = () => {
