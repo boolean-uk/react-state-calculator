@@ -7,6 +7,11 @@ function App() {
   const [operation, setOperation] = useState('+')
   const [secondNumber, setSecondNumber] = useState(0)
   const [answerNumber, setAnswer] = useState(0)
+  
+  const [storedFirstNumber, setStoredFirstNumber] = useState(0)
+  const [storedOperation, setStoredOperation] = useState('+')
+  const [storedSecondNumber, setStoredSecondNumber] = useState(0)
+  const [storedAnswer, setStoredAnswer] = useState(0)
 
   const changeFirstNumber = (number) =>
   {
@@ -35,6 +40,34 @@ function App() {
     if (operation === '÷') setAnswer(parseInt(firstNumber) / parseInt(secondNumber))
   }
 
+  const setStoredNumbers = (number1, operating, number2, answer) =>
+  {
+    setStoredFirstNumber(number1)
+    setStoredOperation(operating)
+    setStoredSecondNumber(number2)
+    setStoredAnswer(answer)
+  }
+
+  const recallFirstNumber = () =>
+  {
+    setFirstNumber(storedFirstNumber)
+  }
+
+  const recallOperation = () =>
+  {
+    setOperation(storedOperation)
+  }
+
+  const recallSecondNumber = () =>
+  {
+    setSecondNumber(storedSecondNumber)
+  }
+
+  const recallAnswer = () =>
+  {
+    setAnswer(storedAnswer)
+  }
+
   return (
     <div className="calculator">
       <div className="panel">
@@ -51,6 +84,7 @@ function App() {
           <button onClick={() => changeFirstNumber(9)}>9</button>
           <button onClick={() => changeFirstNumber(0)}>0</button>
           <button onClick={() => changeFirstNumber(null)}>Clear</button>
+          <button onClick={recallFirstNumber}>Recall</button>
         </div>
       </div>
 
@@ -61,6 +95,7 @@ function App() {
           <button onClick={() => changeOperation('-')}>-</button>
           <button onClick={() => changeOperation('*')}>*</button>
           <button onClick={() => changeOperation('÷')}>÷</button>
+          <button onClick={recallOperation}>Recall</button>
         </div>
       </div>
 
@@ -78,12 +113,15 @@ function App() {
           <button onClick={() => changeSecondNumber(9)}>9</button>
           <button onClick={() => changeSecondNumber(0)}>0</button>
           <button onClick={() => changeSecondNumber(null)}>Clear</button>
+          <button onClick={recallSecondNumber}>Recall</button>
         </div>
       </div>
       <div className="panel answer">
         <p>{answerNumber}</p>
         <div>
           <button onClick={calculate}>=</button>
+          <button onClick={() => setStoredNumbers(firstNumber, operation, secondNumber, answerNumber)}>Store</button>
+          <button onClick={recallAnswer}>Recall</button>
         </div>
       </div>
     </div>
