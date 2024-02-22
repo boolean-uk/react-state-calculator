@@ -10,26 +10,19 @@ function App() {
   const [result, setResult] = useState(0)
   const [storedResult, setStoredResult] = useState(-1)
 
-  const ChangeFirstNumber = (e) => {
-    if (e.target.innerText === "Clear") {
-      setFirstNumber("0")
-    } else {
-      if (firstNumber === "0") {
-        setFirstNumber(e.target.innerText)
-      } else {
-        setFirstNumber(firstNumber + e.target.innerText)
-      }
-    }
-  }
+  const ChangeNumber = (num, e) => {
+    const number = num === 1 ? firstNumber : secondNumber
+    const setNumber = num === 1 ? setFirstNumber : setSecondNumber
+    const setDecimal = num === 1 ? setFirstNumberDecimal : setSecondNumberDecimal
 
-  const ChangeSecondNumber = (e) => {
     if (e.target.innerText === "Clear") {
-      setSecondNumber("0")
+      setNumber("0")
+      setDecimal(false)
     } else {
-      if (secondNumber === "0") {
-        setSecondNumber(e.target.innerText)
+      if (number === "0") {
+        setNumber(e.target.innerText)
       } else {
-        setSecondNumber(secondNumber + e.target.innerText)
+        setNumber(number + e.target.innerText)
       }
     }
   }
@@ -65,19 +58,25 @@ function App() {
     if (storedResult !== -1) {
       if (num === 1) {
         setFirstNumber(storedResult)
+        if (storedResult.toString().includes(".")) {
+          setFirstNumberDecimal(true)
+        }
       }
       if (num === 2) {
         setSecondNumber(storedResult)
+        if (storedResult.toString().includes(".")) {
+          setSecondNumberDecimal(true)
+        }
       }
     }
   }
 
   const AddDecimal = (num) => {
-    if (num === 1) {
+    if (num === 1 && !firstNumberDecimal) {
       setFirstNumber(firstNumber + ".")
       setFirstNumberDecimal(true)
     }
-    if (num === 2) {
+    if (num === 2 && !secondNumberDecimal) {
       setSecondNumber(secondNumber + ".")
       setSecondNumberDecimal(true)
     }
@@ -88,18 +87,18 @@ function App() {
       <div className="panel">
         <p>{firstNumber}</p>
         <div className="numbers">
-          <button onClick={(e) => ChangeFirstNumber(e)}>1</button>
-          <button onClick={(e) => ChangeFirstNumber(e)}>2</button>
-          <button onClick={(e) => ChangeFirstNumber(e)}>3</button>
-          <button onClick={(e) => ChangeFirstNumber(e)}>4</button>
-          <button onClick={(e) => ChangeFirstNumber(e)}>5</button>
-          <button onClick={(e) => ChangeFirstNumber(e)}>6</button>
-          <button onClick={(e) => ChangeFirstNumber(e)}>7</button>
-          <button onClick={(e) => ChangeFirstNumber(e)}>8</button>
-          <button onClick={(e) => ChangeFirstNumber(e)}>9</button>
-          <button onClick={(e) => ChangeFirstNumber(e)}>0</button>
+          <button onClick={(e) => ChangeNumber(1, e)}>1</button>
+          <button onClick={(e) => ChangeNumber(1, e)}>2</button>
+          <button onClick={(e) => ChangeNumber(1, e)}>3</button>
+          <button onClick={(e) => ChangeNumber(1, e)}>4</button>
+          <button onClick={(e) => ChangeNumber(1, e)}>5</button>
+          <button onClick={(e) => ChangeNumber(1, e)}>6</button>
+          <button onClick={(e) => ChangeNumber(1, e)}>7</button>
+          <button onClick={(e) => ChangeNumber(1, e)}>8</button>
+          <button onClick={(e) => ChangeNumber(1, e)}>9</button>
+          <button onClick={(e) => ChangeNumber(1, e)}>0</button>
           <button onClick={() => AddDecimal(1)}>.</button>
-          <button onClick={(e) => ChangeFirstNumber(e)}>Clear</button>
+          <button onClick={(e) => ChangeNumber(1, e)}>Clear</button>
           <button onClick={() => RecallNumber(1)}>Recall</button>
         </div>
       </div>
@@ -118,18 +117,18 @@ function App() {
       <div className="panel">
         <p>{secondNumber}</p>
         <div className="numbers">
-          <button onClick={(e) => ChangeSecondNumber(e)}>1</button>
-          <button onClick={(e) => ChangeSecondNumber(e)}>2</button>
-          <button onClick={(e) => ChangeSecondNumber(e)}>3</button>
-          <button onClick={(e) => ChangeSecondNumber(e)}>4</button>
-          <button onClick={(e) => ChangeSecondNumber(e)}>5</button>
-          <button onClick={(e) => ChangeSecondNumber(e)}>6</button>
-          <button onClick={(e) => ChangeSecondNumber(e)}>7</button>
-          <button onClick={(e) => ChangeSecondNumber(e)}>8</button>
-          <button onClick={(e) => ChangeSecondNumber(e)}>9</button>
-          <button onClick={(e) => ChangeSecondNumber(e)}>0</button>
+          <button onClick={(e) => ChangeNumber(2, e)}>1</button>
+          <button onClick={(e) => ChangeNumber(2, e)}>2</button>
+          <button onClick={(e) => ChangeNumber(2, e)}>3</button>
+          <button onClick={(e) => ChangeNumber(2, e)}>4</button>
+          <button onClick={(e) => ChangeNumber(2, e)}>5</button>
+          <button onClick={(e) => ChangeNumber(2, e)}>6</button>
+          <button onClick={(e) => ChangeNumber(2, e)}>7</button>
+          <button onClick={(e) => ChangeNumber(2, e)}>8</button>
+          <button onClick={(e) => ChangeNumber(2, e)}>9</button>
+          <button onClick={(e) => ChangeNumber(2, e)}>0</button>
           <button onClick={() => AddDecimal(2)}>.</button>
-          <button onClick={(e) => ChangeSecondNumber(e)}>Clear</button>
+          <button onClick={(e) => ChangeNumber(2, e)}>Clear</button>
           <button onClick={() => RecallNumber(2)}>Recall</button>
         </div>
       </div>
