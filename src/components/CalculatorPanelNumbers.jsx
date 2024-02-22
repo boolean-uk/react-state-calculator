@@ -7,7 +7,7 @@ export default function CalculatorPanelNumbers({ value, setValue }) {
 
   for (let i = 0; i <= 9; i++) {
     buttons.push(
-      <CalculatorButton setValue={setValue} value={value}>
+      <CalculatorButton setValue={setValue} value={value} key={`button-${i}`}>
         {i}
       </CalculatorButton>
     );
@@ -18,9 +18,16 @@ export default function CalculatorPanelNumbers({ value, setValue }) {
       <p>{value}</p>
       <div className="numbers">
         {buttons}
-        <button onClick={() => setValue(0)}>Clear</button>
-        <button onClick={() => setStored(value)}>Store</button>
-        <button onClick={() => setValue(stored)}>Recall</button>
+        <button key={"button-decimal"}>.</button>
+        <button key={"button-clear"} onClick={() => setValue(0)}>
+          Clear
+        </button>
+        <button key={"button-store"} onClick={() => setStored(value)}>
+          Store
+        </button>
+        <button key={"button-recall"} onClick={() => setValue(stored)}>
+          Recall
+        </button>
       </div>
     </div>
   );
