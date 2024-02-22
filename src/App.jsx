@@ -10,6 +10,8 @@ function App() {
 
   const [resultDisplay, setResult] = useState("0");
 
+  const [storedResult, setStoredResult] = useState("0");
+
   const handleNumberClick = (number, panel) => {
     if (panel === "left") {
       setLeftDisplay((prevInput) =>
@@ -75,6 +77,18 @@ function App() {
     setOperator("");
   };
 
+  const storeResult = () => {
+    setStoredResult(resultDisplay);
+  };
+
+  const recalStoredResult = (panel) => {
+    if (panel === "left") {
+      setLeftDisplay(storedResult);
+    } else if (panel === "right") {
+      setRightDisplay(storedResult);
+    }
+  };
+
   return (
     <div className="calculator">
       <div className="panel">
@@ -89,6 +103,7 @@ function App() {
             </button>
           ))}
           <button onClick={() => handleClear("left")}>Clear</button>
+          <button onClick={() => recalStoredResult("left")}>Recall</button>
         </div>
       </div>
 
@@ -115,12 +130,14 @@ function App() {
             </button>
           ))}
           <button onClick={() => handleClear("right")}>Clear</button>
+          <button onClick={() => recalStoredResult("right")}>Recall</button>
         </div>
       </div>
       <div className="panel answer">
         <p>{resultDisplay}</p>
         <div>
           <button onClick={culateTotal}>=</button>
+          <button onClick={storeResult}>Recall</button>
         </div>
       </div>
     </div>
