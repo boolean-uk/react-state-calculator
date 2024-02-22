@@ -1,5 +1,6 @@
 import "./App.css"
 import { useState } from 'react'
+import ResultsPanel from "./Components/ResultsPanel"
 
 function App() {
   const [firstNumber, setFirstNumber] = useState("0")
@@ -7,7 +8,6 @@ function App() {
   const [secondNumber, setSecondNumber] = useState("0")
   const [secondNumberDecimal, setSecondNumberDecimal] = useState(false)
   const [operator, setOperator] = useState("+")
-  const [result, setResult] = useState(0)
   const [storedResult, setStoredResult] = useState(-1)
 
   const ChangeNumber = (e) => {
@@ -30,29 +30,6 @@ function App() {
 
   const ChangeOperator = (e) => {
     setOperator(e.target.innerText)
-  }
-
-  const EvaluateResult = () => {
-    let calculationValue = 0
-    switch (operator) {
-      case "+":
-        calculationValue = parseFloat(firstNumber) + parseFloat(secondNumber)
-        break
-      case "-":
-        calculationValue = parseFloat(firstNumber) - parseFloat(secondNumber)
-        break
-      case "*":
-        calculationValue = parseFloat(firstNumber) * parseFloat(secondNumber)
-        break
-      case "÷":
-        calculationValue = parseFloat(firstNumber) / parseFloat(secondNumber)
-        break
-    }
-    setResult(+calculationValue.toFixed(8))
-  }
-
-  const StoreResult = () => {
-    setStoredResult(result)
   }
 
   const RecallNumber = (num) => {
@@ -133,13 +110,7 @@ function App() {
           <button onClick={() => RecallNumber(2)}>Recall</button>
         </div>
       </div>
-      <div className="panel answer">
-        <p>{result}</p>
-        <div>
-          <button onClick={() => EvaluateResult()}>=</button>
-          <button onClick={() => StoreResult()}> Store result</button>
-        </div>
-      </div>
+      <ResultsPanel setStoredResult={setStoredResult} firstNumber={firstNumber} secondNumber={secondNumber} operator={operator}/>
     </div>
   )
 }
