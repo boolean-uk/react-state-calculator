@@ -3,7 +3,9 @@ import { useState } from 'react'
 
 function App() {
   const [firstNumber, setFirstNumber] = useState("0")
+  const [firstNumberDecimal, setFirstNumberDecimal] = useState(false)
   const [secondNumber, setSecondNumber] = useState("0")
+  const [secondNumberDecimal, setSecondNumberDecimal] = useState(false)
   const [operator, setOperator] = useState("+")
   const [result, setResult] = useState(0)
   const [storedResult, setStoredResult] = useState(-1)
@@ -40,19 +42,19 @@ function App() {
     let calculationValue = 0
     switch (operator) {
       case "+":
-        calculationValue = parseInt(firstNumber) + parseInt(secondNumber)
+        calculationValue = parseFloat(firstNumber) + parseFloat(secondNumber)
         break
       case "-":
-        calculationValue = parseInt(firstNumber) - parseInt(secondNumber)
+        calculationValue = parseFloat(firstNumber) - parseFloat(secondNumber)
         break
       case "*":
-        calculationValue = parseInt(firstNumber) * parseInt(secondNumber)
+        calculationValue = parseFloat(firstNumber) * parseFloat(secondNumber)
         break
       case "÷":
-        calculationValue = parseInt(firstNumber) / parseInt(secondNumber)
+        calculationValue = parseFloat(firstNumber) / parseFloat(secondNumber)
         break
     }
-    setResult(calculationValue)
+    setResult(+calculationValue.toFixed(8))
   }
 
   const StoreResult = () => {
@@ -67,6 +69,17 @@ function App() {
       if (num === 2) {
         setSecondNumber(storedResult)
       }
+    }
+  }
+
+  const AddDecimal = (num) => {
+    if (num === 1) {
+      setFirstNumber(firstNumber + ".")
+      setFirstNumberDecimal(true)
+    }
+    if (num === 2) {
+      setSecondNumber(secondNumber + ".")
+      setSecondNumberDecimal(true)
     }
   }
 
@@ -85,6 +98,7 @@ function App() {
           <button onClick={(e) => ChangeFirstNumber(e)}>8</button>
           <button onClick={(e) => ChangeFirstNumber(e)}>9</button>
           <button onClick={(e) => ChangeFirstNumber(e)}>0</button>
+          <button onClick={() => AddDecimal(1)}>.</button>
           <button onClick={(e) => ChangeFirstNumber(e)}>Clear</button>
           <button onClick={() => RecallNumber(1)}>Recall</button>
         </div>
@@ -114,6 +128,7 @@ function App() {
           <button onClick={(e) => ChangeSecondNumber(e)}>8</button>
           <button onClick={(e) => ChangeSecondNumber(e)}>9</button>
           <button onClick={(e) => ChangeSecondNumber(e)}>0</button>
+          <button onClick={() => AddDecimal(2)}>.</button>
           <button onClick={(e) => ChangeSecondNumber(e)}>Clear</button>
           <button onClick={() => RecallNumber(2)}>Recall</button>
         </div>
