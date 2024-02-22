@@ -19,7 +19,7 @@ function App() {
     } else if (operator === '*') {
       setAnswer((firstValue * secondValue).toString())
     } else if (operator === '÷') {
-      setAnswer(toString(firstValue / secondValue))
+      setAnswer((firstValue / secondValue).toFixed())
     }
   }
 
