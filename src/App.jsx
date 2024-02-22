@@ -67,7 +67,7 @@ function App() {
         setResult(String(leftNum * rightNum));
         break;
       case "÷":
-        setResult(String(leftNum / rightNum));
+        setResult(String((leftNum / rightNum).toFixed(4)));
         break;
       default:
         break;
@@ -79,6 +79,7 @@ function App() {
 
   const storeResult = () => {
     setStoredResult(resultDisplay);
+    setResult("0");
   };
 
   const recalStoredResult = (panel) => {
@@ -139,6 +140,7 @@ function App() {
           <button onClick={culateTotal}>=</button>
           <button onClick={storeResult}>Recall</button>
         </div>
+        <p>{storedResult}</p>
       </div>
     </div>
   );
