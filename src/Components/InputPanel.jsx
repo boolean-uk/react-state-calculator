@@ -1,6 +1,7 @@
 import { useState } from 'react'
 
-const InputPanel = ({panelId, number, setNumber, numberDecimal, setNumberDecimal, storedNumber}) => {
+const InputPanel = ({panelId, number, setNumber, storedNumber}) => {
+    const [numberDecimal, setNumberDecimal] = useState(false)
 
     const AddDecimal = () => {
         if (!numberDecimal) {
