@@ -12,22 +12,23 @@ const operatorMap = {
 }
 
 export default function Calculator() {
-    const [firstNumber, setFirstNumber] = useState(0)
+    const [firstNumber, setFirstNumber] = useState('0')
     const [operator, setOperator] = useState("+")
-    const [secondNumber, setSecondNumber] = useState(0)
+    const [secondNumber, setSecondNumber] = useState('0')
     const [result, setResult] = useState(0)
     const [storedResult, setStoredResult] = useState("0")
+    const [hasDecimal, setHasDecimal] = useState(false)
 
     return (
         <div className="calculator">
-            <CalculatorNumbers setValue={setFirstNumber} value={firstNumber} stored={storedResult} />
+            <CalculatorNumbers setValue={setFirstNumber} value={firstNumber} stored={storedResult} hasDecimal={hasDecimal} setHasDecimal={setHasDecimal} />
             <CalculatorOperators setValue={setOperator} value={operator} />
-            <CalculatorNumbers setValue={setSecondNumber} value={secondNumber} stored={storedResult} />
+            <CalculatorNumbers setValue={setSecondNumber} value={secondNumber} stored={storedResult} hasDecimal={hasDecimal} setHasDecimal={setHasDecimal} />
             <div className="panel answer">
                 <p>{result}</p>
                 <div>
-                    <button onClick={() => setResult(operatorMap[operator](firstNumber, secondNumber))}>=</button>
-                    <button onClick={() => { setStoredResult(result) }}>Store</button>
+                    <button onClick={() => setResult(operatorMap[operator](parseFloat(firstNumber), parseFloat(secondNumber)))}>=</button>
+                    <button onClick={() => setStoredResult(result)}>Store</button>
                 </div>
             </div>
         </div>
