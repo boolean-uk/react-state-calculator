@@ -91,10 +91,10 @@ function App() {
           <button onClick={() => 
           {
             if (!secondNumber.includes(".")) 
-              setFirstNumber(secondNumber + ".")
+              setSecondNumber(secondNumber + ".")
           }
           }>.</button>
-          <button onClick={() => AppendToFirst(0)}>0</button>
+          <button onClick={() => AppendToSecond(0)}>0</button>
           <button onClick={() => setSecondNumber("0")}>Clear</button>
           <button onClick={() => setSecondNumber(storedValue)}>Recall</button>
         </div>
