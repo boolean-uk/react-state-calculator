@@ -6,6 +6,7 @@ function App() {
   const [secondNumber, setSecondNumber] = useState("0")
   const [operator, setOperator] = useState("+")
   const [result, setResult] = useState(0)
+  const [storedResult, setStoredResult] = useState(-1)
 
   const ChangeFirstNumber = (e) => {
     if (e.target.innerText === "Clear") {
@@ -54,6 +55,21 @@ function App() {
     setResult(calculationValue)
   }
 
+  const StoreResult = () => {
+    setStoredResult(result)
+  }
+
+  const RecallNumber = (num) => {
+    if (storedResult !== -1) {
+      if (num === 1) {
+        setFirstNumber(storedResult)
+      }
+      if (num === 2) {
+        setSecondNumber(storedResult)
+      }
+    }
+  }
+
   return (
     <div className="calculator">
       <div className="panel">
@@ -70,6 +86,7 @@ function App() {
           <button onClick={(e) => ChangeFirstNumber(e)}>9</button>
           <button onClick={(e) => ChangeFirstNumber(e)}>0</button>
           <button onClick={(e) => ChangeFirstNumber(e)}>Clear</button>
+          <button onClick={() => RecallNumber(1)}>Recall</button>
         </div>
       </div>
 
@@ -80,6 +97,7 @@ function App() {
           <button onClick={(e) => ChangeOperator(e)}>-</button>
           <button onClick={(e) => ChangeOperator(e)}>*</button>
           <button onClick={(e) => ChangeOperator(e)}>÷</button>
+          
         </div>
       </div>
 
@@ -97,12 +115,14 @@ function App() {
           <button onClick={(e) => ChangeSecondNumber(e)}>9</button>
           <button onClick={(e) => ChangeSecondNumber(e)}>0</button>
           <button onClick={(e) => ChangeSecondNumber(e)}>Clear</button>
+          <button onClick={() => RecallNumber(2)}>Recall</button>
         </div>
       </div>
       <div className="panel answer">
         <p>{result}</p>
         <div>
           <button onClick={() => EvaluateResult()}>=</button>
+          <button onClick={() => StoreResult()}> Store result</button>
         </div>
       </div>
     </div>
