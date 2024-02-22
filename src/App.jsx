@@ -52,7 +52,7 @@ function App() {
     console.log(operation);
   };
 
-  const culateTotal = () => {
+  const calculateTotal = () => {
     const leftNum = parseFloat(leftDisplay);
     const rightNum = parseFloat(rightDisplay);
 
@@ -137,7 +137,7 @@ function App() {
       <div className="panel answer">
         <p>{resultDisplay}</p>
         <div>
-          <button onClick={culateTotal}>=</button>
+          <button onClick={calculateTotal}>=</button>
           <button onClick={storeResult}>Recall</button>
         </div>
         <p>{storedResult}</p>
