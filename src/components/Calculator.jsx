@@ -31,7 +31,7 @@ export default function Calculator() {
       <CalculatorPanelOperators setValue={setOperator} value={operator} />
       <CalculatorPanelNumbers setValue={setSecondValue} value={secondValue} />
       <div className="panel answer">
-        <p>{result}</p>
+        <p>{result.toFixed(2)}</p>
         <div>
           <button onClick={() => calculateResult()}>=</button>
         </div>
