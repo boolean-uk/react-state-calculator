@@ -8,7 +8,7 @@ function App() {
     const [number2, setNumber2] = useState(0);
     const [operator, setOperator] = useState("+");
 
-    const numberValues = [1, 2, 3, 4, 5, 6, 7, 8, 9, "Clear"];
+    const numberValues = [1, 2, 3, 4, 5, 6, 7, 8, 9, "Clear", 0];
     const operators = ["+", "-", "*", "÷"];
 
     return (
@@ -21,6 +21,7 @@ function App() {
                             key={value}
                             onClick={setNumber1}
                             value={value}
+                            currentValue={number1}
                         />
                     ))}
                 </div>
@@ -47,6 +48,7 @@ function App() {
                             key={value}
                             onClick={setNumber2}
                             value={value}
+                            currentValue={number2}
                         />
                     ))}
                 </div>

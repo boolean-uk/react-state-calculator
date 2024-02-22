@@ -2,21 +2,22 @@ import { useState } from "react";
 
 const Answer = ({ number1, number2, operator }) => {
     const [answer, setAnswer] = useState(0);
-
+    const num1 = parseFloat(number1);
+    const num2 = parseFloat(number2);
     const calculateAnswer = () => {
         switch (operator) {
             case "+":
-                setAnswer(number1 + number2);
+                setAnswer(num1 + num2);
                 break;
             case "-":
-                setAnswer(number1 - number2);
+                setAnswer(num1 - num2);
                 break;
             case "*":
-                setAnswer(number1 * number2);
+                setAnswer(num1 * num2);
                 break;
             case "÷":
                 if (number2 === 0) setAnswer("NaN");
-                else setAnswer(number1 / number2);
+                else setAnswer(num1 / num2);
                 break;
             default:
                 break;
