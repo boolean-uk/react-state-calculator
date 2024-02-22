@@ -1,27 +1,17 @@
-export default function CalculatorButton({
-  children,
-  setValue,
-  value,
-  isDecimal,
-  setIsDecimal,
-}) {
+export default function CalculatorButton({ children, setValue, value }) {
   const setButtonValue = () => {
     if (!value) {
       setValue(children);
       return;
     }
 
-    if (
-      (value === 0 && children === 0) ||
-      (value === "." && children === ".")
-    ) {
+    const number = `${value}${children}`;
+
+    if (value === 0 && children === 0 && !number.includes(".")) {
       return;
     }
 
-    const number = !isDecimal ? `${value}${children}` : `${value}.${children}`;
-    console.log(isDecimal);
-
-    setValue(parseFloat(number));
+    setValue(number);
   };
 
   return <button onClick={() => setButtonValue()}>{children}</button>;

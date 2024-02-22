@@ -13,12 +13,21 @@ export default function CalculatorPanelNumbers({ value, setValue }) {
     );
   }
 
+  const addDecimal = () => {
+    if (value.toString().includes(".")) {
+      return;
+    }
+    setValue(`${value}.`);
+  };
+
   return (
     <div className="panel">
       <p>{value}</p>
       <div className="numbers">
         {buttons}
-        <button key={"button-decimal"}>.</button>
+        <button key={"button-decimal"} onClick={() => addDecimal()}>
+          .
+        </button>
         <button key={"button-clear"} onClick={() => setValue(0)}>
           Clear
         </button>

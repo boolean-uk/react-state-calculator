@@ -9,18 +9,20 @@ export default function Calculator() {
   const [result, setResult] = useState(0);
 
   const calculateResult = () => {
+    const a = parseFloat(firstValue);
+    const b = parseFloat(secondValue);
     switch (operator) {
       case "+":
-        setResult(firstValue + secondValue);
+        setResult(a + b);
         break;
       case "-":
-        setResult(firstValue - secondValue);
+        setResult(a - b);
         break;
       case "*":
-        setResult(firstValue * secondValue);
+        setResult(a * b);
         break;
       case "÷":
-        setResult(firstValue / secondValue);
+        setResult(a / b);
         break;
     }
   };
