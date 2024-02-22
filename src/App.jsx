@@ -1,56 +1,47 @@
 import "./App.css"
-
+import { useState } from "react"
+import NumberComponent from "./components/NumberComponent"
+import OperatorComponent from "./components/OperatorComponent"
 function App() {
+  const [firstValue, setFirstValue] = useState(0)
+  const [operator, setOperator] = useState('+')
+  const [secondValue, setSecondValue] = useState(0)
+  const [resultValue, setResultValue] = useState(0)
 
+  const[storedValue, setStored] = useState(0)
+
+  const calculatedResult = () => {
+    const value1 = parseFloat(firstValue)
+    const value2 = parseFloat(secondValue)
+    switch(operator){
+      case '+':
+        setResultValue(value1 + value2)
+        break
+      case '-':
+        setResultValue(value1 - value2)
+        break
+        case '*':
+        setResultValue(value1 * value2)
+        break
+        case '÷':
+        setResultValue(value1 / value2)
+        break
+        
+    }
+  }
   return (
     <div className="calculator">
-      <div className="panel">
-        <p>0</p>
-        <div className="numbers">
-          <button>1</button>
-          <button>2</button>
-          <button>3</button>
-          <button>4</button>
-          <button>5</button>
-          <button>6</button>
-          <button>7</button>
-          <button>8</button>
-          <button>9</button>
-          <button>0</button>
-          <button>Clear</button>
-        </div>
-      </div>
+      <NumberComponent setValue={setFirstValue} value={firstValue} stored ={storedValue}/>
 
-      <div className="panel">
-        <p>+</p>
-        <div className="numbers">
-          <button>+</button>
-          <button>-</button>
-          <button>*</button>
-          <button>÷</button>
-        </div>
-      </div>
+      <OperatorComponent setValue={setOperator} value={operator}/>
 
-      <div className="panel">
-        <p>0</p>
-        <div className="numbers">
-          <button>1</button>
-          <button>2</button>
-          <button>3</button>
-          <button>4</button>
-          <button>5</button>
-          <button>6</button>
-          <button>7</button>
-          <button>8</button>
-          <button>9</button>
-          <button>0</button>
-          <button>Clear</button>
-        </div>
-      </div>
+      <NumberComponent setValue={setSecondValue} value={secondValue} stored ={storedValue}/>
       <div className="panel answer">
-        <p>0</p>
+        <p>{resultValue}</p>
         <div>
-          <button>=</button>
+          <button onClick={() => calculatedResult()}>=</button>
+          <button onClick={() => {
+            setStored(resultValue)}}>Store</button>
         </div>
       </div>
     </div>
