@@ -1,12 +1,13 @@
 import PropTypes from 'prop-types';
 
-export default function CalculatorButton({ children, setValue }) {
+export default function CalculatorButton({ value, children, setValue }) {
     return (
-        <button onClick={() => setValue(children == "Clear" ? 0 : children)}>{children}</button>
+        <button onClick={() => setValue(value)}>{children}</button>
     )
 }
 
 CalculatorButton.propTypes = {
+    value: PropTypes.any.isRequired,
     children: PropTypes.any.isRequired,
     setValue: PropTypes.func.isRequired,
 }

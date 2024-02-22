@@ -4,9 +4,9 @@ import PropTypes from 'prop-types';
 export default function CalculatorNumbers({ value, setValue }) {
     const buttons = []
     for (let i = 0; i <= 9; i++) {
-        buttons.push(<CalculatorButton key={i} setValue={setValue}>{i}</CalculatorButton>)
+        buttons.push(<CalculatorButton key={i} value={value == 0 ? i : parseInt(`${value}${i}`)} setValue={setValue}>{i}</CalculatorButton>)
     }
-    buttons.push(<CalculatorButton key={10} setValue={setValue}>Clear</CalculatorButton>)
+    buttons.push(<CalculatorButton key={10} value={0} setValue={setValue}>Clear</CalculatorButton>)
 
     return (
         <div className="panel">

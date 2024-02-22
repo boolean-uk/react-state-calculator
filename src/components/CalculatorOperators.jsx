@@ -6,7 +6,7 @@ export default function CalculatorOperators({ value, setValue }) {
     const buttons = []
 
     operatorList.forEach((operator, i) => {
-        buttons.push(<CalculatorButton key={i} setValue={setValue} value={value}>{operator}</CalculatorButton>)
+        buttons.push(<CalculatorButton key={i} setValue={setValue} value={operator}>{operator}</CalculatorButton>)
     })
 
     return (
