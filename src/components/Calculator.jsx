@@ -16,16 +16,18 @@ export default function Calculator() {
     const [operator, setOperator] = useState("+")
     const [secondNumber, setSecondNumber] = useState(0)
     const [result, setResult] = useState(0)
+    const [storedResult, setStoredResult] = useState("0")
 
     return (
         <div className="calculator">
-            <CalculatorNumbers setValue={setFirstNumber} value={firstNumber} />
+            <CalculatorNumbers setValue={setFirstNumber} value={firstNumber} stored={storedResult} />
             <CalculatorOperators setValue={setOperator} value={operator} />
-            <CalculatorNumbers setValue={setSecondNumber} value={secondNumber} />
+            <CalculatorNumbers setValue={setSecondNumber} value={secondNumber} stored={storedResult} />
             <div className="panel answer">
                 <p>{result}</p>
                 <div>
                     <button onClick={() => setResult(operatorMap[operator](firstNumber, secondNumber))}>=</button>
+                    <button onClick={() => { setStoredResult(result) }}>Store</button>
                 </div>
             </div>
         </div>
