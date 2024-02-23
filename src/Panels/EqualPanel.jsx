@@ -1,29 +1,4 @@
-export const EqualPanel = ({num1, num2, operator, result, setResult, saved, setSaved}) => {
-    const performCalculation = () => {
-      let calculatedResult;
-      switch (operator) {
-        case "+":
-          calculatedResult = num1 + num2;
-          break;
-        case "-":
-          calculatedResult = num1 - num2;
-          break;
-        case "*":
-          calculatedResult = num1 * num2;
-          break;
-        case "÷":
-          calculatedResult = num1 / num2;
-          break;
-        default:
-          calculatedResult = null;
-      }
-      setResult(calculatedResult);
-    };
-
-    const storeResult = () => {
-        setSaved(result)
-    }
-
+export const EqualPanel = ({result, saved, performCalculation, storeResult}) => {
     return (
     <div className="panel answer">
         <p>{result}</p>

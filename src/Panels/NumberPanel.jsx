@@ -12,7 +12,8 @@ export const NumberPanel = ({ num, setNum, saved }) => {
   };
 
   const loadSaved = () => {
-    setNum(saved)
+    if ((saved !== null))
+      setNum(saved)
   }
 
   return (
