@@ -2,64 +2,80 @@ import "./App.css";
 import { useState } from "react";
 
 function App() {
-  const [first, setFirst] = useState("0");
-  const [second, setSecond] = useState("0");
-  const [sign, setSign] = useState("+");
+  const [firstValue, setFirstValue] = useState("0");
+  const [secondValue, setSecondValue] = useState("0");
+  const [operation, setOperation] = useState("+");
   const [result, setResult] = useState(0);
-  const [store, setStore] = useState("");
+  const [storedResult, setStoredResult] = useState("");
 
-  const firstUpdate = (val, res = false) => {
+  const INPUTVALUES = [
+    "1",
+    "2",
+    "3",
+    "4",
+    "5",
+    "6",
+    "7",
+    "8",
+    "9",
+    "0",
+    ".",
+    "Clear",
+    "Recall",
+  ];
+
+  const firstValueUpdate = (val, res = false) => {
     if (res) {
-      setFirst("");
-      setFirst(val);
-    } else if (val === "." && first.indexOf(".") !== 0) {
-      if (first === "0") {
-        setFirst("0.");
+      setFirstValue("");
+      setFirstValue(val);
+    } else if (val === "." && firstValue.indexOf(".") !== 0) {
+      if (firstValue === "0") {
+        setFirstValue("0.");
       }
-      if (first !== "0" && first.indexOf(".") < 0) {
-        setFirst(first + ".");
+      if (firstValue !== "0" && firstValue.indexOf(".") < 0) {
+        setFirstValue(firstValue + ".");
       }
-    } else if (first[0] === "0" && first[1] !== "." && val !== "") {
-      setFirst(val);
+    } else if (firstValue[0] === "0" && firstValue[1] !== "." && val !== "") {
+      setFirstValue(val);
     } else if (val === "") {
-      setFirst("0");
+      setFirstValue("0");
     } else {
       if (val !== ".") {
-        setFirst(first + val);
+        setFirstValue(firstValue + val);
       }
     }
   };
 
-  const getResult = () => {
-    if (sign === "+") {
-      setResult(Number(first) + Number(second));
-    } else if (sign === "-") {
-      setResult(Number(first) - Number(second));
-    } else if (sign === "*") {
-      setResult(Number(first) * Number(second));
-    } else if (sign === "÷") {
-      setResult(Number(first) / Number(second));
+  const computeResult = () => {
+    if (operation === "+") {
+      setResult(Number(firstValue) + Number(secondValue));
+    } else if (operation === "-") {
+      setResult(Number(firstValue) - Number(secondValue));
+    } else if (operation === "*") {
+      setResult(Number(firstValue) * Number(secondValue));
+    } else if (operation === "÷") {
+      setResult(Number(firstValue) / Number(secondValue));
     }
   };
 
-  const secondUpdate = (val, res = false) => {
+  const secondValueUpdate = (val, res = false) => {
     if (res) {
-      setSecond("");
-      setSecond(val);
-    } else if (val === "." && second.indexOf(".") !== 0) {
-      if (second === "0") {
-        setSecond("0.");
+      setSecondValue("");
+      setSecondValue(val);
+    } else if (val === "." && secondValue.indexOf(".") !== 0) {
+      if (secondValue === "0") {
+        setSecondValue("0.");
       }
-      if (second !== "0" && second.indexOf(".") < 0) {
-        setSecond(second + ".");
+      if (secondValue !== "0" && secondValue.indexOf(".") < 0) {
+        setSecondValue(secondValue + ".");
       }
-    } else if (second[0] === "0" && second[1] !== "." && val !== "") {
-      setSecond(val);
+    } else if (secondValue[0] === "0" && secondValue[1] !== "." && val !== "") {
+      setSecondValue(val);
     } else if (val === "") {
-      setSecond("0");
+      setSecondValue("0");
     } else {
       if (val !== ".") {
-        setSecond(second + val);
+        setSecondValue(secondValue + val);
       }
     }
   };
@@ -67,57 +83,79 @@ function App() {
   return (
     <div className="calculator">
       <div className="panel">
-        <p>{first}</p>
+        <p>{firstValue}</p>
         <div className="numbers">
-          <button onClick={() => firstUpdate("1")}>1</button>
-          <button onClick={() => firstUpdate("2")}>2</button>
-          <button onClick={() => firstUpdate("3")}>3</button>
-          <button onClick={() => firstUpdate("4")}>4</button>
-          <button onClick={() => firstUpdate("5")}>5</button>
-          <button onClick={() => firstUpdate("6")}>6</button>
-          <button onClick={() => firstUpdate("7")}>7</button>
-          <button onClick={() => firstUpdate("8")}>8</button>
-          <button onClick={() => firstUpdate("9")}>9</button>
-          <button onClick={() => firstUpdate("0")}>0</button>
-          <button onClick={() => firstUpdate(".")}>.</button>
-          <button onClick={() => firstUpdate("")}>Clear</button>
-          <button onClick={() => firstUpdate(store, true)}>Recall</button>
+          {INPUTVALUES.map((val) => {
+            if (val === "Recall") {
+              return (
+                <button
+                  key={val}
+                  onClick={() => firstValueUpdate(storedResult, true)}
+                >
+                  {val}
+                </button>
+              );
+            }
+            if (val === "Clear") {
+              return (
+                <button key={val} onClick={() => firstValueUpdate("")}>
+                  {val}
+                </button>
+              );
+            }
+            return (
+              <button key={val} onClick={() => firstValueUpdate(val)}>
+                {val}
+              </button>
+            );
+          })}
         </div>
       </div>
 
       <div className="panel">
-        <p>{sign}</p>
+        <p>{operation}</p>
         <div className="numbers">
-          <button onClick={() => setSign("+")}>+</button>
-          <button onClick={() => setSign("-")}>-</button>
-          <button onClick={() => setSign("*")}>*</button>
-          <button onClick={() => setSign("÷")}>÷</button>
+          <button onClick={() => setOperation("+")}>+</button>
+          <button onClick={() => setOperation("-")}>-</button>
+          <button onClick={() => setOperation("*")}>*</button>
+          <button onClick={() => setOperation("÷")}>÷</button>
         </div>
       </div>
 
       <div className="panel">
-        <p>{second}</p>
+        <p>{secondValue}</p>
         <div className="numbers">
-          <button onClick={() => secondUpdate("1")}>1</button>
-          <button onClick={() => secondUpdate("2")}>2</button>
-          <button onClick={() => secondUpdate("3")}>3</button>
-          <button onClick={() => secondUpdate("4")}>4</button>
-          <button onClick={() => secondUpdate("5")}>5</button>
-          <button onClick={() => secondUpdate("6")}>6</button>
-          <button onClick={() => secondUpdate("7")}>7</button>
-          <button onClick={() => secondUpdate("8")}>8</button>
-          <button onClick={() => secondUpdate("9")}>9</button>
-          <button onClick={() => secondUpdate("0")}>0</button>
-          <button onClick={() => secondUpdate(".")}>.</button>
-          <button onClick={() => secondUpdate("")}>Clear</button>
-          <button onClick={() => secondUpdate(store, true)}>Recall</button>
+          {INPUTVALUES.map((val) => {
+            if (val === "Recall") {
+              return (
+                <button
+                  key={val}
+                  onClick={() => secondValueUpdate(storedResult, true)}
+                >
+                  {val}
+                </button>
+              );
+            }
+            if (val === "Clear") {
+              return (
+                <button key={val} onClick={() => secondValueUpdate("")}>
+                  {val}
+                </button>
+              );
+            }
+            return (
+              <button key={val} onClick={() => secondValueUpdate(val)}>
+                {val}
+              </button>
+            );
+          })}
         </div>
       </div>
       <div className="panel answer">
         <p>{result}</p>
         <div>
-          <button onClick={() => getResult()}>=</button>
-          <button onClick={() => setStore(result)}>Store</button>
+          <button onClick={() => computeResult()}>=</button>
+          <button onClick={() => setStoredResult(result)}>Store</button>
         </div>
       </div>
     </div>
