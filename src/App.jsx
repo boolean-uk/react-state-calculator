@@ -8,10 +8,16 @@ function App() {
   const [result, setResult] = useState("0");
   const [savedResults, setSavedResults] = useState([]);
 
+  const updateFirstNumber = (num) =>
+    setFirstNumber(inputNumber(firstNumber, num));
+  const updateSecondNumber = (num) =>
+    setSecondNumber(inputNumber(secondNumber, num));
+
   function calculate() {
     const a = parseFloat(firstNumber);
     const b = parseFloat(secondNumber);
     let res;
+
     switch (operationType) {
       case "+":
         res = a + b;
@@ -61,6 +67,7 @@ function App() {
     setSecondNumber(O.b);
     setResult(O.result);
   }
+
   console.log(savedResults);
   return (
     <>
@@ -71,9 +78,7 @@ function App() {
             {Array.from({ length: 10 }, (_, index) => (
               <button
                 key={index}
-                onClick={() =>
-                  setFirstNumber(inputNumber(firstNumber, index.toString()))
-                }
+                onClick={() => updateFirstNumber(index.toString())}
               >
                 {index}
               </button>
@@ -103,9 +108,7 @@ function App() {
             {Array.from({ length: 10 }, (_, index) => (
               <button
                 key={index}
-                onClick={() =>
-                  setSecondNumber(inputNumber(secondNumber, index.toString()))
-                }
+                onClick={() => updateSecondNumber(index.toString())}
               >
                 {index}
               </button>
