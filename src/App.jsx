@@ -7,20 +7,20 @@ function App() {
   const [secondNumber, updateSecondNumber] = useState(0);
   const [result, setResult] = useState(0);
 
-  const ClearFirst = () => {
+  const clearFirstNumber = () => {
     // Description: Sets number to 0 on click "clear"
     console.log(`Cleared first`);
     // updateNumber to 0
     updateFirstNumber(firstNumber * 0);
   };
-  const ClearSecond = () => {
+  const clearSecondNumber = () => {
     // Description: Sets number to 0 on click "clear"
     console.log(`Cleared second`);
     // updateNumber to 0
     updateSecondNumber(secondNumber * 0);
   };
 
-  const SetfirstNumber = (event) => {
+  const setFirstNumber = (event) => {
     // Description: Sets number to provided number on click of number button
     // Input: event
     console.log(`New firstNumber: ${event.currentTarget.value}`);
@@ -34,14 +34,14 @@ function App() {
       updateFirstNumber(firstNumber + event.currentTarget.value);
     }
   };
-  const SetOperation = (event) => {
+  const setOperation = (event) => {
     // Description: Sets number to provided number on click of number button
     // Input: event
     console.log(`New operation: ${event.currentTarget.value}`);
     // updateOperaton to value on button
     updateOperation(event.currentTarget.value);
   };
-  const SetSecondNumber = (event) => {
+  const setSecondNumber = (event) => {
     // Description: Sets number to provided number on click of number button
     // Input: event
     console.log(`New secondNumber: ${event.currentTarget.value}`);
@@ -56,7 +56,7 @@ function App() {
     }
   };
 
-  const Answer = () => {
+  const computeAnswer = () => {
     // Description: Takes the two numbers and combine them using the chosen operator
     console.log(`Answering...`);
     switch (operation) {
@@ -80,52 +80,52 @@ function App() {
       <div className="panel">
         <p>{firstNumber}</p>
         <div className="numbers">
-          <button value={1} onClick={SetfirstNumber}>
+          <button value={1} onClick={setFirstNumber}>
             1
           </button>
-          <button value={2} onClick={SetfirstNumber}>
+          <button value={2} onClick={setFirstNumber}>
             2
           </button>
-          <button value={3} onClick={SetfirstNumber}>
+          <button value={3} onClick={setFirstNumber}>
             3
           </button>
-          <button value={4} onClick={SetfirstNumber}>
+          <button value={4} onClick={setFirstNumber}>
             4
           </button>
-          <button value={5} onClick={SetfirstNumber}>
+          <button value={5} onClick={setFirstNumber}>
             5
           </button>
-          <button value={6} onClick={SetfirstNumber}>
+          <button value={6} onClick={setFirstNumber}>
             6
           </button>
-          <button value={7} onClick={SetfirstNumber}>
+          <button value={7} onClick={setFirstNumber}>
             7
           </button>
-          <button value={8} onClick={SetfirstNumber}>
+          <button value={8} onClick={setFirstNumber}>
             8
           </button>
-          <button value={9} onClick={SetfirstNumber}>
+          <button value={9} onClick={setFirstNumber}>
             9
           </button>
-          <button value={0} onClick={SetfirstNumber}>
+          <button value={0} onClick={setFirstNumber}>
             0
           </button>
-          <button onClick={ClearFirst}>Clear</button>
+          <button onClick={clearFirstNumber}>Clear</button>
         </div>
       </div>
       <div className="panel">
         <p>{operation}</p>
         <div className="numbers">
-          <button value={"+"} onClick={SetOperation}>
+          <button value={"+"} onClick={setOperation}>
             +
           </button>
-          <button value={"-"} onClick={SetOperation}>
+          <button value={"-"} onClick={setOperation}>
             -
           </button>
-          <button value={"*"} onClick={SetOperation}>
+          <button value={"*"} onClick={setOperation}>
             *
           </button>
-          <button value={"÷"} onClick={SetOperation}>
+          <button value={"÷"} onClick={setOperation}>
             ÷
           </button>
         </div>
@@ -133,43 +133,43 @@ function App() {
       <div className="panel">
         <p>{secondNumber}</p>
         <div className="numbers">
-          <button value={1} onClick={SetSecondNumber}>
+          <button value={1} onClick={setSecondNumber}>
             1
           </button>
-          <button value={2} onClick={SetSecondNumber}>
+          <button value={2} onClick={setSecondNumber}>
             2
           </button>
-          <button value={3} onClick={SetSecondNumber}>
+          <button value={3} onClick={setSecondNumber}>
             3
           </button>
-          <button value={4} onClick={SetSecondNumber}>
+          <button value={4} onClick={setSecondNumber}>
             4
           </button>
-          <button value={5} onClick={SetSecondNumber}>
+          <button value={5} onClick={setSecondNumber}>
             5
           </button>
-          <button value={6} onClick={SetSecondNumber}>
+          <button value={6} onClick={setSecondNumber}>
             6
           </button>
-          <button value={7} onClick={SetSecondNumber}>
+          <button value={7} onClick={setSecondNumber}>
             7
           </button>
-          <button value={8} onClick={SetSecondNumber}>
+          <button value={8} onClick={setSecondNumber}>
             8
           </button>
-          <button value={9} onClick={SetSecondNumber}>
+          <button value={9} onClick={setSecondNumber}>
             9
           </button>
-          <button value={0} onClick={SetSecondNumber}>
+          <button value={0} onClick={setSecondNumber}>
             0
           </button>
-          <button onClick={ClearSecond}>Clear</button>
+          <button onClick={clearSecondNumber}>Clear</button>
         </div>
       </div>
       <div className="panel answer">
         <p>{result}</p>
         <div>
-          <button onClick={Answer}>=</button>
+          <button onClick={computeAnswer}>=</button>
         </div>
       </div>
     </div>
