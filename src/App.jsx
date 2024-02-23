@@ -1,58 +1,30 @@
+import { useState } from "react"
 import "./App.css"
+import Numbers from "./Numbers"
+import Operator from "./Operator"
+import Answer from "./Anwser"
 
 function App() {
+  const [leftNumber, setLeftNumber] = useState(5)
+  const [operator, setOperator] = useState((a, b) => (a, b) => Number(a) + Number(b))
+  const [rightNumber, setRightNumber] = useState(0)
+  const [ans, setAns] = useState(0)
 
   return (
     <div className="calculator">
-      <div className="panel">
-        <p>0</p>
-        <div className="numbers">
-          <button>1</button>
-          <button>2</button>
-          <button>3</button>
-          <button>4</button>
-          <button>5</button>
-          <button>6</button>
-          <button>7</button>
-          <button>8</button>
-          <button>9</button>
-          <button>0</button>
-          <button>Clear</button>
-        </div>
-      </div>
+      <Numbers
+        currentNumber = {leftNumber}
+        setNumber = {setLeftNumber}
+        ans = {ans}/>
+      <Operator setOperator={setOperator}/>
 
-      <div className="panel">
-        <p>+</p>
-        <div className="numbers">
-          <button>+</button>
-          <button>-</button>
-          <button>*</button>
-          <button>÷</button>
-        </div>
-      </div>
+      <Numbers
+        currentNumber = {rightNumber}
+        setNumber = {setRightNumber}
+        ans = {ans}/>
 
-      <div className="panel">
-        <p>0</p>
-        <div className="numbers">
-          <button>1</button>
-          <button>2</button>
-          <button>3</button>
-          <button>4</button>
-          <button>5</button>
-          <button>6</button>
-          <button>7</button>
-          <button>8</button>
-          <button>9</button>
-          <button>0</button>
-          <button>Clear</button>
-        </div>
-      </div>
-      <div className="panel answer">
-        <p>0</p>
-        <div>
-          <button>=</button>
-        </div>
-      </div>
+      <Answer leftNumber={leftNumber} rightNumber={rightNumber} operator={operator} setAns = {setAns}/>
+
     </div>
   )
 }
