@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import PropTypes from 'prop-types';
 
 const ResultsPanel = ({setStoredResult, firstNumber, secondNumber, operator}) => {
     const [result, setResult] = useState(0)
@@ -35,6 +36,13 @@ const ResultsPanel = ({setStoredResult, firstNumber, secondNumber, operator}) =>
         </div>
       </div>
     )
+}
+
+ResultsPanel.propTypes = {
+  setStoredResult: PropTypes.func,
+  firstNumber: PropTypes.string,
+  secondNumber: PropTypes.string, 
+  operator: PropTypes.string,
 }
 
 export default ResultsPanel

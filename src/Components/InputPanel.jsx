@@ -1,7 +1,9 @@
 import { useState } from 'react'
+import PropTypes from 'prop-types';
 
 const InputPanel = ({panelId, number, setNumber, storedNumber}) => {
     const [numberDecimal, setNumberDecimal] = useState(false)
+    const inputNumbers = [1,2,3,4,5,6,7,8,9,0]
 
     const AddDecimal = () => {
         if (!numberDecimal) {
@@ -25,8 +27,9 @@ const InputPanel = ({panelId, number, setNumber, storedNumber}) => {
 
     const RecallNumber = () => {
         if (storedNumber !== -1) {
-            setNumber(storedNumber)
-            if (storedNumber.toString().includes(".")) {
+            const storedNumberAsString = storedNumber.toString()
+            setNumber(storedNumberAsString)
+            if (storedNumberAsString.includes(".")) {
                 setNumberDecimal(true)
             }
         }
@@ -36,22 +39,24 @@ const InputPanel = ({panelId, number, setNumber, storedNumber}) => {
         <div className="panel">
         <p>{number}</p>
         <div className="numbers" id={panelId}>
-          <button onClick={(e) => ChangeNumber(e)}>1</button>
-          <button onClick={(e) => ChangeNumber(e)}>2</button>
-          <button onClick={(e) => ChangeNumber(e)}>3</button>
-          <button onClick={(e) => ChangeNumber(e)}>4</button>
-          <button onClick={(e) => ChangeNumber(e)}>5</button>
-          <button onClick={(e) => ChangeNumber(e)}>6</button>
-          <button onClick={(e) => ChangeNumber(e)}>7</button>
-          <button onClick={(e) => ChangeNumber(e)}>8</button>
-          <button onClick={(e) => ChangeNumber(e)}>9</button>
-          <button onClick={(e) => ChangeNumber(e)}>0</button>
+            {inputNumbers.map((val, key) => {
+                return(
+                <button key={key} onClick={(e) => ChangeNumber(e)}>{val}</button>
+                )
+            })}
           <button onClick={() => AddDecimal()}>.</button>
           <button onClick={(e) => ChangeNumber(e)}>Clear</button>
           <button onClick={() => RecallNumber()}>Recall</button>
         </div>
       </div>
     )
+}
+
+InputPanel.propTypes = {
+    panelId: PropTypes.string,
+    number: PropTypes.string,
+    setNumber: PropTypes.func,
+    storedNumber: PropTypes.number
 }
 
 export default InputPanel
