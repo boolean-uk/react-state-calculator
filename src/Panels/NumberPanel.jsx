@@ -1,6 +1,10 @@
 export const NumberPanel = ({ num, setNum }) => {
   const handleButtonClick = (number) => {
-    setNum(number)
+    if(num === 0)
+      setNum(number)
+    else {
+      setNum(num.toString() + number.toString());
+    }
   };
 
   const handleClearClick = () => {
