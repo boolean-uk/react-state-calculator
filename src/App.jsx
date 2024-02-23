@@ -9,11 +9,11 @@ function App() {
   const [savedResults, setSavedResults] = useState([]);
 
   const updateFirstNumber = (num) =>
-    setFirstNumber(inputNumber(firstNumber, num));
+    setFirstNumber(processInputNumber(firstNumber, num));
   const updateSecondNumber = (num) =>
-    setSecondNumber(inputNumber(secondNumber, num));
+    setSecondNumber(processInputNumber(secondNumber, num));
 
-  function calculate() {
+  function calculateResult() {
     const a = parseFloat(firstNumber);
     const b = parseFloat(secondNumber);
     let res;
@@ -38,7 +38,7 @@ function App() {
     setResult(res);
     return res;
   }
-  function inputNumber(curVal, addVal) {
+  function processInputNumber(curVal, addVal) {
     let returnVal;
     if (curVal.includes(".") && addVal === ".") return curVal;
     if (curVal.slice(-1) == "." && addVal === ".") return curVal;
@@ -51,7 +51,7 @@ function App() {
   }
 
   function saveResult() {
-    const resCalc = calculate();
+    const resCalc = calculateResult();
     const res = {
       a: firstNumber,
       b: secondNumber,
@@ -61,7 +61,7 @@ function App() {
     setSavedResults([...savedResults, res]);
   }
 
-  function OpenSaved(O) {
+  function OpenSavedCalculation(O) {
     console.log(O);
     setFirstNumber(O.a);
     setOperationType(O.operation);
@@ -117,7 +117,7 @@ function App() {
         <div className="panel answer">
           <p>= {result}</p>
           <div>
-            <button onClick={() => calculate()}>=</button>
+            <button onClick={() => calculateResult()}>=</button>
           </div>
         </div>
       </div>
@@ -128,7 +128,9 @@ function App() {
         {savedResults.map((O, index) => (
           <div className="stored-result-item" key={index}>
             <p>{`Saved: ${O.a}${O.operation}${O.b}=${O.result}`}</p>
-            <button onClick={(e) => OpenSaved(O)}>Open this result</button>
+            <button onClick={(e) => OpenSavedCalculation(O)}>
+              Open this result
+            </button>
           </div>
         ))}
       </div>
