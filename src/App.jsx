@@ -13,7 +13,9 @@ function App() {
   const [stored, setStored] = useState({num1: num1, num2: num2, calc: calculation})
 
   const handleButtonClickNum1 = (val) => {
-    if (num1 === '0'){
+    if (val === '.' && num1.includes('.')){
+      alert('Not possible')
+    } else if (num1 === '0' && val != '.'){
       setNum1(val)
     } else {
       setNum1(num1 + val);
@@ -21,7 +23,9 @@ function App() {
   }
 
   const handleButtonClickNum2 = (val) => {
-    if (num2 === '0'){
+    if (val === '.' && num2.includes('.')){
+      alert('Not possible')
+    } else if (num2 === '0' && val != '.'){
       setNum2(val)
     } else {
       setNum2(num2 + val);
@@ -33,8 +37,8 @@ function App() {
   }
 
   const doCalculation = () => {
-    let first = parseInt(num1)
-    let second = parseInt(num2)
+    let first = parseFloat(num1)
+    let second = parseFloat(num2)
     if (operator === '+'){
       setCalculation(first+second)
     } else if (operator === '-'){
@@ -58,6 +62,7 @@ function App() {
           {numbers1To9AndZero.map(num => (
             <Button onClick={() => handleButtonClickNum1(num)} key={num} value={num} /> 
           ))}
+          <Button onClick={() => {handleButtonClickNum1('.')}} value={'.'} />
           <Button onClick={() => {setNum1('0')}} value={'Clear'} />
           <Button onClick={() => {setNum1(stored.num1)}} value={'Recall'} />
         </div>
@@ -71,13 +76,13 @@ function App() {
             ))}
         </div>
       </div>
-
       <div className="panel">
         <p>{num2}</p>
         <div className="numbers">
           {numbers1To9AndZero.map(num => (
             <Button onClick={() => handleButtonClickNum2(num)} key={num} value={num} /> 
           ))}
+          <Button onClick={() => {handleButtonClickNum2('.')}} value={'.'} />
           <Button onClick={() => {setNum2('0')}} value={'Clear'} />
           <Button onClick={() => {setNum2(stored.num2)}} value={'Recall'} />
         </div>
