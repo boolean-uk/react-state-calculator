@@ -1,60 +1,135 @@
-import "./App.css"
+import { useState } from "react";
+import "./App.css";
 
 function App() {
+	const buttonArray = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "."];
 
-  return (
-    <div className="calculator">
-      <div className="panel">
-        <p>0</p>
-        <div className="numbers">
-          <button>1</button>
-          <button>2</button>
-          <button>3</button>
-          <button>4</button>
-          <button>5</button>
-          <button>6</button>
-          <button>7</button>
-          <button>8</button>
-          <button>9</button>
-          <button>0</button>
-          <button>Clear</button>
-        </div>
-      </div>
+	const [firstNumber, setFirstNumber] = useState("0");
+	const [secondNumber, setSecondNumber] = useState("0");
+	const [operator, setOperator] = useState("+");
+	const [total, setTotal] = useState("0");
+	const [storedNumber, setStoredNumber] = useState("0");
 
-      <div className="panel">
-        <p>+</p>
-        <div className="numbers">
-          <button>+</button>
-          <button>-</button>
-          <button>*</button>
-          <button>÷</button>
-        </div>
-      </div>
+	const calculateTotal = () => {
+		const parsedFirstNumber = parseFloat(firstNumber);
+		const parsedSecondNumber = parseFloat(secondNumber);
 
-      <div className="panel">
-        <p>0</p>
-        <div className="numbers">
-          <button>1</button>
-          <button>2</button>
-          <button>3</button>
-          <button>4</button>
-          <button>5</button>
-          <button>6</button>
-          <button>7</button>
-          <button>8</button>
-          <button>9</button>
-          <button>0</button>
-          <button>Clear</button>
-        </div>
-      </div>
-      <div className="panel answer">
-        <p>0</p>
-        <div>
-          <button>=</button>
-        </div>
-      </div>
-    </div>
-  )
+		switch (operator) {
+			case "+":
+				return parsedFirstNumber + parsedSecondNumber;
+			case "-":
+				return parsedFirstNumber - parsedSecondNumber;
+			case "*":
+				return parsedFirstNumber * parsedSecondNumber;
+			case "÷":
+				return parsedFirstNumber / parsedSecondNumber;
+			default:
+				console.error("Not a valid operator");
+				return 0;
+		}
+	};
+
+	const computePanelNumber = (currentNumber, newNumber) => {
+		if (newNumber === "." && currentNumber.includes(".")) {
+			return currentNumber;
+		}
+		if (currentNumber === "0" && newNumber === "0") {
+			return currentNumber;
+		}
+		if (
+			currentNumber.length < 2 &&
+			currentNumber === "0" &&
+			newNumber !== "."
+		) {
+			return newNumber;
+		}
+
+		return `${currentNumber + newNumber}`;
+	};
+
+	return (
+		<div className="calculator">
+			<div className="panel">
+				<p>{firstNumber}</p>
+				<div className="numbers">
+					{buttonArray.map((buttonValue, index) => {
+						return (
+							<button
+								key={index}
+								onClick={() => {
+									setFirstNumber(computePanelNumber(firstNumber, buttonValue));
+								}}
+							>
+								{buttonValue}
+							</button>
+						);
+					})}
+					<button onClick={() => setFirstNumber("0")}>Clear</button>
+					<button
+						onClick={() => {
+							setFirstNumber(storedNumber);
+						}}
+					>
+						Recall
+					</button>
+				</div>
+			</div>
+
+			<div className="panel">
+				<p>{operator}</p>
+				<div className="numbers">
+					<button onClick={() => setOperator("+")}>+</button>
+					<button onClick={() => setOperator("-")}>-</button>
+					<button onClick={() => setOperator("*")}>*</button>
+					<button onClick={() => setOperator("÷")}>÷</button>
+				</div>
+			</div>
+
+			<div className="panel">
+				<p>{secondNumber}</p>
+				<div className="numbers">
+					{buttonArray.map((buttonValue, index) => {
+						return (
+							<button
+								key={index}
+								onClick={() => {
+									setSecondNumber(
+										computePanelNumber(secondNumber, buttonValue)
+									);
+								}}
+							>
+								{buttonValue}
+							</button>
+						);
+					})}
+					<button onClick={() => setSecondNumber("0")}>Clear</button>
+					<button
+						onClick={() => {
+							setSecondNumber(storedNumber);
+						}}
+					>
+						Recall
+					</button>
+				</div>
+			</div>
+			<div className="panel answer">
+				<p>{total}</p>
+				<div>
+					<button onClick={() => setTotal(calculateTotal())}>=</button>
+					<button onClick={() => setStoredNumber(total)}>
+						Stored ({storedNumber})
+					</button>
+					<button
+						onClick={() => {
+							setTotal(storedNumber);
+						}}
+					>
+						Recall
+					</button>
+				</div>
+			</div>
+		</div>
+	);
 }
 
-export default App
+export default App;
