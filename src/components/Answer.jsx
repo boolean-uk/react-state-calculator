@@ -1,6 +1,7 @@
 import { useState } from "react";
 
-const Answer = ({ number1, number2, operator }) => {
+// eslint-disable-next-line react/prop-types
+const Answer = ({ number1, number2, operator, setSavedNumber }) => {
     const [answer, setAnswer] = useState(0);
     const num1 = parseFloat(number1);
     const num2 = parseFloat(number2);
@@ -23,12 +24,16 @@ const Answer = ({ number1, number2, operator }) => {
                 break;
         }
     };
+    const saveAnswer = () => {
+        setSavedNumber(answer);
+    }
 
     return (
         <>
             <p>{answer}</p>
             <div>
                 <button onClick={calculateAnswer}>=</button>
+                <button onClick={saveAnswer}>Store</button>
             </div>
         </>
     );
