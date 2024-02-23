@@ -1,6 +1,9 @@
 import { useState } from "react";
 import "./App.css";
 
+const Numbers = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"];
+const Operators = ["+", "-", "*", "÷"];
+
 function App() {
   const [firstNumber, updateFirstNumber] = useState(0);
   const [operation, updateOperation] = useState("+");
@@ -80,89 +83,38 @@ function App() {
       <div className="panel">
         <p>{firstNumber}</p>
         <div className="numbers">
-          <button value={1} onClick={setFirstNumber}>
-            1
-          </button>
-          <button value={2} onClick={setFirstNumber}>
-            2
-          </button>
-          <button value={3} onClick={setFirstNumber}>
-            3
-          </button>
-          <button value={4} onClick={setFirstNumber}>
-            4
-          </button>
-          <button value={5} onClick={setFirstNumber}>
-            5
-          </button>
-          <button value={6} onClick={setFirstNumber}>
-            6
-          </button>
-          <button value={7} onClick={setFirstNumber}>
-            7
-          </button>
-          <button value={8} onClick={setFirstNumber}>
-            8
-          </button>
-          <button value={9} onClick={setFirstNumber}>
-            9
-          </button>
-          <button value={0} onClick={setFirstNumber}>
-            0
-          </button>
+          {Numbers.map((numbers) => {
+            return (
+              <button key={numbers} value={numbers} onClick={setFirstNumber}>
+                {numbers}
+              </button>
+            );
+          })}
           <button onClick={clearFirstNumber}>Clear</button>
         </div>
       </div>
       <div className="panel">
         <p>{operation}</p>
         <div className="numbers">
-          <button value={"+"} onClick={setOperation}>
-            +
-          </button>
-          <button value={"-"} onClick={setOperation}>
-            -
-          </button>
-          <button value={"*"} onClick={setOperation}>
-            *
-          </button>
-          <button value={"÷"} onClick={setOperation}>
-            ÷
-          </button>
+          {Operators.map((operators) => {
+            return (
+              <button key={operators} value={operators} onClick={setOperation}>
+                {operators}
+              </button>
+            );
+          })}
         </div>
       </div>
       <div className="panel">
         <p>{secondNumber}</p>
         <div className="numbers">
-          <button value={1} onClick={setSecondNumber}>
-            1
-          </button>
-          <button value={2} onClick={setSecondNumber}>
-            2
-          </button>
-          <button value={3} onClick={setSecondNumber}>
-            3
-          </button>
-          <button value={4} onClick={setSecondNumber}>
-            4
-          </button>
-          <button value={5} onClick={setSecondNumber}>
-            5
-          </button>
-          <button value={6} onClick={setSecondNumber}>
-            6
-          </button>
-          <button value={7} onClick={setSecondNumber}>
-            7
-          </button>
-          <button value={8} onClick={setSecondNumber}>
-            8
-          </button>
-          <button value={9} onClick={setSecondNumber}>
-            9
-          </button>
-          <button value={0} onClick={setSecondNumber}>
-            0
-          </button>
+          {Numbers.map((numbers) => {
+            return (
+              <button key={numbers} value={numbers} onClick={setSecondNumber}>
+                {numbers}
+              </button>
+            );
+          })}
           <button onClick={clearSecondNumber}>Clear</button>
         </div>
       </div>
