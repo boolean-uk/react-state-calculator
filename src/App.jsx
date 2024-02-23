@@ -24,6 +24,8 @@ function App() {
     "Recall",
   ];
 
+  const OPERATIONS = ["+", "-", "*", "÷"];
+
   const firstValueUpdate = (val, res = false) => {
     if (res) {
       setFirstValue("");
@@ -115,10 +117,13 @@ function App() {
       <div className="panel">
         <p>{operation}</p>
         <div className="numbers">
-          <button onClick={() => setOperation("+")}>+</button>
-          <button onClick={() => setOperation("-")}>-</button>
-          <button onClick={() => setOperation("*")}>*</button>
-          <button onClick={() => setOperation("÷")}>÷</button>
+          {OPERATIONS.map((oper, index) => {
+            return (
+              <button key={index} onClick={() => setOperation(oper)}>
+                {oper}
+              </button>
+            );
+          })}
         </div>
       </div>
 
