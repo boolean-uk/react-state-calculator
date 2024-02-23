@@ -1,21 +1,20 @@
 import { useState } from 'react';
 
-export default function Calculate({num1, num2, operator}) {
-  const [result, setResult] = useState(0);
+export default function Calculate({num1, num2, operator, result, setResult}) {
 
   const calculateResult = () => {
     switch (operator) {
       case '+':
-        setResult(num1 + num2);
+        setResult(parseInt(num1) + parseInt(num2));
         break;
       case '-':
-        setResult(num1 - num2);
+        setResult(parseInt(num1) - parseInt(num2));
         break;
       case '*':
-        setResult(num1 * num2);
+        setResult(parseInt(num1) * parseInt(num2));
         break;
       case '÷':
-        setResult(num1 / num2);
+        setResult(parseInt(num1) / parseInt(num2));
         break;
       default:
         setResult(0);

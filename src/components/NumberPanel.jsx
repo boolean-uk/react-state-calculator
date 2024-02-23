@@ -2,7 +2,11 @@ export default function NumberPanel({num, setNum}) {
 
 
 const handleClick = (number) => {
-  setNum(number)
+  if(num === 0)
+      setNum(number)
+    else {
+      setNum(num.toString() + number.toString());
+    }
 }
 
 const handleClear = () => {
