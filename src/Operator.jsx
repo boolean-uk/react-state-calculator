@@ -1,12 +1,12 @@
 import { useState } from "react"
+import PropTypes from "prop-types"
 
-function Operator({state})
+function Operator({setOperator})
 {
-    const [currentState, newState] = state
     const [show, newshow] = useState('+')
     const changeOperator = (f, a) =>
     {
-        newState((a, b) => f)
+        setOperator((a, b) => f)
       //  console.log(currentState)
         newshow(a)
     }
@@ -21,6 +21,10 @@ function Operator({state})
         </div>
       </div>
     )
+}
+
+Operator.propTypes = {
+    setOperator:PropTypes.func,
 }
 
 export default Operator

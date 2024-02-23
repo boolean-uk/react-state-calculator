@@ -5,18 +5,25 @@ import Operator from "./Operator"
 import Answer from "./Anwser"
 
 function App() {
-  const [firstnumber, newfirstNumber] = useState(5)
-  const [operator, newOperator] = useState((a, b) => (a, b) => Number(a) + Number(b))
-  const [secondnumber, newsecondNumber] = useState(0)
-  const [ans, newAns] = useState(0)
+  const [leftNumber, setLeftNumber] = useState(5)
+  const [operator, setOperator] = useState((a, b) => (a, b) => Number(a) + Number(b))
+  const [rightNumber, setRightNumber] = useState(0)
+  const [ans, setAns] = useState(0)
 
   return (
     <div className="calculator">
-      <Numbers state={[firstnumber, newfirstNumber]} ans = {ans}/>
-      <Operator state={[operator, newOperator]}/>
+      <Numbers
+        currentNumber = {leftNumber}
+        setNumber = {setLeftNumber}
+        ans = {ans}/>
+      <Operator setOperator={setOperator}/>
 
-      <Numbers state={[secondnumber, newsecondNumber]} ans = {ans}/>
-      <Answer firstNumber={firstnumber} secondNumber={secondnumber} Operator={operator} ans = {newAns}/>
+      <Numbers
+        currentNumber = {rightNumber}
+        setNumber = {setRightNumber}
+        ans = {ans}/>
+
+      <Answer leftNumber={leftNumber} rightNumber={rightNumber} operator={operator} setAns = {setAns}/>
 
     </div>
   )

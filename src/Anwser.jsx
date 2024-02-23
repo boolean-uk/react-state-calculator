@@ -1,15 +1,16 @@
 import { useState } from "react"
+import PropTypes from "prop-types"
 
-function Answer({firstNumber, secondNumber, Operator, ans})
+function Answer({leftNumber, rightNumber, operator, setAns})
 {
     const [answer, newAnswer] = useState(0)
     const calculateAnswer = () =>
     {
-        newAnswer(Operator(firstNumber, secondNumber))
+        newAnswer(operator(leftNumber, rightNumber))
     }
     const store = ()=>
     {
-        ans(answer)
+        setAns(answer)
     }
     return (
         <div className="panel answer">
@@ -20,6 +21,13 @@ function Answer({firstNumber, secondNumber, Operator, ans})
         </div>
       </div>
     )
+}
+
+Answer.propTypes = {
+  leftNumber:PropTypes.number,
+  rightNumber:PropTypes.number,
+  operator:PropTypes.func,
+  setAns:PropTypes.func
 }
 
 export default Answer

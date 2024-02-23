@@ -1,19 +1,20 @@
 import { useState } from "react"
-function Numbers({state, ans})
+import PropTypes from "prop-types"
+
+function Numbers({currentNumber, setNumber, ans})
 {
-    const [currentState, newState] = state
     const [isBeforeSeparator, toggleBeforeSeparator] = useState(true)
     const changeState = (number) => {
-        if (currentState === 0) {
-            newState(number)
+        if (currentNumber === 0) {
+            setNumber(number)
             return
         }
-        newState(`${currentState}${number}`)
+        setNumber(`${currentNumber}${number}`)
     }
 
     const clear = () =>{
         toggleBeforeSeparator(true)
-        newState(0)
+        setNumber(0)
     }
 
     const buttonArray = []
@@ -22,28 +23,34 @@ function Numbers({state, ans})
     }
     const recall = () => {
         toggleBeforeSeparator(Number.isInteger(ans))
-        newState(ans)
+        setNumber(ans)
     }
 
-    const addSeparator = () =>{
+    const addDecimalPoint = () =>{
         //Checks if there is already a separator, if yes, returns without doing anything
         if (!isBeforeSeparator) return
         toggleBeforeSeparator(false)
-        newState(`${currentState}.`)
+        setNumber(`${currentNumber}.`)
         //
     }
     return (
         <div className="panel">
-        <p>{currentState}</p>
+        <p>{currentNumber}</p>
         <div className="numbers">
             {buttonArray}
             <button onClick={() => changeState(0)}>0</button>
-            <button onClick={() => addSeparator()}>.</button>
+            <button onClick={() => addDecimalPoint()}>.</button>
             <button onClick={() => clear()}>Clear</button>
             <button onClick={() => recall()}> Recall</button>
         </div>
       </div>
     )
+}
+
+Numbers.propTypes = {
+    currentNumber:PropTypes.Number,
+    setNumber:PropTypes.func,
+    ans : PropTypes.Number
 }
 
 export default Numbers
