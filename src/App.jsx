@@ -1,60 +1,37 @@
-import "./App.css"
+import { useState } from "react";
+import "./App.css";
+import { NumberPanel } from "./Panels/NumberPanel";
+import { OperationPanel } from "./Panels/OperationPanel";
+import { EqualPanel } from "./Panels/EqualPanel";
+import { performCalculation, storeResult } from "./Calculation";
 
 function App() {
+  const [num1, setNum1] = useState(0);
+  const [num2, setNum2] = useState(0);
+  const [operator, setOperator] = useState("+");
+  const [result, setResult] = useState(null);
+  const [saved, setSaved] = useState(null);
 
   return (
     <div className="calculator">
-      <div className="panel">
-        <p>0</p>
-        <div className="numbers">
-          <button>1</button>
-          <button>2</button>
-          <button>3</button>
-          <button>4</button>
-          <button>5</button>
-          <button>6</button>
-          <button>7</button>
-          <button>8</button>
-          <button>9</button>
-          <button>0</button>
-          <button>Clear</button>
-        </div>
-      </div>
+      <NumberPanel num={num1} setNum={setNum1} saved={saved} />
 
-      <div className="panel">
-        <p>+</p>
-        <div className="numbers">
-          <button>+</button>
-          <button>-</button>
-          <button>*</button>
-          <button>÷</button>
-        </div>
-      </div>
+      <OperationPanel operator={operator} setOperator={setOperator} />
 
-      <div className="panel">
-        <p>0</p>
-        <div className="numbers">
-          <button>1</button>
-          <button>2</button>
-          <button>3</button>
-          <button>4</button>
-          <button>5</button>
-          <button>6</button>
-          <button>7</button>
-          <button>8</button>
-          <button>9</button>
-          <button>0</button>
-          <button>Clear</button>
-        </div>
-      </div>
-      <div className="panel answer">
-        <p>0</p>
-        <div>
-          <button>=</button>
-        </div>
-      </div>
+      <NumberPanel num={num2} setNum={setNum2} saved={saved} />
+
+      <EqualPanel
+        result={result}
+        setResult={setResult}
+        saved={saved}
+        setSaved={setSaved}
+        performCalculation={() =>
+          performCalculation(num1, num2, operator, setResult)
+        }
+        storeResult={() => storeResult(result, setSaved)}
+      />
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
