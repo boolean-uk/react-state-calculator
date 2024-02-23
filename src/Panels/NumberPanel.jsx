@@ -1,15 +1,19 @@
-export const NumberPanel = ({ num, setNum }) => {
+export const NumberPanel = ({ num, setNum, saved }) => {
   const handleButtonClick = (number) => {
     if(num === 0)
       setNum(number)
     else {
-      setNum(num.toString() + number.toString());
+      setNum(Number(num.toString() + number.toString()));
     }
   };
 
   const handleClearClick = () => {
     setNum(0);
   };
+
+  const loadSaved = () => {
+    setNum(saved)
+  }
 
   return (
     <div className="panel">
@@ -21,6 +25,7 @@ export const NumberPanel = ({ num, setNum }) => {
           </button>
         ))}
         <button onClick={handleClearClick}>Clear</button>
+        <button onClick={loadSaved}>Load stored</button>
       </div>
     </div>
   );
