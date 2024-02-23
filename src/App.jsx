@@ -138,7 +138,7 @@ function App() {
         <p>{resultDisplay}</p>
         <div>
           <button onClick={calculateTotal}>=</button>
-          <button onClick={storeResult}>Recall</button>
+          <button onClick={storeResult}>Store</button>
         </div>
         <p>{storedResult}</p>
       </div>
