@@ -40,6 +40,7 @@ function App() {
   }
   function inputNumber(curVal, addVal) {
     let returnVal;
+    if (curVal.includes(".") && addVal === ".") return curVal;
     if (curVal.slice(-1) == "." && addVal === ".") return curVal;
     if (curVal === "0") {
       returnVal = addVal;
@@ -84,11 +85,7 @@ function App() {
               </button>
             ))}
             <button onClick={() => setFirstNumber("0")}>Clear</button>
-            <button
-              onClick={() => setFirstNumber(inputNumber(firstNumber, "."))}
-            >
-              .
-            </button>
+            <button onClick={() => updateFirstNumber(".")}>.</button>
           </div>
         </div>
 
@@ -114,11 +111,7 @@ function App() {
               </button>
             ))}
             <button onClick={() => setSecondNumber("0")}>Clear</button>
-            <button
-              onClick={() => setSecondNumber(inputNumber(secondNumber, "."))}
-            >
-              .
-            </button>
+            <button onClick={() => updateSecondNumber(".")}>.</button>
           </div>
         </div>
         <div className="panel answer">
