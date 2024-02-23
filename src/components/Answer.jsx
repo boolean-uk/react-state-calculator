@@ -26,7 +26,7 @@ const Answer = ({ number1, number2, operator, setSavedNumber }) => {
     };
     const saveAnswer = () => {
         setSavedNumber(answer);
-    }
+    };
 
     return (
         <>
