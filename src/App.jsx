@@ -2,31 +2,34 @@ import { useState } from "react";
 import "./App.css";
 
 function App() {
+	const buttonArray = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "."];
+
 	const [firstNumber, setFirstNumber] = useState("0");
 	const [secondNumber, setSecondNumber] = useState("0");
 	const [operator, setOperator] = useState("+");
 	const [total, setTotal] = useState("0");
 	const [storedNumber, setStoredNumber] = useState("0");
 
-	const calculate = (firstNumber, secondNumber, operator) => {
-		firstNumber = parseFloat(firstNumber);
-		secondNumber = parseFloat(secondNumber);
+	const calculateTotal = () => {
+		const parsedFirstNumber = parseFloat(firstNumber);
+		const parsedSecondNumber = parseFloat(secondNumber);
 
 		switch (operator) {
 			case "+":
-				return firstNumber + secondNumber;
+				return parsedFirstNumber + parsedSecondNumber;
 			case "-":
-				return firstNumber - secondNumber;
+				return parsedFirstNumber - parsedSecondNumber;
 			case "*":
-				return firstNumber * secondNumber;
+				return parsedFirstNumber * parsedSecondNumber;
 			case "÷":
-				return firstNumber / secondNumber;
+				return parsedFirstNumber / parsedSecondNumber;
 			default:
-				throw console.error("Not a valid operator");
+				console.error("Not a valid operator");
+				return 0;
 		}
 	};
 
-	const updatePanelNumber = (currentNumber, newNumber) => {
+	const computePanelNumber = (currentNumber, newNumber) => {
 		if (newNumber === "." && currentNumber.includes(".")) {
 			return currentNumber;
 		}
@@ -41,8 +44,6 @@ function App() {
 			return newNumber;
 		}
 
-		console.log(currentNumber, newNumber);
-		console.log(currentNumber + newNumber);
 		return `${currentNumber + newNumber}`;
 	};
 
@@ -51,76 +52,18 @@ function App() {
 			<div className="panel">
 				<p>{firstNumber}</p>
 				<div className="numbers">
-					<button
-						onClick={() => {
-							setFirstNumber(updatePanelNumber(firstNumber, "1"));
-						}}
-					>
-						1
-					</button>
-					<button
-						onClick={() => {
-							setFirstNumber(updatePanelNumber(firstNumber, "2"));
-						}}
-					>
-						2
-					</button>
-					<button
-						onClick={() => {
-							setFirstNumber(updatePanelNumber(firstNumber, "3"));
-						}}
-					>
-						3
-					</button>
-					<button
-						onClick={() => {
-							setFirstNumber(updatePanelNumber(firstNumber, "4"));
-						}}
-					>
-						4
-					</button>
-					<button
-						onClick={() => {
-							setFirstNumber(updatePanelNumber(firstNumber, "5"));
-						}}
-					>
-						5
-					</button>
-					<button
-						onClick={() => {
-							setFirstNumber(updatePanelNumber(firstNumber, "6"));
-						}}
-					>
-						6
-					</button>
-					<button
-						onClick={() => {
-							setFirstNumber(updatePanelNumber(firstNumber, "7"));
-						}}
-					>
-						7
-					</button>
-					<button
-						onClick={() => {
-							setFirstNumber(updatePanelNumber(firstNumber, "8"));
-						}}
-					>
-						8
-					</button>
-					<button
-						onClick={() => {
-							setFirstNumber(updatePanelNumber(firstNumber, "9"));
-						}}
-					>
-						9
-					</button>
-					<button
-						onClick={() => {
-							setFirstNumber(updatePanelNumber(firstNumber, "0"));
-						}}
-					>
-						0
-					</button>
+					{buttonArray.map((buttonValue, index) => {
+						return (
+							<button
+								key={index}
+								onClick={() => {
+									setFirstNumber(computePanelNumber(firstNumber, buttonValue));
+								}}
+							>
+								{buttonValue}
+							</button>
+						);
+					})}
 					<button onClick={() => setFirstNumber("0")}>Clear</button>
 					<button
 						onClick={() => {
@@ -128,13 +71,6 @@ function App() {
 						}}
 					>
 						Recall
-					</button>
-					<button
-						onClick={() => {
-							setFirstNumber(updatePanelNumber(firstNumber, "."));
-						}}
-					>
-						.
 					</button>
 				</div>
 			</div>
@@ -152,76 +88,20 @@ function App() {
 			<div className="panel">
 				<p>{secondNumber}</p>
 				<div className="numbers">
-					<button
-						onClick={() => {
-							setSecondNumber(updatePanelNumber(secondNumber, "1"));
-						}}
-					>
-						1
-					</button>
-					<button
-						onClick={() => {
-							setSecondNumber(updatePanelNumber(secondNumber, "2"));
-						}}
-					>
-						2
-					</button>
-					<button
-						onClick={() => {
-							setSecondNumber(updatePanelNumber(secondNumber, "3"));
-						}}
-					>
-						3
-					</button>
-					<button
-						onClick={() => {
-							setSecondNumber(updatePanelNumber(secondNumber, "4"));
-						}}
-					>
-						4
-					</button>
-					<button
-						onClick={() => {
-							setSecondNumber(updatePanelNumber(secondNumber, "5"));
-						}}
-					>
-						5
-					</button>
-					<button
-						onClick={() => {
-							setSecondNumber(updatePanelNumber(secondNumber, "6"));
-						}}
-					>
-						6
-					</button>
-					<button
-						onClick={() => {
-							setSecondNumber(updatePanelNumber(secondNumber, "7"));
-						}}
-					>
-						7
-					</button>
-					<button
-						onClick={() => {
-							setSecondNumber(updatePanelNumber(secondNumber, "8"));
-						}}
-					>
-						8
-					</button>
-					<button
-						onClick={() => {
-							setSecondNumber(updatePanelNumber(secondNumber, "9"));
-						}}
-					>
-						9
-					</button>
-					<button
-						onClick={() => {
-							setSecondNumber(updatePanelNumber(secondNumber, "0"));
-						}}
-					>
-						0
-					</button>
+					{buttonArray.map((buttonValue, index) => {
+						return (
+							<button
+								key={index}
+								onClick={() => {
+									setSecondNumber(
+										computePanelNumber(secondNumber, buttonValue)
+									);
+								}}
+							>
+								{buttonValue}
+							</button>
+						);
+					})}
 					<button onClick={() => setSecondNumber("0")}>Clear</button>
 					<button
 						onClick={() => {
@@ -230,25 +110,12 @@ function App() {
 					>
 						Recall
 					</button>
-					<button
-						onClick={() => {
-							setSecondNumber(updatePanelNumber(secondNumber, "."));
-						}}
-					>
-						.
-					</button>
 				</div>
 			</div>
 			<div className="panel answer">
 				<p>{total}</p>
 				<div>
-					<button
-						onClick={() =>
-							setTotal(calculate(firstNumber, secondNumber, operator))
-						}
-					>
-						=
-					</button>
+					<button onClick={() => setTotal(calculateTotal())}>=</button>
 					<button onClick={() => setStoredNumber(total)}>
 						Stored ({storedNumber})
 					</button>
