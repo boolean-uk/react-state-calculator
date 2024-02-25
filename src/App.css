@@ -9,11 +9,13 @@ html {
 }
 
 .calculator {
-  display: grid;
+  display: flex;
   margin:20px;
   grid-template-columns: repeat(4, auto);
   justify-content: center;
   gap:10px;
+ 
+
 }
 
 .panel {

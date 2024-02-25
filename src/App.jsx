@@ -1,59 +1,33 @@
 import "./App.css"
+import PanelComponent4 from "./components/PanelComponent4"
+import PanelComponent from "./components/panelComponent"
+import PanelComponent3 from "./components/panelComponent3"
+
+import { useState } from "react"
 
 function App() {
+  // define some usestates:
+  const [value1,setValue1] = useState('0')
+  const [value2, setValue2] = useState('0');
+  const [operation, setOperation] = useState('');
+  const [result, setResult] = useState(0);
 
   return (
+
+
+
+    // Panels and numbers
     <div className="calculator">
-      <div className="panel">
-        <p>0</p>
-        <div className="numbers">
-          <button>1</button>
-          <button>2</button>
-          <button>3</button>
-          <button>4</button>
-          <button>5</button>
-          <button>6</button>
-          <button>7</button>
-          <button>8</button>
-          <button>9</button>
-          <button>0</button>
-          <button>Clear</button>
-        </div>
-      </div>
+      {/* Panels and numbers */}
+      <PanelComponent value={value1} setValue={setValue1} />
+      <PanelComponent4 operation={operation} setOperation={setOperation}/>
+      <PanelComponent value={value2} setValue={setValue2}/>
 
-      <div className="panel">
-        <p>+</p>
-        <div className="numbers">
-          <button>+</button>
-          <button>-</button>
-          <button>*</button>
-          <button>÷</button>
-        </div>
-      </div>
-
-      <div className="panel">
-        <p>0</p>
-        <div className="numbers">
-          <button>1</button>
-          <button>2</button>
-          <button>3</button>
-          <button>4</button>
-          <button>5</button>
-          <button>6</button>
-          <button>7</button>
-          <button>8</button>
-          <button>9</button>
-          <button>0</button>
-          <button>Clear</button>
-        </div>
-      </div>
-      <div className="panel answer">
-        <p>0</p>
-        <div>
-          <button>=</button>
-        </div>
-      </div>
+      {/* Panel for result */}
+      <PanelComponent3 value1={value1} value2={value2} operation={operation} result={result} setResult={setResult}/>
+    
     </div>
+
   )
 }
 
