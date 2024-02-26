@@ -21,13 +21,15 @@ function App() {
   };
 
   /** Initiate leftNumber and its setter */
-  const [leftNumber, setLeftNumber] = useState(0);
+  const [leftNumber, setLeftNumber] = useState('0');
   /** Setter for the left number */
   const settingTheLeftNumber = (number) => {
-    if (leftNumber === 0) {
-      setLeftNumber(number);
-    } else {
-      setLeftNumber(leftNumber + "" + number);
+    if (!(number === '.' && leftNumber.includes('.'))) {
+      if (leftNumber === '0' && number !== '.') {
+        setLeftNumber(number);
+      } else {
+        setLeftNumber(leftNumber + "" + number);
+      }
     }
   }
 
@@ -39,22 +41,24 @@ function App() {
   }
 
   /** Initiate rightNumber and its setter */
-  const [rightNumber, setRightNumber] = useState(0);
+  const [rightNumber, setRightNumber] = useState('0');
   /** Setter for the right number */
   const settingTheRightNumber = (number) => {
-    if (rightNumber === 0) {
-      setRightNumber(number);
-    } else {
-      setRightNumber(rightNumber + "" + number);
+    if (!(number === "." && rightNumber.includes("."))) {
+      if (rightNumber === "0" && number !== ".") {
+        setRightNumber(number);
+      } else {
+        setRightNumber(rightNumber + "" + number);
+      }
     }
   }
 
   /** Clears the given a number and sets it to 0 */
   const clearNumber = (target) => {
     if (target === "left") {
-      setLeftNumber(0);
+      setLeftNumber('0');
     } else {
-      setRightNumber(0);
+      setRightNumber('0');
     }
   }
 
@@ -63,8 +67,8 @@ function App() {
   /** Calculate the answer for leftNumber and rightNumber 
     combined with the assigned operator. **/
   const calculateAnswer = () => {
-    const left = parseInt(leftNumber);
-    const right = parseInt(rightNumber);
+    const left = parseFloat(leftNumber);
+    const right = parseFloat(rightNumber);
 
     switch (operator) {
       case "+":
@@ -98,6 +102,7 @@ function App() {
             </button>
           ))}
           <button onClick={() => clearNumber("left")}>Clear</button>
+          <button onClick={() => settingTheLeftNumber(".")}>.</button>
           <button onClick={() => getStored("left")}>Recall</button>
         </div>
       </div>
@@ -122,6 +127,7 @@ function App() {
             </button>
           ))}
           <button onClick={() => clearNumber("right")}>Clear</button>
+          <button onClick={() => settingTheRightNumber(".")}>.</button>
           <button onClick={() => getStored("right")}>Recall</button>
         </div>
       </div>
