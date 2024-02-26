@@ -7,15 +7,16 @@ function App() {
   const [rightNum, setRightNum] = useState(0)
   const [result, setResult] = useState(0)
 
+  // Takes care of clicks and executes a function based on the section
   const handleClick = (event, section) => {
     switch (section) {
-      case 1:
+      case 1: // Left side numbers
         handleLeftClick(event); break;
-      case 2:
+      case 2: // Operations in the middle
         handleOperationClick(event); break; 
-      case 3: 
+      case 3: // Right side numbers
         handleRightClick(event); break;
-      case 4: 
+      case 4: // =
         handleResultClick(); break;
     }
   }
@@ -23,24 +24,24 @@ function App() {
   const handleLeftClick = (event) => {
     if (event.target.textContent === 'Clear')
       setLeftNum(0)
-
+    // If leftNum is already 0, replace it with the new value
     else if(leftNum == 0) 
       setLeftNum(event.target.textContent)
-    else 
+    else // Append to the number
       setLeftNum(leftNum + event.target.textContent)
   }
 
   const handleOperationClick = (event) => {
-    setOperation(event.target.textContent)
+    setOperation(event.target.textContent)  
   }
 
   const handleRightClick = (event) => {
     if (event.target.textContent === 'Clear')
       setRightNum(0)
-
+    // If rightNum is already 0, replace it with the new value
     else if(rightNum == 0) 
       setRightNum(event.target.textContent)
-    else 
+    else // Append to the number
       setRightNum(rightNum + event.target.textContent)
   }
 
@@ -50,7 +51,10 @@ function App() {
       case '-': setResult(leftNum - rightNum); break;
       case '*': setResult(leftNum * rightNum); break;
       case '÷': setResult(leftNum / rightNum); break;
-      default: setResult(0)
+      default: {
+        console.log('Unrecognized operation: ' + operation)
+        setResult(0) // Should not be possible to get here...
+      }
     }
   }
 
