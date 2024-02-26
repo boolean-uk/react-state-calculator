@@ -6,6 +6,7 @@ function App() {
   const [operation, setOperation] = useState('-')
   const [rightNum, setRightNum] = useState('0')
   const [result, setResult] = useState('0')
+  const [store, setStore] = useState('0')
 
   // Takes care of clicks and executes a function based on the section
   const handleClick = (event, section) => {
@@ -13,17 +14,21 @@ function App() {
       case 1: // Left side numbers
         handleLeftClick(event); break;
       case 2: // Operations in the middle
-        handleOperationClick(event); break; 
+        setOperation(event.target.textContent); break;
       case 3: // Right side numbers
         handleRightClick(event); break;
       case 4: // =
         handleResultClick(); break;
+      case 5:
+        setStore(result); break;
     }
   }
 
   const handleLeftClick = (event) => {
     if (event.target.textContent === 'Clear')
       setLeftNum(0)
+    else if (event.target.textContent === 'Recall')
+      setLeftNum(store)
     // If leftNum is already 0, replace it with the new value
     else if(leftNum == '0' && event.target.textContent != '.') 
       setLeftNum(event.target.textContent)
@@ -32,13 +37,11 @@ function App() {
       setLeftNum(leftNum + event.target.textContent)
   }
 
-  const handleOperationClick = (event) => {
-    setOperation(event.target.textContent)  
-  }
-
   const handleRightClick = (event) => {
     if (event.target.textContent === 'Clear')
       setRightNum(0)
+    else if (event.target.textContent === 'Recall')
+      setRightNum(store)
     // If rightNum is already 0, replace it with the new value
     else if(rightNum == '0' && event.target.textContent != '.') 
       setRightNum(event.target.textContent)
@@ -77,6 +80,7 @@ function App() {
           <button onClick={event => handleClick(event, 1)}>0</button>
           <button onClick={event => handleClick(event, 1)}>.</button>
           <button onClick={event => handleClick(event, 1)}>Clear</button>
+          <button onClick={event => handleClick(event, 1)}>Recall</button>
         </div>
       </div>
 
@@ -105,12 +109,14 @@ function App() {
           <button onClick={event => handleClick(event, 3)}>0</button>
           <button onClick={event => handleClick(event, 3)}>.</button>
           <button onClick={event => handleClick(event, 3)}>Clear</button>
+          <button onClick={event => handleClick(event, 3)}>Recall</button>
         </div>
       </div>
       <div className="panel answer">
         <p>{result}</p>
         <div>
           <button onClick={event => handleClick(event, 4)}>=</button>
+          <button onClick={event => handleClick(event, 5)}>Store</button>
         </div>
       </div>
     </div>
