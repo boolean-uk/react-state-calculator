@@ -19,7 +19,12 @@ function App() {
       if(number === "0"){
         prevNumberOne = ""
       }
-    } else{
+    } else if(number === store){
+      prevNumberOne = ""
+      setNumOne(number)
+      prevNumberOne = number
+    }
+    else{
       setNumOne(numOne + number)
       prevNumberOne += number
     }
@@ -32,7 +37,13 @@ function App() {
       if(number === "0"){
         prevNumberTwo = ""
       }
-    } else{
+    } else if(number === store){
+      prevNumberTwo = ""
+      setNumTwo(number)
+      prevNumberTwo = number
+    }
+
+    else{
       setNumTwo(numTwo + number)
       prevNumberTwo += number
     }
