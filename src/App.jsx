@@ -19,7 +19,7 @@ function App() {
         handleRightClick(event); break;
       case 4: // =
         handleResultClick(); break;
-      case 5:
+      case 5: // Store the result
         setStore(result); break;
     }
   }
@@ -56,6 +56,8 @@ function App() {
       case '-': setResult(leftNum - rightNum); break;
       case '*': setResult(leftNum * rightNum); break;
       case '÷': setResult(leftNum / rightNum); break;
+      case '%': setResult(leftNum % rightNum); break;
+      case '^': setResult(leftNum ** rightNum); break;
       default: {
         console.log('Unrecognized operation: ' + operation)
         setResult(0) // Should not be possible to get here...
@@ -91,6 +93,8 @@ function App() {
           <button onClick={event => handleClick(event, 2)}>-</button>
           <button onClick={event => handleClick(event, 2)}>*</button>
           <button onClick={event => handleClick(event, 2)}>÷</button>
+          <button onClick={event => handleClick(event, 2)}>%</button>
+          <button onClick={event => handleClick(event, 2)}>^</button>
         </div>
       </div>
 
