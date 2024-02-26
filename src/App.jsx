@@ -2,55 +2,54 @@ import "./App.css"
 import { useState } from "react"
 
 function App() {
-
-  const initialLeftValue = []
-  const initialRightValue = []
-
-  const [calculated, setCalculated] = useState(0)
-  const [leftValue, setLeftValue] = useState(0)
-  const [rightValue, setRightValue] = useState(0)
+  const [calculated, setCalculated] = useState('0')
+  const [leftValue, setLeftValue] = useState('0')
+  const [rightValue, setRightValue] = useState('0')
   const [operator, setOperator] = useState("")
+  const [storedValue, setStoredValue] = useState(leftValue, operator,rightValue)
+
+  const values = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0']
 
   const handleCalculate = () => {
     let result = 0;
-
+    let a = parseFloat(leftValue)
+    let b = parseFloat(rightValue)
     switch (operator) {
       case "+":
-        result = leftValue + rightValue;
+        result = a +b
         break;
       case "-":
-        result = leftValue - rightValue;
+        result = a - b;
         break;
       case "*":
-        result = leftValue * rightValue;
+        result = a * b;
         break;
       case "/":
-        if (rightValue !== 0) {
-          result = leftValue / rightValue;
+        if (b !== 0) {
+          result = a / b;
         } else {
           alert("Error: Division by zero");
           return
         }
+      break
+      default:
+        result = 0;
         break
     }
     setCalculated(result);
   }
 
+
   return (
     <div className="calculator">
       <div className="panel">
         <p>{leftValue}</p>
-        <div className="numbers">
-          <button className="left-value-btn" onClick={() => setLeftValue(1)}>1</button>
-          <button className="left-value-btn" onClick={() => setLeftValue(2)}>2</button>
-          <button className="left-value-btn" onClick={() => setLeftValue(3)}>3</button>
-          <button className="left-value-btn" onClick={() => setLeftValue(4)}>4</button>
-          <button className="left-value-btn" onClick={() => setLeftValue(5)}>5</button>
-          <button className="left-value-btn" onClick={() => setLeftValue(6)}>6</button>
-          <button className="left-value-btn" onClick={() => setLeftValue(7)}>7</button>
-          <button className="left-value-btn" onClick={() => setLeftValue(8)}>8</button>
-          <button className="left-value-btn" onClick={() => setLeftValue(9)}>9</button>
-          <button className="left-value-btn" onClick={() => setLeftValue(0)}>0</button>
+        <div className="numbers">{
+         values.map((value) => (
+          <button onClick={
+            () => setLeftValue(
+              (leftValue === '0' ? '' : leftValue) + value)}>{value}</button>
+          ))}
           <button className="left-value-btn" onClick={() => setLeftValue(0)}>Clear</button>
         </div>
       </div>
@@ -67,17 +66,7 @@ function App() {
 
       <div className="panel">
         <p>{rightValue}</p>
-        <div className="numbers">
-          <button className="right-value-btn" onClick={() => setRightValue(1)}>1</button>
-          <button className="right-value-btn" onClick={() => setRightValue(2)}>2</button>
-          <button className="right-value-btn" onClick={() => setRightValue(3)}>3</button>
-          <button className="right-value-btn" onClick={() => setRightValue(4)}>4</button>
-          <button className="right-value-btn" onClick={() => setRightValue(5)}>5</button>
-          <button className="right-value-btn" onClick={() => setRightValue(6)}>6</button>
-          <button className="right-value-btn" onClick={() => setRightValue(7)}>7</button>
-          <button className="right-value-btn" onClick={() => setRightValue(8)}>8</button>
-          <button className="right-value-btn" onClick={() => setRightValue(9)}>9</button>
-          <button className="right-value-btn" onClick={() => setRightValue(0)}>0</button>
+        <div className="numbers">{values.map((value) => (<button onClick={() => setRightValue((rightValue === '0' ? '' : rightValue) + value)}>{value}</button>))}
           <button className="right-value-btn" onClick={() => setRightValue(0)}>Clear</button>
         </div>
       </div>
