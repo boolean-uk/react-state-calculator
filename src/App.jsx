@@ -1,58 +1,26 @@
 import "./App.css"
+import Panel1 from "./components/Panel1"
+import Panel2 from "./components/Panel2"
+import Operation from "./components/Operation"
+import Answer from "./components/Answer"
+import { useState } from "react"
 
 function App() {
 
+  const [panel1, setPanel1] = useState("0");
+  const [operation, setOperation] = useState("+");
+  const [panel2, setPanel2] = useState("0");
+  const [answer, setAnswer] = useState("0");
+
+
   return (
     <div className="calculator">
-      <div className="panel">
-        <p>0</p>
-        <div className="numbers">
-          <button>1</button>
-          <button>2</button>
-          <button>3</button>
-          <button>4</button>
-          <button>5</button>
-          <button>6</button>
-          <button>7</button>
-          <button>8</button>
-          <button>9</button>
-          <button>0</button>
-          <button>Clear</button>
-        </div>
-      </div>
 
-      <div className="panel">
-        <p>+</p>
-        <div className="numbers">
-          <button>+</button>
-          <button>-</button>
-          <button>*</button>
-          <button>÷</button>
-        </div>
-      </div>
 
-      <div className="panel">
-        <p>0</p>
-        <div className="numbers">
-          <button>1</button>
-          <button>2</button>
-          <button>3</button>
-          <button>4</button>
-          <button>5</button>
-          <button>6</button>
-          <button>7</button>
-          <button>8</button>
-          <button>9</button>
-          <button>0</button>
-          <button>Clear</button>
-        </div>
-      </div>
-      <div className="panel answer">
-        <p>0</p>
-        <div>
-          <button>=</button>
-        </div>
-      </div>
+      <Panel1 {...{panel1, setPanel1}}/>
+      <Operation {...{operation, setOperation}}/>
+      <Panel2 {...{panel2, setPanel2}}/>
+      <Answer {...{panel1, operation, panel2, answer, setAnswer}}/>
     </div>
   )
 }
