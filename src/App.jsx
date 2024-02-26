@@ -1,58 +1,41 @@
+import { useState } from "react"
 import "./App.css"
+import NumberPanel from "./Components/NumberPanel"
+import OperatorPanel from "./Components/OperatorPanel"
+import AnswerPanel from "./Components/AnswerPanel"
 
 function App() {
+  const [firstNumber, setFirstNumber] = useState("0")
+  const [operator, setOperator] = useState('+')
+  const [secondNumber, setSecondNumber] = useState("0")
+  const [answer, setAnswer] = useState("0")
+  const [storedValue, setStoredValue] = useState("0")
 
   return (
+
     <div className="calculator">
-      <div className="panel">
-        <p>0</p>
-        <div className="numbers">
-          <button>1</button>
-          <button>2</button>
-          <button>3</button>
-          <button>4</button>
-          <button>5</button>
-          <button>6</button>
-          <button>7</button>
-          <button>8</button>
-          <button>9</button>
-          <button>0</button>
-          <button>Clear</button>
-        </div>
-      </div>
-
-      <div className="panel">
-        <p>+</p>
-        <div className="numbers">
-          <button>+</button>
-          <button>-</button>
-          <button>*</button>
-          <button>÷</button>
-        </div>
-      </div>
-
-      <div className="panel">
-        <p>0</p>
-        <div className="numbers">
-          <button>1</button>
-          <button>2</button>
-          <button>3</button>
-          <button>4</button>
-          <button>5</button>
-          <button>6</button>
-          <button>7</button>
-          <button>8</button>
-          <button>9</button>
-          <button>0</button>
-          <button>Clear</button>
-        </div>
-      </div>
-      <div className="panel answer">
-        <p>0</p>
-        <div>
-          <button>=</button>
-        </div>
-      </div>
+      <NumberPanel 
+        number={firstNumber} 
+        setNumber={setFirstNumber} 
+        storedValue={storedValue}
+      />
+      <OperatorPanel 
+        operator={operator} 
+        setOperator={setOperator}
+      />
+      <NumberPanel 
+        number={secondNumber} 
+        setNumber={setSecondNumber} 
+        storedValue={storedValue}
+      />
+      <AnswerPanel 
+        firstNumber={firstNumber} 
+        secondNumber={secondNumber} 
+        operator={operator} 
+        answer={answer} 
+        setAnswer={setAnswer} 
+        setStoredValue={setStoredValue}
+      />
     </div>
   )
 }
