@@ -2,14 +2,32 @@ import { useState } from "react";
 import "./App.css";
 
 function App() {
-  const [firstNumber, setFirstNumber] = useState(0);
-  const [secondNumber, setSecondNumber] = useState(0);
+  const [firstNumber, setFirstNumber] = useState("0");
+  const [secondNumber, setSecondNumber] = useState("0");
   const [operator, setOperator] = useState("+");
-  const [answer, setAnswer] = useState(0);
+  const [answer, setAnswer] = useState("0");
 
-  const updateFirstNumber = (e) => setFirstNumber(e.target.value);
-  const updateSecondNumber = (e) => setSecondNumber(e.target.value);
+  const updateFirstNumber = (e) => {
+    if (firstNumber === "0") {
+      setFirstNumber(e.target.value);
+    } else if (e.target.innerText === "Clear") {
+      setFirstNumber(e.target.value);
+    } else {
+      setFirstNumber(firstNumber + e.target.value);
+    }
+  };
+  const updateSecondNumber = (e) => {
+    if (secondNumber === "0") {
+      setSecondNumber(e.target.value);
+    } else if (e.target.innerText === "Clear") {
+      setSecondNumber(e.target.value);
+    } else {
+      setSecondNumber(secondNumber + e.target.value);
+    }
+  };
+
   const updateOperator = (e) => setOperator(e.target.value);
+
   const updateAnswer = () => {
     if (operator === "÷") {
       setAnswer(eval(`${firstNumber} / ${secondNumber}`));
