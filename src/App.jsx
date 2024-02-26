@@ -3,7 +3,7 @@ import "./App.css"
 import { useState } from 'react'
 
 
-
+const buttons = [ '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '.']
 
 
 function App() {
@@ -47,18 +47,9 @@ function App() {
       <div className="panel">
         <p>{operand1}</p>
         <div className="numbers">
-          <button onClick={() => appendValueTo(operand1, setOperand1, '1')}>1</button>
-          <button onClick={() => appendValueTo(operand1, setOperand1, '2')}>2</button>
-          <button onClick={() => appendValueTo(operand1, setOperand1, '3')}>3</button>
-          <button onClick={() => appendValueTo(operand1, setOperand1, '4')}>4</button>
-          <button onClick={() => appendValueTo(operand1, setOperand1, '5')}>5</button>
-          <button onClick={() => appendValueTo(operand1, setOperand1, '6')}>6</button>
-          <button onClick={() => appendValueTo(operand1, setOperand1, '7')}>7</button>
-          <button onClick={() => appendValueTo(operand1, setOperand1, '8')}>8</button>
-          <button onClick={() => appendValueTo(operand1, setOperand1, '9')}>9</button>
-          <button onClick={() => appendValueTo(operand1, setOperand1, '0')}>0</button>
-          <button onClick={() => appendValueTo(operand1, setOperand1, '.')}>.</button>
-
+          {buttons.map(btn => 
+              <button onClick={() => appendValueTo(operand1, setOperand1, btn)}> {btn}</button>
+            )}
           <button onClick={() => clearField(setOperand1)}>Clear</button> 
         </div>
       </div>
@@ -76,18 +67,9 @@ function App() {
       <div className="panel">
         <p>{operand2}</p>
         <div className="numbers">
-          <button onClick={() => appendValueTo(operand2, setOperand2, '1')}>1</button>
-          <button onClick={() => appendValueTo(operand2, setOperand2, '2')}>2</button>
-          <button onClick={() => appendValueTo(operand2, setOperand2, '3')}>3</button>
-          <button onClick={() => appendValueTo(operand2, setOperand2, '4')}>4</button>
-          <button onClick={() => appendValueTo(operand2, setOperand2, '5')}>5</button>
-          <button onClick={() => appendValueTo(operand2, setOperand2, '6')}>6</button>
-          <button onClick={() => appendValueTo(operand2, setOperand2, '7')}>7</button>
-          <button onClick={() => appendValueTo(operand2, setOperand2, '8')}>8</button>
-          <button onClick={() => appendValueTo(operand2, setOperand2, '9')}>9</button>
-          <button onClick={() => appendValueTo(operand2, setOperand2, '0')}>0</button>
-          <button onClick={() => appendValueTo(operand2, setOperand2, '.')}>.</button>
-          <button onClick={() => clearField(setOperand2)}>Clear</button> 
+          {buttons.map(btn => 
+              <button onClick={() => appendValueTo(operand2, setOperand2, btn)}> {btn}</button>
+            )}
         </div>
       </div>
       <div className="panel answer">
