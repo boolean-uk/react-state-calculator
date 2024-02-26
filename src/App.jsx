@@ -34,7 +34,7 @@ function App() {
       } else if (secondNum === '0') {
         setSecondNum(event.target.innerText)
       } else if(event.target.innerText === '.' ) {
-        if(firstNum.includes('\.')) {
+        if(firstNum.includes('.')) {
           // do nothing
         } else {
           setFirstNum(firstNum+event.target.innerText)
@@ -110,7 +110,7 @@ function App() {
 
       <div className="panel">
         <p>{operator}</p>
-        <div className="numbers" onClick={clickedOperator}>
+        <div className="operators" onClick={clickedOperator}>
           <button>+</button>
           <button>-</button>
           <button>*</button>
