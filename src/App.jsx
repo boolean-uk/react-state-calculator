@@ -29,7 +29,7 @@ function App() {
   const displayOperation = (op) => {
     setOperation(op);
   };
-
+  /* 
   const calculateResult = () => {
     const num1 = parseInt(numberPanelOne);
     const num2 = parseInt(numberPanelTwo);
@@ -51,7 +51,22 @@ function App() {
         setResult(0);
         break;
     }
+  }; */
+
+  const calculateResult = () => {
+    let res = "";
+    if (operation === "÷") {
+      if (numberPanelTwo !== 0) {
+        res = numberPanelOne + "/" + numberPanelTwo;
+      }
+    } else {
+      res = numberPanelOne + operation + numberPanelTwo;
+    }
+
+    console.log(res);
+    setResult(eval(res));
   };
+
   const handleStore = () => {
     setStore(result);
   };
@@ -64,6 +79,16 @@ function App() {
   const handleRecallPanelTwo = () => {
     if (store !== null) {
       setNumberPanelTwo(store);
+    }
+  };
+  const addDecimalPanelOne = (panel) => {
+    if (!panel.includes(".")) {
+      setNumberPanelOne(panel + ".");
+    }
+  };
+  const addDecimalPanelTwo = (panel) => {
+    if (!panel.includes(".")) {
+      setNumberPanelTwo(panel + ".");
     }
   };
 
@@ -79,6 +104,7 @@ function App() {
           ))}
           <button onClick={() => setNumberPanelOne("0")}>Clear</button>
           <button onClick={handleRecallPanelOne}>Recall</button>
+          <button onClick={() => addDecimalPanelOne(numberPanelOne)}>.</button>
         </div>
       </div>
 
@@ -103,6 +129,7 @@ function App() {
           ))}
           <button onClick={() => setNumberPanelTwo("0")}>Clear</button>
           <button onClick={handleRecallPanelTwo}>Recall</button>
+          <button onClick={() => addDecimalPanelTwo(numberPanelTwo)}>.</button>
         </div>
       </div>
 
