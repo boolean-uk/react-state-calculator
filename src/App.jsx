@@ -6,6 +6,7 @@ function App() {
   const [operators, setOperators] = useState(null);
   const [secondDigits, setSecondDigits] = useState(0);
   const [results, setResults] = useState(0);
+  const [stores, setStores] = useState(null);
 
   const updateFirstDigit = (digit) => {
     setFirstDigits(digit);
@@ -51,6 +52,18 @@ function App() {
     }
   };
 
+  const updateStores = () => {
+    setStores(results)
+  }
+
+  const resetStates = () => {
+    setFirstDigits(0)
+    setOperators(null)
+    setSecondDigits(0)
+    setResults(0)
+    setStores(null)
+  }
+
   return (
     <div className="calculator">
       <div className="panel">
@@ -62,6 +75,7 @@ function App() {
             </button>
           ))}
           <button onClick={resetFirstDigit}>Clear</button>
+          <button onClick={() => updateFirstDigit(stores)}>Recall</button>
         </div>
       </div>
 
@@ -85,12 +99,15 @@ function App() {
             </button>
           ))}
           <button onClick={resetSecondDigit}>Clear</button>
+          <button onClick={() => updateSecondDigit(stores)}>Recall</button>
         </div>
       </div>
       <div className="panel answer">
         <p>{results}</p>
         <div>
           <button onClick={updateResult}>=</button>
+          <button onClick={updateStores}>Store</button>
+          <button onClick={resetStates}>Reset</button>
         </div>
       </div>
     </div>
