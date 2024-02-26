@@ -1,60 +1,49 @@
-import "./App.css"
+import { useState } from "react";
+import "./App.css";
+import NumberPanel from "./components/NumberPanel";
+import OperationPanel from "./components/OperationPanel";
+import QuickButton from "./components/QuickButton";
 
 function App() {
-
+  const [numOne, setNumOne] = useState(0);
+  const [numTwo, setNumTwo] = useState(0);
+  const [operator, setOperator] = useState("+");
+  const [answer, setAnswer] = useState(0);
+  const calculateAnswer = () => {
+    let result = 0;
+    switch (operator) {
+      case "+":
+        result = numOne + numTwo;
+        break;
+      case "-":
+        result = numOne - numTwo;
+        break;
+      case "*":
+        result = numOne * numTwo;
+        break;
+      case "/":
+      case "÷":
+        result = numTwo === 0 ? "error" : numOne / numTwo;
+        break;
+      default:
+        result = "Invalid operation";
+    }
+    setAnswer(result);
+    console.log(numOne, operator, numTwo, answer);
+  };
   return (
     <div className="calculator">
-      <div className="panel">
-        <p>0</p>
-        <div className="numbers">
-          <button>1</button>
-          <button>2</button>
-          <button>3</button>
-          <button>4</button>
-          <button>5</button>
-          <button>6</button>
-          <button>7</button>
-          <button>8</button>
-          <button>9</button>
-          <button>0</button>
-          <button>Clear</button>
-        </div>
-      </div>
-
-      <div className="panel">
-        <p>+</p>
-        <div className="numbers">
-          <button>+</button>
-          <button>-</button>
-          <button>*</button>
-          <button>÷</button>
-        </div>
-      </div>
-
-      <div className="panel">
-        <p>0</p>
-        <div className="numbers">
-          <button>1</button>
-          <button>2</button>
-          <button>3</button>
-          <button>4</button>
-          <button>5</button>
-          <button>6</button>
-          <button>7</button>
-          <button>8</button>
-          <button>9</button>
-          <button>0</button>
-          <button>Clear</button>
-        </div>
-      </div>
+      <NumberPanel selectedNumber={numOne} onNumChange={setNumOne} />
+      <OperationPanel selectedValue={operator} onValueChange={setOperator} />
+      <NumberPanel selectedNumber={numTwo} onNumChange={setNumTwo} />
       <div className="panel answer">
-        <p>0</p>
+        <p>{answer}</p>
         <div>
-          <button>=</button>
+          <QuickButton value="=" onClick={() => calculateAnswer()} />
         </div>
       </div>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
