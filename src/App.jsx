@@ -1,7 +1,6 @@
 import { useState } from "react";
-
 import "./App.css";
-// import Clear from "./Clear";
+
 
 function App() {
   const zeroToNine = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
@@ -10,18 +9,9 @@ function App() {
   const [number1, setNumber1] = useState(0);
   const [operator, setOperator] = useState("");
   const [number2, setNumber2] = useState(0);
-
   const [sum, setSum] = useState(0);
 
-  const handleNumber1Click = (num) => {
-    setNumber1(num);
-  };
-  const handleOperatorClick = (op) => {
-    setOperator(op);
-  };
-  const handleNumber2Click = (num) => {
-    setNumber2(num);
-  };
+
   const calculateSum = (number1, number2, op) => {
     switch (op) {
       case "+":
@@ -45,11 +35,11 @@ function App() {
         <p>{number1}</p>
         <div className="numbers">
           {zeroToNine.map((number) => (
-            <button key={number} onClick={() => handleNumber1Click(number)}>
+            <button key={number} onClick={() => setNumber1(number)}>
               {number}
             </button>
           ))}
-          <button>Clear</button>
+          <button onClick={() => setNumber1(0)}>Clear</button>
         </div>
       </div>
 
@@ -57,7 +47,7 @@ function App() {
         <p>{operator}</p>
         <div className="numbers">
           {operators.map((op) => (
-            <button key={op} onClick={() => handleOperatorClick(op)}>
+            <button key={op} onClick={() => setOperator(op)}>
               {op}
             </button>
           ))}
@@ -68,11 +58,11 @@ function App() {
         <p>{number2}</p>
         <div className="numbers">
           {zeroToNine.map((number) => (
-            <button key={number} onClick={() => handleNumber2Click(number)}>
+            <button key={number} onClick={() => setNumber2(number)}>
               {number}
             </button>
           ))}
-          <button>Clear</button>
+          <button onClick={() => setNumber2(0)}>Clear</button>
         </div>
       </div>
       <div className="panel answer">
