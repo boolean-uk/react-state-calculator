@@ -5,8 +5,8 @@ function App() {
   const [calculated, setCalculated] = useState('0')
   const [leftValue, setLeftValue] = useState('0')
   const [rightValue, setRightValue] = useState('0')
-  const [operator, setOperator] = useState("")
-  const [storedValue, setStoredValue] = useState(leftValue, operator,rightValue)
+  const [operator, setOperator] = useState('')
+  const [storedValue, setStoredValue] = useState('')
 
   const values = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0']
 
@@ -31,14 +31,26 @@ function App() {
           alert("Error: Division by zero");
           return
         }
-      break
+      break;
       default:
         result = 0;
-        break
+        break;
     }
     setCalculated(result);
   }
 
+  const handleStore = () =>{
+    setStoredValue(calculated)
+    console.log(storedValue)
+  }
+
+  const handleRecall = (value) => {
+    if (value === 'left') {
+      setLeftValue(storedValue.toString());
+    } else if (value === 'right') {
+      setRightValue(storedValue.toString());
+    }
+  }
 
   return (
     <div className="calculator">
@@ -50,7 +62,10 @@ function App() {
             () => setLeftValue(
               (leftValue === '0' ? '' : leftValue) + value)}>{value}</button>
           ))}
-          <button className="left-value-btn" onClick={() => setLeftValue(0)}>Clear</button>
+          <button onClick={() => setLeftValue(leftValue + (leftValue.includes('.') ? '' : '.'))}>.</button>
+          <button className="left-value-btn" onClick={() => setLeftValue('0')}>Clear</button>
+          <button onClick={() => handleRecall('left')}>Recall</button>
+          
         </div>
       </div>
 
@@ -67,13 +82,17 @@ function App() {
       <div className="panel">
         <p>{rightValue}</p>
         <div className="numbers">{values.map((value) => (<button onClick={() => setRightValue((rightValue === '0' ? '' : rightValue) + value)}>{value}</button>))}
-          <button className="right-value-btn" onClick={() => setRightValue(0)}>Clear</button>
+          <button onClick={() => setRightValue(rightValue + (rightValue.includes('.') ? '' : '.'))}>.</button>
+          <button className="right-value-btn" onClick={() => setRightValue('0')}>Clear</button>
+          <button onClick={() => handleRecall('right')}>Recall</button>
         </div>
       </div>
+
       <div className="panel answer">
         <p>{calculated}</p>
         <div>
           <button onClick={handleCalculate}>=</button>
+          <button onClick={handleStore}>Store</button>
         </div>
       </div>
     </div>
