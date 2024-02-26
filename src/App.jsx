@@ -1,18 +1,18 @@
 import { useState } from "react";
 import "./App.css";
 
-
 function App() {
   const zeroToNine = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
   const operators = ["+", "-", "*", "/"];
 
-  const [number1, setNumber1] = useState(0);
+  const [number1, setNumber1] = useState("0");
   const [operator, setOperator] = useState("");
-  const [number2, setNumber2] = useState(0);
-  const [sum, setSum] = useState(0);
-
+  const [number2, setNumber2] = useState("0");
+  const [sum, setSum] = useState("0");
 
   const calculateSum = (number1, number2, op) => {
+    number1 = parseInt(number1);
+    number2 = parseInt(number2);
     switch (op) {
       case "+":
         setSum(number1 + number2);
@@ -29,13 +29,26 @@ function App() {
     }
   };
 
+  const multipleNums = (newValue, current) => {
+    if (current === "0") {
+      return newValue.toString();
+    } else {
+      return current + newValue;
+    }
+  };
+
   return (
     <div className="calculator">
       <div className="panel">
         <p>{number1}</p>
         <div className="numbers">
           {zeroToNine.map((number) => (
-            <button key={number} onClick={() => setNumber1(number)}>
+            <button
+              key={number}
+              onClick={
+                () => setNumber1((previous) => multipleNums(number, previous))
+              }
+            >
               {number}
             </button>
           ))}
@@ -58,7 +71,12 @@ function App() {
         <p>{number2}</p>
         <div className="numbers">
           {zeroToNine.map((number) => (
-            <button key={number} onClick={() => setNumber2(number)}>
+            <button
+              key={number}
+              onClick={() =>
+                setNumber2((previous) => multipleNums(number, previous))
+              }
+            >
               {number}
             </button>
           ))}
