@@ -1,56 +1,57 @@
+import { useState } from "react"
 import "./App.css"
 
+const buttons = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0']
+const operators = ['+', '-', '*', '÷']
+
 function App() {
+  const [firstNumber, setFirstNumber] = useState('0')
+  const [operator, setOperator] = useState('+')
+  const [secondNumber, setSecondNumber] = useState('0')
+  const [result, setResult] = useState('0')
 
   return (
     <div className="calculator">
       <div className="panel">
-        <p>0</p>
+        <p>{firstNumber}</p>
         <div className="numbers">
-          <button>1</button>
-          <button>2</button>
-          <button>3</button>
-          <button>4</button>
-          <button>5</button>
-          <button>6</button>
-          <button>7</button>
-          <button>8</button>
-          <button>9</button>
-          <button>0</button>
-          <button>Clear</button>
+          {buttons.map(string => 
+            <button key={string} 
+              onClick={() => {
+                if (firstNumber === '0') {setFirstNumber(string)} 
+                else {setFirstNumber(firstNumber + string)}
+              }}>{string}</button>
+          )}
+          <button onClick={() => setFirstNumber('0')}>Clear</button>
         </div>
       </div>
 
       <div className="panel">
-        <p>+</p>
+        <p>{operator}</p>
         <div className="numbers">
-          <button>+</button>
-          <button>-</button>
-          <button>*</button>
-          <button>÷</button>
+          {operators.map(string => 
+            <button key={string} onClick={() => setOperator(string)}>{string}</button>
+          )}
         </div>
       </div>
 
       <div className="panel">
-        <p>0</p>
+        <p>{secondNumber}</p>
         <div className="numbers">
-          <button>1</button>
-          <button>2</button>
-          <button>3</button>
-          <button>4</button>
-          <button>5</button>
-          <button>6</button>
-          <button>7</button>
-          <button>8</button>
-          <button>9</button>
-          <button>0</button>
-          <button>Clear</button>
+          {buttons.map(string => 
+            <button key={string} 
+              onClick={() => {
+                if (secondNumber === '0') {setSecondNumber(string)} 
+                else {setSecondNumber(secondNumber + string)}
+              }}>{string}</button>
+          )}
+          <button onClick={() => setSecondNumber('0')}>Clear</button>
         </div>
       </div>
       <div className="panel answer">
-        <p>0</p>
+        <p>{result}</p>
         <div>
-          <button>=</button>
+          <button onClick={() => setResult(eval(firstNumber+operator+secondNumber))}>=</button>
         </div>
       </div>
     </div>
