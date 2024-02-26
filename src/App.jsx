@@ -13,6 +13,11 @@ function App() {
   const handleFirstNumber = (value) => {
     if (value === "Recall") {
       setFirstNumber(storedAnswer);
+    } else if (value === ".") {
+      if (String(firstNumber).includes(".")) {
+        return;
+      }
+      setFirstNumber(`${firstNumber}${value}`);
     } else if ((firstNumber === 0 && value === 0) || value === "Clear") {
       setFirstNumber(0);
     } else if (firstNumber === 0) {
@@ -29,6 +34,11 @@ function App() {
   const handleSecondNumber = (value) => {
     if (value === "Recall") {
       setSecondNumber(storedAnswer);
+    } else if (value === ".") {
+      if (String(secondNumber).includes(".")) {
+        return;
+      }
+      setSecondNumber(`${secondNumber}${value}`);
     } else if ((secondNumber === 0 && value === 0) || value === "Clear") {
       setSecondNumber(0);
     } else if (secondNumber === 0) {
@@ -56,6 +66,7 @@ function App() {
               {num}
             </button>
           ))}
+          <button onClick={() => handleFirstNumber(".")}>.</button>
           <button onClick={() => handleFirstNumber("Clear")}>Clear</button>
           <button onClick={() => handleFirstNumber("Recall")}>Recall</button>
         </div>
@@ -79,6 +90,7 @@ function App() {
               {num}
             </button>
           ))}
+          <button onClick={() => handleSecondNumber(".")}>.</button>
           <button onClick={() => handleSecondNumber("Clear")}>Clear</button>
           <button onClick={() => handleSecondNumber("Recall")}>Recall</button>
         </div>
