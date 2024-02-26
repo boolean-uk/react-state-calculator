@@ -3,13 +3,42 @@ import {useState} from 'react'
 
 
 function App() {
-  const [firstNum, setFirstNum] = useState("0")
-  const [secondNum, setSecondNum] = useState("0")
+  const [firstNum, setFirstNum] = useState(0)
+  const [secondNum, setSecondNum] = useState(0)
   const [operator, setOperator] = useState("+")
-  const [result, setResult] = useState("0")
+  const [result, setResult] = useState(0)
+  const [stored, setStored] = useState(0)
 
-  //const values = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"]
-  //const operators = ["+", "-", "*", "/"]
+  const setFirst = (input) => {
+    let oldVal = firstNum
+    let newVal = input
+
+    if (oldVal === 0){
+      setFirstNum(newVal)
+    }
+    if (oldVal === 0 && newVal === 0){
+      return
+    } 
+    else if (oldVal !== 0) {
+    setFirstNum((`${oldVal}${newVal}`))
+    }
+  }
+
+  const setSecond = (input) => {
+    let oldVal = secondNum
+    let newVal = input
+
+    if (oldVal === 0){
+      setSecondNum(newVal)
+    }
+    if (oldVal === 0 && newVal === 0){
+      return
+    } 
+    else if (oldVal !== 0) {
+    setSecondNum((`${oldVal}${newVal}`))
+    }
+  }
+
 
   const Calculate = () => {
     let a = parseFloat(firstNum)
@@ -36,18 +65,19 @@ function App() {
       <div className="panel">
         <p>{firstNum}</p>
         <div className="numbers">
-          <button onClick={() => setFirstNum(1)}>1</button>
-          <button onClick={() => setFirstNum(2)}>2</button>
-          <button onClick={() => setFirstNum(3)}>3</button>
-          <button onClick={() => setFirstNum(4)}>4</button>
-          <button onClick={() => setFirstNum(5)}>5</button>
-          <button onClick={() => setFirstNum(6)}>6</button>
-          <button onClick={() => setFirstNum(7)}>7</button>
-          <button onClick={() => setFirstNum(8)}>8</button>
-          <button onClick={() => setFirstNum(9)}>9</button>
-          <button onClick={() => setFirstNum(0)}>0</button>
+          <button onClick={() => setFirst(1)}>1</button>
+          <button onClick={() => setFirst(2)}>2</button>
+          <button onClick={() => setFirst(3)}>3</button>
+          <button onClick={() => setFirst(4)}>4</button>
+          <button onClick={() => setFirst(5)}>5</button>
+          <button onClick={() => setFirst(6)}>6</button>
+          <button onClick={() => setFirst(7)}>7</button>
+          <button onClick={() => setFirst(8)}>8</button>
+          <button onClick={() => setFirst(9)}>9</button>
+          <button onClick={() => setFirst(0)}>0</button>
+          <button onClick={()=>{setFirstNum(0)}}>Clear</button>
+        <button onClick={()=>{setFirstNum(stored)}}>Recall</button>
         </div>
-        <button onClick={()=>{setFirstNum('0')}}>Clear</button>
       </div>
       <div className="panel">
         <p>{operator}</p>
@@ -62,22 +92,25 @@ function App() {
       <div className="panel">
         <p>{secondNum}</p>
         <div className="numbers">
-          <button onClick={() => setSecondNum(1)}>1</button>
-          <button onClick={() => setSecondNum(2)}>2</button>
-          <button onClick={() => setSecondNum(3)}>3</button>
-          <button onClick={() => setSecondNum(4)}>4</button>
-          <button onClick={() => setSecondNum(5)}>5</button>
-          <button onClick={() => setSecondNum(6)}>6</button>
-          <button onClick={() => setSecondNum(7)}>7</button>
-          <button onClick={() => setSecondNum(8)}>8</button>
-          <button onClick={() => setSecondNum(9)}>9</button>
-          <button onClick={() => setSecondNum(0)}>0</button>
-        <button onClick={() => {setSecondNum('0')}}>Clear</button>
+          <button onClick={() => setSecond(1)}>1</button>
+          <button onClick={() => setSecond(2)}>2</button>
+          <button onClick={() => setSecond(3)}>3</button>
+          <button onClick={() => setSecond(4)}>4</button>
+          <button onClick={() => setSecond(5)}>5</button>
+          <button onClick={() => setSecond(6)}>6</button>
+          <button onClick={() => setSecond(7)}>7</button>
+          <button onClick={() => setSecond(8)}>8</button>
+          <button onClick={() => setSecond(9)}>9</button>
+          <button onClick={() => setSecond(0)}>0</button>
+        <button onClick={() => {setSecondNum(0)}}>Clear</button>
+        <button onClick={()=>{setSecondNum(stored)}}>Recall</button>
         </div>
       </div>
       <div className="panel answer">
         <p>{result}</p>
         <button onClick={()=>{Calculate()}}>=</button>
+        <p>{stored}</p>
+        <button onClick={()=>{setStored(result)}}>Store</button>
       </div>
     </div>
   )
