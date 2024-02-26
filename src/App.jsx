@@ -14,7 +14,7 @@ function App() {
     if (numberPanelOne === "0") {
       setNumberPanelOne(num.toString());
     } else {
-      setNumberPanelOne(numberPanelOne + num);
+      setNumberPanelOne(numberPanelOne + num.toString());
     }
   };
 
@@ -22,7 +22,7 @@ function App() {
     if (numberPanelTwo === "0") {
       setNumberPanelTwo(num.toString());
     } else {
-      setNumberPanelTwo(numberPanelTwo + num);
+      setNumberPanelTwo(numberPanelTwo + num.toString());
     }
   };
 
@@ -77,9 +77,8 @@ function App() {
               {num}
             </button>
           ))}
-          <button onClick={()=> setNumberPanelOne("0")}>Clear</button>
-          <button onClick={() => handleRecallPanelOne()}>Recall</button>
-
+          <button onClick={() => setNumberPanelOne("0")}>Clear</button>
+          <button onClick={handleRecallPanelOne}>Recall</button>
         </div>
       </div>
 
@@ -102,8 +101,8 @@ function App() {
               {num}
             </button>
           ))}
-          <button onClick={()=>setNumberPanelTwo("0")}>Clear</button>
-          <button onClick={() => handleRecallPanelTwo()}>Recall</button>
+          <button onClick={() => setNumberPanelTwo("0")}>Clear</button>
+          <button onClick={handleRecallPanelTwo}>Recall</button>
         </div>
       </div>
 
@@ -113,7 +112,7 @@ function App() {
           <button onClick={calculateResult}>=</button>
         </div>
         <div>
-          <button onClick={() => handleStore()}>Store</button>
+          <button onClick={handleStore}>Store</button>
         </div>
       </div>
     </div>
