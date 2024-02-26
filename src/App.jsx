@@ -70,7 +70,7 @@ function App() {
           <button onClick={() => displayNumberOne("9")}>9</button>
           <button onClick={() => displayNumberOne("0")}>0</button>
           <button onClick={() => (setNumOne("0"), prevNumberOne= "")}>Clear</button>
-          <button onClick={() => (displayNumberOne(sum), prevNumberOne="")}>recall</button>
+          <button onClick={() => (displayNumberOne(store), prevNumberOne="")}>recall</button>
         </div>
       </div>
 
@@ -98,7 +98,7 @@ function App() {
           <button onClick={() => displayNumberTwo("9")}>9</button>
           <button onClick={() => displayNumberTwo("0")}>0</button>
           <button onClick={() => (setNumTwo("0"), prevNumberTwo="")}>Clear</button>
-          <button onClick={() => displayNumberTwo(sum)}>recall</button>
+          <button onClick={() => (displayNumberTwo(store), prevNumberTwo="")}>recall</button>
         </div>
       </div>
       <div className="panel answer">
