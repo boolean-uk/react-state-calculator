@@ -8,8 +8,9 @@ const Answer = (props) =>  {
     panel1: PropTypes.string,
     operation: PropTypes.string,
     panel2: PropTypes.string,
-    answer: PropTypes.string,
+    answer: PropTypes.number,
     setAnswer: PropTypes.func,
+    setStore: PropTypes.func,
   }
 
   function calculate() {
@@ -33,6 +34,7 @@ const Answer = (props) =>  {
     <p>{props.answer}</p>
     <div>
     <button onClick={() => calculate()}>=</button>
+    <button onClick={() => props.setStore(props.answer.toString())}>store</button>
     </div>
     </div>
   )

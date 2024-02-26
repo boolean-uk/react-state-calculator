@@ -5,6 +5,7 @@ const Panel1 = (props) => {
   Panel1.propTypes = {
     panel1: PropTypes.string,
     setPanel1: PropTypes.func,
+    store: PropTypes.string,
   }
 
   function checkingSetPanel1(value)  {
@@ -30,6 +31,7 @@ const Panel1 = (props) => {
       <button value="9" onClick={() => {checkingSetPanel1("9")}}>9</button>
       <button value="0" onClick={() => {checkingSetPanel1("0")}}>0</button>
       <button onClick={() => {props.setPanel1("0")}}>Clear</button>
+      <button onClick={() => props.setPanel1(props.store)}>recall</button>
     </div>
   </div>
   )
