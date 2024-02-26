@@ -16,16 +16,16 @@ function App() {
       <div className="panel">
         <p>{num1}</p>
         <div className="numbers">
-          <button onClick={() => setNum1(1)}>1</button>
-          <button onClick={() => setNum1(2)}>2</button>
-          <button onClick={() => setNum1(3)}>3</button>
-          <button onClick={() => setNum1(4)}>4</button>
-          <button onClick={() => setNum1(5)}>5</button>
-          <button onClick={() => setNum1(6)}>6</button>
-          <button onClick={() => setNum1(7)}>7</button>
-          <button onClick={() => setNum1(8)}>8</button>
-          <button onClick={() => setNum1(9)}>9</button>
-          <button onClick={() => setNum1(0)}>0</button>
+          {[1, 2, 3, 4, 5, 6, 7, 8, 9, 0].map((num) => (
+            <button
+              key={num}
+              onClick={() => {
+                setNum1(num);
+              }}
+            >
+              {num}
+            </button>
+          ))}
           <button onClick={() => setNum1(0)}>Clear</button>
         </div>
       </div>
@@ -43,16 +43,16 @@ function App() {
       <div className="panel">
         <p>{num2}</p>
         <div className="numbers">
-          <button onClick={() => setNum2(1)}>1</button>
-          <button onClick={() => setNum2(2)}>2</button>
-          <button onClick={() => setNum2(3)}>3</button>
-          <button onClick={() => setNum2(4)}>4</button>
-          <button onClick={() => setNum2(5)}>5</button>
-          <button onClick={() => setNum2(6)}>6</button>
-          <button onClick={() => setNum2(7)}>7</button>
-          <button onClick={() => setNum2(8)}>8</button>
-          <button onClick={() => setNum2(9)}>9</button>
-          <button onClick={() => setNum2(0)}>0</button>
+          {[1, 2, 3, 4, 5, 6, 7, 8, 9, 0].map((num) => (
+            <button
+              key={num}
+              onClick={() => {
+                setNum2(num);
+              }}
+            >
+              {num}
+            </button>
+          ))}
           <button onClick={() => setNum2(0)}>Clear</button>
         </div>
       </div>
