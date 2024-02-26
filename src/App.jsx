@@ -6,6 +6,7 @@ function App() {
   const [numberPanelTwo, setNumberPanelTwo] = useState("0");
   const [operation, setOperation] = useState("+");
   const [result, setResult] = useState(0);
+  const [store, setStore] = useState(null);
 
   const displayNumberPanelOne = (num) => {
     if (numberPanelOne === "0") {
@@ -49,6 +50,20 @@ function App() {
         break;
     }
   };
+  const handleStore = () => {
+    setStore(result);
+  };
+
+  const handleRecallPanelOne = () => {
+    if (store !== null) {
+      setNumberPanelOne(store);
+    }
+  };
+  const handleRecallPanelTwo = () => {
+    if (store !== null) {
+      setNumberPanelTwo(store);
+    }
+  };
 
 
 
@@ -65,6 +80,8 @@ function App() {
             </button>
           ))}
           <button onClick={()=> setNumberPanelOne("0")}>Clear</button>
+          <button onClick={() => handleRecallPanelOne()}>Recall</button>
+
         </div>
       </div>
 
@@ -88,6 +105,7 @@ function App() {
             </button>
           ))}
           <button onClick={()=>setNumberPanelTwo("0")}>Clear</button>
+          <button onClick={() => handleRecallPanelTwo()}>Recall</button>
         </div>
       </div>
 
@@ -95,6 +113,9 @@ function App() {
         <p>{result}</p>
         <div>
           <button onClick={calculateResult}>=</button>
+        </div>
+        <div>
+          <button onClick={() => handleStore()}>Store</button>
         </div>
       </div>
     </div>
