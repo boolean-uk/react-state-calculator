@@ -6,6 +6,7 @@ function App() {
   const [secondNumber, setSecondNumber] = useState("0");
   const [operator, setOperator] = useState("+");
   const [answer, setAnswer] = useState("0");
+  const [store, setStore] = useState("0");
 
   const updateFirstNumber = (e) => {
     if (firstNumber === "0") {
@@ -16,6 +17,7 @@ function App() {
       setFirstNumber(firstNumber + e.target.value);
     }
   };
+
   const updateSecondNumber = (e) => {
     if (secondNumber === "0") {
       setSecondNumber(e.target.value);
@@ -74,6 +76,7 @@ function App() {
           <button value="0" onClick={updateFirstNumber}>
             Clear
           </button>
+          <button onClick={() => setFirstNumber(store)}>Recall</button>
         </div>
       </div>
 
@@ -131,12 +134,14 @@ function App() {
           <button value="0" onClick={updateSecondNumber}>
             Clear
           </button>
+          <button onClick={() => setSecondNumber(store)}>Recall</button>
         </div>
       </div>
       <div className="panel answer">
         <p>{answer}</p>
         <div>
           <button onClick={updateAnswer}>=</button>
+          <button onClick={() => setStore(answer)}>Store</button>
         </div>
       </div>
     </div>
