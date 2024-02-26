@@ -8,6 +8,8 @@ function App() {
   const [answer, setAnswer] = useState(0);
   const [storedAnswer, setStoredAnswer] = useState(0);
 
+  const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0];
+
   const handleFirstNumber = (value) => {
     if (value === "Recall") {
       setFirstNumber(storedAnswer);
@@ -49,16 +51,11 @@ function App() {
       <div className="panel">
         <p>{firstNumber}</p>
         <div className="numbers">
-          <button onClick={() => handleFirstNumber(1)}>1</button>
-          <button onClick={() => handleFirstNumber(2)}>2</button>
-          <button onClick={() => handleFirstNumber(3)}>3</button>
-          <button onClick={() => handleFirstNumber(4)}>4</button>
-          <button onClick={() => handleFirstNumber(5)}>5</button>
-          <button onClick={() => handleFirstNumber(6)}>6</button>
-          <button onClick={() => handleFirstNumber(7)}>7</button>
-          <button onClick={() => handleFirstNumber(8)}>8</button>
-          <button onClick={() => handleFirstNumber(9)}>9</button>
-          <button onClick={() => handleFirstNumber(0)}>0</button>
+          {numbers.map((num) => (
+            <button key={num} onClick={() => handleFirstNumber(num)}>
+              {num}
+            </button>
+          ))}
           <button onClick={() => handleFirstNumber("Clear")}>Clear</button>
           <button onClick={() => handleFirstNumber("Recall")}>Recall</button>
         </div>
@@ -77,16 +74,11 @@ function App() {
       <div className="panel">
         <p>{secondNumber}</p>
         <div className="numbers">
-          <button onClick={() => handleSecondNumber(1)}>1</button>
-          <button onClick={() => handleSecondNumber(2)}>2</button>
-          <button onClick={() => handleSecondNumber(3)}>3</button>
-          <button onClick={() => handleSecondNumber(4)}>4</button>
-          <button onClick={() => handleSecondNumber(5)}>5</button>
-          <button onClick={() => handleSecondNumber(6)}>6</button>
-          <button onClick={() => handleSecondNumber(7)}>7</button>
-          <button onClick={() => handleSecondNumber(8)}>8</button>
-          <button onClick={() => handleSecondNumber(9)}>9</button>
-          <button onClick={() => handleSecondNumber(0)}>0</button>
+          {numbers.map((num) => (
+            <button key={num} onClick={() => handleSecondNumber(num)}>
+              {num}
+            </button>
+          ))}
           <button onClick={() => handleSecondNumber("Clear")}>Clear</button>
           <button onClick={() => handleSecondNumber("Recall")}>Recall</button>
         </div>
