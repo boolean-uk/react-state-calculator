@@ -24,10 +24,12 @@ html {
   gap:10px;
 }
 
-.panel p {
+/* With space " ", you can target the child element in a class */
+.panel p  {
   border-bottom: 2px solid tomato;
   font-size:2rem;
   min-width: 170px;
+  
 }
 
 .numbers {
@@ -41,9 +43,26 @@ html {
 .answer {
   color:tomato;
   font-style: italic;
+  display: flex;
+  flex-direction: column; /* Align items vertically */
+  align-items: center; /* Center items horizontally */
+ 
 }
 
 .answer button {
-  width: 100%;
+  width: 100px;
   height: 40px;
+  margin: 10px;
 }
+
+/* Test */
+/* IN CSS: '.' is used as a selector for a class name */
+.panel.answer button:hover {
+  /* Style for buttons on hover */
+  background-color: #832020; /* Change background color */
+  cursor: pointer; /* Change cursor to pointer on hover */
+}
+
+
+
+

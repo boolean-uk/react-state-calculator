@@ -3,6 +3,7 @@
 import ClearValue from '../functions/clearValue.jsx';
 import PropTypes from 'prop-types'; // Import PropTypes
 
+
 export default function PanelComponent(props) {
   
   // Define prop types for PanelComponent
@@ -10,10 +11,11 @@ export default function PanelComponent(props) {
   PanelComponent.propTypes = {
   value: PropTypes.string.isRequired, //  'value' is a string
   setValue: PropTypes.func.isRequired, //  'setValue' is a function
+  storeValue: PropTypes.number
 };
 
   // Destructed from props.
-  const {value, setValue} = props;
+  const {value, setValue, storeValue} = props;
   
   // DEFINE displayValue here instead.
   const displayValue = (value, setValue, number) => {
@@ -47,6 +49,10 @@ export default function PanelComponent(props) {
         {/* To to use props properly: */}
         <ClearValue value={value} setValue={setValue}/>
         {/* <button onClick={() => learValue={setValue}}>Clear</button> */}
+
+        {/* Extension 2: recall button */}
+        <button onClick={(e) => setValue(storeValue.toString()) }>recall</button>
+
       </div>
     </div>
 

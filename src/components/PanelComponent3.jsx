@@ -8,9 +8,11 @@ export default function PanelComponent3(props) {
         value1: PropTypes.string.isRequired,
         value2: PropTypes.string.isRequired,
         operation: PropTypes.string.isRequired,
+        storeValue: PropTypes.number,
+        setStoreValue: PropTypes.func
       };
 
-    const {value1, value2, operation, result, setResult} = props;
+    const {value1, value2, operation, result, setResult, storeValue, setStoreValue} = props;
 
     const handResultClick = () => {
 
@@ -33,12 +35,23 @@ export default function PanelComponent3(props) {
         }
     }
     };
+
+    const handleStoreClick = () => {
+        const newValue = result
+        setStoreValue(newValue)
+        console.log(storeValue);
+
+    };
  
   return (
     <div className="panel answer">
         <p>{result}</p>
         <div>
           <button onClick={() => handResultClick()}>=</button>
+        </div>
+
+        <div>
+          <button onClick={() => handleStoreClick()}>Store</button>
         </div>
       </div>
   )
