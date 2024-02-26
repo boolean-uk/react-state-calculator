@@ -5,16 +5,16 @@ export default function Calculate({num1, num2, operator, result, setResult}) {
   const calculateResult = () => {
     switch (operator) {
       case '+':
-        setResult(parseInt(num1) + parseInt(num2));
+        setResult(Number(num1) + Number(num2));
         break;
       case '-':
-        setResult(parseInt(num1) - parseInt(num2));
+        setResult(Number(num1) - Number(num2));
         break;
       case '*':
-        setResult(parseInt(num1) * parseInt(num2));
+        setResult(Number(num1) * Number(num2));
         break;
       case '÷':
-        setResult(parseInt(num1) / parseInt(num2));
+        setResult(Number(num1) / Number(num2));
         break;
       default:
         setResult(0);

@@ -11,6 +11,12 @@ const handleClick = (number) => {
     }
 }
 
+const handleDecimalSeperator = (num) => {
+  if(!num.toString().includes('.')) {
+    setNum(num + '.');
+  }
+}
+
 const handleSave = (num) => {
   setSavedNum(num)
   setNum(0)
@@ -27,7 +33,7 @@ const handleClear = () => {
         {[1, 2, 3, 4, 5, 6, 7, 8, 9, 0].map((number) => (
           <button key={number} onClick={() => handleClick(number)}>{number}</button>
         ))}
-
+        <button onClick={() => handleDecimalSeperator(num)}>.</button>
         <button onClick={handleClear}>Clear</button>
         <button onClick={() => handleSave(num)}>Save</button>
         <button onClick={() => setNum(savedNum)}>Recall</button>
