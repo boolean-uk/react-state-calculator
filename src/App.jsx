@@ -7,8 +7,15 @@ function App() {
   const [secondNumber, setSecondNumber] = useState(0);
   const [answer, setAnswer] = useState(0);
 
+
   const handleFirstNumber = (value) => {
-    value === "Clear" ? setFirstNumber(0) : setFirstNumber(value);
+    if ((firstNumber === 0 && value === 0) || value === "Clear") {
+      setFirstNumber(0);
+    } else if (firstNumber === 0) {
+      setFirstNumber(value);
+    } else {
+      setFirstNumber(`${firstNumber}${value}`);
+    }
   };
 
   const handleOperator = (operator) => {
@@ -16,8 +23,14 @@ function App() {
   };
 
   const handleSecondNumber = (value) => {
-    value === "Clear" ? setSecondNumber(0) : setSecondNumber(value);
-  };
+    if ((secondNumber === 0 && value === 0) || value === "Clear") {
+      setSecondNumber(0);
+    } else if (secondNumber === 0) {
+      setSecondNumber(value);
+    } else {
+      setSecondNumber(`${secondNumber}${value}`);
+    }  };
+
   const calculate = () => {
     setAnswer(eval(`${firstNumber} ${operator} ${secondNumber}`));
   };
