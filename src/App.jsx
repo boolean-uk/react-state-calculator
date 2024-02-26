@@ -1,60 +1,80 @@
-import "./App.css"
+import { useState } from "react";
+import "./App.css";
 
 function App() {
+  const [firstNumber, setFirstNumber] = useState(0);
+  const [operator, setOperator] = useState("+");
+  const [secondNumber, setSecondNumber] = useState(0);
+  const [answer, setAnswer] = useState(0);
+
+  const handleFirstNumber = (value) => {
+    value === "Clear" ? setFirstNumber(0) : setFirstNumber(value);
+  };
+
+  const handleOperator = (operator) => {
+    setOperator(operator);
+  };
+
+  const handleSecondNumber = (value) => {
+    value === "Clear" ? setSecondNumber(0) : setSecondNumber(value);
+  };
+  const calculate = () => {
+    setAnswer(eval(`${firstNumber} ${operator} ${secondNumber}`));
+  };
 
   return (
     <div className="calculator">
       <div className="panel">
-        <p>0</p>
+        <p>{firstNumber}</p>
         <div className="numbers">
-          <button>1</button>
-          <button>2</button>
-          <button>3</button>
-          <button>4</button>
-          <button>5</button>
-          <button>6</button>
-          <button>7</button>
-          <button>8</button>
-          <button>9</button>
-          <button>0</button>
-          <button>Clear</button>
+          <button onClick={() => handleFirstNumber(1)}>1</button>
+          <button onClick={() => handleFirstNumber(2)}>2</button>
+          <button onClick={() => handleFirstNumber(3)}>3</button>
+          <button onClick={() => handleFirstNumber(4)}>4</button>
+          <button onClick={() => handleFirstNumber(5)}>5</button>
+          <button onClick={() => handleFirstNumber(6)}>6</button>
+          <button onClick={() => handleFirstNumber(7)}>7</button>
+          <button onClick={() => handleFirstNumber(8)}>8</button>
+          <button onClick={() => handleFirstNumber(9)}>9</button>
+          <button onClick={() => handleFirstNumber(0)}>0</button>
+          <button onClick={() => handleFirstNumber("Clear")}>Clear</button>
         </div>
       </div>
 
       <div className="panel">
-        <p>+</p>
+        <p>{operator}</p>
         <div className="numbers">
-          <button>+</button>
-          <button>-</button>
-          <button>*</button>
-          <button>÷</button>
+          <button onClick={() => handleOperator("+")}>+</button>
+          <button onClick={() => handleOperator("-")}>-</button>
+          <button onClick={() => handleOperator("*")}>*</button>
+          <button onClick={() => handleOperator("/")}>÷</button>
         </div>
       </div>
 
       <div className="panel">
-        <p>0</p>
+        <p>{secondNumber}</p>
         <div className="numbers">
-          <button>1</button>
-          <button>2</button>
-          <button>3</button>
-          <button>4</button>
-          <button>5</button>
-          <button>6</button>
-          <button>7</button>
-          <button>8</button>
-          <button>9</button>
-          <button>0</button>
-          <button>Clear</button>
+          <button onClick={() => handleSecondNumber(1)}>1</button>
+          <button onClick={() => handleSecondNumber(2)}>2</button>
+          <button onClick={() => handleSecondNumber(3)}>3</button>
+          <button onClick={() => handleSecondNumber(4)}>4</button>
+          <button onClick={() => handleSecondNumber(5)}>5</button>
+          <button onClick={() => handleSecondNumber(6)}>6</button>
+          <button onClick={() => handleSecondNumber(7)}>7</button>
+          <button onClick={() => handleSecondNumber(8)}>8</button>
+          <button onClick={() => handleSecondNumber(9)}>9</button>
+          <button onClick={() => handleSecondNumber(0)}>0</button>
+          <button onClick={() => handleSecondNumber("Clear")}>Clear</button>
         </div>
       </div>
       <div className="panel answer">
-        <p>0</p>
+        <p>{answer}</p>
         <div>
-          <button>=</button>
+          <button onClick={() => calculate()}>=</button>
         </div>
       </div>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
