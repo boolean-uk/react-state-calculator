@@ -4,9 +4,28 @@ function NumberPanel(){
 let [currentNumber, setNumber] = useState('0');
 
 const handleClick = (num)=>{
-
-    let newValue = parseFloat(currentNumber.toString()+num.toString());
+    let newValue;
+    if(num === '.' && currentNumber === '0'){
+        newValue = '0' + num.toString();
+    }else if(num !== '.' && currentNumber === '0') {
+        newValue = num.toString();
+    }else if(num === '.' && currentNumber !== '0'){
+        
+        if(currentNumber.indexOf(`.`) >=0){
+            newValue = currentNumber.toString();
+        }else{
+            newValue = currentNumber + num; 
+        }
+    }else{
+        newValue = currentNumber + num; 
+    }
+    
     return setNumber(newValue)
+}
+const setNumberFromMemory = () =>{
+
+    let newValue = document.querySelector('.MS')
+    return setNumber(newValue.innerHTML)
 }
 
 return(
@@ -23,7 +42,9 @@ return(
       <button value='8' onClick={()=>handleClick(8)}>8</button>
       <button value='9' onClick={()=>handleClick(9)}>9</button>
       <button value='0' onClick={()=>handleClick(0)}>0</button>
+      <button value='0' onClick={()=>handleClick('.')}>.</button>
       <button onClick={()=>setNumber('0')}>Clear</button>
+      <button onClick={()=>setNumberFromMemory()}>Recall</button>
     </div>
   </div>
 )
