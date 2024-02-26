@@ -1,6 +1,10 @@
 import { useState } from "react"
 import "./App.css"
 
+// Button arrays
+const numberButtons = ['1','2','3','4','5','6','7','8','9','0','.']
+const operationButtons = ['+','-','*','÷']
+
 function App() {
   // Field states
   const [firstNum, setFirstNum] = useState('0')
@@ -10,10 +14,6 @@ function App() {
 
   // Stored answer state
   const [stored, setStored] = useState('0')
-
-  // Button arrays
-  const numberButtons = ['1','2','3','4','5','6','7','8','9','0','.']
-  const operationButtons = ['+','-','*','÷']
 
   // Calculates answer based on selected operation
   const calculate = () => {
@@ -28,16 +28,20 @@ function App() {
         setAnswer(parseFloat(firstNum) * parseFloat(secondNum))
         break
       case '÷':
-        // Checks if user tries to divide by 0
-        if (parseFloat(secondNum) === 0) {
-          setAnswer('YOU CANNOT DIVIDE BY ZERO!!!!! :(')
-        } else {
-          setAnswer(parseFloat(firstNum) / parseFloat(secondNum))
-        }
+        setAnswer(divide(parseFloat(firstNum), parseFloat(secondNum)))
         break
       default:
         setAnswer(0)
         break
+    }
+  }
+
+  const divide = (num1, num2) => {
+    // Checks if user tries to divide by 0
+    if (num2 === 0) {
+      return 'YOU CANNOT DIVIDE BY ZERO!!!!! :('
+    } else {
+      return num1 / num2
     }
   }
 
@@ -89,8 +93,8 @@ function App() {
       <div className="panel">
         <p>{secondNum}</p>
         <div className="numbers">
-        { // Create buttons from number buttons array
-        numberButtons.map((num) => (
+          { // Create buttons from number buttons array
+          numberButtons.map((num) => (
             <button key={num} onClick={() => addToSecondNum(num)}>{num}</button>
           ))
           }
