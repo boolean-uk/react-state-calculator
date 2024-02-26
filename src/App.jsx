@@ -1,60 +1,137 @@
-import "./App.css"
+import React, { useState } from 'react';
+import './App.css';
 
 function App() {
+  const [mainDisplay, setMainDisplay] = useState('0');
+  const [operationDisplay, setOperationDisplay] = useState('');
+  const [num2Display, setNum2Display] = useState('0');
+  const [answerDisplay, setAnswerDisplay] = useState('0');
+
+  const handleNumberClick = (number) => {
+    if (operationDisplay === '') {
+      if (mainDisplay === '0') {
+        setMainDisplay(number.toString());
+      } else {
+        setMainDisplay((prevDisplay) => prevDisplay + number);
+      }
+    } else {
+      if (num2Display === '0') {
+        setNum2Display(number.toString());
+      } else {
+        setNum2Display((prevDisplay) => prevDisplay + number);
+      }
+    }
+  };
+
+  const handleClearClick = () => {
+    setMainDisplay('0');
+    setOperationDisplay('');
+    setNum2Display('0');
+    setAnswerDisplay('0');
+  };
+
+  const handleOperationClick = (operation) => {
+    if (mainDisplay !== '0') {
+      setOperationDisplay(operation);
+    }
+  };
+
+  const handleEqualsClick = () => {
+    if (mainDisplay !== '0' && operationDisplay !== '' && num2Display !== '0') {
+      const result = calculateResult();
+      setAnswerDisplay(result.toString());
+      setMainDisplay(result.toString());
+      setOperationDisplay('');
+      setNum2Display('0');
+    }
+  };
+
+  const calculateResult = () => {
+    const num1 = parseFloat(mainDisplay);
+    const num2 = parseFloat(num2Display);
+
+    switch (operationDisplay) {
+      case '+':
+        return num1 + num2;
+      case '-':
+        return num1 - num2;
+      case '*':
+        return num1 * num2;
+      case '÷':
+        return num1 / num2;
+      default:
+        return num2;
+    }
+  };
+
+  const handleDecimal = () => {
+    if (!mainDisplay.includes('.') && operationDisplay === '') {
+      setMainDisplay(mainDisplay + '.');
+    } else if (!num2Display.includes('.') && operationDisplay !== '') {
+      setNum2Display(num2Display + '.');
+    }
+  };
+
+  const handleBackspace = () => {
+    if (operationDisplay === '') {
+      setMainDisplay(mainDisplay.slice(0, -1) || '0');
+    } else if (num2Display === '') {
+      setOperationDisplay('');
+    } else {
+      setNum2Display(num2Display.slice(0, -1) || '0');
+    }
+  };
 
   return (
     <div className="calculator">
       <div className="panel">
-        <p>0</p>
+        <p>{mainDisplay}</p>
         <div className="numbers">
-          <button>1</button>
-          <button>2</button>
-          <button>3</button>
-          <button>4</button>
-          <button>5</button>
-          <button>6</button>
-          <button>7</button>
-          <button>8</button>
-          <button>9</button>
-          <button>0</button>
-          <button>Clear</button>
+          {[7, 8, 9, 4, 5, 6, 1, 2, 3, 0].map((number) => (
+            <button key={number} onClick={() => handleNumberClick(number)}>
+              {number}
+            </button>
+          ))}
+          <button onClick={handleDecimal}>.</button>
+          <button onClick={handleBackspace}>Backspace</button>
+          <button onClick={handleClearClick} className="clear-button">
+            Clear
+          </button>
         </div>
       </div>
 
       <div className="panel">
-        <p>+</p>
+        <p>{operationDisplay}</p>
         <div className="numbers">
-          <button>+</button>
-          <button>-</button>
-          <button>*</button>
-          <button>÷</button>
+          {['+', '-', '*', '÷'].map((operation) => (
+            <button key={operation} onClick={() => handleOperationClick(operation)}>
+              {operation}
+            </button>
+          ))}
         </div>
       </div>
 
       <div className="panel">
-        <p>0</p>
+        <p>{num2Display}</p>
         <div className="numbers">
-          <button>1</button>
-          <button>2</button>
-          <button>3</button>
-          <button>4</button>
-          <button>5</button>
-          <button>6</button>
-          <button>7</button>
-          <button>8</button>
-          <button>9</button>
-          <button>0</button>
-          <button>Clear</button>
+          {[7, 8, 9, 4, 5, 6, 1, 2, 3, 0].map((number) => (
+            <button key={number} onClick={() => handleNumberClick(number)}>
+              {number}
+            </button>
+          ))}
         </div>
       </div>
+
       <div className="panel answer">
-        <p>0</p>
+        <p>{answerDisplay}</p>
         <div>
-          <button>=</button>
+          <button onClick={handleEqualsClick} className="equals-button">
+            =
+          </button>
         </div>
       </div>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
