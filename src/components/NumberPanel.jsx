@@ -2,7 +2,7 @@ import { useState } from "react";
 import QuickButton from "./QuickButton";
 import PropTypes from "prop-types";
 
-function NumberPanel({ onNumChange }) {
+function NumberPanel({ onNumChange, externalNumber }) {
   const [selectedNumber, setSelectedNumber] = useState(0);
   const setNumber = (value) => {
     const numberAsString = selectedNumber.toString() + value.toString();
@@ -13,6 +13,10 @@ function NumberPanel({ onNumChange }) {
     setSelectedNumber(0);
     onNumChange(0);
   };
+  const fetchExternalNumber = () => {
+    setSelectedNumber(externalNumber());
+    onNumChange(externalNumber());
+  };
   return (
     <div className="panel">
       <p>{selectedNumber}</p>
@@ -20,6 +24,7 @@ function NumberPanel({ onNumChange }) {
         {["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"].map((number) => (
           <QuickButton key={number} value={number} onClick={setNumber} />
         ))}
+        <QuickButton value="Recall" onClick={() => fetchExternalNumber()} />
         <QuickButton value="Clear" onClick={() => resetNumber()} />
       </div>
     </div>
@@ -28,6 +33,7 @@ function NumberPanel({ onNumChange }) {
 
 NumberPanel.propTypes = {
   onNumChange: PropTypes.func.isRequired,
+  externalNumber: PropTypes.func,
 };
 
 export default NumberPanel;
