@@ -9,38 +9,46 @@ function App() {
   const [numberTwo, setNumberTwo] = useState('0')
   const [answer, setAnswer] = useState('0')
 
+  // buttons
   const handleClick1 = (event) => {
-    // Ensure the clicked element is a button before proceeding.
+    // checks if the click was a <button> in its tag
     if (event.target.tagName === 'BUTTON') {
       if (event.target.innerText === 'Clear'){
         setNumberOne('0')
       }
       else{
-        setNumberOne(event.target.innerText)
+        if (numberOne === '0'){
+          setNumberOne(event.target.innerText)
+        }
+        else{
+          setNumberOne(numberOne + event.target.innerText)
+        }
       }
     }
   }
   const handleClick2 = (event) => {
-    // Ensure the clicked element is a button before proceeding.
     if (event.target.tagName === 'BUTTON') {
         setOperator(event.target.innerText)
       }
   }
   
   const handleClick3 = (event) => {
-    // Ensure the clicked element is a button before proceeding.
     if (event.target.tagName === 'BUTTON') {
       if (event.target.innerText === 'Clear'){
         setNumberTwo('0')
       }
       else{
-        setNumberTwo(event.target.innerText)
+        if (numberTwo === '0'){
+          setNumberTwo(event.target.innerText)
+        }
+        else{
+          setNumberTwo(numberTwo + event.target.innerText)
+        }
       }
     }
   }
 
   const handleClick4 = (event) => {
-    // Ensure the clicked element is a button before proceeding.
     if (event.target.tagName === 'BUTTON') {
       if(operator === '-') {
         setAnswer(Number(numberOne) - Number(numberTwo))
