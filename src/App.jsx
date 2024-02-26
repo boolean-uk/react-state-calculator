@@ -63,21 +63,21 @@ function App() {
     }
   }
 
+  const generateButtons = (section) => {
+    var buttons = []
+    for (let i = 0; i < 10; i++) {
+      var button = <button onClick={event => handleClick(event, section)}>{i}</button>
+      buttons.push(button)
+    }
+    return buttons
+  }
+
   return (
     <div className="calculator">
       <div className="panel">
         <p>{leftNum}</p>
         <div className="numbers">
-          <button onClick={event => handleClick(event, 1)}>1</button>
-          <button onClick={event => handleClick(event, 1)}>2</button>
-          <button onClick={event => handleClick(event, 1)}>3</button>
-          <button onClick={event => handleClick(event, 1)}>4</button>
-          <button onClick={event => handleClick(event, 1)}>5</button>
-          <button onClick={event => handleClick(event, 1)}>6</button>
-          <button onClick={event => handleClick(event, 1)}>7</button>
-          <button onClick={event => handleClick(event, 1)}>8</button>
-          <button onClick={event => handleClick(event, 1)}>9</button>
-          <button onClick={event => handleClick(event, 1)}>0</button>
+          {generateButtons(1)}
           <button onClick={event => handleClick(event, 1)}>.</button>
           <button onClick={event => handleClick(event, 1)}>Clear</button>
           <button onClick={event => handleClick(event, 1)}>Recall</button>
@@ -97,16 +97,7 @@ function App() {
       <div className="panel">
         <p>{rightNum}</p>
         <div className="numbers">
-          <button onClick={event => handleClick(event, 3)}>1</button>
-          <button onClick={event => handleClick(event, 3)}>2</button>
-          <button onClick={event => handleClick(event, 3)}>3</button>
-          <button onClick={event => handleClick(event, 3)}>4</button>
-          <button onClick={event => handleClick(event, 3)}>5</button>
-          <button onClick={event => handleClick(event, 3)}>6</button>
-          <button onClick={event => handleClick(event, 3)}>7</button>
-          <button onClick={event => handleClick(event, 3)}>8</button>
-          <button onClick={event => handleClick(event, 3)}>9</button>
-          <button onClick={event => handleClick(event, 3)}>0</button>
+          {generateButtons(3)}
           <button onClick={event => handleClick(event, 3)}>.</button>
           <button onClick={event => handleClick(event, 3)}>Clear</button>
           <button onClick={event => handleClick(event, 3)}>Recall</button>
