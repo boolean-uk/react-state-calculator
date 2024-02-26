@@ -1,16 +1,16 @@
-import { useState } from "react"
-import "./App.css"
+import { useState } from "react";
+import "./App.css";
 
 function App() {
-  const [num1, setNum1] = useState(0)
-  const [operation, setOperation] = useState('+')
-  const [num2, setNum2] = useState(0)
-  const [sum, setSum] = useState(0)
+  const [num1, setNum1] = useState("0");
+  const [operation, setOperation] = useState("+");
+  const [num2, setNum2] = useState("0");
+  const [sum, setSum] = useState(0);
 
-  function applyOperation(){
-    setSum(eval(`${num1} ${operation} ${num2}`))
+  function applyOperation() {
+    setSum(eval(`${parseInt(num1)} ${operation} ${parseInt(num2)}`));
   }
-  
+
   return (
     <div className="calculator">
       <div className="panel">
@@ -20,13 +20,17 @@ function App() {
             <button
               key={num}
               onClick={() => {
-                setNum1(num);
+                if ((num1 + num.toString()).startsWith("0")) {
+                  setNum1(num.toString());
+                } else {
+                  setNum1(num1 + num.toString());
+                }
               }}
             >
               {num}
             </button>
           ))}
-          <button onClick={() => setNum1(0)}>Clear</button>
+          <button onClick={() => setNum1("0")}>Clear</button>
         </div>
       </div>
 
@@ -47,13 +51,17 @@ function App() {
             <button
               key={num}
               onClick={() => {
-                setNum2(num);
+                if ((num2 + num.toString()).startsWith("0")) {
+                  setNum2(num.toString());
+                } else {
+                  setNum2(num2 + num.toString());
+                }
               }}
             >
               {num}
             </button>
           ))}
-          <button onClick={() => setNum2(0)}>Clear</button>
+          <button onClick={() => setNum2("0")}>Clear</button>
         </div>
       </div>
 
@@ -67,4 +75,4 @@ function App() {
   );
 }
 
-export default App
+export default App;
