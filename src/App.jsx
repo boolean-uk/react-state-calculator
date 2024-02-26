@@ -7,6 +7,8 @@ function App() {
   const [operation, setOperation] = useState("+");
   const [result, setResult] = useState(0);
   const [store, setStore] = useState(null);
+  const arrayNumbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0];
+  const operations = ["+", "-", "*", "÷"];
 
   const displayNumberPanelOne = (num) => {
     if (numberPanelOne === "0") {
@@ -65,16 +67,12 @@ function App() {
     }
   };
 
-
-
-
-
   return (
     <div className="calculator">
       <div className="panel">
         <p>{numberPanelOne}</p>
         <div className="numbers">
-          {[1, 2, 3, 4, 5, 6, 7, 8, 9, 0].map((num) => (
+          {arrayNumbers.map((num) => (
             <button key={num} onClick={() => displayNumberPanelOne(num)}>
               {num}
             </button>
@@ -88,7 +86,7 @@ function App() {
       <div className="panel">
         <p>{operation}</p>
         <div className="numbers">
-          {["+", "-", "*", "÷"].map((op) => (
+          {operations.map((op) => (
             <button key={op} onClick={() => displayOperation(op)}>
               {op}
             </button>
@@ -99,7 +97,7 @@ function App() {
       <div className="panel">
         <p>{numberPanelTwo}</p>
         <div className="numbers">
-          {[1, 2, 3, 4, 5, 6, 7, 8, 9, 0].map((num) => (
+          {arrayNumbers.map((num) => (
             <button key={num} onClick={() => displayNumberPanelTwo(num)}>
               {num}
             </button>
