@@ -1,5 +1,7 @@
-export default function NumberPanel({num, setNum}) {
+import {useState} from 'react';
 
+export default function NumberPanel({num, setNum}) {
+const [savedNum, setSavedNum] = useState(0)
 
 const handleClick = (number) => {
   if(num === 0)
@@ -7,6 +9,11 @@ const handleClick = (number) => {
     else {
       setNum(num.toString() + number.toString());
     }
+}
+
+const handleSave = (num) => {
+  setSavedNum(num)
+  setNum(0)
 }
 
 const handleClear = () => {
@@ -22,6 +29,8 @@ const handleClear = () => {
         ))}
 
         <button onClick={handleClear}>Clear</button>
+        <button onClick={() => handleSave(num)}>Save</button>
+        <button onClick={() => setNum(savedNum)}>Recall</button>
       </div>
     </div>
   )
