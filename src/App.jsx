@@ -3,26 +3,52 @@ import { useState } from "react"
 
 
 function App() {
-  const [firstNumber, setFirstNumber] = useState('0')
-  const [secondNumber, setSecondNumber] = useState('0')
+  const [leftNumber, setLeftNumber] = useState('0')
+  const [rightNumber, setRightNumber] = useState('0')
   const [operator, setOperator] = useState('+')
   const [result, setResult] = useState(0)
   const [storedAnswer, setStoredAnswear] = useState(0)
 
   const setNumber = (calcuator, number) =>{
+
+    
+    //Left panel
+
     if (calcuator === 'left'){
-      if(firstNumber === '0'){
-        setFirstNumber(number)
-      }else{
-        setFirstNumber(firstNumber + number)
+      if (!leftNumber.includes(".")){
+        if(leftNumber === '0' && number !== "."){
+          setLeftNumber(number)
+        }
+        else{
+          setLeftNumber(leftNumber + number)
+        }
+      }
+
+      else {
+        if(number !== '.'){
+          console.log(number)
+          setLeftNumber(leftNumber + number)
+        }
       }
     } 
-    else {
-      if(secondNumber === '0'){
-        setSecondNumber(number)
+
+    //Right panel
+
+    else{
+      if (!rightNumber.includes(".")){
+        if(rightNumber === '0' && number !== "."){
+          setRightNumber(number)
+        }
+        else{
+          setRightNumber(rightNumber + number)
+        }
       }
-      else{
-        setSecondNumber(secondNumber + number)
+
+      else {
+        if(number !== '.'){
+          console.log(number)
+          setRightNumber(rightNumber + number)
+        }
       }
     }
   } 
@@ -30,11 +56,11 @@ function App() {
   const calculate = () => {
     let res = ''
     console.log(operator)
-    if (firstNumber !== '' && operator !== '' && secondNumber !== ''){
+    if (leftNumber !== '' && operator !== '' && rightNumber !== ''){
       if (operator === '÷'){
-        res = firstNumber + '/' + secondNumber
+        res = leftNumber + '/' + rightNumber
       } else {
-        res = firstNumber + operator + secondNumber
+        res = leftNumber + operator + rightNumber
       }
       setResult(eval(res))
     } else {
@@ -45,7 +71,7 @@ function App() {
   return (
     <div className="calculator">
       <div className="panel">
-        <p>{firstNumber}</p>
+        <p>{leftNumber}</p>
         <div className="numbers">
           <button onClick={() => setNumber('left', '1')}>1</button>
           <button onClick={() => setNumber('left', '2')}>2</button>
@@ -57,8 +83,9 @@ function App() {
           <button onClick={() => setNumber('left', '8')}>8</button>
           <button onClick={() => setNumber('left', '9')}>9</button>
           <button onClick={() => setNumber('left', '0')}>0</button>
-          <button onClick={() => setFirstNumber('0')}>Clear</button>
-          <button onClick={() => setFirstNumber(storedAnswer)}>Recall</button>
+          <button onClick={() => setNumber('left', '.')}>.</button>
+          <button onClick={() => setLeftNumber('0')}>Clear</button>
+          <button onClick={() => setLeftNumber(storedAnswer)}>Recall</button>
         </div>
       </div>
 
@@ -73,7 +100,7 @@ function App() {
       </div>
 
       <div className="panel">
-        <p>{secondNumber}</p>
+        <p>{rightNumber}</p>
         <div className="numbers">
           <button onClick={() => setNumber('right', '1')}>1</button>
           <button onClick={() => setNumber('right', '2')}>2</button>
@@ -85,8 +112,9 @@ function App() {
           <button onClick={() => setNumber('right', '8')}>8</button>
           <button onClick={() => setNumber('right', '9')}>9</button>
           <button onClick={() => setNumber('right', '0')}>0</button>
-          <button onClick={() => setSecondNumber('0')}>Clear</button>
-          <button onClick={() => setSecondNumber(storedAnswer)}>Recall</button>
+          <button onClick={() => setNumber('right', '.')}>.</button>
+          <button onClick={() => setRightNumber('0')}>Clear</button>
+          <button onClick={() => setRightNumber(storedAnswer)}>Recall</button>
         </div>
       </div>
       <div className="panel answer">
