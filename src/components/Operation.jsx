@@ -7,6 +7,7 @@ const Operation = (props) => {
     setOperation: PropTypes.func,
   }
 
+  
   function checkingSetOperation(value) {
     if(value === "+" || value === "-" || value === "÷" || value === "*") {
       props.setOperation(value)
