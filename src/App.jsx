@@ -12,62 +12,42 @@ function App() {
   const buttonValues = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0];
 
   const clickedFirstNumber = (value) => {
-    console.log(`First Button ${value} clicked`);
-    //visa nummer i boxen ovanför
-    setFirstNumber(value)
+    //append to first number
+    const stringNumbers = firstNumber.toString() + value.toString()
+    const intNumbers = parseInt(stringNumbers)
+    setFirstNumber(intNumbers)
   }
 
   const clickedFirstClear = () => {
-    console.log("clicked first clear")
     setFirstNumber(0)
   }
 
   const clickedSecondNumber = (value) => {
-    console.log(`Second Button ${value} clicked`);
-    //visa nummer i boxen ovanför
-    setSecondNumber(value)
+    const stringNumbers = secondNumber.toString() + value.toString()
+    const intNumbers = parseInt(stringNumbers)
+    setSecondNumber(intNumbers)
   }
 
   const clickedSecondClear = () => {
-    console.log("clicked second clear")
     setSecondNumber(0)
   }
 
-  const add = () => {
-    return firstNumber + secondNumber
-  }
-
-  const subtract = () => {
-    return firstNumber - secondNumber
-  }
-
-  const multiply = () => {
-    return firstNumber * secondNumber
-  }
-
-  const divide = () => {
-    return firstNumber / secondNumber
-  }
-
   const calculate = () => {
-    //räkna ut
-    let total = 0
+    //räkna ut och setResult
     switch (calculationSign) {
       case '+':
-        total = add();
+        setResult(firstNumber + secondNumber)
         break;
       case '-':
-        total = subtract();
+        setResult(firstNumber - secondNumber)
         break;
       case '*':
-        total = multiply;
+        setResult(firstNumber * secondNumber)
         break;
       case '÷':
-        total = divide();
+        setResult(firstNumber / secondNumber)
         break;
     }
-    //setResult
-    setResult(total)
   }
 
   return (
