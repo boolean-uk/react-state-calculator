@@ -7,6 +7,7 @@ function App() {
   const [secondNumber, setSecondNumber] = useState('0')
   const [operator, setOperator] = useState('+')
   const [result, setResult] = useState(0)
+  const [storedAnswer, setStoredAnswear] = useState(0)
 
   const setNumber = (calcuator, number) =>{
     if (calcuator === 'left'){
@@ -56,7 +57,8 @@ function App() {
           <button onClick={() => setNumber('left', '8')}>8</button>
           <button onClick={() => setNumber('left', '9')}>9</button>
           <button onClick={() => setNumber('left', '0')}>0</button>
-          <button onClick={() => setFirstNumber('')}>Clear</button>
+          <button onClick={() => setFirstNumber('0')}>Clear</button>
+          <button onClick={() => setFirstNumber(storedAnswer)}>Recall</button>
         </div>
       </div>
 
@@ -83,13 +85,15 @@ function App() {
           <button onClick={() => setNumber('right', '8')}>8</button>
           <button onClick={() => setNumber('right', '9')}>9</button>
           <button onClick={() => setNumber('right', '0')}>0</button>
-          <button onClick={() => setSecondNumber('')}>Clear</button>
+          <button onClick={() => setSecondNumber('0')}>Clear</button>
+          <button onClick={() => setSecondNumber(storedAnswer)}>Recall</button>
         </div>
       </div>
       <div className="panel answer">
         <p>{result}</p>
         <div>
           <button onClick={calculate}>=</button>
+          <button onClick={() => setStoredAnswear(result.toString())}>Store</button>
         </div>
       </div>
     </div>
