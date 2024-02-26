@@ -2,8 +2,23 @@ import { useState } from "react"
 import "./App.css"
 
 function App() {
-  const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0]
-  const operators = ["+", "-", "*", "÷"]
+  const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0];
+  const operators = ["+", "-", "*", "÷"];
+
+  /** Initiate stored and its setter */
+  const [stored, setStored] = useState(null);
+  /** Setter for stored */
+  const settingStored = (number) => {
+    setStored(number);
+  }
+  /** Getter for stored */
+  const getStored = (target) => {
+    if (target === "left") {
+      setLeftNumber(stored);
+    } else {
+      setRightNumber(stored);
+    }
+  };
 
   /** Initiate leftNumber and its setter */
   const [leftNumber, setLeftNumber] = useState(0);
@@ -12,7 +27,7 @@ function App() {
     if (leftNumber === 0) {
       setLeftNumber(number);
     } else {
-      setLeftNumber(leftNumber + "" + number)
+      setLeftNumber(leftNumber + "" + number);
     }
   }
 
@@ -20,7 +35,7 @@ function App() {
   const [operator, setOperator] = useState("+");
   /** Setter for the operator */
   const settingTheOperator = (target) => {
-    setOperator(target)
+    setOperator(target);
   }
 
   /** Initiate rightNumber and its setter */
@@ -28,47 +43,46 @@ function App() {
   /** Setter for the right number */
   const settingTheRightNumber = (number) => {
     if (rightNumber === 0) {
-      setRightNumber(number)
+      setRightNumber(number);
     } else {
-      setRightNumber(rightNumber + "" + number)
+      setRightNumber(rightNumber + "" + number);
     }
   }
 
   /** Clears the given a number and sets it to 0 */
   const clearNumber = (target) => {
-    if (target === 'left') {
-      setLeftNumber(0)
+    if (target === "left") {
+      setLeftNumber(0);
     } else {
-      setRightNumber(0)
+      setRightNumber(0);
     }
   }
 
   /** Initiate answer and its setter */
   const [answer, setAnswer] = useState(0);
-
   /** Calculate the answer for leftNumber and rightNumber 
     combined with the assigned operator. **/
   const calculateAnswer = () => {
-    const left = parseInt(leftNumber)
-    const right = parseInt(rightNumber)
+    const left = parseInt(leftNumber);
+    const right = parseInt(rightNumber);
 
     switch (operator) {
       case "+":
-        setAnswer(left + right)
-        break
+        setAnswer(left + right);
+        break;
       case "-":
-        setAnswer(left - right)
-        break
+        setAnswer(left - right);
+        break;
       case "*":
-        setAnswer(left * right)
-        break
+        setAnswer(left * right);
+        break;
       case "÷":
         if (isNaN(left / right)) {
-          setAnswer('NaN')
-          break
-        } 
-        setAnswer(left / right)
-        break
+          setAnswer("NaN");
+          break;
+        }
+        setAnswer(left / right);
+        break;
     }
   };
 
@@ -84,6 +98,7 @@ function App() {
             </button>
           ))}
           <button onClick={() => clearNumber("left")}>Clear</button>
+          <button onClick={() => getStored("left")}>Recall</button>
         </div>
       </div>
 
@@ -107,12 +122,14 @@ function App() {
             </button>
           ))}
           <button onClick={() => clearNumber("right")}>Clear</button>
+          <button onClick={() => getStored("right")}>Recall</button>
         </div>
       </div>
       <div className="panel answer">
         <p>{answer}</p>
         <div>
           <button onClick={() => calculateAnswer()}>=</button>
+          <button onClick={() => settingStored(answer)}>Store</button>
         </div>
       </div>
     </div>
