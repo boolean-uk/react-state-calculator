@@ -8,21 +8,30 @@ function App() {
   const [operator, setOperator] = useState('+')
   const [numberTwo, setNumberTwo] = useState('0')
   const [answer, setAnswer] = useState('0')
+  const [saved, setSaved] = useState('0')
 
   // buttons
   const handleClick1 = (event) => {
     // checks if the click was a <button> in its tag
     if (event.target.tagName === 'BUTTON') {
-      if (event.target.innerText === 'Clear'){
+      if (event.target.innerText === 'Recall'){
+        setNumberOne(saved)
+      }
+      else if (event.target.innerText === 'Clear'){
         setNumberOne('0')
       }
-      else{
-        if (numberOne === '0'){
+      else if (event.target.innerText === '.'){
+        if(numberOne.toString().includes('\.')){
+          setnumberOne(numberOne)
+    
+        }
+        setNumberOne(numberOne + event.target.innerText)
+      }
+      else if (numberOne === '0'){
           setNumberOne(event.target.innerText)
         }
-        else{
-          setNumberOne(numberOne + event.target.innerText)
-        }
+      else{
+        setNumberOne(numberOne + event.target.innerText)
       }
     }
   }
@@ -34,37 +43,61 @@ function App() {
   
   const handleClick3 = (event) => {
     if (event.target.tagName === 'BUTTON') {
-      if (event.target.innerText === 'Clear'){
+      if (event.target.innerText === 'Recall'){
+        setNumberTwo(saved)
+      }
+      else if (event.target.innerText === 'Clear'){
         setNumberTwo('0')
       }
-      else{
-        if (numberTwo === '0'){
-          setNumberTwo(event.target.innerText)
+      else if (event.target.innerText === '.'){
+        if(numberTwo.toString().includes('\.')){
+          setnumberTwo(numberTwo)
+    
         }
-        else{
-          setNumberTwo(numberTwo + event.target.innerText)
-        }
+        setNumberTwo(numberTwo + event.target.innerText)
       }
+      
+      else if (numberTwo === '0'){
+          setNumberTwo(event.target.innerText)
+      }
+      else{
+          setNumberTwo(numberTwo + event.target.innerText)
+      }
+      
     }
   }
 
   const handleClick4 = (event) => {
+    let total = 0
     if (event.target.tagName === 'BUTTON') {
-      if(operator === '-') {
-        setAnswer(Number(numberOne) - Number(numberTwo))
-      }
-      else if(operator === '+') {
-        setAnswer(Number(numberOne) + Number(numberTwo))
-      }
-      else if(operator === '*') {
-        setAnswer(Number(numberOne) * Number(numberTwo))
-      }
-      else {
-        setAnswer((Number(numberOne) / Number(numberTwo)).toFixed(5))
+      if (event.target.innerText === 'Save'){
+        setSaved(answer)
+        
+      } else{
+        if(operator === '-') {
+          
+          total = Number(numberOne) - Number(numberTwo)
+
+        }
+        else if(operator === '+') {
+          total = Number(numberOne) + Number(numberTwo)
+
+        }
+        else if(operator === '*') {
+          total = Number(numberOne) * Number(numberTwo)
+
+        }
+        else {
+          total = Number(numberOne) / Number(numberTwo)
+        }
+        if(Number.isInteger(total)){
+          setAnswer(total)
+        }else{
+          setAnswer(parseFloat(total).toFixed(2))
+        }
       }
     }
   }
-
 
   return (
     <div className="calculator">
@@ -81,7 +114,9 @@ function App() {
           <button>8</button>
           <button>9</button>
           <button>0</button>
+          <button>.</button>
           <button>Clear</button>
+          <button>Recall</button>
         </div>
       </div>
 
@@ -108,13 +143,16 @@ function App() {
           <button>8</button>
           <button>9</button>
           <button>0</button>
+          <button>.</button>
           <button>Clear</button>
+          <button>Recall</button>
         </div>
       </div>
       <div className="panel answer" onClick = {handleClick4}>
         <p>{answer}</p>
         <div>
           <button>=</button>
+          <button>Save</button>
         </div>
       </div>
     </div>
