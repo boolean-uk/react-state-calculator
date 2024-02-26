@@ -9,7 +9,7 @@ const displayValue = (props, number) => {
         props.setValue(number)
     }
     else{
-        props.setValue(number + props.value)
+        props.setValue(props.value + number)
     }
   
 };

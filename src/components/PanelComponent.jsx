@@ -22,7 +22,8 @@ export default function PanelComponent(props) {
         setValue(number)
     }
     else{
-        setValue(number + value)
+       const newValue =  value + number
+        setValue(newValue)
     }
   };
 
