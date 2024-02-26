@@ -14,17 +14,17 @@ function App() {
     let result = 0;
     switch (operator) {
       case "+":
-        result = numOne + numTwo;
+        result = parseFloat(numOne) + parseFloat(numTwo);
         break;
       case "-":
-        result = numOne - numTwo;
+        result = parseFloat(numOne) - parseFloat(numTwo);
         break;
       case "*":
-        result = numOne * numTwo;
+        result = parseFloat(numOne) * parseFloat(numTwo);
         break;
       case "/":
       case "÷":
-        result = numTwo === 0 ? "error" : numOne / numTwo;
+        result = numTwo === 0 ? "error" : parseFloat(numOne) / parseFloat(numTwo);
         break;
       default:
         result = "Invalid operation";
