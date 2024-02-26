@@ -30,9 +30,9 @@ function App() {
         </div>
       </div>
 
-      <div className="panel">
+      <div className="panel operators">
         <p>{operator}</p>
-        <div className="numbers">
+        <div>
           {operators.map(string => 
             <button key={string} onClick={() => setOperator(string)}>{string}</button>
           )}
