@@ -1,60 +1,90 @@
-import "./App.css"
+import { useState } from "react";
+
+import "./App.css";
+// import Clear from "./Clear";
 
 function App() {
+  const zeroToNine = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+  const operators = ["+", "-", "*", "/"];
+
+  const [number1, setNumber1] = useState(0);
+  const [operator, setOperator] = useState("");
+  const [number2, setNumber2] = useState(0);
+
+  const [sum, setSum] = useState(0);
+
+  const handleNumber1Click = (num) => {
+    setNumber1(num);
+  };
+  const handleOperatorClick = (op) => {
+    setOperator(op);
+  };
+  const handleNumber2Click = (num) => {
+    setNumber2(num);
+  };
+  const calculateSum = (number1, number2, op) => {
+    switch (op) {
+      case "+":
+        setSum(number1 + number2);
+        break;
+      case "-":
+        setSum(number1 - number2);
+        break;
+      case "*":
+        setSum(number1 * number2);
+        break;
+      case "/":
+        setSum(number1 / number2);
+        break;
+    }
+  };
 
   return (
     <div className="calculator">
       <div className="panel">
-        <p>0</p>
+        <p>{number1}</p>
         <div className="numbers">
-          <button>1</button>
-          <button>2</button>
-          <button>3</button>
-          <button>4</button>
-          <button>5</button>
-          <button>6</button>
-          <button>7</button>
-          <button>8</button>
-          <button>9</button>
-          <button>0</button>
+          {zeroToNine.map((number) => (
+            <button key={number} onClick={() => handleNumber1Click(number)}>
+              {number}
+            </button>
+          ))}
           <button>Clear</button>
         </div>
       </div>
 
       <div className="panel">
-        <p>+</p>
+        <p>{operator}</p>
         <div className="numbers">
-          <button>+</button>
-          <button>-</button>
-          <button>*</button>
-          <button>÷</button>
+          {operators.map((op) => (
+            <button key={op} onClick={() => handleOperatorClick(op)}>
+              {op}
+            </button>
+          ))}
         </div>
       </div>
 
       <div className="panel">
-        <p>0</p>
+        <p>{number2}</p>
         <div className="numbers">
-          <button>1</button>
-          <button>2</button>
-          <button>3</button>
-          <button>4</button>
-          <button>5</button>
-          <button>6</button>
-          <button>7</button>
-          <button>8</button>
-          <button>9</button>
-          <button>0</button>
+          {zeroToNine.map((number) => (
+            <button key={number} onClick={() => handleNumber2Click(number)}>
+              {number}
+            </button>
+          ))}
           <button>Clear</button>
         </div>
       </div>
       <div className="panel answer">
-        <p>0</p>
+        <p>{sum}</p>
         <div>
-          <button>=</button>
+          <button onClick={() => calculateSum(number1, number2, operator)}>
+            =
+          </button>
         </div>
       </div>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
