@@ -41,7 +41,16 @@ html {
   font-style: italic;
 }
 
+
+.memory {
+  border-bottom: 1px solid rgb(48, 22, 18);
+  color:rgb(48, 22, 18);
+  font-style: italic;
+}
+
 .answer button {
-  width: 100%;
+  width: 45%;
   height: 40px;
+  margin-bottom: 4px;
+  margin-right: 4px;
 }
