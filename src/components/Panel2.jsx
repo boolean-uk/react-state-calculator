@@ -1,9 +1,6 @@
 import PropTypes from 'prop-types'
 
 const Panel2 = (props) => {
-
-  
-
   Panel2.propTypes = {
     panel2: PropTypes.string,
     setPanel2: PropTypes.func,
@@ -12,10 +9,20 @@ const Panel2 = (props) => {
 
   function checkingSetPanel2(value)  {
     if(props.panel2 === '0') {
+      if(value === ".") {
+        props.setPanel2("0" + value)
+        return
+      }
       props.setPanel2(value)
-    } else {
-      props.setPanel2(props.panel2 + value)
+      return
+    } 
+    if(value === ".") {
+      if(props.panel2.includes(".")) {
+        return
+      }
     }
+    props.setPanel2(props.panel2 + value)
+    
   }
 
 
@@ -35,7 +42,7 @@ const Panel2 = (props) => {
             <button value="0" onClick={() => {checkingSetPanel2("0")}}>0</button>
             <button onClick={() => {props.setPanel2("0")}}>Clear</button>
             <button onClick={() => props.setPanel2(props.store)}>recall</button>
-
+            <button onClick={() => checkingSetPanel2(".")}>.</button>
         </div>
         </div>
       )

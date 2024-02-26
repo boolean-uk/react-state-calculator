@@ -10,10 +10,19 @@ const Panel1 = (props) => {
 
   function checkingSetPanel1(value)  {
     if(props.panel1 === '0') {
+      if(value === ".") {
+        props.setPanel1("0" + value)
+        return
+      }
       props.setPanel1(value)
-    } else {
-      props.setPanel1(props.panel1 + value)
+      return
+    } 
+    if(value === ".") {
+      if(props.panel1.includes(".")) {
+        return
+      }
     }
+    props.setPanel1(props.panel1 + value)
   }
 
   return (
@@ -32,6 +41,7 @@ const Panel1 = (props) => {
       <button value="0" onClick={() => {checkingSetPanel1("0")}}>0</button>
       <button onClick={() => {props.setPanel1("0")}}>Clear</button>
       <button onClick={() => props.setPanel1(props.store)}>recall</button>
+      <button onClick={() => checkingSetPanel1(".")}>.</button>
     </div>
   </div>
   )
