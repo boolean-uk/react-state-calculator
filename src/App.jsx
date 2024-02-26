@@ -8,12 +8,26 @@ function App() {
   const [results, setResults] = useState(0);
   const [stores, setStores] = useState(null);
 
+  const checkLeadingDigit = (digit) => {
+    return digit.toString().charAt(0) === '0' ? true : false
+  }
+
   const updateFirstDigit = (digit) => {
-    setFirstDigits(digit);
+    if (checkLeadingDigit(firstDigits)) {
+          setFirstDigits(digit);
+    } else {
+      let number = parseInt(firstDigits.toString() + digit, 10);
+      setFirstDigits(number);
+    }
   };
 
   const updateSecondDigit = (digit) => {
-    setSecondDigits(digit);
+    if (checkLeadingDigit(secondDigits)) {
+      setSecondDigits(digit)
+    } else {
+      let number = parseInt(secondDigits.toString() + digit, 10);
+      setSecondDigits(number);
+    }
   };
 
   const updateOperator = (operator) => {
