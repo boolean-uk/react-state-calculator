@@ -1,58 +1,23 @@
+import { useState } from "react"
 import "./App.css"
+import NumpadComponent from "./components/Numpad"
+import OperatorsComponent from "./components/Operators"
+import AnswerComponent from "./components/Answer"
 
 function App() {
 
+  const [numOne, setNumOne] = useState(0)
+  const [numTwo, setNumTwo] = useState(0)
+  const [operator, setOperator] = useState('+')
+  const [answer, setAnswer] = useState(0)
+  const [store, setStore] = useState(0)
+
   return (
     <div className="calculator">
-      <div className="panel">
-        <p>0</p>
-        <div className="numbers">
-          <button>1</button>
-          <button>2</button>
-          <button>3</button>
-          <button>4</button>
-          <button>5</button>
-          <button>6</button>
-          <button>7</button>
-          <button>8</button>
-          <button>9</button>
-          <button>0</button>
-          <button>Clear</button>
-        </div>
-      </div>
-
-      <div className="panel">
-        <p>+</p>
-        <div className="numbers">
-          <button>+</button>
-          <button>-</button>
-          <button>*</button>
-          <button>÷</button>
-        </div>
-      </div>
-
-      <div className="panel">
-        <p>0</p>
-        <div className="numbers">
-          <button>1</button>
-          <button>2</button>
-          <button>3</button>
-          <button>4</button>
-          <button>5</button>
-          <button>6</button>
-          <button>7</button>
-          <button>8</button>
-          <button>9</button>
-          <button>0</button>
-          <button>Clear</button>
-        </div>
-      </div>
-      <div className="panel answer">
-        <p>0</p>
-        <div>
-          <button>=</button>
-        </div>
-      </div>
+      <NumpadComponent value={numOne} setValue={setNumOne} store={store} setStore={setStore}/>
+      <OperatorsComponent value={operator} setValue={setOperator} />
+      <NumpadComponent value={numTwo} setValue={setNumTwo} store={store} setStore={setStore}/>
+      <AnswerComponent value={answer} setValue={setAnswer} numbers={[Number(numOne), Number(numTwo)]} operator={operator}/>
     </div>
   )
 }
