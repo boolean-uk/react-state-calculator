@@ -1,6 +1,7 @@
+import DecimalButtonComponent from "./numpad/DecimalButton"
 import ButtonComponent from "./numpad/button"
 
-function NumpadComponent({ value, setValue }) {
+function NumpadComponent({ value, setValue, store, setStore }) {
 
     const buttons = []
     for (let i = 1; i <= 9; i++) {
@@ -13,8 +14,11 @@ function NumpadComponent({ value, setValue }) {
             <p>{value}</p>
             <div className="numbers">
                 {buttons}
+                <DecimalButtonComponent value={value} setValue={setValue}/>
                 <button onClick={() => setValue(0)}>Clear</button>
             </div>
+                <button onClick={() => setValue(store)}>Recall</button>
+                <button onClick={() => setStore(value)}>Store</button>
         </div>
     )
 }

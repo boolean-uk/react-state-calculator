@@ -10,12 +10,13 @@ function App() {
   const [numTwo, setNumTwo] = useState(0)
   const [operator, setOperator] = useState('+')
   const [answer, setAnswer] = useState(0)
+  const [store, setStore] = useState(0)
 
   return (
     <div className="calculator">
-      <NumpadComponent value={numOne} setValue={setNumOne} />
+      <NumpadComponent value={numOne} setValue={setNumOne} store={store} setStore={setStore}/>
       <OperatorsComponent value={operator} setValue={setOperator} />
-      <NumpadComponent value={numTwo} setValue={setNumTwo} />
+      <NumpadComponent value={numTwo} setValue={setNumTwo} store={store} setStore={setStore}/>
       <AnswerComponent value={answer} setValue={setAnswer} numbers={[Number(numOne), Number(numTwo)]} operator={operator}/>
     </div>
   )
