@@ -1,56 +1,122 @@
 import "./App.css"
+import { useState } from "react";
 
 function App() {
+  const [firstNumber, setFirstNumber] = useState(0);
+  const [secondNumber, setSecondNumber] = useState(0);
+  const [operator, setOperator] = useState('+');
+  const [answer, setAnswer] = useState(0);
+
+  const updateFirstNumber = (number) => setFirstNumber(number.target.value);
+  const updateSecondNumber = (number) => setSecondNumber(number.target.value);
+  const updateOperator = (operator) => setOperator(operator.target.value);
+  const updateAnswer = () => {
+    setAnswer(eval(`${firstNumber} ${operator} ${secondNumber}`))
+  };
 
   return (
     <div className="calculator">
       <div className="panel">
-        <p>0</p>
+        <p>{firstNumber}</p>
         <div className="numbers">
-          <button>1</button>
-          <button>2</button>
-          <button>3</button>
-          <button>4</button>
-          <button>5</button>
-          <button>6</button>
-          <button>7</button>
-          <button>8</button>
-          <button>9</button>
-          <button>0</button>
-          <button>Clear</button>
+        <button value="1" onClick={updateFirstNumber}>
+            1
+          </button>
+          <button value="2" onClick={updateFirstNumber}>
+            2
+          </button>
+          <button value="3" onClick={updateFirstNumber}>
+            3
+          </button>
+          <button value="4" onClick={updateFirstNumber}>
+            4
+          </button>
+          <button value="5" onClick={updateFirstNumber}>
+            5
+          </button>
+          <button value="6" onClick={updateFirstNumber}>
+            6
+          </button>
+          <button value="7" onClick={updateFirstNumber}>
+            7
+          </button>
+          <button value="8" onClick={updateFirstNumber}>
+            8
+          </button>
+          <button value="9" onClick={updateFirstNumber}>
+            9
+          </button>
+          <button value="0" onClick={updateFirstNumber}>
+            0
+          </button>
+          <button value="0" onClick={updateFirstNumber}>
+            Clear
+          </button>
         </div>
       </div>
 
       <div className="panel">
-        <p>+</p>
+        <p>{operator}</p>
         <div className="numbers">
-          <button>+</button>
-          <button>-</button>
-          <button>*</button>
-          <button>÷</button>
+          <button value="+" onClick={updateOperator}>
+            +
+          </button>
+          <button value="-" onClick={updateOperator}>
+            -
+          </button>
+          <button value="*" onClick={updateOperator}>
+            *
+          </button>
+          <button value="/" onClick={updateOperator}>
+            ÷ 
+          </button>
         </div>
       </div>
 
       <div className="panel">
-        <p>0</p>
+      <p>{secondNumber}</p>
         <div className="numbers">
-          <button>1</button>
-          <button>2</button>
-          <button>3</button>
-          <button>4</button>
-          <button>5</button>
-          <button>6</button>
-          <button>7</button>
-          <button>8</button>
-          <button>9</button>
-          <button>0</button>
-          <button>Clear</button>
+        <button value="1" onClick={updateSecondNumber}>
+            1
+          </button>
+          <button value="2" onClick={updateSecondNumber}>
+            2
+          </button>
+          <button value="3" onClick={updateSecondNumber}>
+            3
+          </button>
+          <button value="4" onClick={updateSecondNumber}>
+            4
+          </button>
+          <button value="5" onClick={updateSecondNumber}>
+            5
+          </button>
+          <button value="6" onClick={updateSecondNumber}>
+            6
+          </button>
+          <button value="7" onClick={updateSecondNumber}>
+            7
+          </button>
+          <button value="8" onClick={updateSecondNumber}>
+            8
+          </button>
+          <button value="9" onClick={updateSecondNumber}>
+            9
+          </button>
+          <button value="0" onClick={updateSecondNumber}>
+            0
+          </button>
+          <button value="0" onClick={updateSecondNumber}>
+            Clear
+          </button>
         </div>
       </div>
       <div className="panel answer">
-        <p>0</p>
+        <p>{answer}</p>
         <div>
-          <button>=</button>
+          <button onClick={updateAnswer}>
+            =
+          </button>
         </div>
       </div>
     </div>
