@@ -18,6 +18,7 @@ function Numbers( { onNumberClick } ) {
                 <button onClick={ () => numClicked(8)}      >8</button>
                 <button onClick={ () => numClicked(9)}      >9</button>
                 <button onClick={ () => numClicked(0)}      >0</button>
+                <button onClick={ () => numClicked('.')}      >.</button>
                 <button onClick={ () => numClicked('Clear')}>Clear</button>
             </div>
     )

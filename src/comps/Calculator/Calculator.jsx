@@ -11,18 +11,38 @@ function Calculator() {
 
     {/* The code duplication lol */}
     const handleNumberClick1 = (number) => {
-        if (number === 'Clear') {
+
+        if(number === '.' && num1.includes('.')) {
+            return
+        }
+
+        if(num1 === '0' && number ==='.') {
+            setNum1(num1 + number.toString())
+        }
+        else if (number === 'Clear') {
             setNum1('0')
-        } else {
+        }
+        else {
             setNum1(prevNum1 => prevNum1 === '0' ? number.toString() : prevNum1 + number.toString())
         }
+
     }
     const handleNumberClick2 = (number) => {
-        if (number === 'Clear') {
+
+        if(number === '.' && num2.includes('.')) {
+            return
+        }
+
+        if(num2 === '0' && number ==='.') {
+            setNum2(num2 + number.toString())
+        }
+        else if (number === 'Clear') {
             setNum2('0')
-        } else {
+        }
+        else {
             setNum2(prevNum2 => prevNum2 === '0' ? number.toString() : prevNum2 + number.toString())
         }
+
     }
 
     const handleManipulatorClick = (manipulator) => {
