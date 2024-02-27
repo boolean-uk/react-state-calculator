@@ -14,13 +14,23 @@ function App() {
 
   const handleNumberClick = (number, panel) => {
     if (panel === "left") {
-      setLeftDisplay((prevInput) =>
-        prevInput === "0" ? number : prevInput + number
-      );
+      if (
+        !leftDisplay.includes(".") ||
+        (number !== "." && leftDisplay.includes("."))
+      ) {
+        setLeftDisplay((prevInput) =>
+          prevInput === "0" ? number : prevInput + number
+        );
+      }
     } else if (panel === "right") {
-      setRightDisplay((prevInput) =>
-        prevInput === "0" ? number : prevInput + number
-      );
+      if (
+        !rightDisplay.includes(".") ||
+        (number !== "." && rightDisplay.includes("."))
+      ) {
+        setRightDisplay((prevInput) =>
+          prevInput === "0" ? number : prevInput + number
+        );
+      }
     }
   };
 
@@ -95,7 +105,7 @@ function App() {
       <div className="panel">
         <p>{leftDisplay}</p>
         <div className="numbers">
-          {[1, 2, 3, 4, 5, 6, 7, 8, 9, 0].map((number) => (
+          {[1, 2, 3, 4, 5, 6, 7, 8, 9, 0, "."].map((number) => (
             <button
               key={number}
               onClick={() => handleNumberClick(String(number), "left")}
@@ -122,7 +132,7 @@ function App() {
       <div className="panel">
         <p>{rightDisplay}</p>
         <div className="numbers">
-          {[1, 2, 3, 4, 5, 6, 7, 8, 9, 0].map((number) => (
+          {[1, 2, 3, 4, 5, 6, 7, 8, 9, 0, "."].map((number) => (
             <button
               key={number}
               onClick={() => handleNumberClick(String(number), "right")}
