@@ -6,6 +6,7 @@ function App() {
   const [secondNumber, setSecondNumber] = useState(0);
   const [operator, setOperator] = useState('+');
   const [answer, setAnswer] = useState(0);
+  const [storeAnswere, setStoreAnswere] = useState('')
 
   const updateFirstNumber = (number) => setFirstNumber(number.target.value);
   const updateSecondNumber = (number) => setSecondNumber(number.target.value);
@@ -13,6 +14,10 @@ function App() {
   const updateAnswer = () => {
     setAnswer(eval(`${firstNumber} ${operator} ${secondNumber}`))
   };
+
+  const updateStoreAnswere = () => {
+    setStoreAnswere(answer)
+  }
 
   return (
     <div className="calculator">
@@ -51,6 +56,9 @@ function App() {
           </button>
           <button value="0" onClick={updateFirstNumber}>
             Clear
+          </button>
+          <button value={storeAnswere} onClick={updateFirstNumber}>
+            Recall
           </button>
         </div>
       </div>
@@ -109,6 +117,9 @@ function App() {
           <button value="0" onClick={updateSecondNumber}>
             Clear
           </button>
+          <button value={storeAnswere} onClick={updateSecondNumber}>
+            Recall
+          </button>
         </div>
       </div>
       <div className="panel answer">
@@ -117,6 +128,11 @@ function App() {
           <button onClick={updateAnswer}>
             =
           </button>
+          <button
+            onClick={updateStoreAnswere}>
+            Store Answere
+          </button>
+          <p>{storeAnswere}</p>
         </div>
       </div>
     </div>
