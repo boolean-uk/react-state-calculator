@@ -32,9 +32,15 @@ function App() {
 
   const updateAnswer = () => {
     if (operator === "÷") {
-      setAnswer(eval(`${firstNumber} / ${secondNumber}`).toFixed(8));
+      setAnswer(
+        parseFloat(eval(`${firstNumber} / ${secondNumber}`).toFixed(8))
+      );
     } else {
-      setAnswer(eval(`${firstNumber} ${operator} ${secondNumber}`).toFixed(8));
+      setAnswer(
+        parseFloat(
+          eval(`${firstNumber} ${operator} ${secondNumber}`).toFixed(8)
+        )
+      );
     }
   };
 
