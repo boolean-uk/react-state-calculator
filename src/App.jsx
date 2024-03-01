@@ -1,60 +1,60 @@
+import { useState } from "react"
 import "./App.css"
+import Numpad from "./Components/Numpad"
+
+
 
 function App() {
 
+  const [firstNum, setFirstNum] = useState('');
+  const [operator, setOperator] = useState('');
+  const [secondNum, setSecondNum] = useState('');
+  const [result, setResult] = useState('')
+  const [resultSave, setResultSave] = useState('')
+
+  const handleEqualsClick = () => {
+    setResult(eval(`${firstNum} ${operator} ${secondNum}`))
+  }
+  const handleResetClick = () => {
+    setFirstNum('')
+    setOperator('')
+    setSecondNum('')
+    setResult('')
+    setResultSave(0)
+  }
+  const saveAndReset = () => {
+    setResultSave(result)
+    setFirstNum('')
+    setOperator('')
+    setSecondNum('')
+    setResult('')
+  }
+ 
+
   return (
     <div className="calculator">
+      <Numpad number={firstNum} setFirstNum={setFirstNum} operator={operator} />
       <div className="panel">
-        <p>0</p>
-        <div className="numbers">
-          <button>1</button>
-          <button>2</button>
-          <button>3</button>
-          <button>4</button>
-          <button>5</button>
-          <button>6</button>
-          <button>7</button>
-          <button>8</button>
-          <button>9</button>
-          <button>0</button>
-          <button>Clear</button>
-        </div>
+          <p>{operator}</p>
+          <div className="numbers">
+            <button onClick={() => setOperator('+')}>+</button>
+            <button onClick={() => setOperator('-')}>-</button>
+            <button onClick={() => setOperator('*')}>*</button>
+            <button onClick={() => setOperator('/')}>÷</button>
+          </div>
       </div>
-
-      <div className="panel">
-        <p>+</p>
-        <div className="numbers">
-          <button>+</button>
-          <button>-</button>
-          <button>*</button>
-          <button>÷</button>
-        </div>
-      </div>
-
-      <div className="panel">
-        <p>0</p>
-        <div className="numbers">
-          <button>1</button>
-          <button>2</button>
-          <button>3</button>
-          <button>4</button>
-          <button>5</button>
-          <button>6</button>
-          <button>7</button>
-          <button>8</button>
-          <button>9</button>
-          <button>0</button>
-          <button>Clear</button>
-        </div>
-      </div>
+      <Numpad number={secondNum} setSecondNum={setSecondNum} operator={operator} />
       <div className="panel answer">
-        <p>0</p>
+        <p>{result || resultSave}</p>
         <div>
-          <button>=</button>
+          <button onClick={handleEqualsClick}>=</button>
+          <button onClick={handleResetClick}>Reset</button>
+          <button onClick={saveAndReset}>Save</button>
+
         </div>
       </div>
     </div>
-  )
+    )
 }
 
 export default App
