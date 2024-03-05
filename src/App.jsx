@@ -1,56 +1,82 @@
 import "./App.css"
+import { useState } from 'react';
 
 function App() {
+  const [firstPanelNum, updateFirstNum] = useState(0);
+  const [secondPanelNum, updateSecondNum] = useState(0);
+  const [operator, setOperator] = useState('+');
+  const [result, setResult] = useState(0);
+
+  const handleClickPanel1 = (num) => {
+    updateFirstNum(num);
+  };
+
+  const handleClickPanel2 = (num) => {
+    updateSecondNum(num)
+  };
+
+  const updateOperator = (operator) => {
+    setOperator(operator)
+  };
+
+  const computeTotal = () => {
+    let res;
+    switch (operator) {
+      case '+':
+        res = firstPanelNum + secondPanelNum;
+        break;
+      case '-':
+        res = firstPanelNum - secondPanelNum;
+        break;
+      case '*':
+        res = firstPanelNum * secondPanelNum;
+        break;
+      case '÷':
+        res = firstPanelNum / secondPanelNum;
+        break;
+      default:
+        res = 0;
+    }
+    setResult(res);
+  };
 
   return (
     <div className="calculator">
       <div className="panel">
-        <p>0</p>
+        <p>{firstPanelNum}</p>
         <div className="numbers">
-          <button>1</button>
-          <button>2</button>
-          <button>3</button>
-          <button>4</button>
-          <button>5</button>
-          <button>6</button>
-          <button>7</button>
-          <button>8</button>
-          <button>9</button>
-          <button>0</button>
-          <button>Clear</button>
+          {[...Array(10)].map((_, index) => (
+            <button key={index} onClick={() => handleClickPanel1(index)}>
+              {index === 9 ? "Clear" : index}
+            </button>
+          ))}
         </div>
       </div>
 
       <div className="panel">
-        <p>+</p>
+        <p>{operator}</p>
         <div className="numbers">
-          <button>+</button>
-          <button>-</button>
-          <button>*</button>
-          <button>÷</button>
+          <button onClick={() => updateOperator('+')}>+</button>
+          <button onClick={() => updateOperator('-')}>-</button>
+          <button onClick={() => updateOperator('*')}>*</button>
+          <button onClick={() => updateOperator('÷')}>÷</button>
         </div>
       </div>
 
       <div className="panel">
-        <p>0</p>
+        <p>{secondPanelNum}</p>
         <div className="numbers">
-          <button>1</button>
-          <button>2</button>
-          <button>3</button>
-          <button>4</button>
-          <button>5</button>
-          <button>6</button>
-          <button>7</button>
-          <button>8</button>
-          <button>9</button>
-          <button>0</button>
-          <button>Clear</button>
+          {[...Array(10)].map((_, index) => (
+              <button key={index} onClick={() => handleClickPanel2(index)}>
+                {index === 9 ? "Clear" : index}
+              </button>
+            ))}
         </div>
       </div>
       <div className="panel answer">
-        <p>0</p>
+        <p>{result}</p>
         <div>
-          <button>=</button>
+          <button onClick={() => computeTotal()}>=</button>
         </div>
       </div>
     </div>
